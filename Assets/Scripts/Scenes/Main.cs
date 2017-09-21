@@ -18,7 +18,7 @@ public class Main : Scene<TransitionData>
 	{
 //		resourceText = GameObject.Find("ResourceText").GetComponent<Text>();
 		Services.MapManager.GenerateMap();
-
+        Services.LightManager.Start();
 
 	}
 
