@@ -42,17 +42,11 @@ public class MapManager : MonoBehaviour {
         }
     }
 
-
-
-
-
-
-   /* public IntVector2 CenterIndexOfGrid(){
-
-      
-        return new IntVector2 (mapWidth/2, mapLength/2);
+    public IntVector2 CenterIndexOfGrid()
+    {
+        return new IntVector2(mapWidth / 2, mapLength / 2);
     }
-*/
+
 
 
 }
