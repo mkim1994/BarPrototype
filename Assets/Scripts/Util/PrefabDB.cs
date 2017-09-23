@@ -12,8 +12,4 @@ public class PrefabDB : ScriptableObject {
     private GameObject tile;
     public GameObject Tile { get { return tile; }}
 
-    [SerializeField]
-    private GameObject lightSource;
-    public GameObject LightSource {  get { return lightSource; } }
-
 }
