@@ -12,6 +12,7 @@ public class Main : Scene<TransitionData>
     public Light Spotlight;
 
     public LayerMask groundLayer;
+    public LayerMask lightLayer;
 
 	// Use this for initialization
 	void Start()

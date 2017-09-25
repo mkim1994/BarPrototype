@@ -16,6 +16,9 @@ public class MapManager : MonoBehaviour {
     [SerializeField]
     private int maxTriesProcGen;
 
+    private GameObject selectedTile;
+    private float mouseOffset;
+
     // Use this for initialization
     void Start () {
 
@@ -23,7 +26,7 @@ public class MapManager : MonoBehaviour {
     
     // Update is called once per frame
     void Update () {
-        
+        SelectTile();
     }
 
 
@@ -42,11 +45,44 @@ public class MapManager : MonoBehaviour {
         }
     }
 
-    public IntVector2 CenterIndexOfGrid()
-    {
-        return new IntVector2(mapWidth / 2, mapLength / 2);
+    void SelectTile(){
+        Ray ray = Services.GameManager.currentCamera.ScreenPointToRay(Input.mousePosition);
+        if(Input.GetMouseButton(0)){
+            if (selectedTile == null)
+            {
+                RaycastHit hit = new RaycastHit();
+                if (Physics.Raycast(ray, out hit, Mathf.Infinity, Services.Main.groundLayer))
+                {
+                    selectedTile = hit.collider.transform.gameObject;
+                    if (selectedTile.GetComponent<Tile>() == null)
+                    {
+                        selectedTile = selectedTile.transform.parent.gameObject;
+                    }
+
+					mouseOffset = Services.GameManager.currentCamera.ScreenToWorldPoint(Input.mousePosition).y - selectedTile.transform.position.y;
+                }
+
+            } else{
+                selectedTile.transform.position =
+                    new Vector3(selectedTile.transform.position.x,
+                                Mathf.Clamp(Services.GameManager.currentCamera.ScreenToWorldPoint(Input.mousePosition).y - mouseOffset, 0, Mathf.Infinity),
+                                selectedTile.transform.position.z);
+            }
+        } else{
+            selectedTile = null;
+        }
+
     }
 
+
+
+
+   /* public IntVector2 CenterIndexOfGrid(){
+
+      
+        return new IntVector2 (mapWidth/2, mapLength/2);
+    }
+*/
 
 
 }

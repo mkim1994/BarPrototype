@@ -26,7 +26,7 @@ public class LightManager {
 
         Ray ray = new Ray(Services.Main.Spotlight.transform.position, spotlightDirForTheLevel);
         RaycastHit hit = new RaycastHit();
-        if (Physics.Raycast(ray, out hit, Mathf.Infinity, Services.Main.groundLayer))
+        if (Physics.Raycast(ray, out hit, Mathf.Infinity, Services.Main.lightLayer))
 		{
             Vector3 target = hit.point;
             Services.Main.Spotlight.transform.LookAt(target);
