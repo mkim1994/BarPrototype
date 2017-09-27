@@ -51,7 +51,7 @@ public class MapManager : MonoBehaviour {
             if (selectedTile == null)
             {
                 RaycastHit hit = new RaycastHit();
-                if (Physics.Raycast(ray, out hit, Mathf.Infinity, Services.Main.tileLayer))
+                if (Physics.Raycast(ray, out hit, Mathf.Infinity, Services.Main.groundLayer))
                 {
                     selectedTile = hit.collider.transform.gameObject;
                     if (selectedTile.GetComponent<Tile>() == null)
