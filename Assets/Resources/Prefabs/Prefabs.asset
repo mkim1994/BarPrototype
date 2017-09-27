@@ -15,5 +15,4 @@ MonoBehaviour:
   - {fileID: 1208321236154876, guid: 1e5dea41c2cd34ba6be321a268960182, type: 2}
   - {fileID: 1923492878833664, guid: 78d4bb229091746568f0f44902bf6d8b, type: 2}
   tile: {fileID: 1100685554961052, guid: d4983dff0c9ac41fa9b85cc29daadfe2, type: 2}
-  lightSource: {fileID: 1605577833414618, guid: 9856becec268ea745a3ca08e38481379,
-    type: 2}
+  character: {fileID: 1779868959764278, guid: 6e1500fff196a4ed593ad2bb7d6ab1df, type: 2}

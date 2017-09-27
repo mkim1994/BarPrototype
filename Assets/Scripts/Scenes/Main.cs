@@ -13,6 +13,12 @@ public class Main : Scene<TransitionData>
 
     public LayerMask groundLayer;
     public LayerMask lightLayer;
+    public LayerMask tileLayer;
+    public LayerMask obstacleLayer;
+
+    public Character character;
+    public Vector3 destination;
+
 
 	// Use this for initialization
 	void Start()
