@@ -15,6 +15,7 @@ public class LightManager {
 	// Use this for initialization
 	public void Start () {
         spotlightDirForTheLevel = GetRandomTile();
+        lastRandomTileDir = spotlightDirForTheLevel;
         Debug.Log(spotlightDirForTheLevel);
     }
 
@@ -47,9 +48,13 @@ public class LightManager {
         if (Input.GetKeyDown(key))
         {
             spotlightDirForTheLevel = GetRandomTile();
+            Debug.Log("Spotlight dir for the level: " + spotlightDirForTheLevel);
             if(spotlightDirForTheLevel == lastRandomTileDir){
                 spotlightDirForTheLevel = GetRandomTile();                
+            } else {
+                lastRandomTileDir = spotlightDirForTheLevel;
             }
+            Debug.Log("Last Random Tile for the level: " + lastRandomTileDir);
         }
     }
 
