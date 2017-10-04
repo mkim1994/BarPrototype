@@ -36,6 +36,8 @@ public class GameManager : MonoBehaviour
 		Services.SceneStackManager = new SceneStackManager<TransitionData>(sceneRoot, Services.Prefabs.Scenes);
 		Services.InputManager = new InputManager();
 
+        Debug.Log("what");
+
         Services.LightManager = new LightManager();
 
 	}

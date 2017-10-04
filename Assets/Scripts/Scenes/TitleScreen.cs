@@ -12,7 +12,8 @@ public class TitleScreen : Scene<TransitionData> {
 	// Update is called once per frame
 	void Update () {
         if(Input.GetKeyDown(KeyCode.Return)){
-            Services.SceneStackManager.Swap<Main>();
+            //Services.SceneStackManager.Swap<Main>();
+            Services.SceneStackManager.Swap<BartenderMain>();
         }
 	}
 }
