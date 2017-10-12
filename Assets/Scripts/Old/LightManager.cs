@@ -14,6 +14,7 @@ public class LightManager {
 
 	// Use this for initialization
 	public void Start () {
+        Debug.Log("Hey");
         spotlightDirForTheLevel = GetRandomTile();
         lastRandomTileDir = spotlightDirForTheLevel;
         Debug.Log(spotlightDirForTheLevel);
