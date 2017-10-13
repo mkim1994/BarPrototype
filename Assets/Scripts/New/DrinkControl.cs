@@ -32,15 +32,10 @@ public class DrinkControl : MonoBehaviour {
 		switch (pickUpState){
 			case PickUpState.LOOKING_AT_OBJECT:
 				PickUp(interactKey);
-
-				// rb.useGravity = true;
-				// rb.isKinematic = false;
-				// rb.freezeRotation = false;
-				// objectToPickUp.transform.SetParent(null);
-				// pickUpState = PickUpState.NOT_PICKED_UP;
 				break;
 			case PickUpState.HOLDING_OBJECT:
 				DropObject(interactKey);
+				UseInteractable();
 				break;
 			case PickUpState.NOT_HOLDING_OBJECT:
 				break;
@@ -81,8 +76,8 @@ public class DrinkControl : MonoBehaviour {
 				rb.isKinematic = true;
 				rb.useGravity = false;
 				rb.freezeRotation = true;
-				objectToPickUp.transform.localEulerAngles = Vector3.zero;
-				objectToPickUp.transform.localPosition = Vector3.forward;
+				objectToPickUp.transform.localEulerAngles = objectToPickUp.GetComponent<Interactable>().startRot;
+				objectToPickUp.transform.localPosition = Vector3.forward + (Vector3.right * 0.5f) + (Vector3.down * 0.25f);
 				objectToDrop = objectToPickUp;
 				pickUpState = PickUpState.HOLDING_OBJECT;
 			}
@@ -103,9 +98,13 @@ public class DrinkControl : MonoBehaviour {
 		}
 	}
 
-	public void Pour(){
+	public void UseInteractable(){
 		if(objectToDrop.tag == "Base"){
-			objectToDrop.GetComponent<Interactable>().Pour();			
+			if(Input.GetMouseButton(1)){
+				objectToDrop.GetComponent<Interactable>().Pour();			
+			} else {
+				objectToDrop.GetComponent<Interactable>().StopPour();
+			} 
 		}
 	}
 
