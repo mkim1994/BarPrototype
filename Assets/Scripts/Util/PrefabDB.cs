@@ -12,4 +12,7 @@ public class PrefabDB : ScriptableObject {
     private GameObject tile;
     public GameObject Tile { get { return tile; }}
 
+    [SerializeField]
+    private GameObject whiskyParticle;
+    public GameObject WhiskyParticle { get { return whiskyParticle; }}
 }

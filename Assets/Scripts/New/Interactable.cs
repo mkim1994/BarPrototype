@@ -17,7 +17,7 @@ public class Interactable : MonoBehaviour {
  	}
 
 	public void Pour(){
-		transform.localEulerAngles = new Vector3(0, 75, 90f);
+		transform.localEulerAngles = new Vector3(0, 25, 90f);
 		// transform.DOLocalRotate(new Vector3 (0, 0, 90), 0.5f, RotateMode.Fast);
 	} 
 
