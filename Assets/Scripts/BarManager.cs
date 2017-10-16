@@ -6,6 +6,7 @@ public class BarManager : MonoBehaviour {
 
     public Light[] spotlights;
     public Transform spotlightDir;
+    public Transform tableDir;
 	// Use this for initialization
 	void Start () {
         /* foreach (Light sp in spotlights)
@@ -25,7 +26,12 @@ public class BarManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
+        if (Input.GetKeyUp(KeyCode.Tab)){
+            foreach(Light sp in spotlights){
+                
+                sp.transform.LookAt(tableDir);
+            }
+        }
 	}
 
 
