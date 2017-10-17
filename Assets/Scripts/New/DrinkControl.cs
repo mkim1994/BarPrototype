@@ -103,6 +103,7 @@ public class DrinkControl : MonoBehaviour {
 		//if you're holding a base
 		if(objectToDrop.tag == "Base"){ 
 			//if we're holding a base, then look for glass.
+			//Need to have a check as to what kind of base is in it.
 			FindGlassRay();
 			if(Input.GetMouseButton(1)){
 				objectToDrop.GetComponent<Interactable>().Pour();
