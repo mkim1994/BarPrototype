@@ -5,7 +5,7 @@ using UnityEngine;
 public class PourSimulator : MonoBehaviour {
 
 	private Vector3 startScale;
-	[SerializeField]float yPosGrowthRate = 0.1f;
+	[SerializeField]float yPosGrowthRate = 0.025f;
 	[SerializeField]float scaleGrowthRate = 0.1f;
 
 	private float scale; 

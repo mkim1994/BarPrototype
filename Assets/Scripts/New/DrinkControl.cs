@@ -127,7 +127,9 @@ public class DrinkControl : MonoBehaviour {
 		if(Physics.Raycast(ray, out hit, rayDist)){
 			if(hit.transform.tag == "Glass"){
  				glassInSight = hit.transform.gameObject;				
-			} 
+			} else {
+				glassInSight = null;
+			}
 		}
 	}
 
