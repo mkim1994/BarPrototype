@@ -7,17 +7,21 @@ public class Interactable : MonoBehaviour {
 
 	public Material[] materials;
 
+	public Transform child;
 	public enum IsBeingLookedAtState {
 		LOOKED_AT,
 		NOT_LOOKED_AT
 	}
 
+ 
 	public IsBeingLookedAtState isBeingLookedAtState;
 
 	public Vector3 startRot;
 	// Use this for initialization
 	void Start () {
-		startRot = transform.eulerAngles;
+		// child = gameObject.transform.Find("MouseOverBottle");
+		child = transform.GetChild(0);
+ 		startRot = transform.eulerAngles;
 		isBeingLookedAtState = IsBeingLookedAtState.NOT_LOOKED_AT;
 	}
 	
@@ -25,20 +29,20 @@ public class Interactable : MonoBehaviour {
 	void Update () {
 		switch(isBeingLookedAtState){
 			case IsBeingLookedAtState.LOOKED_AT:
-			GetComponent<MeshRenderer>().material = materials[0];
-				break;
+				child.GetComponent<MeshRenderer>().enabled = true;
+  				break;
 			case IsBeingLookedAtState.NOT_LOOKED_AT:
-			GetComponent<MeshRenderer>().material = materials[1];
-				break;
+				child.GetComponent<MeshRenderer>().enabled = false;
+ 				break;
 			default:
 				break;
 		}
+
 		ChangeMaterialOnRaycastMiss();
  	}
 
 	public void Pour(){
 		transform.localEulerAngles = new Vector3(0, 25, 90f);
-		// transform.DOLocalRotate(new Vector3 (0, 0, 90), 0.5f, RotateMode.Fast);
 	} 
 
 	public void StopPour(){
@@ -51,6 +55,5 @@ public class Interactable : MonoBehaviour {
 
 	public void ChangeMaterialOnRaycastMiss(){
 		isBeingLookedAtState = IsBeingLookedAtState.NOT_LOOKED_AT;
-		// GetComponent<MeshRenderer>().material = materials[1];
-	}
+ 	}
 }

@@ -9,19 +9,21 @@ public class DrinkControl : MonoBehaviour {
 	private GameObject objectToDrop;
 	private GameObject glassInSight;
 
+	public bool isHoldingObject = false;
+
   	public KeyCode interactKey;
 	// Use this for initialization
 
 	public enum PickUpState{
 		HOLDING_OBJECT,
-		NOT_HOLDING_OBJECT,
+		NOT_HOLDING_OR_LOOKING_AT_OBJECT,
 		LOOKING_AT_OBJECT,
 		NEAR_OBJECTIVE
 	}
 
 	PickUpState pickUpState;
 	void Start () {
- 		pickUpState = PickUpState.NOT_HOLDING_OBJECT;
+ 		pickUpState = PickUpState.NOT_HOLDING_OR_LOOKING_AT_OBJECT;
 	}
 	
 	// Update is called once per frame
@@ -38,7 +40,7 @@ public class DrinkControl : MonoBehaviour {
 				DropObject(interactKey);
 				UseInteractable();
 				break;
-			case PickUpState.NOT_HOLDING_OBJECT:
+			case PickUpState.NOT_HOLDING_OR_LOOKING_AT_OBJECT:
 				break;
 
 			case PickUpState.NEAR_OBJECTIVE:
@@ -57,12 +59,11 @@ public class DrinkControl : MonoBehaviour {
 
 		if(Physics.Raycast(ray, out hit, rayDist)){
 			if(hit.transform.GetComponent<Interactable>() != null){
-				if(pickUpState != PickUpState.HOLDING_OBJECT){
+				if(pickUpState != PickUpState.HOLDING_OBJECT && !isHoldingObject){
 					pickUpState = PickUpState.LOOKING_AT_OBJECT;
 					objectToPickUp = hit.transform.gameObject;
 					objectToPickUp.GetComponent<Interactable>().ChangeMaterialOnRaycastHit();
-					// objectToPickUp.GetComponent<MeshRenderer>().material 
- 				}
+  				}
 			} else {
  				objectToPickUp = null;
 			} 
@@ -72,8 +73,9 @@ public class DrinkControl : MonoBehaviour {
 
 	public void PickUp(KeyCode key){
 		if(Input.GetKeyDown(key)){
-			
-			if(pickUpState == PickUpState.LOOKING_AT_OBJECT){
+			//if you're looking at an object and you're NOT holding anything:
+			if(pickUpState == PickUpState.LOOKING_AT_OBJECT && !isHoldingObject){
+				isHoldingObject = true;
 				Rigidbody rb = objectToPickUp.GetComponent<Rigidbody>();
 				objectToPickUp.transform.SetParent(this.gameObject.transform);
 				rb.isKinematic = true;
@@ -91,12 +93,13 @@ public class DrinkControl : MonoBehaviour {
 		if(Input.GetKeyDown(key)){
 			Rigidbody rb = objectToDrop.GetComponent<Rigidbody>();
 
-			if (pickUpState == PickUpState.HOLDING_OBJECT){
+			if (pickUpState == PickUpState.HOLDING_OBJECT && isHoldingObject){
+				isHoldingObject = false;
 				rb.useGravity = true;
 				rb.isKinematic = false;
 				rb.freezeRotation = false;
 				objectToDrop.transform.SetParent(null);
-				pickUpState = PickUpState.NOT_HOLDING_OBJECT;
+				pickUpState = PickUpState.NOT_HOLDING_OR_LOOKING_AT_OBJECT;
 			}
 		}
 	}
@@ -108,6 +111,7 @@ public class DrinkControl : MonoBehaviour {
 			//Need to have a check as to what kind of base is in it.
 			FindGlassRay();
 			if(Input.GetMouseButton(1) && glassInSight != null){
+				Debug.Log(objectToDrop.tag);
 				objectToDrop.GetComponent<Interactable>().Pour();
 				glassInSight.GetComponentInChildren<PourSimulator>().FillUp();												
 			} 
