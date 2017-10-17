@@ -7,6 +7,7 @@ public class DrinkControl : MonoBehaviour {
 
 	private GameObject objectToPickUp;
 	private GameObject objectToDrop;
+	private GameObject glassInSight;
 
   	public KeyCode interactKey;
 	// Use this for initialization
@@ -99,11 +100,33 @@ public class DrinkControl : MonoBehaviour {
 	}
 
 	public void UseInteractable(){
-		if(objectToDrop.tag == "Base"){
+		//if you're holding a base
+		if(objectToDrop.tag == "Base"){ 
+			//if we're holding a base, then look for glass.
+			FindGlassRay();
 			if(Input.GetMouseButton(1)){
-				objectToDrop.GetComponent<Interactable>().Pour();			
-			} else {
+				objectToDrop.GetComponent<Interactable>().Pour();
+				glassInSight.GetComponentInChildren<PourSimulator>().FillUp();												
+			} 
+			else {
 				objectToDrop.GetComponent<Interactable>().StopPour();
+			} 
+		} else if (objectToDrop.tag == "Glass"){
+			//do stuff for glasses here
+		} else if (objectToDrop.tag == "Feeling"){
+			//do stuff for feeling here
+		}
+	}
+
+	public void FindGlassRay(){
+		Ray ray = new Ray(transform.position, transform.forward);
+		float rayDist = 10f;
+
+		RaycastHit hit = new RaycastHit();
+
+		if(Physics.Raycast(ray, out hit, rayDist)){
+			if(hit.transform.tag == "Glass"){
+ 				glassInSight = hit.transform.gameObject;				
 			} 
 		}
 	}

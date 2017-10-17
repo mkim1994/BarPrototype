@@ -23,5 +23,5 @@ public class Interactable : MonoBehaviour {
 
 	public void StopPour(){
 		transform.localEulerAngles = startRot;
-	}
+	}	
 }
