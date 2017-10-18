@@ -5,11 +5,15 @@ using UnityEngine.UI;
 
 public class DrinkControl : MonoBehaviour {
 
-	private GameObject objectToPickUp;
+	[SerializeField]GameObject objectToPickUp;
 	private GameObject objectToDrop;
 	private GameObject glassInSight;
 
+	public LayerMask layerMask;
+
 	public bool isHoldingObject = false;
+
+	public bool isLookingAtInteractable = false;
 
   	public KeyCode interactKey;
 	// Use this for initialization
@@ -29,9 +33,6 @@ public class DrinkControl : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		ShootRay();
-
-		Debug.Log(pickUpState);
-
 		switch (pickUpState){
 			case PickUpState.LOOKING_AT_OBJECT:
 				PickUp(interactKey);
@@ -53,39 +54,44 @@ public class DrinkControl : MonoBehaviour {
 
 	public void ShootRay(){
 		Ray ray = new Ray(transform.position, transform.forward);
-		float rayDist = 10f;
+		float rayDist = 2f;
 
 		RaycastHit hit = new RaycastHit();
+		Debug.DrawRay(transform.position, transform.forward * 2f, Color.red);
 
-		if(Physics.Raycast(ray, out hit, rayDist)){
-			if(hit.transform.GetComponent<Interactable>() != null){
+		if(Physics.Raycast(ray, out hit, Mathf.Infinity, layerMask)){
+ 			//check if you're looking at an Interactable
+			if(hit.transform.tag == "Glass" || hit.transform.tag == "Base"){
+				isLookingAtInteractable = true;
 				if(pickUpState != PickUpState.HOLDING_OBJECT && !isHoldingObject){
 					pickUpState = PickUpState.LOOKING_AT_OBJECT;
 					objectToPickUp = hit.transform.gameObject;
 					objectToPickUp.GetComponent<Interactable>().ChangeMaterialOnRaycastHit();
   				}
-			} else {
- 				objectToPickUp = null;
-			} 
-		} 
+			} else if (hit.transform.tag != "Glass" && hit.transform.tag != "Base"){
+				// isLookingAtInteractable = false;
+			}
+		} else {
+			isLookingAtInteractable = false;
+		}
 	}
 
 
 	public void PickUp(KeyCode key){
 		if(Input.GetKeyDown(key)){
 			//if you're looking at an object and you're NOT holding anything:
-			if(pickUpState == PickUpState.LOOKING_AT_OBJECT && !isHoldingObject){
-				isHoldingObject = true;
-				Rigidbody rb = objectToPickUp.GetComponent<Rigidbody>();
-				objectToPickUp.transform.SetParent(this.gameObject.transform);
-				rb.isKinematic = true;
-				rb.useGravity = false;
-				rb.freezeRotation = true;
-				objectToPickUp.transform.localEulerAngles = objectToPickUp.GetComponent<Interactable>().startRot;
-				objectToPickUp.transform.localPosition = Vector3.forward + (Vector3.right * 0.5f) + (Vector3.down * 0.25f);
-				objectToDrop = objectToPickUp;
-				pickUpState = PickUpState.HOLDING_OBJECT;
-			}
+				if(pickUpState == PickUpState.LOOKING_AT_OBJECT && !isHoldingObject && isLookingAtInteractable){
+					isHoldingObject = true;
+					Rigidbody rb = objectToPickUp.GetComponent<Rigidbody>();
+					objectToPickUp.transform.SetParent(this.gameObject.transform);
+					rb.isKinematic = true;
+					rb.useGravity = false;
+					rb.freezeRotation = true;
+					objectToPickUp.transform.localEulerAngles = objectToPickUp.GetComponent<Interactable>().startRot;
+					objectToPickUp.transform.localPosition = Vector3.forward + (Vector3.right * 0.5f) + (Vector3.down * 0.25f);
+					objectToDrop = objectToPickUp;
+					pickUpState = PickUpState.HOLDING_OBJECT;
+				}
 		} 
 	}
 
@@ -98,7 +104,7 @@ public class DrinkControl : MonoBehaviour {
 				rb.useGravity = true;
 				rb.isKinematic = false;
 				rb.freezeRotation = false;
-				objectToDrop.transform.SetParent(null);
+ 				objectToDrop.transform.SetParent(null);
 				pickUpState = PickUpState.NOT_HOLDING_OR_LOOKING_AT_OBJECT;
 			}
 		}

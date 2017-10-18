@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Base
   - Glass
+  - Environment
   layers:
   - Default
   - TransparentFX
