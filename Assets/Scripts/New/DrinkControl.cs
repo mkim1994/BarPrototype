@@ -119,7 +119,7 @@ public class DrinkControl : MonoBehaviour {
 			if(Input.GetMouseButton(1) && glassInSight != null){
 				Debug.Log(objectToDrop.tag);
 				objectToDrop.GetComponent<Interactable>().Pour();
-				glassInSight.GetComponentInChildren<PourSimulator>().FillUp();												
+				glassInSight.GetComponentInChildren<PourSimulator>().FillUpWithBase();	
 			} 
 			else {
 				objectToDrop.GetComponent<Interactable>().StopPour();
