@@ -53,20 +53,32 @@ public class PourSimulator : MonoBehaviour {
 		if(yPos <= 0.25f){
 			yPos += yPosGrowthRate * Time.deltaTime;
 		}
-		Debug.Log(yPos);
-		transform.position = new Vector3 (transform.position.x, yPos, transform.position.z);
+ 		transform.position = new Vector3 (transform.position.x, yPos, transform.position.z);
 		// transform.localScale = new Vector3(scale, transform.localScale.y, scale);
-		Debug.Log("Filling up!");
 	}
 
 	public void FillUpWithDilute(Ingredients.DiluteType diluteType){
+
+		switch (diluteType){
+			case Ingredients.DiluteType.COLA:
+ 				myMesh.material.color = Color.red;
+			break;
+			
+			case Ingredients.DiluteType.JUICE:
+ 				myMesh.material.color = Color.magenta;
+			break;
+			
+			case Ingredients.DiluteType.TONIC_WATER:
+ 				myMesh.material.color = Color.white;
+			break;
+			
+			default:
+			break;
+		}
 		// scale += scaleGrowthRate * Time.deltaTime;
 		if(yPos <= 0.25f){
 			yPos += yPosGrowthRate * Time.deltaTime;
 		}
-		Debug.Log(yPos);
-		transform.position = new Vector3 (transform.position.x, yPos, transform.position.z);
-
-		myMesh.material.color = Color.red; 
+ 		transform.position = new Vector3 (transform.position.x, yPos, transform.position.z);
 	}
 }
