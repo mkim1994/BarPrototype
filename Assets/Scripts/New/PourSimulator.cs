@@ -35,18 +35,15 @@ public class PourSimulator : MonoBehaviour {
 		
 		switch (baseType){
 			case Ingredients.BaseType.GIN:
-				Debug.Log("Pouring gin!");
-				myMesh.material.color = Color.white;
+ 				myMesh.material.color = Color.white;
 			break;
 			
 			case Ingredients.BaseType.WHISKY:
-				Debug.Log("Pouring whisky!");
-				myMesh.material.color = Color.yellow;
+ 				myMesh.material.color = Color.yellow;
 			break;
 			
 			case Ingredients.BaseType.RUM:
-				Debug.Log("Pouring rum!");
-				myMesh.material.color = Color.red;
+ 				myMesh.material.color = Color.red;
 			break;
 			
 			default:

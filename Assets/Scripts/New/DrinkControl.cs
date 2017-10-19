@@ -85,7 +85,7 @@ public class DrinkControl : MonoBehaviour {
 					isHoldingObject = true;
 					Rigidbody rb = objectToPickUp.GetComponent<Rigidbody>();
 					objectToPickUp.transform.SetParent(this.gameObject.transform);
-
+					objectToPickUp.GetComponent<Collider>().enabled = false;
 					rb.isKinematic = true;
 					rb.useGravity = false;
 					rb.freezeRotation = true;
@@ -103,6 +103,7 @@ public class DrinkControl : MonoBehaviour {
 			Rigidbody rb = objectToDrop.GetComponent<Rigidbody>();
 
 			if (pickUpState == PickUpState.HOLDING_OBJECT && isHoldingObject){
+				objectToDrop.GetComponent<Collider>().enabled = true;
 				isHoldingObject = false;
 				rb.useGravity = true;
 				rb.isKinematic = false;
