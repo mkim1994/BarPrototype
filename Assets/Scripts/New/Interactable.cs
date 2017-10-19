@@ -13,6 +13,7 @@ public class Interactable : MonoBehaviour {
 		NOT_LOOKED_AT
 	}
 
+	public Ingredients.BaseType baseType;
  
 	public IsBeingLookedAtState isBeingLookedAtState;
 
@@ -20,7 +21,7 @@ public class Interactable : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		// child = gameObject.transform.Find("MouseOverBottle");
-		child = transform.GetChild(0);
+ 		child = transform.GetChild(0);
  		startRot = transform.eulerAngles;
 		isBeingLookedAtState = IsBeingLookedAtState.NOT_LOOKED_AT;
 	}

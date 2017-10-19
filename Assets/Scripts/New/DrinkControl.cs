@@ -25,6 +25,7 @@ public class DrinkControl : MonoBehaviour {
 		NEAR_OBJECTIVE
 	}
 
+	public Ingredients.BaseType baseType;
 	PickUpState pickUpState;
 	void Start () {
  		pickUpState = PickUpState.NOT_HOLDING_OR_LOOKING_AT_OBJECT;
@@ -84,9 +85,11 @@ public class DrinkControl : MonoBehaviour {
 					isHoldingObject = true;
 					Rigidbody rb = objectToPickUp.GetComponent<Rigidbody>();
 					objectToPickUp.transform.SetParent(this.gameObject.transform);
+
 					rb.isKinematic = true;
 					rb.useGravity = false;
 					rb.freezeRotation = true;
+				
 					objectToPickUp.transform.localEulerAngles = objectToPickUp.GetComponent<Interactable>().startRot;
 					objectToPickUp.transform.localPosition = Vector3.forward + (Vector3.right * 0.5f) + (Vector3.down * 0.25f);
 					objectToDrop = objectToPickUp;
@@ -119,7 +122,9 @@ public class DrinkControl : MonoBehaviour {
 			if(Input.GetMouseButton(1) && glassInSight != null){
 				Debug.Log(objectToDrop.tag);
 				objectToDrop.GetComponent<Interactable>().Pour();
-				glassInSight.GetComponentInChildren<PourSimulator>().FillUpWithBase();	
+				Ingredients.BaseType myBaseType;
+				myBaseType = objectToDrop.GetComponent<Interactable>().baseType;
+				glassInSight.GetComponentInChildren<PourSimulator>().FillUpWithBase(myBaseType);	
 			} 
 			else {
 				objectToDrop.GetComponent<Interactable>().StopPour();
