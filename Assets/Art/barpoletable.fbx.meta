@@ -6,7 +6,9 @@ ModelImporter:
   serializedVersion: 21
   fileIDToRecycleName:
     100000: //RootNode
+    100002: transform1
     400000: //RootNode
+    400002: transform1
     2300000: //RootNode
     3300000: //RootNode
     4300000: pCylinder2
