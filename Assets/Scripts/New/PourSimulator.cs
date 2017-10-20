@@ -60,7 +60,7 @@ public class PourSimulator : MonoBehaviour {
 	public void FillUpWithDilute(Ingredients.DiluteType diluteType){
 
 		switch (diluteType){
-			case Ingredients.DiluteType.COLA:
+			case Ingredients.DiluteType.SODA:
  				myMesh.material.color = Color.red;
 			break;
 			

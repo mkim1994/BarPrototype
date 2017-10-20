@@ -11,7 +11,7 @@ public class Ingredients {
 	}
 
 	public enum DiluteType{
-		COLA,
+		SODA,
 		JUICE,
 		TONIC_WATER
 	}

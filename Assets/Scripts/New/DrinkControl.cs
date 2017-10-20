@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI; 
 
 public class DrinkControl : MonoBehaviour {
-
+	FirstPersonUI hud;
 	[SerializeField]GameObject objectToPickUp;
 	private GameObject objectToDrop;
 	private GameObject glassInSight;
@@ -29,6 +29,8 @@ public class DrinkControl : MonoBehaviour {
 	PickUpState pickUpState;
 	void Start () {
  		pickUpState = PickUpState.NOT_HOLDING_OR_LOOKING_AT_OBJECT;
+		hud = GetComponent<FirstPersonUI>();
+
 	}
 	
 	// Update is called once per frame
@@ -62,18 +64,28 @@ public class DrinkControl : MonoBehaviour {
 
 		if(Physics.Raycast(ray, out hit, Mathf.Infinity, layerMask)){
  			//check if you're looking at an Interactable
-			if(hit.transform.tag == "Glass" || hit.transform.tag == "Base"){
+			// if(hit.transform.tag == "Glass" || hit.transform.tag == "Base" || hit.transform.tag == "Dilute"){
+			if(hit.transform.GetComponent<Interactable>() != null){
 				isLookingAtInteractable = true;
 				if(pickUpState != PickUpState.HOLDING_OBJECT && !isHoldingObject){
 					pickUpState = PickUpState.LOOKING_AT_OBJECT;
 					objectToPickUp = hit.transform.gameObject;
 					objectToPickUp.GetComponent<Interactable>().ChangeMaterialOnRaycastHit();
+					//check what kind of Interactable you're looking at for the text description
+					string objectName;
+					if (objectToPickUp.GetComponent<Base>() != null){ //if it's a base, get the baseName
+						objectName = objectToPickUp.GetComponent<Base>().baseName; 
+						hud.UpdateDescriptionText(objectName);						// pass to the FirstPersonUI class	
+					}
+					else if (objectToPickUp.GetComponent<Dilute>() != null){ //if it's a dilute, get the diluteName
+						objectName = objectToPickUp.GetComponent<Dilute>().diluteName;
+						hud.UpdateDescriptionText(objectName);
+					}			
   				}
-			} else if (hit.transform.tag != "Glass" && hit.transform.tag != "Base"){
-				// isLookingAtInteractable = false;
-			}
+			} 
 		} else {
 			isLookingAtInteractable = false;
+			hud.HideDescriptionText();
 		}
 	}
 
@@ -134,6 +146,18 @@ public class DrinkControl : MonoBehaviour {
 			//do stuff for glasses here
 		} else if (objectToDrop.tag == "Feeling"){
 			//do stuff for feeling here
+		} else if (objectToDrop.tag == "Dilute"){
+			FindGlassRay();
+			if(Input.GetMouseButton(1) && glassInSight != null){
+				Debug.Log(objectToDrop.tag);
+				objectToDrop.GetComponent<Interactable>().Pour();
+				Ingredients.DiluteType myDiluteType;
+				myDiluteType = objectToDrop.GetComponent<Dilute>().diluteType;
+				glassInSight.GetComponentInChildren<PourSimulator>().FillUpWithDilute(myDiluteType);	
+			} 
+			else {
+				objectToDrop.GetComponent<Interactable>().StopPour();
+			} 
 		}
 	}
 
