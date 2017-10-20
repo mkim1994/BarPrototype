@@ -59,7 +59,7 @@ public class DrinkControl : MonoBehaviour {
 
 	public void ShootRay(){
 		Ray ray = new Ray(transform.position, transform.forward);
-		float rayDist = 2f;
+		float rayDist = 3f;
 
 		RaycastHit hit = new RaycastHit();
 		Debug.DrawRay(transform.position, transform.forward * 2f, Color.red);
@@ -83,7 +83,7 @@ public class DrinkControl : MonoBehaviour {
 						hud.UpdateDescriptionText("Left click to pick up " + objectName);
 					}
 					else if (objectToPickUp.GetComponent<Glass>() != null){ //if it's a dilute, get the diluteName
-						objectName = objectToPickUp.GetComponent<Glass>().name;
+						objectName = objectToPickUp.GetComponent<Glass>().glassName;
 						hud.UpdateDescriptionText("Left click to pick up " + objectName);
 					}			
   				}
