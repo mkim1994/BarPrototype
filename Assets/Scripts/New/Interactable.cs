@@ -44,6 +44,7 @@ public class Interactable : MonoBehaviour {
 
 	public void Pour(){
 		transform.localEulerAngles = new Vector3(0, 25, 90f);
+		//drink level UI updating could also happen here?
 	} 
 
 	public void StopPour(){

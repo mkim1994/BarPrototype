@@ -6,8 +6,10 @@ using UnityEngine.UI;
 public class DrinkControl : MonoBehaviour {
 	FirstPersonUI hud;
 	[SerializeField]GameObject objectToPickUp;
-	private GameObject objectToDrop;
+	[SerializeField] GameObject objectToDrop;
 	private GameObject glassInSight;
+
+	private string objectName;
 
 	public LayerMask layerMask;
 
@@ -62,7 +64,7 @@ public class DrinkControl : MonoBehaviour {
 		RaycastHit hit = new RaycastHit();
 		Debug.DrawRay(transform.position, transform.forward * 2f, Color.red);
 
-		if(Physics.Raycast(ray, out hit, Mathf.Infinity, layerMask)){
+		if(Physics.Raycast(ray, out hit, rayDist, layerMask)){
  			//check if you're looking at an Interactable
 			// if(hit.transform.tag == "Glass" || hit.transform.tag == "Base" || hit.transform.tag == "Dilute"){
 			if(hit.transform.GetComponent<Interactable>() != null){
@@ -72,14 +74,17 @@ public class DrinkControl : MonoBehaviour {
 					objectToPickUp = hit.transform.gameObject;
 					objectToPickUp.GetComponent<Interactable>().ChangeMaterialOnRaycastHit();
 					//check what kind of Interactable you're looking at for the text description
-					string objectName;
 					if (objectToPickUp.GetComponent<Base>() != null){ //if it's a base, get the baseName
 						objectName = objectToPickUp.GetComponent<Base>().baseName; 
-						hud.UpdateDescriptionText(objectName);						// pass to the FirstPersonUI class	
+						hud.UpdateDescriptionText("Left click to pick up " + objectName);						// pass to the FirstPersonUI class	
 					}
 					else if (objectToPickUp.GetComponent<Dilute>() != null){ //if it's a dilute, get the diluteName
 						objectName = objectToPickUp.GetComponent<Dilute>().diluteName;
-						hud.UpdateDescriptionText(objectName);
+						hud.UpdateDescriptionText("Left click to pick up " + objectName);
+					}
+					else if (objectToPickUp.GetComponent<Glass>() != null){ //if it's a dilute, get the diluteName
+						objectName = objectToPickUp.GetComponent<Glass>().name;
+						hud.UpdateDescriptionText("Left click to pick up " + objectName);
 					}			
   				}
 			} 
@@ -101,7 +106,7 @@ public class DrinkControl : MonoBehaviour {
 					rb.isKinematic = true;
 					rb.useGravity = false;
 					rb.freezeRotation = true;
-				
+					hud.UpdateDescriptionText("Left click to drop " + objectName);
 					objectToPickUp.transform.localEulerAngles = objectToPickUp.GetComponent<Interactable>().startRot;
 					objectToPickUp.transform.localPosition = Vector3.forward + (Vector3.right * 0.5f) + (Vector3.down * 0.25f);
 					objectToDrop = objectToPickUp;
@@ -120,6 +125,7 @@ public class DrinkControl : MonoBehaviour {
 				rb.useGravity = true;
 				rb.isKinematic = false;
 				rb.freezeRotation = false;
+				objectToDrop.transform.localPosition = Vector3.forward * 2;
  				objectToDrop.transform.SetParent(null);
 				pickUpState = PickUpState.NOT_HOLDING_OR_LOOKING_AT_OBJECT;
 			}
@@ -151,6 +157,7 @@ public class DrinkControl : MonoBehaviour {
 			if(Input.GetMouseButton(1) && glassInSight != null){
 				Debug.Log(objectToDrop.tag);
 				objectToDrop.GetComponent<Interactable>().Pour();
+				//possible place to tell the UI to update drink level?
 				Ingredients.DiluteType myDiluteType;
 				myDiluteType = objectToDrop.GetComponent<Dilute>().diluteType;
 				glassInSight.GetComponentInChildren<PourSimulator>().FillUpWithDilute(myDiluteType);	
@@ -169,7 +176,10 @@ public class DrinkControl : MonoBehaviour {
 
 		if(Physics.Raycast(ray, out hit, rayDist)){
 			if(hit.transform.tag == "Glass"){
- 				glassInSight = hit.transform.gameObject;				
+ 				glassInSight = hit.transform.gameObject;		
+				if(objectToDrop != null){
+					hud.UpdateDescriptionText("Right click to pour " + objectName);
+				}		
 			} else {
 				glassInSight = null;
 			}
