@@ -29,7 +29,6 @@ public class BarManager : MonoBehaviour {
         if (Input.GetKey(KeyCode.Tab)){
 
             if(Input.GetKeyUp(KeyCode.Alpha1)){
-                Debug.Log("what");
                 spotlights[0].SetActive(true);
             } if(Input.GetKeyUp(KeyCode.Alpha2)){
                 spotlights[1].SetActive(true);

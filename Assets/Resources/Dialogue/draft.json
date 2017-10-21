@@ -1,0 +1,42 @@
+[
+	{
+		"title": "Start",
+		"tags": "",
+		"body": "Customer: Ha...\nCustomer: Some whiskey please.\n\n[[Get Whiskey|1]]",
+		"position": {
+			"x": 284,
+			"y": 185
+		},
+		"colorID": 0
+	},
+	{
+		"title": "1",
+		"tags": "",
+		"body": "Customer: Thank you.\nCustomer: Been a while since I ended up at this bar.\nCustomer: I don't recall seeing you here last time.\nCustomer: Are you new?\n\n[[Yes|2A]]\n[[No, not really|2B]]",
+		"position": {
+			"x": 600,
+			"y": 236
+		},
+		"colorID": 0
+	},
+	{
+		"title": "2A",
+		"tags": "",
+		"body": "Customer: Ah.\nCustomer: Wonder what happened to the last bartender.\nCustomer: Doesn't matter though.\nCustomer: I've missed this.\nCustomer: Something heavy please.\n\n(or a tutorial)",
+		"position": {
+			"x": 904,
+			"y": 166
+		},
+		"colorID": 0
+	},
+	{
+		"title": "2B",
+		"tags": "",
+		"body": "Customer: Interesting.\nCustomer: I must've been away longer than I thought.\nCustomer: Doesn't matter though.\nCustomer: I've missed this.",
+		"position": {
+			"x": 886,
+			"y": 396
+		},
+		"colorID": 0
+	}
+]
