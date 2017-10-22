@@ -5,7 +5,7 @@ using DG.Tweening;
 
 public class Interactable : MonoBehaviour {
 
-	public Material[] materials;
+	// public Material[] materials;
 
 	public Transform child;
 	public enum IsBeingLookedAtState {

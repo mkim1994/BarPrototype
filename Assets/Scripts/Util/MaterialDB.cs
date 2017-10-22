@@ -8,7 +8,5 @@ public class MaterialDB : ScriptableObject {
     // private Material[] tileMats;
     // public Material[] TileMats { get { return tileMats; } }
 
-    // [SerializeField]
-    // private Material
-
+ 
 }
