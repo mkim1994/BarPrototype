@@ -79,7 +79,7 @@ GameObject:
   - component: {fileID: 23488779277531722}
   m_Layer: 10
   m_Name: FPSController
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -97,6 +97,7 @@ GameObject:
   - component: {fileID: 124652493084322654}
   - component: {fileID: 114316163124206968}
   - component: {fileID: 114402360443561170}
+  - component: {fileID: 114142027381290226}
   m_Layer: 10
   m_Name: FirstPersonCharacter
   m_TagString: MainCamera
@@ -110,14 +111,14 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1331186680876306}
-  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -5.22, y: 1.64, z: 0}
+  m_LocalRotation: {x: 0, y: 0.5195194, z: -0, w: -0.85445875}
+  m_LocalPosition: {x: -7.46, y: 1.64, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4642402789334606}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 297.4, z: 0}
 --- !u!4 &4642402789334606
 Transform:
   m_ObjectHideFlags: 1
@@ -309,6 +310,26 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+--- !u!114 &114142027381290226
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1356525644376456}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4450868f6910c654491b0a8d56db2451, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectToPickUp: {fileID: 0}
+  objectToDrop: {fileID: 0}
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 2048
+  isHoldingObject: 0
+  isLookingAtInteractable: 0
+  interactKey: 0
+  baseType: 0
 --- !u!114 &114316163124206968
 MonoBehaviour:
   m_ObjectHideFlags: 1

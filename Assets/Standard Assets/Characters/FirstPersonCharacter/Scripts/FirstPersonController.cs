@@ -203,9 +203,11 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
         private void GetInput(out float speed)
         {
+          //  if (CrossPlatformInputManager.GetAxis("Horizontal"))
+
             // Read input
-            float horizontal = CrossPlatformInputManager.GetAxis("Horizontal");
-            float vertical = CrossPlatformInputManager.GetAxis("Vertical");
+            float horizontal = CrossPlatformInputManager.GetAxisRaw("Horizontal");
+            float vertical = CrossPlatformInputManager.GetAxisRaw("Vertical");
 
             bool waswalking = m_IsWalking;
 
@@ -214,6 +216,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             // keep track of whether or not the character is walking or running
             m_IsWalking = !Input.GetKey(KeyCode.LeftShift);
 #endif
+            /*
             // set the desired speed to be walking or running
             speed = m_IsWalking ? m_WalkSpeed : m_RunSpeed;
             m_Input = new Vector2(horizontal, vertical);
@@ -222,7 +225,25 @@ namespace UnityStandardAssets.Characters.FirstPerson
             if (m_Input.sqrMagnitude > 1)
             {
                 m_Input.Normalize();
+            }*/
+
+
+            speed = m_IsWalking ? m_WalkSpeed : m_RunSpeed;
+
+            float horizontal2 = horizontal;
+            float vertical2 = vertical;
+            if (m_IsWalking)
+            {
+                if ((horizontal2 < 1 && horizontal2 > 0) || (horizontal2 > -1 && horizontal2 < 0))
+                {
+                    horizontal2 = 0f;
+                }
+                if ((vertical2 < 1 && vertical2 > 0) || (vertical2 > -1 && vertical2 < 0))
+                {
+                    vertical2 = 0f;
+                }
             }
+            m_Input = new Vector2(horizontal2, vertical2);
 
             // handle speed change to give an fov kick
             // only if the player is going to a run, is running and the fovkick is to be used
@@ -231,6 +252,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 StopAllCoroutines();
                 StartCoroutine(!m_IsWalking ? m_FovKick.FOVKickUp() : m_FovKick.FOVKickDown());
             }
+
         }
 
 
