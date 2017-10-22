@@ -68,6 +68,7 @@ public class DrinkControl : MonoBehaviour {
  			//check if you're looking at an Interactable
 			// if(hit.transform.tag == "Glass" || hit.transform.tag == "Base" || hit.transform.tag == "Dilute"){
 			if(hit.transform.GetComponent<Interactable>() != null){
+				Debug.Log(hit.transform.name);
 				isLookingAtInteractable = true;
 				if(pickUpState != PickUpState.HOLDING_OBJECT && !isHoldingObject){
 					pickUpState = PickUpState.LOOKING_AT_OBJECT;
@@ -76,7 +77,8 @@ public class DrinkControl : MonoBehaviour {
 					//check what kind of Interactable you're looking at for the text description
 					if (objectToPickUp.GetComponent<Base>() != null){ //if it's a base, get the baseName
 						objectName = objectToPickUp.GetComponent<Base>().baseName; 
-						hud.UpdateDescriptionText("Left click to pick up " + objectName);						// pass to the FirstPersonUI class	
+						hud.UpdateDescriptionText("Left click to pick up " + objectName);
+												// pass to the FirstPersonUI class	
 					}
 					else if (objectToPickUp.GetComponent<Dilute>() != null){ //if it's a dilute, get the diluteName
 						objectName = objectToPickUp.GetComponent<Dilute>().diluteName;
@@ -88,7 +90,8 @@ public class DrinkControl : MonoBehaviour {
 					}			
   				}
 			} 
-		} else {
+		}	
+		else {
 			isLookingAtInteractable = false;
 			hud.HideDescriptionText();
 		}
