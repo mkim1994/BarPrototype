@@ -16,11 +16,11 @@ public class FirstPersonUI : MonoBehaviour {
 	public void UpdateDescriptionText(string description){
 		descriptionText.enabled = true;
 		descriptionText.text = description;
-		Debug.Log("updating description text");
+		// Debug.Log("updating description text");
 	}
 
 	public void HideDescriptionText(){
 		descriptionText.enabled = false;
-		Debug.Log("hiding description text!");
+		// Debug.Log("hiding description text!");
 	}
 }

@@ -6,11 +6,12 @@ public class PourSimulator : MonoBehaviour {
 
 
 	private Vector3 startScale;
-	[SerializeField]float yPosGrowthRate = 0.025f;
+	[SerializeField]float pourRate = 1f;
 	[SerializeField]float scaleGrowthRate = 0.1f;
+	[SerializeField]float maxDrinkLevel = 0.5f;
 
 	private float scale; 
-	private float yPos;
+	private float drinkLevel;
 	private Color baseColor;
 	private Color diluteColor;
 
@@ -21,7 +22,7 @@ public class PourSimulator : MonoBehaviour {
 	void Start () {
 		startScale = new Vector3 (0,transform.localScale.y,0);
 		scale = 0;
-		yPos = transform.position.y;
+		drinkLevel = transform.localPosition.z;
 		myMesh = GetComponent<MeshRenderer>();
 	}
 	
@@ -50,10 +51,10 @@ public class PourSimulator : MonoBehaviour {
 			break;
 		}
 
-		if(yPos <= 0.25f){
-			yPos += yPosGrowthRate * Time.deltaTime;
+		if(drinkLevel <= maxDrinkLevel){
+			drinkLevel += pourRate * Time.deltaTime;
 		}
- 		transform.position = new Vector3 (transform.position.x, yPos, transform.position.z);
+ 		transform.localPosition = new Vector3 (transform.localPosition.x, transform.localPosition.y, drinkLevel);
 		// transform.localScale = new Vector3(scale, transform.localScale.y, scale);
 	}
 
@@ -76,9 +77,9 @@ public class PourSimulator : MonoBehaviour {
 			break;
 		}
 		// scale += scaleGrowthRate * Time.deltaTime;
-		if(yPos <= 0.25f){
-			yPos += yPosGrowthRate * Time.deltaTime;
+		if(drinkLevel <= maxDrinkLevel){
+			drinkLevel += pourRate * Time.deltaTime;
 		}
- 		transform.position = new Vector3 (transform.position.x, yPos, transform.position.z);
+ 		transform.localPosition = new Vector3 (transform.localPosition.x, transform.localPosition.y, drinkLevel);
 	}
 }

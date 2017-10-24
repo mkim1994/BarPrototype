@@ -8,15 +8,15 @@ public class Base : MonoBehaviour {
 	void Start(){
 		switch (baseType){
 			case Ingredients.BaseType.GIN:
-			baseName = "Gin";
+			baseName = "gin";
 			break;
 
 			case Ingredients.BaseType.WHISKY:
-			baseName = "Whisky";
+			baseName = "whiskey";
 			break;
 
 			case Ingredients.BaseType.RUM:
-			baseName = "Rum";
+			baseName = "rum";
 			break;
 
 			default:

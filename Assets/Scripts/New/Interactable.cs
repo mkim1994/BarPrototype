@@ -7,6 +7,9 @@ public class Interactable : MonoBehaviour {
 
 	// public Material[] materials;
 
+	//offset for when Interactable is dropped onto a SnapTriggerArea. This will vary from model to model.
+	public Vector3 dropOffset;
+	public bool isHeld;
 	public Transform child;
 	public enum IsBeingLookedAtState {
 		LOOKED_AT,
@@ -58,4 +61,11 @@ public class Interactable : MonoBehaviour {
 	public void ChangeMaterialOnRaycastMiss(){
 		isBeingLookedAtState = IsBeingLookedAtState.NOT_LOOKED_AT;
  	}
+
+	void OnTriggerEnter(Collider snapTriggerArea){
+		//check if Trigger is a SnapTriggerArea
+		if(snapTriggerArea.GetComponent<SnapTriggerArea>()!= null){
+			snapTriggerArea.GetComponent<SnapTriggerArea>().offset = dropOffset;
+		}
+	}
 }

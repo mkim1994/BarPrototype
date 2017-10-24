@@ -68,7 +68,7 @@ public class DrinkControl : MonoBehaviour {
  			//check if you're looking at an Interactable
 			// if(hit.transform.tag == "Glass" || hit.transform.tag == "Base" || hit.transform.tag == "Dilute"){
 			if(hit.transform.GetComponent<Interactable>() != null){
-				Debug.Log(hit.transform.name);
+				// Debug.Log(hit.transform.name);
 				isLookingAtInteractable = true;
 				if(pickUpState != PickUpState.HOLDING_OBJECT && !isHoldingObject){
 					pickUpState = PickUpState.LOOKING_AT_OBJECT;
@@ -113,6 +113,7 @@ public class DrinkControl : MonoBehaviour {
 					objectToPickUp.transform.localEulerAngles = objectToPickUp.GetComponent<Interactable>().startRot;
 					objectToPickUp.transform.localPosition = Vector3.forward + (Vector3.right * 0.5f) + (Vector3.down * 0.25f);
 					objectToDrop = objectToPickUp;
+					objectToDrop.GetComponent<Interactable>().isHeld = true;
 					pickUpState = PickUpState.HOLDING_OBJECT;
 				}
 		} 
@@ -123,6 +124,7 @@ public class DrinkControl : MonoBehaviour {
 			Rigidbody rb = objectToDrop.GetComponent<Rigidbody>();
 
 			if (pickUpState == PickUpState.HOLDING_OBJECT && isHoldingObject){
+				objectToDrop.GetComponent<Interactable>().isHeld = false;
 				objectToDrop.GetComponent<Collider>().enabled = true;
 				isHoldingObject = false;
 				rb.useGravity = true;
@@ -142,11 +144,25 @@ public class DrinkControl : MonoBehaviour {
 			//Need to have a check as to what kind of base is in it.
 			FindGlassRay();
 			if(Input.GetMouseButton(1) && glassInSight != null){
-				Debug.Log(objectToDrop.tag);
+				// Debug.Log(objectToDrop.tag);
 				objectToDrop.GetComponent<Interactable>().Pour();
 				Ingredients.BaseType myBaseType;
 				myBaseType = objectToDrop.GetComponent<Interactable>().baseType;
-				glassInSight.GetComponentInChildren<PourSimulator>().FillUpWithBase(myBaseType);	
+				glassInSight.GetComponentInChildren<PourSimulator>().FillUpWithBase(myBaseType);
+				//check what Base is in the glass
+				if(glassInSight.GetComponent<Base>() == null){
+					Debug.Log("Base component added!");
+					glassInSight.AddComponent<Base>();
+					glassInSight.GetComponent<Base>().baseType = objectToDrop.GetComponent<Base>().baseType;	
+				} 
+				//force whiskey enum if you pour whisky on something else
+				else if (glassInSight.GetComponent<Base>() != null){
+					Base baseInGlass = glassInSight.GetComponent<Base>();
+					if(baseInGlass.baseType != Ingredients.BaseType.WHISKY 
+						&& objectToDrop.GetComponent<Base>().baseType == Ingredients.BaseType.WHISKY){
+						baseInGlass.baseType = Ingredients.BaseType.WHISKY;
+					}
+				}
 			} 
 			else {
 				objectToDrop.GetComponent<Interactable>().StopPour();
