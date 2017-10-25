@@ -2,20 +2,20 @@
 	{
 		"title": "Start",
 		"tags": "",
-		"body": "Customer: Ha...\nCustomer: Some whiskey please.\n\n[[Get Whiskey|1]]",
+		"body": "Customer: Ha...\nCustomer: Some whiskey please.\n",
 		"position": {
-			"x": 284,
-			"y": 185
+			"x": 215,
+			"y": 213
 		},
 		"colorID": 0
 	},
 	{
-		"title": "1",
+		"title": "GetWhiskey",
 		"tags": "",
 		"body": "Customer: Thank you.\nCustomer: Been a while since I ended up at this bar.\nCustomer: I don't recall seeing you here last time.\nCustomer: Are you new?\n\n[[Yes|2A]]\n[[No, not really|2B]]",
 		"position": {
-			"x": 600,
-			"y": 236
+			"x": 598,
+			"y": 133
 		},
 		"colorID": 0
 	},
@@ -36,6 +36,16 @@
 		"position": {
 			"x": 886,
 			"y": 396
+		},
+		"colorID": 0
+	},
+	{
+		"title": "GetNotWhiskey",
+		"tags": "",
+		"body": "Customer: Thank you...?\nCustomer: Sigh.\nCustomer: Been a while since I ended up at this bar.\nCustomer: I don't recall seeing you here last time.\nCustomer: Are you new?\n\n[[Yes|2A]]\n[[No, not really|2B]]",
+		"position": {
+			"x": 574,
+			"y": 378
 		},
 		"colorID": 0
 	}

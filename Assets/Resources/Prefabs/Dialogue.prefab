@@ -56,7 +56,7 @@ MonoBehaviour:
   dialogueContainer: {fileID: 0}
   lineText: {fileID: 0}
   continuePrompt: {fileID: 0}
-  textSpeed: 0.025
+  textSpeed: 0
   optionButtons:
   - {fileID: 0}
   - {fileID: 0}
@@ -85,6 +85,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4bec29c0a230741bdac901dba8da47ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  barManager: {fileID: 0}
+  dialogueCount: 0
   sourceText:
   - {fileID: 4900000, guid: 062fb37c3613f4ef5b30649eef98214a, type: 3}
   stringGroups: []

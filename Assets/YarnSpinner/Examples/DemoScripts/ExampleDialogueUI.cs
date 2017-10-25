@@ -61,7 +61,7 @@ namespace Yarn.Unity.Example {
 
         /// How quickly to show the text, in seconds per character
         [Tooltip("How quickly to show the text, in seconds per character")]
-        public float textSpeed = 0.025f;
+        public float textSpeed = 0; //0.025f;
 
         /// The buttons that let the user choose an option
         public List<Button> optionButtons;
@@ -93,18 +93,21 @@ namespace Yarn.Unity.Example {
             // Show the text
             lineText.gameObject.SetActive (true);
 
+            string reline = line.text;
+            string result = reline.Replace("Customer: ", "");
+            Debug.Log(result);
             if (textSpeed > 0.0f) {
                 // Display the line one character at a time
                 var stringBuilder = new StringBuilder ();
 
-                foreach (char c in line.text) {
+                foreach (char c in result) {
                     stringBuilder.Append (c);
                     lineText.text = stringBuilder.ToString ();
                     yield return new WaitForSeconds (textSpeed);
                 }
             } else {
                 // Display the line immediately if textSpeed == 0
-                lineText.text = line.text;
+                lineText.text = result;
             }
 
             // Show the 'press any key' prompt when done, if we have one
@@ -112,10 +115,14 @@ namespace Yarn.Unity.Example {
                 continuePrompt.SetActive (true);
 
             // Wait for any user input
-            while (Input.anyKeyDown == false) {
+            //while (Input.anyKeyDown == false) {
+            while (Input.GetMouseButtonUp(0) == false){
                 yield return null;
             }
 
+            //????
+
+            Debug.Log("what");
             // Hide the text and prompt
             lineText.gameObject.SetActive (false);
 

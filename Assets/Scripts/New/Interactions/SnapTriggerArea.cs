@@ -7,7 +7,7 @@ public class SnapTriggerArea : MonoBehaviour {
 	
  	private GameObject interactable;
 	
-	public bool isRightDrink;
+	public int evaluateDrink;
 	private Vector3 snapPos;
 	private Quaternion snapRot;
 	
@@ -32,16 +32,16 @@ public class SnapTriggerArea : MonoBehaviour {
 	void Update () {
 		switch(snapState){
 			case SnapTriggerAreaState.INTERACTABLE_IS_IN:
-			SnapToTarget();
-			break;
+    			SnapToTarget();
+    			break;
 			case SnapTriggerAreaState.INTERACTABLE_IS_OUT:
-			break;
+			    break;
 			case SnapTriggerAreaState.INTERACTABLE_IS_POSITIONED:
-			EvaluateDrink();
-			//Detect drink type.
-			break;
+			    EvaluateDrink();
+			    //Detect drink type.
+			    break;
 			default:
-			break;
+			    break;
 		}
 		
 	}
@@ -71,10 +71,10 @@ public class SnapTriggerArea : MonoBehaviour {
 		if(interactable.GetComponent<Base>() != null){
 			Base thisDrink = interactable.GetComponent<Base>();
 			if(thisDrink.baseType == Ingredients.BaseType.WHISKY){
-				isRightDrink = true;
+				evaluateDrink = 1;
 				Debug.Log("Whiskey dropped!");
 			} else{
-				isRightDrink = false;
+				evaluateDrink = -1;
 				Debug.Log("THIS IS NOT WHISKEY!");
 			}
 		}

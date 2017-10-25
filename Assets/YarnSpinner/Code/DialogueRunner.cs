@@ -44,6 +44,9 @@ namespace Yarn.Unity
     [AddComponentMenu("Scripts/Yarn Spinner/Dialogue Runner")]
     public class DialogueRunner : MonoBehaviour
     {
+        public BarManager barManager;
+        public int dialogueCount;
+
         /// The JSON files to load the conversation from
         public TextAsset[] sourceText;
 
@@ -97,6 +100,7 @@ namespace Yarn.Unity
         /// Start the dialogue
         void Start ()
         {
+            dialogueCount = 0;
             // Ensure that we have our Implementation object
             if (dialogueUI == null) {
                 Debug.LogError ("Implementation was not set! Can't run the dialogue!");
@@ -120,6 +124,7 @@ namespace Yarn.Unity
                 }
             }
 
+            //don't start automatically
             if (startAutomatically) {
                 StartDialogue();
             }
@@ -134,6 +139,25 @@ namespace Yarn.Unity
                     foreach (var table in stringsGroup.stringFiles) {
                         this.AddStringTable(table.text);
                     }
+                }
+            }
+
+        }
+
+        void Update(){
+            if (dialogueCount == 0)
+            {
+                if (barManager.coaster1.evaluateDrink == 1)
+                {
+                    StartDialogue("GetWhiskey");
+
+                    dialogueCount++;
+                }
+                else if (barManager.coaster1.evaluateDrink == -1)
+                {
+                    StartDialogue("GetNotWhiskey");
+
+                    dialogueCount++;
                 }
             }
 
@@ -404,6 +428,7 @@ namespace Yarn.Unity
 
             return numberOfMethodsFound > 0;
         }
+
 
     }
 
