@@ -8,6 +8,8 @@ TagManager:
   - Glass
   - Environment
   - Dilute
+  - Floor
+  - Dialogue
   layers:
   - Default
   - TransparentFX
