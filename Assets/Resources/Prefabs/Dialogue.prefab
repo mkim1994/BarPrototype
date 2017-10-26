@@ -54,9 +54,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogueContainer: {fileID: 0}
+  tabDirection: {fileID: 0}
   lineText: {fileID: 0}
   continuePrompt: {fileID: 0}
-  textSpeed: 0.025
+  textSpeed: 0
   optionButtons:
   - {fileID: 0}
   - {fileID: 0}
