@@ -152,7 +152,7 @@ namespace Yarn.Unity.Example {
                 {
                     optionButtons[1].transform.DOScale(new Vector3(1, 1, 0), 0.5f);
 
-                    hit.collider.transform.DOScale(new Vector3(1.1f, 1.1f, 0), 0.5f);
+                    hit.collider.transform.DOScale(new Vector3(1.2f, 1.2f, 0), 0.5f);
                     if(Input.GetMouseButtonUp(0)){
                         SetOption(0);
                         hit.collider.transform.DOScale(new Vector3(1, 1, 0), 0.001f);
@@ -160,7 +160,7 @@ namespace Yarn.Unity.Example {
 
                 } else if(Physics.Raycast(ray, out hit, rayDist, dialogueOption2)){
                     optionButtons[0].transform.DOScale(new Vector3(1, 1, 0), 0.5f);
-                    hit.collider.transform.DOScale(new Vector3(1.1f, 1.1f, 0), 0.5f);
+                    hit.collider.transform.DOScale(new Vector3(1.2f, 1.2f, 0), 0.5f);
                     if(Input.GetMouseButtonUp(0)){
                         SetOption(1);
                         hit.collider.transform.DOScale(new Vector3(1, 1, 0), 0.001f);
