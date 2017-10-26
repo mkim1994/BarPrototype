@@ -1502,6 +1502,24 @@ Prefab:
       propertyPath: m_RootOrder
       value: 14
       objectReference: {fileID: 0}
+    - target: {fileID: 4441289465103818, guid: e6ecf3f4422b4754fbfdf898300f1fb5, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0.897582
+      objectReference: {fileID: 0}
+    - target: {fileID: 4441289465103818, guid: e6ecf3f4422b4754fbfdf898300f1fb5, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 0.4408476
+      objectReference: {fileID: 0}
+    - target: {fileID: 114961050778498890, guid: e6ecf3f4422b4754fbfdf898300f1fb5,
+        type: 2}
+      propertyPath: startRot.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114961050778498890, guid: e6ecf3f4422b4754fbfdf898300f1fb5,
+        type: 2}
+      propertyPath: startRot.x
+      value: 270
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e6ecf3f4422b4754fbfdf898300f1fb5, type: 2}
   m_IsPrefabParent: 0
@@ -3087,11 +3105,6 @@ Prefab:
       propertyPath: tabDirection
       value: 
       objectReference: {fileID: 1843599212}
-    - target: {fileID: 114567530668998350, guid: 2bc9b6f9d94804817a7d814ac20e7184,
-        type: 2}
-      propertyPath: textSpeed
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2bc9b6f9d94804817a7d814ac20e7184, type: 2}
   m_IsPrefabParent: 0

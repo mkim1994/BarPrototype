@@ -129,6 +129,7 @@ namespace Yarn.Unity.Example {
 
             string reline = line.text;
             string result = reline.Replace("Customer: ", "");
+            Debug.Log(result);
             if (textSpeed > 0.0f) {
                 // Display the line one character at a time
                 var stringBuilder = new StringBuilder ();
@@ -141,7 +142,6 @@ namespace Yarn.Unity.Example {
             } else {
                 // Display the line immediately if textSpeed == 0
                 lineText.text = result;
-                yield return new WaitForSeconds(0.0001f);
             }
 
             // Show the 'press any key' prompt when done, if we have one
@@ -153,8 +153,12 @@ namespace Yarn.Unity.Example {
             while (Input.GetMouseButtonUp(0) == false){
                 yield return null;
             }
+
+            //????
+
+            Debug.Log("what");
             // Hide the text and prompt
-            //lineText.gameObject.SetActive (false);
+            lineText.gameObject.SetActive (false);
 
             if (continuePrompt != null)
                 continuePrompt.SetActive (false);

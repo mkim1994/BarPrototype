@@ -22,7 +22,7 @@
 	{
 		"title": "2A",
 		"tags": "",
-		"body": "Customer: Ah.\nCustomer: Wonder what happened to the last bartender.\nCustomer: Doesn't matter though.\nCustomer: I've missed this.",
+		"body": "Customer: Ah.\nCustomer: Wonder what happened to the last bartender.\nCustomer: Doesn't matter though.\nCustomer: I've missed this.\nCustomer: Something heavy please.\n\n(or a tutorial)",
 		"position": {
 			"x": 904,
 			"y": 166
@@ -32,7 +32,7 @@
 	{
 		"title": "2B",
 		"tags": "",
-		"body": "Customer: Interesting.\nCustomer: I must've been away longer than I thought.\nCustomer: Doesn't matter though.\nCustomer: I've missed this.\nCustomer: ...",
+		"body": "Customer: Interesting.\nCustomer: I must've been away longer than I thought.\nCustomer: Doesn't matter though.\nCustomer: I've missed this.",
 		"position": {
 			"x": 886,
 			"y": 396
