@@ -78,7 +78,7 @@ public class SnapTriggerArea : MonoBehaviour {
 			else if(thisDrink.baseType == Ingredients.BaseType.WHISKY){
 				evaluateDrink = 1;
 				Debug.Log("Whiskey dropped!");
-            }else {
+            }else if(thisDrink.baseType != Ingredients.BaseType.WHISKY){
 				evaluateDrink = -1;
 				Debug.Log("THIS IS NOT WHISKEY!");
 			}
