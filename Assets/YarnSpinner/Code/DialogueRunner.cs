@@ -149,20 +149,26 @@ namespace Yarn.Unity
             {
                 if (barManager.coaster1.evaluateDrink == 1)
                 {
-                    StartDialogue("GetWhiskey");
-
                     dialogueCount++;
+                    StartCoroutine(WaitForDialogue(1f, "GetWhiskey"));
+
                 }
                 else if (barManager.coaster1.evaluateDrink == -1)
                 {
-                    StartDialogue("GetNotWhiskey");
 
                     dialogueCount++;
+                    StartCoroutine(WaitForDialogue(1f, "GetNotWhiskey"));
                 } else if(barManager.coaster1.evaluateDrink == 2){
-                    StartDialogue("GetGlassWhiskey");
+
                     dialogueCount++;
+                    StartCoroutine(WaitForDialogue(1f, "GetGlassWhiskey"));
                 }
             }
+
+        }
+        IEnumerator WaitForDialogue(float sec, string diag){
+            yield return new WaitForSeconds(sec);
+            StartDialogue(diag);
 
         }
 

@@ -29,6 +29,7 @@ using System.Collections;
 using UnityEngine.UI;
 using System.Text;
 using System.Collections.Generic;
+using DG.Tweening;
 
 namespace Yarn.Unity.Example {
     /// Displays dialogue lines to the player, and sends
@@ -46,6 +47,14 @@ namespace Yarn.Unity.Example {
         /** This object will be enabled when conversation starts, and 
          * disabled when it ends.
          */
+
+        public bool tabDialogue;
+        public bool worldDialogue;
+
+        public CameraController playerCam;
+
+        public LayerMask dialogueOption1;
+        public LayerMask dialogueOption2;
 
         private bool runningOptions;
         public GameObject dialogueContainer;
@@ -95,27 +104,70 @@ namespace Yarn.Unity.Example {
         }
 
         void Update(){
-            if(optionCount > 1){
-                tabDirection.SetActive(false);
-            }
-            if(runningOptions){
-                if(Input.GetKeyUp(KeyCode.Tab)){
-                    if (optionCursors[0].activeSelf){
-                        optionCursors[0].SetActive(false);
-                        optionCursors[1].SetActive(true);
-                    } else if (optionCursors[1].activeSelf){
-                        optionCursors[1].SetActive(false);
-                        optionCursors[0].SetActive(true);
+            if (tabDialogue)
+            {
+                if (optionCount > 1)
+                {
+                    tabDirection.SetActive(false);
+                }
+                if (runningOptions)
+                {
+                    if (Input.GetKeyUp(KeyCode.Tab))
+                    {
+                        if (optionCursors[0].activeSelf)
+                        {
+                            optionCursors[0].SetActive(false);
+                            optionCursors[1].SetActive(true);
+                        }
+                        else if (optionCursors[1].activeSelf)
+                        {
+                            optionCursors[1].SetActive(false);
+                            optionCursors[0].SetActive(true);
+                        }
+
+                    }
+
+                    if (Input.GetMouseButtonUp(0))
+                    {
+                        if (optionCursors[0].activeSelf)
+                        {
+                            SetOption(0);
+                        }
+                        else if (optionCursors[1].activeSelf)
+                        {
+                            SetOption(1);
+                        }
                     }
 
                 }
+            }
 
-                if(Input.GetMouseButtonUp(0)){
-                    if (optionCursors[0].activeSelf){
+            if(worldDialogue && runningOptions){
+                Ray ray = playerCam.CamRay();
+                float rayDist = Mathf.Infinity;
+
+                RaycastHit hit = new RaycastHit();
+                //don't really need runningoptions bool b/c the options are inactive when it's not running
+                if (Physics.Raycast(ray, out hit, rayDist, dialogueOption1))
+                {
+                    optionButtons[1].transform.DOScale(new Vector3(1, 1, 0), 0.5f);
+
+                    hit.collider.transform.DOScale(new Vector3(1.1f, 1.1f, 0), 0.5f);
+                    if(Input.GetMouseButtonUp(0)){
                         SetOption(0);
-                    } else if (optionCursors[1].activeSelf){
-                        SetOption(1);
+                        hit.collider.transform.DOScale(new Vector3(1, 1, 0), 0.001f);
                     }
+
+                } else if(Physics.Raycast(ray, out hit, rayDist, dialogueOption2)){
+                    optionButtons[0].transform.DOScale(new Vector3(1, 1, 0), 0.5f);
+                    hit.collider.transform.DOScale(new Vector3(1.1f, 1.1f, 0), 0.5f);
+                    if(Input.GetMouseButtonUp(0)){
+                        SetOption(1);
+                        hit.collider.transform.DOScale(new Vector3(1, 1, 0), 0.001f);
+                    }
+                } else{
+                    optionButtons[0].transform.DOScale(new Vector3(1, 1, 0), 0.5f);
+                    optionButtons[1].transform.DOScale(new Vector3(1, 1, 0), 0.5f);
                 }
 
             }

@@ -41,6 +41,10 @@ public class CameraController : MonoBehaviour {
             }
         }
 	}
+    public Ray CamRay(){
+        Ray ray = new Ray(transform.position, transform.forward);
+        return ray;
+    }
 
     void SpotlightOn(){
         spotlight.SetActive(true);
