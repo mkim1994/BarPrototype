@@ -253,7 +253,12 @@ public class DrinkControl : MonoBehaviour {
 				//possible place to tell the UI to update drink level?
 				Ingredients.DiluteType myDiluteType;
 				myDiluteType = objectToDrop.GetComponent<Dilute>().diluteType;
-				glassInSight.GetComponentInChildren<PourSimulator>().FillUpWithDilute(myDiluteType);	
+				glassInSight.GetComponentInChildren<PourSimulator>().FillUpWithDilute(myDiluteType);
+				if(glassInSight.GetComponent<Dilute>() == null && objectToDrop.GetComponent<Dilute>() != null){
+					Debug.Log("Base component added!");
+					glassInSight.AddComponent<Dilute>();
+					glassInSight.GetComponent<Dilute>().diluteType = objectToDrop.GetComponent<Dilute>().diluteType;	
+				} 	
 			} 
 			else {
 				objectToDrop.GetComponent<Interactable>().StopPour();
