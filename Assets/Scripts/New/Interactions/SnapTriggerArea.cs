@@ -9,10 +9,10 @@ public class SnapTriggerArea : MonoBehaviour {
 	
 	public int evaluateDrink;
 	private Vector3 snapPos;
-	private Quaternion snapRot;
+	private Vector3 snapRot;
 	
-	public Vector3 offset;
-	
+	public Vector3 posOffset;
+	public Vector3 rotOffset;
 	public enum SnapTriggerAreaState{
 		INTERACTABLE_IS_IN,
 		INTERACTABLE_IS_OUT,
@@ -24,7 +24,7 @@ public class SnapTriggerArea : MonoBehaviour {
 
 	void Start () {
 		snapPos = transform.parent.position;
-		snapRot = transform.parent.rotation;
+		snapRot = transform.parent.eulerAngles;
 		snapState = SnapTriggerAreaState.INTERACTABLE_IS_OUT;
   	}
 	
@@ -61,8 +61,9 @@ public class SnapTriggerArea : MonoBehaviour {
 
 	void SnapToTarget(){
 		if(!interactable.GetComponent<Interactable>().isHeld){
-			interactable.transform.position = snapPos + offset;
-			interactable.transform.rotation = snapRot;
+			interactable.transform.position = snapPos + posOffset;
+			// interactable.transform.eulerAngles = snapRot + rotOffset;
+			// interactable.GetComponent<Rigidbody>().isKinematic = true;
 			snapState = SnapTriggerAreaState.INTERACTABLE_IS_POSITIONED;
 		}
 	}

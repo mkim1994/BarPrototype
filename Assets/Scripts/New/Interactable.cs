@@ -9,6 +9,7 @@ public class Interactable : MonoBehaviour {
 
 	//offset for when Interactable is dropped onto a SnapTriggerArea. This will vary from model to model.
 	public Vector3 dropOffset;
+	public Vector3 rotOffset;
 	public bool isHeld;
 	public Transform child;
 	public enum IsBeingLookedAtState {
@@ -65,7 +66,7 @@ public class Interactable : MonoBehaviour {
 	void OnTriggerEnter(Collider snapTriggerArea){
 		//check if Trigger is a SnapTriggerArea
 		if(snapTriggerArea.GetComponent<SnapTriggerArea>()!= null){
-			snapTriggerArea.GetComponent<SnapTriggerArea>().offset = dropOffset;
+			snapTriggerArea.GetComponent<SnapTriggerArea>().posOffset = dropOffset;
 		}
 	}
 }
