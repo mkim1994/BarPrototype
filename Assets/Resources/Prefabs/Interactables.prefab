@@ -2811,6 +2811,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dropOffset: {x: 0, y: 0, z: 0}
+  rotOffset: {x: 0, y: 0, z: 0}
   isHeld: 0
   child: {fileID: 0}
   baseType: 1
@@ -2828,6 +2829,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dropOffset: {x: 0, y: 0, z: 0}
+  rotOffset: {x: 0, y: 0, z: 0}
   isHeld: 0
   child: {fileID: 0}
   baseType: 0
@@ -2845,6 +2847,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dropOffset: {x: 0, y: 0, z: 0}
+  rotOffset: {x: 0, y: 0, z: 0}
   isHeld: 0
   child: {fileID: 0}
   baseType: 0
@@ -2861,7 +2864,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d7c4cbb488d47e459070f167e8e2e25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dropOffset: {x: 0, y: 0, z: 0}
+  dropOffset: {x: 0, y: 1, z: 0}
+  rotOffset: {x: 0, y: 0, z: 0}
   isHeld: 0
   child: {fileID: 0}
   baseType: 0
@@ -2929,6 +2933,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dropOffset: {x: 0, y: 0, z: 0}
+  rotOffset: {x: 0, y: 0, z: 0}
   isHeld: 0
   child: {fileID: 0}
   baseType: 1
@@ -2946,6 +2951,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dropOffset: {x: 0, y: 0, z: 0}
+  rotOffset: {x: 0, y: 0, z: 0}
   isHeld: 0
   child: {fileID: 0}
   baseType: 0
@@ -2963,6 +2969,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dropOffset: {x: 0, y: 0, z: 0}
+  rotOffset: {x: 0, y: 0, z: 0}
   isHeld: 0
   child: {fileID: 0}
   baseType: 2
@@ -2994,6 +3001,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dropOffset: {x: 0, y: 0, z: 0}
+  rotOffset: {x: 0, y: 0, z: 0}
   isHeld: 0
   child: {fileID: 0}
   baseType: 1
@@ -3011,6 +3019,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dropOffset: {x: 0, y: 0, z: 0}
+  rotOffset: {x: 0, y: 0, z: 0}
   isHeld: 0
   child: {fileID: 0}
   baseType: 0
@@ -3065,8 +3074,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dropOffset: {x: 0, y: 0.5, z: 0}
+  rotOffset: {x: 0, y: 0, z: 0}
   isHeld: 0
   child: {fileID: 0}
   baseType: 0
   isBeingLookedAtState: 0
-  startRot: {x: 0, y: 0, z: 0}
+  startRot: {x: 270, y: 0, z: 0}

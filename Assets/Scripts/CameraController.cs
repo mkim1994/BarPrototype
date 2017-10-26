@@ -10,6 +10,7 @@ public class CameraController : MonoBehaviour {
 
     public AudioController audioController;
 
+    private bool spotlightIsOn;
     private bool characterIsVisible;
     public bool safeToInteract;
 
@@ -30,14 +31,23 @@ public class CameraController : MonoBehaviour {
 
             if (Physics.Raycast(ray, out hit, rayDist, characterActorLayer))
             {
-                spotlight.SetActive(true);
-                audioController.spotlightSfx.Play();
-                characterIsVisible = true;
-                Invoke("StartDialogue", 2f);
+                if (!spotlightIsOn)
+                {
+                    spotlightIsOn = true;
+
+                    Invoke("SpotlightOn", 0.5f);
+                }
+
             }
         }
 	}
 
+    void SpotlightOn(){
+        spotlight.SetActive(true);
+        audioController.spotlightSfx.Play();
+        characterIsVisible = true;
+        Invoke("StartDialogue", 2f);
+    }
     void StartDialogue(){
         safeToInteract = true;
         dialogueRunner.StartDialogue();
