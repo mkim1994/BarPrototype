@@ -1305,8 +1305,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1.2399173, y: 3.0121093, z: 1.1782715}
+  m_Center: {x: 0.119958244, y: 0.15919584, z: -0.0050343988}
 --- !u!33 &833300362
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -1472,7 +1472,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4650606110847680, guid: e6ecf3f4422b4754fbfdf898300f1fb5, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -5.22
+      value: 0.4940133
       objectReference: {fileID: 0}
     - target: {fileID: 4650606110847680, guid: e6ecf3f4422b4754fbfdf898300f1fb5, type: 2}
       propertyPath: m_LocalPosition.y
@@ -1480,7 +1480,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4650606110847680, guid: e6ecf3f4422b4754fbfdf898300f1fb5, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -4.715478
       objectReference: {fileID: 0}
     - target: {fileID: 4650606110847680, guid: e6ecf3f4422b4754fbfdf898300f1fb5, type: 2}
       propertyPath: m_LocalRotation.x
@@ -1488,7 +1488,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4650606110847680, guid: e6ecf3f4422b4754fbfdf898300f1fb5, type: 2}
       propertyPath: m_LocalRotation.y
-      value: 0.7071068
+      value: -0.05087253
       objectReference: {fileID: 0}
     - target: {fileID: 4650606110847680, guid: e6ecf3f4422b4754fbfdf898300f1fb5, type: 2}
       propertyPath: m_LocalRotation.z
@@ -1496,7 +1496,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4650606110847680, guid: e6ecf3f4422b4754fbfdf898300f1fb5, type: 2}
       propertyPath: m_LocalRotation.w
-      value: 0.7071068
+      value: 0.99870515
       objectReference: {fileID: 0}
     - target: {fileID: 4650606110847680, guid: e6ecf3f4422b4754fbfdf898300f1fb5, type: 2}
       propertyPath: m_RootOrder
@@ -1536,6 +1536,14 @@ Prefab:
     - target: {fileID: 1362378175674318, guid: e6ecf3f4422b4754fbfdf898300f1fb5, type: 2}
       propertyPath: m_TagString
       value: Dilute
+      objectReference: {fileID: 0}
+    - target: {fileID: 1978135678120624, guid: e6ecf3f4422b4754fbfdf898300f1fb5, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4650606110847680, guid: e6ecf3f4422b4754fbfdf898300f1fb5, type: 2}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -5.8320003
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e6ecf3f4422b4754fbfdf898300f1fb5, type: 2}
