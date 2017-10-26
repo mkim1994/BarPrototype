@@ -46,6 +46,8 @@ namespace Yarn.Unity.Example {
         /** This object will be enabled when conversation starts, and 
          * disabled when it ends.
          */
+
+        private bool runningOptions;
         public GameObject dialogueContainer;
 
         /// The UI element that displays lines
@@ -85,6 +87,22 @@ namespace Yarn.Unity.Example {
             // Hide the continue prompt if it exists
             if (continuePrompt != null)
                 continuePrompt.SetActive (false);
+        }
+
+        void Update(){
+
+            /*  bool optionsEnabled 
+              foreach(Button option in optionButtons){
+                  if(option.enabled){
+                  }
+              }*/
+            if(runningOptions){
+                if (Input.GetMouseButtonUp(0)){
+                    SetOption(0);
+                } else if(Input.GetMouseButtonUp(1)){
+                    SetOption(1);
+                }
+            }
         }
 
         /// Show a line of dialogue, gradually
@@ -148,6 +166,7 @@ namespace Yarn.Unity.Example {
                 optionButtons [i].GetComponentInChildren<Text> ().text = optionString;
                 i++;
             }
+            runningOptions = true;
 
             // Record that we're using it
             SetSelectedOption = optionChooser;
@@ -161,6 +180,7 @@ namespace Yarn.Unity.Example {
             foreach (var button in optionButtons) {
                 button.gameObject.SetActive (false);
             }
+            runningOptions = false;
         }
 
         /// Called by buttons to make a selection.
