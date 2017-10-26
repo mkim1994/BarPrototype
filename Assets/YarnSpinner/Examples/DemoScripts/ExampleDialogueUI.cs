@@ -68,6 +68,8 @@ namespace Yarn.Unity.Example {
         /// The buttons that let the user choose an option
         public List<Button> optionButtons;
 
+        public List<GameObject> optionCursors;
+
         /// Make it possible to temporarily disable the controls when
         /// dialogue is active and to restore them when dialogue ends
         public RectTransform gameControlsContainer;
@@ -97,11 +99,43 @@ namespace Yarn.Unity.Example {
                   }
               }*/
             if(runningOptions){
-                if (Input.GetMouseButtonUp(0)){
-                    SetOption(0);
-                } else if(Input.GetMouseButtonUp(1)){
-                    SetOption(1);
+                /* if (Input.GetMouseButtonUp(0)){
+                     SetOption(0);
+                 } else if(Input.GetMouseButtonUp(1)){
+                     SetOption(1);
+                 }*/
+                if(Input.GetKeyUp(KeyCode.Tab)){
+                    if (optionCursors[0].activeSelf){
+                        optionCursors[0].SetActive(false);
+                        optionCursors[1].SetActive(true);
+                    } else if (optionCursors[1].activeSelf){
+                        optionCursors[1].SetActive(false);
+                        optionCursors[0].SetActive(true);
+                    }
+
                 }
+
+                if(Input.GetMouseButtonUp(0)){
+                    if (optionCursors[0].activeSelf){
+                        SetOption(0);
+                    } else if (optionCursors[1].activeSelf){
+                        SetOption(1);
+                    }
+                }
+                /*
+                if (optionCursors[0].activeSelf){
+                    if(Input.GetKeyUp(KeyCode.Tab)){
+                        optionCursors[0].SetActive(false);
+                        optionCursors[1].SetActive(true);
+                    }
+
+                } else if (optionCursors[1].activeSelf){
+                    if (Input.GetKeyUp(KeyCode.Tab))
+                    {
+                        optionCursors[1].SetActive(false);
+                        optionCursors[0].SetActive(true);
+                    }
+                }*/
             }
         }
 

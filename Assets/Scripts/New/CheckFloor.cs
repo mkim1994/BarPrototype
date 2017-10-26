@@ -25,10 +25,10 @@ public class CheckFloor : MonoBehaviour {
 		if(Physics.Raycast(ray, out hit, rayDist)){
 			if(hit.transform.tag == "Floor"){
 				canSeeFloor = true;
-				Debug.Log("FLoor is in sight");
+				//Debug.Log("FLoor is in sight");
 			} else {
 				canSeeFloor = false;
-				Debug.Log("not the floor");
+				//Debug.Log("not the floor");
 			}
 		}
 	}

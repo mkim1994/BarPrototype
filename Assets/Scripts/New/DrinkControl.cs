@@ -45,7 +45,7 @@ public class DrinkControl : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if(!dialogueRunner.isDialogueRunning){
+        if(!dialogueRunner.isDialogueRunning && gameObject.GetComponent<CameraController>().safeToInteract){
 			ShootRay();
 			switch (pickUpState){
 				case PickUpState.LOOKING_AT_OBJECT:

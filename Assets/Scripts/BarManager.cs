@@ -9,6 +9,7 @@ public class BarManager : MonoBehaviour {
     public Transform tableDir;
 
     public SnapTriggerArea coaster1;
+
 	// Use this for initialization
 	void Start () {
         /* foreach (Light sp in spotlights)
