@@ -2,7 +2,7 @@
 	{
 		"title": "Start",
 		"tags": "",
-		"body": "Customer: Ha...\nCustomer: Some whiskey please.\n",
+		"body": "Customer: Ha...\nCustomer: A glass of whiskey please.\n",
 		"position": {
 			"x": 215,
 			"y": 213
@@ -10,7 +10,7 @@
 		"colorID": 0
 	},
 	{
-		"title": "GetWhiskey",
+		"title": "GetGlassWhiskey",
 		"tags": "",
 		"body": "Customer: Thank you.\nCustomer: Been a while since I ended up at this bar.\nCustomer: I don't recall seeing you here last time.\nCustomer: Are you new?\n\n[[Yes|2A]]\n[[No, not really|2B]]",
 		"position": {
@@ -46,6 +46,16 @@
 		"position": {
 			"x": 574,
 			"y": 378
+		},
+		"colorID": 0
+	},
+	{
+		"title": "GetWhiskey",
+		"tags": "",
+		"body": "Customer: Uh...this is a lot.\nCustomer: But thank you.\nCustomer: Been a while since I ended up at this bar.\nCustomer: I don't recall seeing you here last time.\nCustomer: Are you new?\n\n[[Yes|2A]]\n[[No, not really|2B]]",
+		"position": {
+			"x": 564,
+			"y": 659
 		},
 		"colorID": 0
 	}

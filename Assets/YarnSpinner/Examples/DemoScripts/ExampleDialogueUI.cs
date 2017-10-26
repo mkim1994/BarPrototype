@@ -49,6 +49,9 @@ namespace Yarn.Unity.Example {
 
         private bool runningOptions;
         public GameObject dialogueContainer;
+        public GameObject tabDirection;
+
+        private int optionCount;
 
         /// The UI element that displays lines
         public Text lineText;
@@ -92,18 +95,10 @@ namespace Yarn.Unity.Example {
         }
 
         void Update(){
-
-            /*  bool optionsEnabled 
-              foreach(Button option in optionButtons){
-                  if(option.enabled){
-                  }
-              }*/
+            if(optionCount > 1){
+                tabDirection.SetActive(false);
+            }
             if(runningOptions){
-                /* if (Input.GetMouseButtonUp(0)){
-                     SetOption(0);
-                 } else if(Input.GetMouseButtonUp(1)){
-                     SetOption(1);
-                 }*/
                 if(Input.GetKeyUp(KeyCode.Tab)){
                     if (optionCursors[0].activeSelf){
                         optionCursors[0].SetActive(false);
@@ -122,20 +117,7 @@ namespace Yarn.Unity.Example {
                         SetOption(1);
                     }
                 }
-                /*
-                if (optionCursors[0].activeSelf){
-                    if(Input.GetKeyUp(KeyCode.Tab)){
-                        optionCursors[0].SetActive(false);
-                        optionCursors[1].SetActive(true);
-                    }
 
-                } else if (optionCursors[1].activeSelf){
-                    if (Input.GetKeyUp(KeyCode.Tab))
-                    {
-                        optionCursors[1].SetActive(false);
-                        optionCursors[0].SetActive(true);
-                    }
-                }*/
             }
         }
 
@@ -201,6 +183,7 @@ namespace Yarn.Unity.Example {
                 i++;
             }
             runningOptions = true;
+            optionCount++;
 
             // Record that we're using it
             SetSelectedOption = optionChooser;
