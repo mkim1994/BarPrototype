@@ -1520,6 +1520,23 @@ Prefab:
       propertyPath: startRot.x
       value: 270
       objectReference: {fileID: 0}
+    - target: {fileID: 114240948073408688, guid: e6ecf3f4422b4754fbfdf898300f1fb5,
+        type: 2}
+      propertyPath: baseType
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1093927554698958, guid: e6ecf3f4422b4754fbfdf898300f1fb5, type: 2}
+      propertyPath: m_TagString
+      value: Dilute
+      objectReference: {fileID: 0}
+    - target: {fileID: 1941531838974962, guid: e6ecf3f4422b4754fbfdf898300f1fb5, type: 2}
+      propertyPath: m_TagString
+      value: Dilute
+      objectReference: {fileID: 0}
+    - target: {fileID: 1362378175674318, guid: e6ecf3f4422b4754fbfdf898300f1fb5, type: 2}
+      propertyPath: m_TagString
+      value: Dilute
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e6ecf3f4422b4754fbfdf898300f1fb5, type: 2}
   m_IsPrefabParent: 0

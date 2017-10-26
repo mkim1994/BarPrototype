@@ -9,7 +9,8 @@ public class DrinkControl : MonoBehaviour {
 	public CheckFloor checkFloor;
 	FirstPersonUI hud;
 	[SerializeField]GameObject objectToPickUp;
-	[SerializeField] GameObject objectToDrop;
+	[SerializeField]GameObject objectToDrop;
+	[SerializeField]GameObject objectToSwap;
 	private GameObject glassInSight;
 
 	private string objectName;
@@ -34,7 +35,7 @@ public class DrinkControl : MonoBehaviour {
 		NEAR_OBJECTIVE
 	}
 
-	public Ingredients.BaseType baseType;
+	// public Ingredients.BaseType baseType;
 	PickUpState pickUpState;
 	void Start () {
 		dialogueRunner = GameObject.FindGameObjectWithTag("Dialogue").GetComponent<DialogueRunner>();
@@ -69,7 +70,7 @@ public class DrinkControl : MonoBehaviour {
 
 	public void ShootRay(){
 		Ray ray = new Ray(transform.position, transform.forward);
-		float rayDist = 3f;
+		float rayDist = 5f;
 
 		RaycastHit hit = new RaycastHit();
 		Debug.DrawRay(transform.position, transform.forward * 2f, Color.red);
@@ -77,9 +78,12 @@ public class DrinkControl : MonoBehaviour {
 		if(Physics.Raycast(ray, out hit, rayDist, layerMask)){
  			//check if you're looking at an Interactable
 			// if(hit.transform.tag == "Glass" || hit.transform.tag == "Base" || hit.transform.tag == "Dilute"){
+			// Debug.Log(hit.transform.name);
 			if(hit.transform.GetComponent<Interactable>() != null){
 				// Debug.Log(hit.transform.name);
 				isLookingAtInteractable = true;
+				objectToSwap = hit.transform.gameObject;
+				objectToSwap.GetComponent<Interactable>().ChangeMaterialOnRaycastHit();
 				if(pickUpState != PickUpState.HOLDING_OBJECT && !isHoldingObject){
 					pickUpState = PickUpState.LOOKING_AT_OBJECT;
 					objectToPickUp = hit.transform.gameObject;
@@ -98,7 +102,21 @@ public class DrinkControl : MonoBehaviour {
 						objectName = objectToPickUp.GetComponent<Glass>().glassName;
 						hud.UpdateDescriptionText("Left click to pick up " + objectName);
 					}			
-  				}
+  				} else if (pickUpState == PickUpState.HOLDING_OBJECT && isHoldingObject && isLookingAtInteractable && !isLookingAtGlass){
+					if (objectToSwap.GetComponent<Base>() != null){ //if it's a base, get the baseName
+						objectName = objectToSwap.GetComponent<Base>().baseName; 
+						hud.UpdateDescriptionText("Left click to pick up " + objectName);
+												// pass to the FirstPersonUI class	
+					}
+					else if (objectToSwap.GetComponent<Dilute>() != null){ //if it's a dilute, get the diluteName
+						objectName = objectToSwap.GetComponent<Dilute>().diluteName;
+						hud.UpdateDescriptionText("Left click to pick up " + objectName);
+					}
+					else if (objectToSwap.GetComponent<Glass>() != null){ //if it's a dilute, get the diluteName
+						objectName = objectToSwap.GetComponent<Glass>().glassName;
+						hud.UpdateDescriptionText("Left click to pick up " + objectName);
+					}	
+				}
 			} 
 		}	
 		else {
@@ -130,22 +148,59 @@ public class DrinkControl : MonoBehaviour {
 	}
 
 	public void DropObject(KeyCode key){
-		if(Input.GetKeyDown(key)){
-			Debug.Log("dropping!");
-			Rigidbody rb = objectToDrop.GetComponent<Rigidbody>();
 
+		if(Input.GetKeyDown(key)){
+			Rigidbody rb = objectToDrop.GetComponent<Rigidbody>();
+			Rigidbody swaprb = objectToSwap.GetComponent<Rigidbody>();
+			//if you can't see the floor
 			if(!checkFloor.canSeeFloor){
-				if (pickUpState == PickUpState.HOLDING_OBJECT && isHoldingObject && !isLookingAtGlass){
+				if (pickUpState == PickUpState.HOLDING_OBJECT && isHoldingObject && !isLookingAtGlass && !isLookingAtInteractable){
 					objectToDrop.GetComponent<Interactable>().isHeld = false;
 					objectToDrop.GetComponent<Collider>().enabled = true;
 					isHoldingObject = false;
 					rb.useGravity = true;
 					rb.isKinematic = false;
 					rb.freezeRotation = false;
+					// rb.constraints = RigidbodyConstraints.FreezeRotationX;
+					// rb.constraints = RigidbodyConstraints.FreezeRotationZ;
 					objectToDrop.transform.localPosition = Vector3.forward * 2;
 					objectToDrop.transform.SetParent(null);
 					pickUpState = PickUpState.NOT_HOLDING_OR_LOOKING_AT_OBJECT;
-				}
+				} else if (pickUpState == PickUpState.HOLDING_OBJECT && isHoldingObject && !isLookingAtGlass && isLookingAtInteractable){
+					//swap object here
+					objectToDrop.GetComponent<Interactable>().isHeld = false;
+					objectToDrop.GetComponent<Collider>().enabled = true;
+					isHoldingObject = false;
+					rb.useGravity = true;
+					rb.isKinematic = false;
+					rb.freezeRotation = false;
+					// rb.constraints = RigidbodyConstraints.FreezeRotationX;
+					// rb.constraints = RigidbodyConstraints.FreezeRotationZ;
+					objectToDrop.transform.localPosition = Vector3.forward * 2;
+					objectToDrop.transform.SetParent(null);
+					objectToSwap.transform.SetParent(this.gameObject.transform);
+					swaprb.isKinematic = true;
+					swaprb.useGravity = false;
+					swaprb.freezeRotation = true;
+					objectToSwap.transform.localEulerAngles = objectToSwap.GetComponent<Interactable>().startRot;
+					objectToSwap.transform.localPosition = Vector3.forward + (Vector3.right * 0.5f) + (Vector3.down * 0.25f);
+					objectToSwap.GetComponent<Interactable>().isHeld = true;
+					objectToDrop = objectToSwap;
+					if (objectToDrop.GetComponent<Base>() != null){ //if it's a base, get the baseName
+						objectName = objectToDrop.GetComponent<Base>().baseName; 
+						hud.UpdateDescriptionText("Left click to pick up " + objectName);
+												// pass to the FirstPersonUI class	
+					}
+					else if (objectToDrop.GetComponent<Dilute>() != null){ //if it's a dilute, get the diluteName
+						objectName = objectToDrop.GetComponent<Dilute>().diluteName;
+						hud.UpdateDescriptionText("Left click to pick up " + objectName);
+					}
+					else if (objectToDrop.GetComponent<Glass>() != null){ //if it's a dilute, get the diluteName
+						objectName = objectToDrop.GetComponent<Glass>().glassName;
+						hud.UpdateDescriptionText("Left click to pick up " + objectName);
+					}	
+					isHoldingObject = true;
+				} 
 			}
 		}
 	}
@@ -153,6 +208,7 @@ public class DrinkControl : MonoBehaviour {
 	public void UseInteractable(){
 		//if you're holding a base
 		if(objectToDrop.tag == "Base"){ 
+			Debug.Log("Object to drop is BASE!");
 			//if we're holding a base, then look for glass.
 			//Need to have a check as to what kind of base is in it.
 			FindGlassRay();
@@ -163,16 +219,18 @@ public class DrinkControl : MonoBehaviour {
 				myBaseType = objectToDrop.GetComponent<Interactable>().baseType;
 				glassInSight.GetComponentInChildren<PourSimulator>().FillUpWithBase(myBaseType);
 				//check what Base is in the glass
-				if(glassInSight.GetComponent<Base>() == null){
+				if(glassInSight.GetComponent<Base>() == null && objectToDrop.GetComponent<Base>() != null){
 					Debug.Log("Base component added!");
 					glassInSight.AddComponent<Base>();
 					glassInSight.GetComponent<Base>().baseType = objectToDrop.GetComponent<Base>().baseType;	
 				} 
 				//force whiskey enum if you pour whisky on something else
+				//first check if there's a Base in the glass.
 				else if (glassInSight.GetComponent<Base>() != null){
 					Base baseInGlass = glassInSight.GetComponent<Base>();
+					//then, check what kind of base is in glass. If it's NOT whisky, then make it whisky      
 					if(baseInGlass.baseType != Ingredients.BaseType.WHISKY 
-						&& objectToDrop.GetComponent<Base>().baseType == Ingredients.BaseType.WHISKY){
+						/*&& objectToDrop.GetComponent<Base>() != null*/ && objectToDrop.GetComponent<Base>().baseType == Ingredients.BaseType.WHISKY){
 						baseInGlass.baseType = Ingredients.BaseType.WHISKY;
 					}
 				}
@@ -184,9 +242,12 @@ public class DrinkControl : MonoBehaviour {
 			//do stuff for glasses here
 		} else if (objectToDrop.tag == "Feeling"){
 			//do stuff for feeling here
-		} else if (objectToDrop.tag == "Dilute"){
+		} 
+		
+		else if (objectToDrop.tag == "Dilute"){
+			Debug.Log("Object to drop is DiluTE!");
 			FindGlassRay();
-			if(Input.GetMouseButton(1) && glassInSight != null){
+			if(Input.GetMouseButton(0) && glassInSight != null){
 				Debug.Log(objectToDrop.tag);
 				objectToDrop.GetComponent<Interactable>().Pour();
 				//possible place to tell the UI to update drink level?
@@ -210,9 +271,22 @@ public class DrinkControl : MonoBehaviour {
 		if(Physics.Raycast(ray, out hit, rayDist)){
 			if(hit.transform.tag == "Glass"){
 				isLookingAtGlass = true;
- 				glassInSight = hit.transform.gameObject;		
+ 				glassInSight = hit.transform.gameObject;	
+				string objectToDropName;	
 				if(objectToDrop != null){
-					hud.UpdateDescriptionText("Left click to pour " + objectName);
+					if (objectToDrop.GetComponent<Base>() != null){ //if it's a base, get the baseName
+						objectToDropName = objectToDrop.GetComponent<Base>().baseName; 
+						hud.UpdateDescriptionText("Left click to pour " + objectToDropName);
+												// pass to the FirstPersonUI class	
+					}
+					else if (objectToDrop.GetComponent<Dilute>() != null){ //if it's a dilute, get the diluteName
+						objectToDropName = objectToDrop.GetComponent<Dilute>().diluteName;
+						hud.UpdateDescriptionText("Left click to pour " + objectToDropName);
+					}
+					else if (objectToDrop.GetComponent<Glass>() != null){ //if it's a dilute, get the diluteName
+						objectToDropName = objectToDrop.GetComponent<Glass>().glassName;
+						hud.UpdateDescriptionText("Left click to pour " + objectToDropName);
+					}	
 				}		
 			} else {
 				isLookingAtGlass = false;

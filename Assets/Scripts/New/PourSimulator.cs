@@ -37,16 +37,16 @@ public class PourSimulator : MonoBehaviour {
 		switch (baseType){
 			case Ingredients.BaseType.GIN:
  				myMesh.material.color = Color.white;
+				 Debug.Log("Pouring gin!");
 			break;
-			
 			case Ingredients.BaseType.WHISKY:
  				myMesh.material.color = Color.yellow;
+				 Debug.Log("Pouring whisky!");
 			break;
-			
 			case Ingredients.BaseType.RUM:
  				myMesh.material.color = Color.red;
+				 Debug.Log("Pouring rum!");
 			break;
-			
 			default:
 			break;
 		}
@@ -55,7 +55,6 @@ public class PourSimulator : MonoBehaviour {
 			drinkLevel += pourRate * Time.deltaTime;
 		}
  		transform.localPosition = new Vector3 (transform.localPosition.x, transform.localPosition.y, drinkLevel);
-		// transform.localScale = new Vector3(scale, transform.localScale.y, scale);
 	}
 
 	public void FillUpWithDilute(Ingredients.DiluteType diluteType){
@@ -63,14 +62,17 @@ public class PourSimulator : MonoBehaviour {
 		switch (diluteType){
 			case Ingredients.DiluteType.SODA:
  				myMesh.material.color = Color.red;
+				Debug.Log("pouring soda!");
 			break;
 			
 			case Ingredients.DiluteType.JUICE:
- 				myMesh.material.color = Color.magenta;
+ 				myMesh.material.color = Color.yellow;
+				Debug.Log("pouring juice!");
 			break;
 			
 			case Ingredients.DiluteType.TONIC_WATER:
- 				myMesh.material.color = Color.white;
+ 				myMesh.material.color = Color.blue;
+				Debug.Log("pouring tonic water!");
 			break;
 			
 			default:
