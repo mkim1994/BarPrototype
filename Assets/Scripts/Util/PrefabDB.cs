@@ -13,6 +13,6 @@ public class PrefabDB : ScriptableObject {
     public GameObject Tile { get { return tile; }}
 
     [SerializeField]
-    private GameObject whiskyParticle;
-    public GameObject WhiskyParticle { get { return whiskyParticle; }}
+    private GameObject whiskeyGlass;
+    public GameObject WhiskeyGlass { get { return WhiskeyGlass; }}
 }
