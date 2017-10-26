@@ -71,10 +71,14 @@ public class SnapTriggerArea : MonoBehaviour {
 	void EvaluateDrink(){
 		if(interactable.GetComponent<Base>() != null){
 			Base thisDrink = interactable.GetComponent<Base>();
-			if(thisDrink.baseType == Ingredients.BaseType.WHISKY){
+            if (thisDrink.baseType == Ingredients.BaseType.WHISKY &&
+                thisDrink.GetComponent<Glass>() != null){
+                evaluateDrink = 2;
+            }
+			else if(thisDrink.baseType == Ingredients.BaseType.WHISKY){
 				evaluateDrink = 1;
 				Debug.Log("Whiskey dropped!");
-			} else{
+            }else {
 				evaluateDrink = -1;
 				Debug.Log("THIS IS NOT WHISKEY!");
 			}

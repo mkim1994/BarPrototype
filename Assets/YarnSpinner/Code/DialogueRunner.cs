@@ -158,6 +158,9 @@ namespace Yarn.Unity
                     StartDialogue("GetNotWhiskey");
 
                     dialogueCount++;
+                } else if(barManager.coaster1.evaluateDrink == 2){
+                    StartDialogue("GetGlassWhiskey");
+                    dialogueCount++;
                 }
             }
 
