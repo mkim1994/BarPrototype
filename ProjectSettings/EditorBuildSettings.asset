@@ -6,5 +6,8 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/main.unity
-    guid: 3a986b369e1114d978109d59cd56e0a5
+    path: Assets/Scenes/drinkmix_titlescreen.unity
+    guid: ece3035ecc63b4d80bb79a371745358d
+  - enabled: 1
+    path: Assets/Scenes/drinkmix_main.unity
+    guid: 4815a2fb88fbd6e40ae2fdc4978043e0
