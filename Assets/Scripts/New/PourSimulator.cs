@@ -6,9 +6,9 @@ public class PourSimulator : MonoBehaviour {
 
 
 	private Vector3 startScale;
-	[SerializeField]float pourRate = 1f;
-	[SerializeField]float scaleGrowthRate = 0.1f;
-	[SerializeField]float maxDrinkLevel = 0.5f;
+	float pourRate = 0.5f;
+	float scaleGrowthRate = 0.1f;
+	float maxDrinkLevel = 0.6f;
 
 	private float scale; 
 	private float drinkLevel;

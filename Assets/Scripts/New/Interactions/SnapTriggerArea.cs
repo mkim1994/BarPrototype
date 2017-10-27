@@ -1,10 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SnapTriggerArea : MonoBehaviour {
 
+	private Text descriptionText;
 	
+	private FirstPersonUI hud;
  	private GameObject interactable;
 	
 	public int evaluateDrink;
@@ -26,6 +29,7 @@ public class SnapTriggerArea : MonoBehaviour {
 		snapPos = transform.parent.position;
 		snapRot = transform.parent.eulerAngles;
 		snapState = SnapTriggerAreaState.INTERACTABLE_IS_OUT;
+		hud = GameObject.Find("FirstPersonCharacter").GetComponent<FirstPersonUI>();
   	}
 	
 	// Update is called once per frame
@@ -61,6 +65,7 @@ public class SnapTriggerArea : MonoBehaviour {
 
 	void SnapToTarget(){
 		if(!interactable.GetComponent<Interactable>().isHeld){
+			hud.HideDescriptionText();
 			interactable.transform.position = snapPos + posOffset;
 			// interactable.transform.eulerAngles = snapRot + rotOffset;
 			// interactable.GetComponent<Rigidbody>().isKinematic = true;

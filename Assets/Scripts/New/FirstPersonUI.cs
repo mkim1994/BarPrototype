@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class FirstPersonUI : MonoBehaviour {
 
-	private Text descriptionText;
+	public Text descriptionText;
 	// Use this for initialization
 	void Start () {
 		descriptionText = GetComponentInChildren<Text>();

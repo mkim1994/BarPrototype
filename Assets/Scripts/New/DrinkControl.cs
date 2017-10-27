@@ -46,7 +46,7 @@ public class DrinkControl : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if(!dialogueRunner.isDialogueRunning && gameObject.GetComponent<CameraController>().safeToInteract){
+        if(!dialogueRunner.isDialogueRunning /*&& gameObject.GetComponent<CameraController>().safeToInteract*/){
 			ShootRay();
 			switch (pickUpState){
 				case PickUpState.LOOKING_AT_OBJECT:
@@ -65,6 +65,8 @@ public class DrinkControl : MonoBehaviour {
 				default:
 					break;
 			}
+		} else if (dialogueRunner.isDialogueRunning){
+			hud.HideDescriptionText();
 		}
 	}
 
@@ -159,12 +161,12 @@ public class DrinkControl : MonoBehaviour {
 					objectToDrop.GetComponent<Collider>().enabled = true;
 					isHoldingObject = false;
 					rb.useGravity = true;
-					rb.isKinematic = false;
 					rb.freezeRotation = false;
 					// rb.constraints = RigidbodyConstraints.FreezeRotationX;
 					// rb.constraints = RigidbodyConstraints.FreezeRotationZ;
 					objectToDrop.transform.localPosition = Vector3.forward * 2;
 					objectToDrop.transform.SetParent(null);
+					rb.isKinematic = false;
 					pickUpState = PickUpState.NOT_HOLDING_OR_LOOKING_AT_OBJECT;
 				} else if (pickUpState == PickUpState.HOLDING_OBJECT && isHoldingObject && !isLookingAtGlass && isLookingAtInteractable){
 					//swap object here
@@ -177,7 +179,10 @@ public class DrinkControl : MonoBehaviour {
 					// rb.constraints = RigidbodyConstraints.FreezeRotationX;
 					// rb.constraints = RigidbodyConstraints.FreezeRotationZ;
 					objectToDrop.transform.localPosition = Vector3.forward * 2;
+					objectToDrop.transform.eulerAngles = objectToDrop.GetComponent<Interactable>().startRot;
 					objectToDrop.transform.SetParent(null);
+					rb.isKinematic = false;
+
 					objectToSwap.transform.SetParent(this.gameObject.transform);
 					swaprb.isKinematic = true;
 					swaprb.useGravity = false;
