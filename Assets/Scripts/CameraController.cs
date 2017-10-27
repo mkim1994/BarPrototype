@@ -54,6 +54,8 @@ public class CameraController : MonoBehaviour {
     }
     void StartDialogue(){
         safeToInteract = true;
+
+        audioController.bgm.Play();
         dialogueRunner.StartDialogue();
     }
 }
