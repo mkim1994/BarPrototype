@@ -103,7 +103,8 @@ namespace Yarn.Unity.Example {
                 continuePrompt.SetActive (false);
         }
 
-        void Update(){
+        void Update()
+        {
             if (tabDialogue)
             {
                 if (optionCount > 1)
@@ -142,7 +143,8 @@ namespace Yarn.Unity.Example {
                 }
             }
 
-            if(worldDialogue && runningOptions){
+            if (worldDialogue && runningOptions)
+            {
                 Ray ray = playerCam.CamRay();
                 float rayDist = Mathf.Infinity;
 
@@ -150,28 +152,41 @@ namespace Yarn.Unity.Example {
                 //don't really need runningoptions bool b/c the options are inactive when it's not running
                 if (Physics.Raycast(ray, out hit, rayDist, dialogueOption1))
                 {
-                    optionButtons[1].transform.DOScale(new Vector3(1, 1, 0), 0.5f);
+                    optionButtons[1].transform.DOScale(new Vector3(1, 1, 1), 0.5f);
 
-                    hit.collider.transform.DOScale(new Vector3(1.1f, 1.1f, 0), 0.5f);
-                    if(Input.GetMouseButtonUp(0)){
+                    hit.collider.transform.DOScale(new Vector3(1.1f, 1.1f, 1), 0.5f);
+                    if (Input.GetMouseButtonUp(0))
+                    {
                         SetOption(0);
-                        hit.collider.transform.DOScale(new Vector3(1, 1, 0), 0.001f);
+                        hit.collider.transform.DOScale(new Vector3(1, 1, 1), 0f);
+
                     }
 
-                } else if(Physics.Raycast(ray, out hit, rayDist, dialogueOption2)){
-                    optionButtons[0].transform.DOScale(new Vector3(1, 1, 0), 0.5f);
-                    hit.collider.transform.DOScale(new Vector3(1.1f, 1.1f, 0), 0.5f);
-                    if(Input.GetMouseButtonUp(0)){
+                }
+                else if (Physics.Raycast(ray, out hit, rayDist, dialogueOption2))
+                {
+                    optionButtons[0].transform.DOScale(new Vector3(1, 1, 1), 0.5f);
+                    hit.collider.transform.DOScale(new Vector3(1.1f, 1.1f, 1), 0.5f);
+                    if (Input.GetMouseButtonUp(0))
+                    {
                         SetOption(1);
-                        hit.collider.transform.DOScale(new Vector3(1, 1, 0), 0.001f);
+                        hit.collider.transform.DOScale(new Vector3(1, 1, 1), 0f);
                     }
-                } else{
-                    optionButtons[0].transform.DOScale(new Vector3(1, 1, 0), 0.5f);
-                    optionButtons[1].transform.DOScale(new Vector3(1, 1, 0), 0.5f);
+                }
+                else
+                {
+                    optionButtons[0].transform.DOScale(new Vector3(1, 1, 1), 0.5f);
+                    optionButtons[1].transform.DOScale(new Vector3(1, 1, 1), 0.5f);
                 }
 
-            }
-        }
+            } 
+            /*else if(worldDialogue && !runningOptions){
+                optionButtons[0].transform.localScale = new Vector3(1, 1, 1);
+                optionButtons[1].transform.localScale = new Vector3(1, 1, 1);
+            }*/
+
+
+        } 
 
         /// Show a line of dialogue, gradually
         public override IEnumerator RunLine (Yarn.Line line)
