@@ -27,6 +27,7 @@ SOFTWARE.
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using System.Text.RegularExpressions;
 using CsvHelper;
 
@@ -143,8 +144,15 @@ namespace Yarn.Unity
             }
 
         }
-
+        void GoToTitleScreen(){
+            SceneManager.LoadScene("drinkmix_titlescreen");
+        }
         void Update(){
+            if(GetComponent<ExampleVariableStorage>().GetValue("$gameover").AsBool){
+                
+                Invoke("GoToTitleScreen", FindObjectOfType<Fade>().BeginFade(1) + 1f);
+            }
+
             if (dialogueCount == 0)
             {
                 if (barManager.coaster1.evaluateDrink == 1)

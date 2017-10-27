@@ -2,7 +2,7 @@
 	{
 		"title": "Start",
 		"tags": "",
-		"body": "Customer: Ha...\nCustomer: A glass of whiskey please.\n",
+		"body": "<<set $gameover to false>>\n\nCustomer: Ha...\nCustomer: A glass of whiskey please.\n",
 		"position": {
 			"x": 215,
 			"y": 213
@@ -22,7 +22,7 @@
 	{
 		"title": "2A",
 		"tags": "",
-		"body": "Customer: Ah.\nCustomer: Wonder what happened to the last bartender.\nCustomer: Doesn't matter though.\nCustomer: I've missed this.",
+		"body": "Customer: Ah.\nCustomer: Wonder what happened to the last bartender.\nCustomer: Doesn't matter though.\nCustomer: I've missed this.\nCustomer: ...Hey.\nCustomer: Am I pretty?\n\n[[Sure thing|3A]]\n[[What?|3B]]",
 		"position": {
 			"x": 904,
 			"y": 166
@@ -32,10 +32,10 @@
 	{
 		"title": "2B",
 		"tags": "",
-		"body": "Customer: Interesting.\nCustomer: I must've been away longer than I thought.\nCustomer: Doesn't matter though.\nCustomer: I've missed this.",
+		"body": "Customer: Interesting.\nCustomer: I must've been away longer than I thought.\nCustomer: Doesn't matter though.\nCustomer: I've missed this.\nCustomer: ...Hey.\nCustomer: Am I pretty?\n\n[[Sure thing|3A]]\n[[What?|3B]]",
 		"position": {
-			"x": 886,
-			"y": 396
+			"x": 978,
+			"y": 414
 		},
 		"colorID": 0
 	},
@@ -56,6 +56,26 @@
 		"position": {
 			"x": 564,
 			"y": 659
+		},
+		"colorID": 0
+	},
+	{
+		"title": "3A",
+		"tags": "",
+		"body": "Customer: Hah. You're just doing your job.\nCustomer: ...\nCustomer: Thank you.\nCustomer: Well, that's it for today then.\nCustomer: I'll be back, unfortunately.\nCustomer: Good-bye.\n\n<<set $gameover to true>>",
+		"position": {
+			"x": 1218,
+			"y": 169
+		},
+		"colorID": 0
+	},
+	{
+		"title": "3B",
+		"tags": "",
+		"body": "Customer: Nevermind...\nCustomer: Anyway, that's it for today then.\nCustomer: I'll be back, unfortunately.\nCustomer: Good-bye.\n\n<<set $gameover to true>>",
+		"position": {
+			"x": 1260,
+			"y": 446
 		},
 		"colorID": 0
 	}
