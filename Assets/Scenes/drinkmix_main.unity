@@ -606,7 +606,12 @@ Prefab:
     - target: {fileID: 82833488086225530, guid: 740fb337bef8f4a52be48ef9cf68ff20,
         type: 2}
       propertyPath: m_Volume
-      value: 0.2
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 82833488086225530, guid: 740fb337bef8f4a52be48ef9cf68ff20,
+        type: 2}
+      propertyPath: m_PlayOnAwake
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 740fb337bef8f4a52be48ef9cf68ff20, type: 2}
@@ -3461,6 +3466,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1682248886}
   - component: {fileID: 1682248885}
+  - component: {fileID: 1682248887}
   m_Layer: 0
   m_Name: GM
   m_TagString: Untagged
@@ -3492,6 +3498,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1682248887
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1682248884}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 931b945a4d3c44efa9ce2b5242f90a92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fadeOutTexture: {fileID: 2800000, guid: ed789e428f2f64e738217eb7f26e53b1, type: 3}
+  fadeSpeed: 0.8
 --- !u!1 &1776932790
 GameObject:
   m_ObjectHideFlags: 0

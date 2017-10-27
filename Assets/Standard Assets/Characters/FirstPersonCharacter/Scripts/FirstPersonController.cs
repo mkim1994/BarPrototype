@@ -55,8 +55,13 @@ namespace UnityStandardAssets.Characters.FirstPerson
             m_Jumping = false;
             m_AudioSource = GetComponent<AudioSource>();
 			m_MouseLook.Init(transform , m_Camera.transform);
+
+            Invoke("UnmuteFootsteps", 0.5f);
         }
 
+        void UnmuteFootsteps(){
+            m_AudioSource.volume = 0.2f;
+        }
 
         // Update is called once per frame
         private void Update()

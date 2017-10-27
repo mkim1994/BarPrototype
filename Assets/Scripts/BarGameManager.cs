@@ -15,5 +15,8 @@ public class BarGameManager : MonoBehaviour {
         if(Input.GetKeyUp(KeyCode.R) && SceneManager.GetActiveScene().name == "drinkmix_main"){
             SceneManager.LoadScene("drinkmix_titlescreen");
         }
+        if(Input.GetKeyUp(KeyCode.Escape)){
+            Application.Quit();
+        }
 	}
 }

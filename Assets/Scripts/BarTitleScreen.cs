@@ -30,7 +30,7 @@ public class BarTitleScreen : MonoBehaviour {
                 if (Input.GetMouseButtonUp(0))
                 {
                     loaded = true;
-                    Invoke("LoadNextScene", 1f);
+                    Invoke("LoadNextScene", GetComponent<Fade>().BeginFade(1));
                 }
             }
             else
