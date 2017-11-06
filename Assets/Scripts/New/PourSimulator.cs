@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PourSimulator : MonoBehaviour {
 
-
+	private Vector3 startPos;
 	private Vector3 startScale;
 	float pourRate = 0.5f;
 	float scaleGrowthRate = 0.1f;
@@ -20,6 +20,7 @@ public class PourSimulator : MonoBehaviour {
 	private MeshRenderer myMesh;
 	// Use this for initialization
 	void Start () {
+		startPos = transform.localPosition;
 		startScale = new Vector3 (0,transform.localScale.y,0);
 		scale = 0;
 		drinkLevel = transform.localPosition.z;
@@ -83,5 +84,16 @@ public class PourSimulator : MonoBehaviour {
 			drinkLevel += pourRate * Time.deltaTime;
 		}
  		transform.localPosition = new Vector3 (transform.localPosition.x, transform.localPosition.y, drinkLevel);
+	}
+
+	public void Empty(){
+		Debug.Log("Emptying glass!");
+		if(GetComponent<Base>() != null){
+			Destroy(GetComponentInParent<Base>());
+		}
+		if(GetComponent<Dilute>() != null){
+			Destroy(GetComponentInParent<Dilute>());
+		}
+		transform.localPosition = startPos;
 	}
 }

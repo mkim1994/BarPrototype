@@ -21,6 +21,7 @@ public class DrinkControl : MonoBehaviour {
 
 	public bool isLookingAtInteractable = false;
 
+	public bool isLookingAtSink = false;
   	public KeyCode interactKey;
 	
 	public DialogueRunner dialogueRunner;
@@ -156,7 +157,7 @@ public class DrinkControl : MonoBehaviour {
 			Rigidbody swaprb = objectToSwap.GetComponent<Rigidbody>();
 			//if you can't see the floor
 			if(!checkFloor.canSeeFloor){
-				if (pickUpState == PickUpState.HOLDING_OBJECT && isHoldingObject && !isLookingAtGlass && !isLookingAtInteractable){
+				if (pickUpState == PickUpState.HOLDING_OBJECT && isHoldingObject && !isLookingAtGlass && !isLookingAtInteractable && !isLookingAtSink){
 					objectToDrop.GetComponent<Interactable>().isHeld = false;
 					objectToDrop.GetComponent<Collider>().enabled = true;
 					isHoldingObject = false;
@@ -212,11 +213,11 @@ public class DrinkControl : MonoBehaviour {
 
 	public void UseInteractable(){
 		//if you're holding a base
+		FindGlassRay();
 		if(objectToDrop.tag == "Base"){ 
 			Debug.Log("Object to drop is BASE!");
 			//if we're holding a base, then look for glass.
 			//Need to have a check as to what kind of base is in it.
-			FindGlassRay();
 			if(Input.GetMouseButton(0) && glassInSight != null){
 				// Debug.Log(objectToDrop.tag);
 				objectToDrop.GetComponent<Interactable>().Pour();
@@ -245,13 +246,16 @@ public class DrinkControl : MonoBehaviour {
 			} 
 		} else if (objectToDrop.tag == "Glass"){
 			//do stuff for glasses here
+			if(Input.GetMouseButtonDown(0) && objectToDrop.GetComponent<Glass>() != null && isLookingAtSink){
+				objectToDrop.GetComponent<Glass>().EmptyGlass();
+			}
 		} else if (objectToDrop.tag == "Feeling"){
 			//do stuff for feeling here
 		} 
 		
 		else if (objectToDrop.tag == "Dilute"){
-			Debug.Log("Object to drop is DiluTE!");
-			FindGlassRay();
+			// Debug.Log("Object to drop is DiluTE!");
+			// FindGlassRay();
 			if(Input.GetMouseButton(0) && glassInSight != null){
 				Debug.Log(objectToDrop.tag);
 				objectToDrop.GetComponent<Interactable>().Pour();
@@ -260,7 +264,7 @@ public class DrinkControl : MonoBehaviour {
 				myDiluteType = objectToDrop.GetComponent<Dilute>().diluteType;
 				glassInSight.GetComponentInChildren<PourSimulator>().FillUpWithDilute(myDiluteType);
 				if(glassInSight.GetComponent<Dilute>() == null && objectToDrop.GetComponent<Dilute>() != null){
-					Debug.Log("Base component added!");
+					// Debug.Log("Base component added!");
 					glassInSight.AddComponent<Dilute>();
 					glassInSight.GetComponent<Dilute>().diluteType = objectToDrop.GetComponent<Dilute>().diluteType;	
 				} 	
@@ -298,11 +302,48 @@ public class DrinkControl : MonoBehaviour {
 						hud.UpdateDescriptionText("Left click to pour " + objectToDropName);
 					}	
 				}		
-			} else {
+			} else if (hit.transform.tag == "Sink"){
+				isLookingAtSink = true;
+				isLookingAtGlass = false;	
+			} 
+			else {
+				isLookingAtSink = false;
 				isLookingAtGlass = false;
 				glassInSight = null;
 			}
 		}
 	}
 
+	public void FindSinkRay(){
+		Ray ray = new Ray(transform.position, transform.forward);
+		float rayDist = Mathf.Infinity;
+
+		RaycastHit hit = new RaycastHit();
+
+		if(Physics.Raycast(ray, out hit, rayDist)){
+			if(hit.transform.tag == "Sink"){
+				isLookingAtGlass = true;
+ 				glassInSight = hit.transform.gameObject;	
+				string objectToDropName;	
+				if(objectToDrop != null){
+					if (objectToDrop.GetComponent<Base>() != null){ //if it's a base, get the baseName
+						objectToDropName = objectToDrop.GetComponent<Base>().baseName; 
+						hud.UpdateDescriptionText("Left click to pour " + objectToDropName);
+												// pass to the FirstPersonUI class	
+					}
+					else if (objectToDrop.GetComponent<Dilute>() != null){ //if it's a dilute, get the diluteName
+						objectToDropName = objectToDrop.GetComponent<Dilute>().diluteName;
+						hud.UpdateDescriptionText("Left click to pour " + objectToDropName);
+					}
+					else if (objectToDrop.GetComponent<Glass>() != null){ //if it's a dilute, get the diluteName
+						objectToDropName = objectToDrop.GetComponent<Glass>().glassName;
+						hud.UpdateDescriptionText("Left click to pour " + objectToDropName);
+					}	
+				}		
+			} else {
+				isLookingAtGlass = false;
+				glassInSight = null;
+			}
+		}
+	}
 }
