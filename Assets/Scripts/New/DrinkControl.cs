@@ -246,8 +246,10 @@ public class DrinkControl : MonoBehaviour {
 			} 
 		} else if (objectToDrop.tag == "Glass"){
 			//do stuff for glasses here
-			if(Input.GetMouseButtonDown(0) && objectToDrop.GetComponent<Glass>() != null && isLookingAtSink){
+			if(Input.GetMouseButton(0) && objectToDrop.GetComponent<Glass>() != null && isLookingAtSink){
 				objectToDrop.GetComponent<Glass>().EmptyGlass();
+			} else {
+				objectToDrop.GetComponent<Glass>().StopEmptyGlass();
 			}
 		} else if (objectToDrop.tag == "Feeling"){
 			//do stuff for feeling here
@@ -314,36 +316,4 @@ public class DrinkControl : MonoBehaviour {
 		}
 	}
 
-	public void FindSinkRay(){
-		Ray ray = new Ray(transform.position, transform.forward);
-		float rayDist = Mathf.Infinity;
-
-		RaycastHit hit = new RaycastHit();
-
-		if(Physics.Raycast(ray, out hit, rayDist)){
-			if(hit.transform.tag == "Sink"){
-				isLookingAtGlass = true;
- 				glassInSight = hit.transform.gameObject;	
-				string objectToDropName;	
-				if(objectToDrop != null){
-					if (objectToDrop.GetComponent<Base>() != null){ //if it's a base, get the baseName
-						objectToDropName = objectToDrop.GetComponent<Base>().baseName; 
-						hud.UpdateDescriptionText("Left click to pour " + objectToDropName);
-												// pass to the FirstPersonUI class	
-					}
-					else if (objectToDrop.GetComponent<Dilute>() != null){ //if it's a dilute, get the diluteName
-						objectToDropName = objectToDrop.GetComponent<Dilute>().diluteName;
-						hud.UpdateDescriptionText("Left click to pour " + objectToDropName);
-					}
-					else if (objectToDrop.GetComponent<Glass>() != null){ //if it's a dilute, get the diluteName
-						objectToDropName = objectToDrop.GetComponent<Glass>().glassName;
-						hud.UpdateDescriptionText("Left click to pour " + objectToDropName);
-					}	
-				}		
-			} else {
-				isLookingAtGlass = false;
-				glassInSight = null;
-			}
-		}
-	}
 }
