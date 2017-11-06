@@ -262,9 +262,10 @@ public class DrinkControl : MonoBehaviour {
 		else if (objectToDrop.tag == "Dilute"){
 			// Debug.Log("Object to drop is DiluTE!");
 			// FindGlassRay();
-			if(Input.GetMouseButton(0) && glassInSight != null){
+			if(Input.GetMouseButton(0) && glassInSight != null && !isPouring){
 				// Debug.Log(objectToDrop.tag);
 				objectToDrop.GetComponent<Interactable>().Pour();
+				isPouring = true;
 				//possible place to tell the UI to update drink level?
 				Ingredients.DiluteType myDiluteType;
 				myDiluteType = objectToDrop.GetComponent<Dilute>().diluteType;
@@ -276,8 +277,8 @@ public class DrinkControl : MonoBehaviour {
 				} 	
 			} 
 			else {
-				// objectToDrop.GetComponent<Interactable>().StopPour(()
-			} 
+				isPouring = false;
+				objectToDrop.GetComponent<Interactable>().StopPour();			} 
 		}
 	}
 
