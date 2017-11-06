@@ -38,15 +38,15 @@ public class PourSimulator : MonoBehaviour {
 		switch (baseType){
 			case Ingredients.BaseType.GIN:
  				myMesh.material.color = Color.white;
-				 Debug.Log("Pouring gin!");
+				//  Debug.Log("Pouring gin!");
 			break;
 			case Ingredients.BaseType.WHISKY:
  				myMesh.material.color = Color.yellow;
-				 Debug.Log("Pouring whisky!");
+				//  Debug.Log("Pouring whisky!");
 			break;
 			case Ingredients.BaseType.RUM:
  				myMesh.material.color = Color.red;
-				 Debug.Log("Pouring rum!");
+				//  Debug.Log("Pouring rum!");
 			break;
 			default:
 			break;
@@ -63,17 +63,17 @@ public class PourSimulator : MonoBehaviour {
 		switch (diluteType){
 			case Ingredients.DiluteType.SODA:
  				myMesh.material.color = Color.red;
-				Debug.Log("pouring soda!");
+				// Debug.Log("pouring soda!");
 			break;
 			
 			case Ingredients.DiluteType.JUICE:
  				myMesh.material.color = Color.yellow;
-				Debug.Log("pouring juice!");
+				// Debug.Log("pouring juice!");
 			break;
 			
 			case Ingredients.DiluteType.TONIC_WATER:
  				myMesh.material.color = Color.blue;
-				Debug.Log("pouring tonic water!");
+				// Debug.Log("pouring tonic water!");
 			break;
 			
 			default:
@@ -87,7 +87,7 @@ public class PourSimulator : MonoBehaviour {
 	}
 
 	public void Empty(){
-		Debug.Log("Emptying glass!");
+		// Debug.Log("Emptying glass!");
 		if(GetComponent<Base>() != null){
 			Destroy(GetComponentInParent<Base>());
 		}

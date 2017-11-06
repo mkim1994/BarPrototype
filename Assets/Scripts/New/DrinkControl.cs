@@ -22,6 +22,8 @@ public class DrinkControl : MonoBehaviour {
 	public bool isLookingAtInteractable = false;
 
 	public bool isLookingAtSink = false;
+
+	public bool isPouring = false;
   	public KeyCode interactKey;
 	
 	public DialogueRunner dialogueRunner;
@@ -215,18 +217,19 @@ public class DrinkControl : MonoBehaviour {
 		//if you're holding a base
 		FindGlassRay();
 		if(objectToDrop.tag == "Base"){ 
-			Debug.Log("Object to drop is BASE!");
+			// Debug.Log("Object to drop is BASE!");
 			//if we're holding a base, then look for glass.
 			//Need to have a check as to what kind of base is in it.
-			if(Input.GetMouseButton(0) && glassInSight != null){
+			if(Input.GetMouseButton(0) && glassInSight != null && !isPouring){
 				// Debug.Log(objectToDrop.tag);
 				objectToDrop.GetComponent<Interactable>().Pour();
+				isPouring = true;
 				Ingredients.BaseType myBaseType;
 				myBaseType = objectToDrop.GetComponent<Interactable>().baseType;
 				glassInSight.GetComponentInChildren<PourSimulator>().FillUpWithBase(myBaseType);
 				//check what Base is in the glass
 				if(glassInSight.GetComponent<Base>() == null && objectToDrop.GetComponent<Base>() != null){
-					Debug.Log("Base component added!");
+					// Debug.Log("Base component added!");
 					glassInSight.AddComponent<Base>();
 					glassInSight.GetComponent<Base>().baseType = objectToDrop.GetComponent<Base>().baseType;	
 				} 
@@ -242,6 +245,7 @@ public class DrinkControl : MonoBehaviour {
 				}
 			} 
 			else {
+				isPouring = false;
 				objectToDrop.GetComponent<Interactable>().StopPour();
 			} 
 		} else if (objectToDrop.tag == "Glass"){
@@ -259,7 +263,7 @@ public class DrinkControl : MonoBehaviour {
 			// Debug.Log("Object to drop is DiluTE!");
 			// FindGlassRay();
 			if(Input.GetMouseButton(0) && glassInSight != null){
-				Debug.Log(objectToDrop.tag);
+				// Debug.Log(objectToDrop.tag);
 				objectToDrop.GetComponent<Interactable>().Pour();
 				//possible place to tell the UI to update drink level?
 				Ingredients.DiluteType myDiluteType;
@@ -272,7 +276,7 @@ public class DrinkControl : MonoBehaviour {
 				} 	
 			} 
 			else {
-				objectToDrop.GetComponent<Interactable>().StopPour();
+				// objectToDrop.GetComponent<Interactable>().StopPour(()
 			} 
 		}
 	}

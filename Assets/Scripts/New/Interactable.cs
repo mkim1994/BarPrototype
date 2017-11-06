@@ -52,14 +52,21 @@ public class Interactable : MonoBehaviour {
  	}
 
 	public void Pour(){
-		transform.localEulerAngles = new Vector3(0, 25, 90f);
+		transform.DOLocalRotate(new Vector3(0, 25, 90f), 0.75f, RotateMode.Fast);
+		// transform.localEulerAngles = new Vector3(0, 25, 90f);
 		//drink level UI updating could also happen here?
 	} 
 
 	public void StopPour(){
-		transform.localEulerAngles = startRot;
+		// transform.localEulerAngles = startRot;
+		// StartCoroutine(StopPourDelayed(0.76f));		
+		transform.DOLocalRotate(startRot, 0.3f, RotateMode.Fast);
 	}
-
+	IEnumerator StopPourDelayed(float delay){
+		yield return new WaitForSeconds(delay);
+		// transform.localEulerAngles = startRot;
+		transform.DOLocalRotate(startRot, 0.3f, RotateMode.Fast);
+	}
 	public void ChangeMaterialOnRaycastHit(){
 		isBeingLookedAtState = IsBeingLookedAtState.LOOKED_AT;
 	}
