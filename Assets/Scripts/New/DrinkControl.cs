@@ -13,6 +13,7 @@ public class DrinkControl : MonoBehaviour {
 	[SerializeField]GameObject objectToSwap;
 	private GameObject glassInSight;
 
+	private float mindDistanceToInteractable = 4f;
 	private string objectName;
 
 	public LayerMask layerMask;
@@ -75,21 +76,22 @@ public class DrinkControl : MonoBehaviour {
 
 	public void ShootRay(){
 		Ray ray = new Ray(transform.position, transform.forward);
-		float rayDist = 5f;
+		float rayDist = Mathf.Infinity;
 
 		RaycastHit hit = new RaycastHit();
-		Debug.DrawRay(transform.position, transform.forward * 2f, Color.red);
 
 		if(Physics.Raycast(ray, out hit, rayDist, layerMask)){
  			//check if you're looking at an Interactable
-			// if(hit.transform.tag == "Glass" || hit.transform.tag == "Base" || hit.transform.tag == "Dilute"){
-			// Debug.Log(hit.transform.name);
 			if(hit.transform.GetComponent<Interactable>() != null){
 				// Debug.Log(hit.transform.name);
 				isLookingAtInteractable = true;
 				objectToSwap = hit.transform.gameObject;
-				objectToSwap.GetComponent<Interactable>().ChangeMaterialOnRaycastHit();
-				if(pickUpState != PickUpState.HOLDING_OBJECT && !isHoldingObject){
+				float distanceToInteractable = Vector3.Distance(transform.position, objectToSwap.transform.position);
+				if(distanceToInteractable <= mindDistanceToInteractable){
+					objectToSwap.GetComponent<Interactable>().ChangeMaterialOnRaycastHit();
+				}
+				//if you're not holding an object and 
+				if(pickUpState != PickUpState.HOLDING_OBJECT && !isHoldingObject && distanceToInteractable <= mindDistanceToInteractable){
 					pickUpState = PickUpState.LOOKING_AT_OBJECT;
 					objectToPickUp = hit.transform.gameObject;
 					objectToPickUp.GetComponent<Interactable>().ChangeMaterialOnRaycastHit();
@@ -107,7 +109,8 @@ public class DrinkControl : MonoBehaviour {
 						objectName = objectToPickUp.GetComponent<Glass>().glassName;
 						hud.UpdateDescriptionText("Left click to pick up " + objectName);
 					}			
-  				} else if (pickUpState == PickUpState.HOLDING_OBJECT && isHoldingObject && isLookingAtInteractable && !isLookingAtGlass){
+  				} else if (pickUpState == PickUpState.HOLDING_OBJECT && isHoldingObject && isLookingAtInteractable && !isLookingAtGlass
+				  && distanceToInteractable <= mindDistanceToInteractable){
 					if (objectToSwap.GetComponent<Base>() != null){ //if it's a base, get the baseName
 						objectName = objectToSwap.GetComponent<Base>().baseName; 
 						hud.UpdateDescriptionText("Left click to pick up " + objectName);
@@ -134,7 +137,8 @@ public class DrinkControl : MonoBehaviour {
 	public void PickUp(KeyCode key){
 		if(Input.GetKeyDown(key)){
 			//if you're looking at an object and you're NOT holding anything:
-				if(pickUpState == PickUpState.LOOKING_AT_OBJECT && !isHoldingObject && isLookingAtInteractable){
+				float distanceToInteractable = Vector3.Distance(transform.position, objectToPickUp.transform.position);
+				if(pickUpState == PickUpState.LOOKING_AT_OBJECT && !isHoldingObject && isLookingAtInteractable && distanceToInteractable <= mindDistanceToInteractable){
 					isHoldingObject = true;
 					Rigidbody rb = objectToPickUp.GetComponent<Rigidbody>();
 					objectToPickUp.transform.SetParent(this.gameObject.transform);
@@ -285,7 +289,7 @@ public class DrinkControl : MonoBehaviour {
 	public bool isLookingAtGlass;
 	public void FindGlassRay(){
 		Ray ray = new Ray(transform.position, transform.forward);
-		float rayDist = 10f;
+		float rayDist = Mathf.Infinity;
 
 		RaycastHit hit = new RaycastHit();
 
