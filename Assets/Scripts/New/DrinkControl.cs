@@ -340,6 +340,7 @@ public class DrinkControl : MonoBehaviour {
 				float distanceToHit = Vector3.Distance(transform.position, hit.point);
 				if(tempProjection != objectToDrop){
 					tempProjection = Instantiate(objectToDrop, hit.point, Quaternion.identity);
+					Destroy(tempProjection, 0.05f);
 				}
 				dropZone = hit.point;
 				if(!projectionCreated){					
@@ -352,9 +353,6 @@ public class DrinkControl : MonoBehaviour {
 					tempProjection.GetComponent<MeshRenderer>().enabled = false;									
 					tempProjection.transform.position = hit.point + transform.up * 0.25f; 
 					tempProjection.transform.eulerAngles = tempProjection.GetComponent<Interactable>().startRot;
-					{
-						
-					}
 				} else {
 					// tempProjection.SetActive(false);
 					tempProjection.GetComponent<MeshRenderer>().enabled = false;									
