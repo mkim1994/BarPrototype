@@ -13,6 +13,7 @@ public class DrinkControl : MonoBehaviour {
 	[SerializeField]GameObject objectToSwap;
 	private GameObject glassInSight;
 
+	private Vector3 dropZone;
 	private float mindDistanceToInteractable = 4f;
 	private string objectName;
 
@@ -137,6 +138,7 @@ public class DrinkControl : MonoBehaviour {
 	public void PickUp(KeyCode key){
 		if(Input.GetKeyDown(key)){
 			//if you're looking at an object and you're NOT holding anything:
+				projectionCreated = false;
 				float distanceToInteractable = Vector3.Distance(transform.position, objectToPickUp.transform.position);
 				if(pickUpState == PickUpState.LOOKING_AT_OBJECT && !isHoldingObject && isLookingAtInteractable && distanceToInteractable <= mindDistanceToInteractable){
 					isHoldingObject = true;
@@ -157,63 +159,65 @@ public class DrinkControl : MonoBehaviour {
 	}
 
 	public void DropObject(KeyCode key){
-
+		DropzoneProjection();
 		if(Input.GetKeyDown(key)){
 			Rigidbody rb = objectToDrop.GetComponent<Rigidbody>();
 			Rigidbody swaprb = objectToSwap.GetComponent<Rigidbody>();
 			//if you can't see the floor
-			if(!checkFloor.canSeeFloor){
-				if (pickUpState == PickUpState.HOLDING_OBJECT && isHoldingObject && !isLookingAtGlass && !isLookingAtInteractable && !isLookingAtSink){
-					objectToDrop.GetComponent<Interactable>().isHeld = false;
-					objectToDrop.GetComponent<Collider>().enabled = true;
-					isHoldingObject = false;
-					rb.useGravity = true;
-					rb.freezeRotation = false;
-					// rb.constraints = RigidbodyConstraints.FreezeRotationX;
-					// rb.constraints = RigidbodyConstraints.FreezeRotationZ;
-					objectToDrop.transform.localPosition = Vector3.forward * 2;
-					objectToDrop.transform.SetParent(null);
-					rb.isKinematic = false;
-					pickUpState = PickUpState.NOT_HOLDING_OR_LOOKING_AT_OBJECT;
-				} else if (pickUpState == PickUpState.HOLDING_OBJECT && isHoldingObject && !isLookingAtGlass && isLookingAtInteractable){
-					//swap object here
-					objectToDrop.GetComponent<Interactable>().isHeld = false;
-					objectToDrop.GetComponent<Collider>().enabled = true;
-					isHoldingObject = false;
-					rb.useGravity = true;
-					rb.isKinematic = false;
-					rb.freezeRotation = false;
-					// rb.constraints = RigidbodyConstraints.FreezeRotationX;
-					// rb.constraints = RigidbodyConstraints.FreezeRotationZ;
-					objectToDrop.transform.localPosition = Vector3.forward * 2;
-					objectToDrop.transform.eulerAngles = objectToDrop.GetComponent<Interactable>().startRot;
-					objectToDrop.transform.SetParent(null);
-					rb.isKinematic = false;
+			objectToDrop.GetComponent<MeshRenderer>().enabled = true;
 
-					objectToSwap.transform.SetParent(this.gameObject.transform);
-					swaprb.isKinematic = true;
-					swaprb.useGravity = false;
-					swaprb.freezeRotation = true;
-					objectToSwap.transform.localEulerAngles = objectToSwap.GetComponent<Interactable>().startRot;
-					objectToSwap.transform.localPosition = Vector3.forward + (Vector3.right * 0.5f) + (Vector3.down * 0.25f);
-					objectToSwap.GetComponent<Interactable>().isHeld = true;
-					objectToDrop = objectToSwap;
-					if (objectToDrop.GetComponent<Base>() != null){ //if it's a base, get the baseName
-						objectName = objectToDrop.GetComponent<Base>().baseName; 
-						hud.UpdateDescriptionText("Left click to pick up " + objectName);
-												// pass to the FirstPersonUI class	
-					}
-					else if (objectToDrop.GetComponent<Dilute>() != null){ //if it's a dilute, get the diluteName
-						objectName = objectToDrop.GetComponent<Dilute>().diluteName;
-						hud.UpdateDescriptionText("Left click to pick up " + objectName);
-					}
-					else if (objectToDrop.GetComponent<Glass>() != null){ //if it's a dilute, get the diluteName
-						objectName = objectToDrop.GetComponent<Glass>().glassName;
-						hud.UpdateDescriptionText("Left click to pick up " + objectName);
-					}	
-					isHoldingObject = true;
-				} 
-			}
+			if (pickUpState == PickUpState.HOLDING_OBJECT && isHoldingObject && !isLookingAtGlass && !isLookingAtInteractable && !isLookingAtSink){
+				objectToDrop.GetComponent<Interactable>().isHeld = false;
+				objectToDrop.GetComponent<Collider>().enabled = true;
+				isHoldingObject = false;
+				rb.useGravity = true;
+				rb.freezeRotation = false;
+				// rb.constraints = RigidbodyConstraints.FreezeRotationX;
+				// rb.constraints = RigidbodyConstraints.FreezeRotationZ;
+				// objectToDrop.transform.localPosition = Vector3.forward * 2;
+				objectToDrop.transform.position = dropZone;
+				objectToDrop.transform.SetParent(null);
+				rb.isKinematic = false;
+				pickUpState = PickUpState.NOT_HOLDING_OR_LOOKING_AT_OBJECT;
+			} else if (pickUpState == PickUpState.HOLDING_OBJECT && isHoldingObject && !isLookingAtGlass && isLookingAtInteractable){
+				//swap object here
+				objectToDrop.GetComponent<Interactable>().isHeld = false;
+				objectToDrop.GetComponent<Collider>().enabled = true;
+				isHoldingObject = false;
+				rb.useGravity = true;
+				rb.isKinematic = false;
+				rb.freezeRotation = false;
+				// rb.constraints = RigidbodyConstraints.FreezeRotationX;
+				// rb.constraints = RigidbodyConstraints.FreezeRotationZ;
+				objectToDrop.transform.localPosition = Vector3.forward * 2;
+				objectToDrop.transform.eulerAngles = objectToDrop.GetComponent<Interactable>().startRot;
+				objectToDrop.transform.SetParent(null);
+				rb.isKinematic = false;
+
+				objectToSwap.transform.SetParent(this.gameObject.transform);
+				swaprb.isKinematic = true;
+				swaprb.useGravity = false;
+				swaprb.freezeRotation = true;
+				objectToSwap.transform.localEulerAngles = objectToSwap.GetComponent<Interactable>().startRot;
+				objectToSwap.transform.localPosition = Vector3.forward + (Vector3.right * 0.5f) + (Vector3.down * 0.25f);
+				objectToSwap.GetComponent<Interactable>().isHeld = true;
+				objectToDrop = objectToSwap;
+				if (objectToDrop.GetComponent<Base>() != null){ //if it's a base, get the baseName
+					objectName = objectToDrop.GetComponent<Base>().baseName; 
+					hud.UpdateDescriptionText("Left click to pick up " + objectName);
+											// pass to the FirstPersonUI class	
+				}
+				else if (objectToDrop.GetComponent<Dilute>() != null){ //if it's a dilute, get the diluteName
+					objectName = objectToDrop.GetComponent<Dilute>().diluteName;
+					hud.UpdateDescriptionText("Left click to pick up " + objectName);
+				}
+				else if (objectToDrop.GetComponent<Glass>() != null){ //if it's a dilute, get the diluteName
+					objectName = objectToDrop.GetComponent<Glass>().glassName;
+					hud.UpdateDescriptionText("Left click to pick up " + objectName);
+				}	
+				isHoldingObject = true;
+			} 
+			
 		}
 	}
 
@@ -322,6 +326,43 @@ public class DrinkControl : MonoBehaviour {
 				isLookingAtGlass = false;
 				glassInSight = null;
 			}
+		}
+	}
+	GameObject tempProjection;
+
+	private bool projectionCreated = false;
+ 	public void DropzoneProjection(){
+		Ray ray = new Ray(transform.position, transform.forward);
+		float rayDist = Mathf.Infinity;
+		RaycastHit hit = new RaycastHit();
+		if(Physics.Raycast(ray, out hit, rayDist)){
+			if(hit.transform.tag == "Table"){
+				float distanceToHit = Vector3.Distance(transform.position, hit.point);
+				if(tempProjection != objectToDrop){
+					tempProjection = Instantiate(objectToDrop, hit.point, Quaternion.identity);
+				}
+				dropZone = hit.point;
+				if(!projectionCreated){					
+					tempProjection.SetActive(true);
+					projectionCreated =true;
+				} 
+				if(distanceToHit <= 4f){
+					// tempProjection = objectToDrop;
+					tempProjection.transform.GetChild(0).GetComponent<MeshRenderer>().enabled = true;
+					tempProjection.GetComponent<MeshRenderer>().enabled = false;									
+					tempProjection.transform.position = hit.point + transform.up * 0.25f; 
+					tempProjection.transform.eulerAngles = tempProjection.GetComponent<Interactable>().startRot;
+					{
+						
+					}
+				} else {
+					// tempProjection.SetActive(false);
+					tempProjection.GetComponent<MeshRenderer>().enabled = false;									
+					tempProjection.transform.GetChild(0).GetComponent<MeshRenderer>().enabled = false;
+				}
+			}
+		} else {
+			tempProjection = null;
 		}
 	}
 

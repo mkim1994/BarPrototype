@@ -11,6 +11,7 @@ TagManager:
   - Floor
   - Dialogue
   - Sink
+  - Table
   layers:
   - Default
   - TransparentFX
