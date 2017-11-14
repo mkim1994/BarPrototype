@@ -60,10 +60,12 @@ public class DrinkControl : MonoBehaviour {
 			ShootRay();
 			switch (pickUpState){
 				case PickUpState.LOOKING_AT_OBJECT:
+				//hide the drop indicator
 					dropIndicator.SetActive(false);
 					PickUp(interactKey);
 					break;
 				case PickUpState.HOLDING_OBJECT:
+				//set the drop indicator to active.
 					DropzoneProjection();
 					DropObject(interactKey);
 					UseInteractable();
@@ -166,8 +168,7 @@ public class DrinkControl : MonoBehaviour {
 	}
 
 	public void DropObject(KeyCode key){
-		// DropzoneProjection();
-		if(Input.GetKeyDown(key)){
+ 		if(Input.GetKeyDown(key)){
 			//if you can't see the floor
 			if(objectToDrop != null){
 				objectToDrop.GetComponent<MeshRenderer>().enabled = true;
