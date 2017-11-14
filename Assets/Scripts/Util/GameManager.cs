@@ -16,8 +16,8 @@ public class GameManager : MonoBehaviour
 	// Use this for initialization
 	void Start()
 	{
-		Services.EventManager.Register<Reset>(Reset);
-		Services.SceneStackManager.PushScene<TitleScreen>();
+		// Services.EventManager.Register<Reset>(Reset);
+		// Services.SceneStackManager.PushScene<TitleScreen>();
 	}
 
 	// Update is called once per frame
@@ -28,6 +28,7 @@ public class GameManager : MonoBehaviour
 
 	void InitializeServices()
 	{
+		Debug.Log("Services initialized!");
 		Services.GameManager = this;
 		Services.EventManager = new EventManager();
 		Services.TaskManager = new TaskManager();
@@ -41,10 +42,10 @@ public class GameManager : MonoBehaviour
 
 	}
 
-	void Reset(Reset e)
-	{
-		SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-	}
+	// void Reset(Reset e)
+	// {
+	// 	SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+	// }
 
 	//UI buttons
 

@@ -13,7 +13,10 @@ public class DrinkControl : MonoBehaviour {
 	[SerializeField]GameObject objectToSwap;
 	private GameObject glassInSight;
 
+	private GameObject dropIndicator;
+
 	private Vector3 dropZone;
+	private Vector3 hideDropIndicatorPos;
 	private float mindDistanceToInteractable = 4f;
 	private string objectName;
 
@@ -43,6 +46,8 @@ public class DrinkControl : MonoBehaviour {
 	// public Ingredients.BaseType baseType;
 	PickUpState pickUpState;
 	void Start () {
+		dropIndicator = Instantiate(Services.Prefabs.DropIndicator, new Vector3(1000, 1000, 1000), Quaternion.identity) as GameObject;
+		hideDropIndicatorPos = dropIndicator.transform.position;
 		dialogueRunner = GameObject.FindGameObjectWithTag("Dialogue").GetComponent<DialogueRunner>();
 		checkFloor = GetComponentInChildren<CheckFloor>();
  		pickUpState = PickUpState.NOT_HOLDING_OR_LOOKING_AT_OBJECT;
@@ -55,18 +60,20 @@ public class DrinkControl : MonoBehaviour {
 			ShootRay();
 			switch (pickUpState){
 				case PickUpState.LOOKING_AT_OBJECT:
+					dropIndicator.SetActive(false);
 					PickUp(interactKey);
 					break;
 				case PickUpState.HOLDING_OBJECT:
+					DropzoneProjection();
 					DropObject(interactKey);
 					UseInteractable();
 					break;
 				case PickUpState.NOT_HOLDING_OR_LOOKING_AT_OBJECT:
+					// dropIndicator.SetActive(false);
 					break;
 
 				case PickUpState.NEAR_OBJECTIVE:
-					
-					break;
+ 					break;
 				default:
 					break;
 			}
@@ -159,7 +166,7 @@ public class DrinkControl : MonoBehaviour {
 	}
 
 	public void DropObject(KeyCode key){
-		DropzoneProjection();
+		// DropzoneProjection();
 		if(Input.GetKeyDown(key)){
 			//if you can't see the floor
 			if(objectToDrop != null){
@@ -204,6 +211,7 @@ public class DrinkControl : MonoBehaviour {
 					objectToSwap.transform.localPosition = Vector3.forward + (Vector3.right * 0.5f) + (Vector3.down * 0.25f);
 					objectToSwap.GetComponent<Interactable>().isHeld = true;
 					objectToDrop = objectToSwap;
+					isHoldingObject = true;
 					if (objectToDrop.GetComponent<Base>() != null){ //if it's a base, get the baseName
 						objectName = objectToDrop.GetComponent<Base>().baseName; 
 						hud.UpdateDescriptionText("Left click to pick up " + objectName);
@@ -217,7 +225,6 @@ public class DrinkControl : MonoBehaviour {
 						objectName = objectToDrop.GetComponent<Glass>().glassName;
 						hud.UpdateDescriptionText("Left click to pick up " + objectName);
 					}	
-					isHoldingObject = true;
 				} 			
 			}
 		}
@@ -337,20 +344,26 @@ public class DrinkControl : MonoBehaviour {
 			}
 		}
 	}
-	GameObject tempProjection;
+
 
 	private bool projectionCreated = false;
 
 	public void DropzoneProjection(){
+		dropIndicator.SetActive(true);
 		Ray ray = new Ray(transform.position, transform.forward);
 		float rayDist = Mathf.Infinity;
 		RaycastHit hit = new RaycastHit();
 		if(Physics.Raycast(ray, out hit, rayDist)){
-			if(hit.transform.tag == "Table"){
-				float distanceToHit = Vector3.Distance(transform.position, hit.point);
-				dropZone = hit.point;
-			}
-		}
+			if(isHoldingObject){
+				if(hit.transform.tag == "Table"){
+					float distanceToHit = Vector3.Distance(transform.position, hit.point);
+					dropZone = hit.point;
+					dropIndicator.transform.position = hit.point;
+ 				} else if (hit.transform.tag != "Table"){
+					dropIndicator.SetActive(false);
+				}
+			} 
+		} 
 	}
 	
  	// public void DropzoneProjection(){

@@ -18,3 +18,5 @@ MonoBehaviour:
   tile: {fileID: 1100685554961052, guid: d4983dff0c9ac41fa9b85cc29daadfe2, type: 2}
   whiskeyGlass: {fileID: 1598642820373074, guid: 0ccea903f3c08134db8ac0b9ea5b7294,
     type: 2}
+  dropIndicator: {fileID: 1331173114055176, guid: aee3e1bbb1efb3347b65099bb55b218c,
+    type: 2}

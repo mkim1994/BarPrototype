@@ -15,4 +15,8 @@ public class PrefabDB : ScriptableObject {
     [SerializeField]
     private GameObject whiskeyGlass;
     public GameObject WhiskeyGlass { get { return WhiskeyGlass; }}
+
+    [SerializeField]
+    private GameObject dropIndicator;
+    public GameObject DropIndicator { get { return dropIndicator; }}
 }
