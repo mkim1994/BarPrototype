@@ -20,13 +20,21 @@ public class SwitchControl : MonoBehaviour {
 		if(Physics.Raycast(ray, out hit, Mathf.Infinity)){
 			if(hit.transform.GetComponent<SwitchEngine>() != null){
 				SwitchEngine switchEngine = hit.transform.GetComponent<SwitchEngine>();
+				switchEngine.ShowMouseOverObject();
 				if(Input.GetMouseButtonDown(0)){
-					switchEngine.AnimateButtonPress();
-					audioController.spotlightSfx.PlayScheduled(AudioSettings.dspTime);
-					foreach(GameObject light in lights){
-						light.SetActive(false);
+					if(Services.DayCycleManager.dayHasEnded){
+						switchEngine.AnimateButtonPress();
+						audioController.spotlightSfx.PlayScheduled(AudioSettings.dspTime);
+						switchEngine.HideMouseOverObject();
+						foreach(GameObject light in lights){
+							light.SetActive(false);
+						}
+						this.enabled = false;
+					} else {
+						Debug.Log("Some customers still need you.");
 					}
 				}
+			} else {
 			}
 		}		
 	}
