@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
 	// Use this for initialization
 	void Start()
 	{
+		Services.DayCycleManager.Start();
 		// Services.EventManager.Register<Reset>(Reset);
 		// Services.SceneStackManager.PushScene<TitleScreen>();
 	}
@@ -36,7 +37,7 @@ public class GameManager : MonoBehaviour
 		Services.Materials = Resources.Load<MaterialDB>("Art/Materials");
 		Services.SceneStackManager = new SceneStackManager<TransitionData>(sceneRoot, Services.Prefabs.Scenes);
 		Services.InputManager = new InputManager();
-
+		Services.DayCycleManager = new DayCycleManager();
 
         Services.LightManager = new LightManager();
 

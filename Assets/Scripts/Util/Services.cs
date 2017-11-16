@@ -12,9 +12,10 @@ public static class Services {
     public static InputManager InputManager { get; set; }
     public static Main Main { get; set; }
     public static BartenderMain BartenderMain { get; set; }
-
+    
     public static MapManager MapManager { get; set; }
 
     public static LightManager LightManager { get; set; }
 
+    public static DayCycleManager DayCycleManager { get; set; }
 }

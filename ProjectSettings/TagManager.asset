@@ -12,6 +12,7 @@ TagManager:
   - Dialogue
   - Sink
   - Table
+  - Lights
   layers:
   - Default
   - TransparentFX
