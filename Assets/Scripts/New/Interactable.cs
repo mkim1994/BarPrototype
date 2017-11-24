@@ -8,6 +8,9 @@ public class Interactable : MonoBehaviour {
 	// public Material[] materials;
 
 	//offset for when Interactable is dropped onto a SnapTriggerArea. This will vary from model to model.
+	[SerializeField] Vector3 myPourRotation;
+	[SerializeField]Vector3 myStopPourRotation;
+
 	public Vector3 dropOffset;
 	public Vector3 rotOffset;
 
@@ -51,6 +54,7 @@ public class Interactable : MonoBehaviour {
 		ChangeMaterialOnRaycastMiss();
  	}
 
+	
 	public void Pour(){
 		transform.DOLocalRotate(new Vector3(0, 25, 90f), 0.75f, RotateMode.Fast);
 		// transform.localEulerAngles = new Vector3(0, 25, 90f);

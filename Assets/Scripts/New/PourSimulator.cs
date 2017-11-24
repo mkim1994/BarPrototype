@@ -3,15 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PourSimulator : MonoBehaviour {
-
+	
 	private Vector3 startPos;
 	private Vector3 startScale;
 	float pourRate = 0.5f;
 	float scaleGrowthRate = 0.1f;
-	float maxDrinkLevel = 0.6f;
+	float maxDrinkZ = 1.09f;
+	float maxDrinkY = 0.65f;
+	float maxDrinkX = 0.65f;
+
 
 	private float scale; 
-	private float drinkLevel;
+	private float drinkZ;
+	private float drinkY;
+	private float drinkX;
 	private Color baseColor;
 	private Color diluteColor;
 
@@ -21,9 +26,9 @@ public class PourSimulator : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		startPos = transform.localPosition;
-		startScale = new Vector3 (0,transform.localScale.y,0);
-		scale = 0;
-		drinkLevel = transform.localPosition.z;
+		startScale = transform.localScale;
+		drinkZ = transform.localScale.z;
+		startScale = new Vector3(startScale.x, startScale.y, drinkZ);
 		myMesh = GetComponent<MeshRenderer>();
 	}
 	
@@ -52,10 +57,7 @@ public class PourSimulator : MonoBehaviour {
 			break;
 		}
 
-		if(drinkLevel <= maxDrinkLevel){
-			drinkLevel += pourRate * Time.deltaTime;
-		}
- 		transform.localPosition = new Vector3 (transform.localPosition.x, transform.localPosition.y, drinkLevel);
+		FillUp();
 	}
 
 	public void FillUpWithDilute(Ingredients.DiluteType diluteType){
@@ -80,10 +82,7 @@ public class PourSimulator : MonoBehaviour {
 			break;
 		}
 		// scale += scaleGrowthRate * Time.deltaTime;
-		if(drinkLevel <= maxDrinkLevel){
-			drinkLevel += pourRate * Time.deltaTime;
-		}
- 		transform.localPosition = new Vector3 (transform.localPosition.x, transform.localPosition.y, drinkLevel);
+		FillUp();
 	}
 
 	public void Empty(){
@@ -95,5 +94,20 @@ public class PourSimulator : MonoBehaviour {
 			Destroy(GetComponentInParent<Dilute>());
 		}
 		transform.localPosition = startPos;
+	}
+
+	private void FillUp(){
+		if(drinkZ <= maxDrinkZ && (maxDrinkY - drinkY) <= 0.01f && (maxDrinkX - drinkX) <= 0.01f){
+			drinkZ += pourRate * Time.deltaTime;
+		}
+
+		if(drinkY <= maxDrinkY){
+			drinkY += pourRate * Time.deltaTime;
+		}
+
+		if(drinkX <= maxDrinkX){
+			drinkX += pourRate * Time.deltaTime;
+		}
+ 		transform.localScale = new Vector3 (drinkX, drinkY, drinkZ);
 	}
 }

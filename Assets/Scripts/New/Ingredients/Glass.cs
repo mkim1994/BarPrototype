@@ -6,6 +6,9 @@ public class Glass : MonoBehaviour {
 	Interactable interactable;
 	private Vector3 startRot;
 
+	public bool isDirty;
+
+	public GameObject stains;
 	public string glassName = "glass";
 	// Use this for initialization
 	void Start () {
@@ -26,4 +29,9 @@ public class Glass : MonoBehaviour {
 	public void StopEmptyGlass(){
 		transform.localEulerAngles = startRot;
 	}
+
+	public void ShowStains(){
+		stains.SetActive(true);
+	}
+
 }

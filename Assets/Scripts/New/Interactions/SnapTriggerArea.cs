@@ -53,6 +53,8 @@ public class SnapTriggerArea : MonoBehaviour {
 	void OnTriggerEnter(Collider interactable_){
 		if(interactable_.GetComponent<Interactable>() != null){
 			interactable = interactable_.gameObject;
+			// interactable_.GetComponent<
+			ActivateStains(interactable_.gameObject);
 			snapState = SnapTriggerAreaState.INTERACTABLE_IS_IN;
  		}
 	}
@@ -70,6 +72,13 @@ public class SnapTriggerArea : MonoBehaviour {
 			// interactable.transform.eulerAngles = snapRot + rotOffset;
 			// interactable.GetComponent<Rigidbody>().isKinematic = true;
 			snapState = SnapTriggerAreaState.INTERACTABLE_IS_POSITIONED;
+		}
+	}
+
+	void ActivateStains(GameObject drink_){
+		if(drink_.GetComponent<Glass>() != null){
+			Glass glass = drink_.GetComponent<Glass>();
+			glass.ShowStains();
 		}
 	}
 
