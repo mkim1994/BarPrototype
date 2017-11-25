@@ -6,8 +6,8 @@ public class PourSimulator : MonoBehaviour {
 	
 	private Vector3 startPos;
 	private Vector3 startScale;
-	float pourRate = 0.5f;
-	float scaleGrowthRate = 0.1f;
+	float pourRate = 1f;
+	float drainRate = 0.1f;
 	float maxDrinkZ = 1.09f;
 	float maxDrinkY = 0.65f;
 	float maxDrinkX = 0.65f;
@@ -93,7 +93,19 @@ public class PourSimulator : MonoBehaviour {
 		if(GetComponent<Dilute>() != null){
 			Destroy(GetComponentInParent<Dilute>());
 		}
-		transform.localPosition = startPos;
+		// transform.localPosition = startPos;
+		if(drinkZ >= 0){
+			drinkZ -= drainRate * Time.deltaTime;
+		}
+
+		if(drinkZ <= 0.01f && drinkY >= 0){
+			drinkY -= drainRate * Time.deltaTime;
+		}
+
+		if(drinkZ <= 0.01f && drinkX >= 0){
+			drinkX -= drainRate * Time.deltaTime;
+		}
+ 		transform.localScale = new Vector3 (drinkX, drinkY, drinkZ);
 	}
 
 	private void FillUp(){

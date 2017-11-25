@@ -52,6 +52,15 @@ public class Interactable : MonoBehaviour {
 		}
 
 		ChangeMaterialOnRaycastMiss();
+
+		//teleport to original position if off-map
+		if(transform.position.y <= -5f){
+			rb.isKinematic = true;
+			transform.position = startPos;
+			transform.eulerAngles = startRot;
+			rb.isKinematic = false;
+		}
+
  	}
 
 	

@@ -21,6 +21,7 @@ public class DrinkControl : MonoBehaviour {
 	private string objectName;
 
 	public LayerMask layerMask;
+	public LayerMask projectionLayerMask;
 
 	public bool isHoldingObject = false;
 
@@ -29,6 +30,8 @@ public class DrinkControl : MonoBehaviour {
 	public bool isLookingAtSink = false;
 
 	public bool isPouring = false;
+	private bool projectionCreated = false;
+
   	public KeyCode interactKey;
 	
 	public DialogueRunner dialogueRunner;
@@ -167,28 +170,36 @@ public class DrinkControl : MonoBehaviour {
 		} 
 	}
 
+	public bool canDropObject = false;
 	public void DropObject(KeyCode key){
  		if(Input.GetKeyDown(key)){
 			//if you can't see the floor
 			if(objectToDrop != null){
 				objectToDrop.GetComponent<MeshRenderer>().enabled = true;
 
-				if (pickUpState == PickUpState.HOLDING_OBJECT && isHoldingObject && !isLookingAtGlass && !isLookingAtInteractable && !isLookingAtSink){
-					Rigidbody rb = objectToDrop.GetComponent<Rigidbody>();
-					objectToDrop.GetComponent<Interactable>().isHeld = false;
-					objectToDrop.GetComponent<Collider>().enabled = true;
-					isHoldingObject = false;
-					rb.useGravity = true;
-					rb.freezeRotation = false;
+				if (pickUpState == PickUpState.HOLDING_OBJECT && isHoldingObject && !isLookingAtGlass && !isLookingAtInteractable && !isLookingAtSink && canDropObject){
+					if(Vector3.Distance(objectToDrop.transform.position, dropZone) <= mindDistanceToInteractable){
+						Rigidbody rb = objectToDrop.GetComponent<Rigidbody>();
+						objectToDrop.GetComponent<Interactable>().isHeld = false;
+						objectToDrop.GetComponent<Collider>().enabled = true;
+						isHoldingObject = false;
+						rb.useGravity = true;
+						rb.freezeRotation = false;
 					// rb.constraints = RigidbodyConstraints.FreezeRotationX;
 					// rb.constraints = RigidbodyConstraints.FreezeRotationZ;
 					// objectToDrop.transform.localPosition = Vector3.forward * 2;
-					objectToDrop.transform.position = dropZone;
-					objectToDrop.transform.SetParent(null);
-					rb.isKinematic = false;
-					pickUpState = PickUpState.NOT_HOLDING_OR_LOOKING_AT_OBJECT;
-				} else if (pickUpState == PickUpState.HOLDING_OBJECT && isHoldingObject && !isLookingAtGlass && isLookingAtInteractable){
-					//swap object here
+						objectToDrop.transform.position = dropZone + objectToDrop.GetComponent<Interactable>().dropOffset;
+						objectToDrop.transform.SetParent(null);
+						rb.isKinematic = false;
+						// rb.isKinematic = true;
+						// rb.isKinematic = false;
+						pickUpState = PickUpState.NOT_HOLDING_OR_LOOKING_AT_OBJECT;
+					} 
+					// rb.isKinematic = true;
+					// rb.isKinematic = false;
+				} 
+				//OBJECT SWAPPING
+				else if (pickUpState == PickUpState.HOLDING_OBJECT && isHoldingObject && !isLookingAtGlass && isLookingAtInteractable){
 					Rigidbody swaprb = objectToSwap.GetComponent<Rigidbody>();
 					Rigidbody rb = objectToDrop.GetComponent<Rigidbody>();
 					objectToDrop.GetComponent<Interactable>().isHeld = false;
@@ -200,6 +211,7 @@ public class DrinkControl : MonoBehaviour {
 					// rb.constraints = RigidbodyConstraints.FreezeRotationX;
 					// rb.constraints = RigidbodyConstraints.FreezeRotationZ;
 					objectToDrop.transform.localPosition = Vector3.forward * 2;
+					// objectToDrop.transform.localPosition = dropZone;
 					objectToDrop.transform.eulerAngles = objectToDrop.GetComponent<Interactable>().startRot;
 					objectToDrop.transform.SetParent(null);
 					rb.isKinematic = false;
@@ -347,20 +359,28 @@ public class DrinkControl : MonoBehaviour {
 	}
 
 
-	private bool projectionCreated = false;
 
 	public void DropzoneProjection(){
 		dropIndicator.SetActive(true);
 		Ray ray = new Ray(transform.position, transform.forward);
 		float rayDist = Mathf.Infinity;
 		RaycastHit hit = new RaycastHit();
-		if(Physics.Raycast(ray, out hit, rayDist)){
-			if(isHoldingObject){
+		if(Physics.Raycast(ray, out hit, rayDist, projectionLayerMask)){
+ 			if(isHoldingObject){
 				if(hit.transform.tag == "Table"){
 					float distanceToHit = Vector3.Distance(transform.position, hit.point);
+					// if(distanceToHit <= 3f){
 					dropZone = hit.point;
-					dropIndicator.transform.position = hit.point;
+					if(distanceToHit <= mindDistanceToInteractable){
+						canDropObject = true;
+						dropIndicator.transform.position = hit.point;
+					} else {
+						canDropObject = false;
+						dropIndicator.transform.position = hideDropIndicatorPos; 
+					}
+					// }
  				} else if (hit.transform.tag != "Table"){
+					canDropObject = false;
 					dropIndicator.SetActive(false);
 				}
 			} 

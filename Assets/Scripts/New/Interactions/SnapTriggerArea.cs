@@ -36,12 +36,13 @@ public class SnapTriggerArea : MonoBehaviour {
 	void Update () {
 		switch(snapState){
 			case SnapTriggerAreaState.INTERACTABLE_IS_IN:
-    			SnapToTarget();
-    			break;
+     			break;
 			case SnapTriggerAreaState.INTERACTABLE_IS_OUT:
+				// SnapToTarget();
 			    break;
 			case SnapTriggerAreaState.INTERACTABLE_IS_POSITIONED:
 			    EvaluateDrink();
+				// ActivateStains();
 			    //Detect drink type.
 			    break;
 			default:
@@ -52,10 +53,9 @@ public class SnapTriggerArea : MonoBehaviour {
 
 	void OnTriggerEnter(Collider interactable_){
 		if(interactable_.GetComponent<Interactable>() != null){
+			//assign object that just got placed in trigger area to "interactable"
 			interactable = interactable_.gameObject;
-			// interactable_.GetComponent<
-			ActivateStains(interactable_.gameObject);
-			snapState = SnapTriggerAreaState.INTERACTABLE_IS_IN;
+			snapState = SnapTriggerAreaState.INTERACTABLE_IS_POSITIONED;
  		}
 	}
 
@@ -67,6 +67,7 @@ public class SnapTriggerArea : MonoBehaviour {
 
 	void SnapToTarget(){
 		if(!interactable.GetComponent<Interactable>().isHeld){
+			Debug.Log("Snapping to target!");
 			hud.HideDescriptionText();
 			interactable.transform.position = snapPos + posOffset;
 			// interactable.transform.eulerAngles = snapRot + rotOffset;
@@ -75,9 +76,9 @@ public class SnapTriggerArea : MonoBehaviour {
 		}
 	}
 
-	void ActivateStains(GameObject drink_){
-		if(drink_.GetComponent<Glass>() != null){
-			Glass glass = drink_.GetComponent<Glass>();
+	void ActivateStains(){
+		if(interactable.GetComponent<Glass>() != null){
+			Glass glass = interactable.GetComponent<Glass>();
 			glass.ShowStains();
 		}
 	}
@@ -91,10 +92,10 @@ public class SnapTriggerArea : MonoBehaviour {
             }
 			else if(thisDrink.baseType == Ingredients.BaseType.WHISKY){
 				evaluateDrink = 1;
-				Debug.Log("Whiskey dropped!");
+				// Debug.Log("Whiskey dropped!");
             }else{
 				evaluateDrink = -1;
-				Debug.Log("THIS IS NOT WHISKEY!");
+				// Debug.Log("THIS IS NOT WHISKEY!");
             }
         } else if(interactable.GetComponent<Dilute>() != null && interactable.GetComponent<Base>() == null){
             evaluateDrink = -1;

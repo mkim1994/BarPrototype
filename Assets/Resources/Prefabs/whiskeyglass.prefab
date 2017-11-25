@@ -42,7 +42,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1278288109722748
 GameObject:
   m_ObjectHideFlags: 0
@@ -244,8 +244,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1598642820373074}
-  m_LocalRotation: {x: -0.33053815, y: -0.62509567, z: -0.62509567, w: 0.33053815}
-  m_LocalPosition: {x: 3.532, y: -1.58, z: 3.625}
+  m_LocalRotation: {x: -0.33053812, y: -0.62509567, z: -0.62509567, w: 0.33053812}
+  m_LocalPosition: {x: 4.425, y: -1.58, z: 4.025}
   m_LocalScale: {x: 0.50000024, y: 0.50000024, z: 0.50000024}
   m_Children:
   - {fileID: 4993361465731728}
@@ -690,7 +690,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 2
 --- !u!65 &65163628576382278
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -737,8 +737,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99cf15ce25d95314d8c46911064de8ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stains:
+  - {fileID: 1343808412938322}
+  - {fileID: 1893730804345528}
+  - {fileID: 1933632591033068}
+  - {fileID: 1697735523125664}
+  - {fileID: 1001291129925390}
   isDirty: 0
-  stains: {fileID: 1117300352400794}
+  stainHolder: {fileID: 0}
   glassName: Glass
 --- !u!114 &114830802965591990
 MonoBehaviour:
@@ -764,7 +770,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myPourRotation: {x: 0, y: 0, z: 0}
   myStopPourRotation: {x: 0, y: 0, z: 0}
-  dropOffset: {x: 0, y: 0.5, z: 0}
+  dropOffset: {x: 0, y: 0, z: 0}
   rotOffset: {x: 0, y: 0, z: 0}
   isHeld: 0
   child: {fileID: 0}
