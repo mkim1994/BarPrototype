@@ -18,5 +18,7 @@ public class BarGameManager : MonoBehaviour {
         if(Input.GetKeyUp(KeyCode.Escape)){
             Application.Quit();
         }
+
+        Services.DayCycleManager.Update();
 	}
 }

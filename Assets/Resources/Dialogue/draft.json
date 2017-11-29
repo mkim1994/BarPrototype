@@ -62,7 +62,7 @@
 	{
 		"title": "3A",
 		"tags": "",
-		"body": "Customer: Hah. You're just doing your job.\nCustomer: ...\nCustomer: Thank you.\nCustomer: Well, that's it for today then.\nCustomer: I'll be back, unfortunately.\nCustomer: Good-bye.\n\n<<set $gameover to true>>",
+		"body": "Customer: Hah. You're just doing your job.\nCustomer: ...\nCustomer: Thank you.\nCustomer: Well, that's it for today then.\nCustomer: I'll be back, unfortunately.\nCustomer: Good-bye.\n\n<<set $gameover to true>>\n<<customerleave Dialogue>>",
 		"position": {
 			"x": 1218,
 			"y": 169
@@ -72,10 +72,10 @@
 	{
 		"title": "3B",
 		"tags": "",
-		"body": "Customer: Nevermind...\nCustomer: Anyway, that's it for today then.\nCustomer: I'll be back, unfortunately.\nCustomer: Good-bye.\n\n<<set $gameover to true>>",
+		"body": "Customer: Nevermind...\nCustomer: Anyway, that's it for today then.\nCustomer: I'll be back, unfortunately.\nCustomer: Good-bye.\n\n<<set $gameover to true>>\n<<customerleave Dialogue>>",
 		"position": {
 			"x": 1260,
-			"y": 446
+			"y": 445
 		},
 		"colorID": 0
 	}

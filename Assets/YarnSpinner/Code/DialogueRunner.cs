@@ -148,10 +148,10 @@ namespace Yarn.Unity
             SceneManager.LoadScene("drinkmix_titlescreen");
         }
         void Update(){
-            if(GetComponent<ExampleVariableStorage>().GetValue("$gameover").AsBool){
+            /*if(GetComponent<ExampleVariableStorage>().GetValue("$gameover").AsBool){
                 
                 Invoke("GoToTitleScreen", FindObjectOfType<Fade>().BeginFade(1) + 1f);
-            }
+            }*/
 
             if (dialogueCount == 0)
             {
@@ -533,6 +533,12 @@ namespace Yarn.Unity
 
         public abstract void ResetToDefaults ();
 
+
+        [YarnCommand("customerleave")]
+        public void CustomerLeave()
+        {
+            Services.DayCycleManager.numCustomersLeft++;
+        }
     }
 
 
