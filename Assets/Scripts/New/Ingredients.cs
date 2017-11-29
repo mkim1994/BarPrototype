@@ -7,19 +7,22 @@ public class Ingredients {
 	public enum BaseType{
 		WHISKY,
 		GIN,
-		RUM
+		RUM,
+		NO_BASE
 	}
 
-	public enum DiluteType{
+	public enum MixerType{
 		SODA,
 		JUICE,
-		TONIC_WATER
+		TONIC_WATER,
+		NO_MIXER
 	}
 
 	public enum ToppingType{
 		OLIVES,
 		ORANGE_PEEL,
-		SPICE
+		SPICE,
+		NO_TOPPING
 	}
 
 }

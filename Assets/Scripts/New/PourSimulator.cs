@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class PourSimulator : MonoBehaviour {
 	
+	private Cocktail cocktail;
 	private Vector3 startPos;
 	private Vector3 startScale;
 	float pourRate = 1f;
-	float drainRate = 0.1f;
+	float drainRate = 1f;
 	float maxDrinkZ = 1.09f;
 	float maxDrinkY = 0.65f;
 	float maxDrinkX = 0.65f;
@@ -25,6 +26,7 @@ public class PourSimulator : MonoBehaviour {
 	private MeshRenderer myMesh;
 	// Use this for initialization
 	void Start () {
+		cocktail = GetComponentInParent<Cocktail>();
 		startPos = transform.localPosition;
 		startScale = transform.localScale;
 		drinkZ = transform.localScale.z;
@@ -57,23 +59,29 @@ public class PourSimulator : MonoBehaviour {
 			break;
 		}
 
-		FillUp();
+		if(drinkZ < maxDrinkZ){
+			FillUp();
+			cocktail.AddBase(baseType);
+		}
+		else if(drinkZ >= maxDrinkZ){
+			Debug.Log("Drink is full!");
+		}
 	}
 
-	public void FillUpWithDilute(Ingredients.DiluteType diluteType){
+	public void FillUpWithDilute(Ingredients.MixerType mixerType){
 
-		switch (diluteType){
-			case Ingredients.DiluteType.SODA:
+		switch (mixerType){
+			case Ingredients.MixerType.SODA:
  				myMesh.material.color = Color.red;
 				// Debug.Log("pouring soda!");
 			break;
 			
-			case Ingredients.DiluteType.JUICE:
+			case Ingredients.MixerType.JUICE:
  				myMesh.material.color = Color.yellow;
 				// Debug.Log("pouring juice!");
 			break;
 			
-			case Ingredients.DiluteType.TONIC_WATER:
+			case Ingredients.MixerType.TONIC_WATER:
  				myMesh.material.color = Color.blue;
 				// Debug.Log("pouring tonic water!");
 			break;
@@ -83,6 +91,13 @@ public class PourSimulator : MonoBehaviour {
 		}
 		// scale += scaleGrowthRate * Time.deltaTime;
 		FillUp();
+		if(drinkZ < maxDrinkZ){
+			FillUp();
+			cocktail.AddMixer(mixerType);
+		}
+		else if(drinkZ >= maxDrinkZ){
+			Debug.Log("Drink is full!");
+		}
 	}
 
 	public void Empty(){
@@ -90,28 +105,29 @@ public class PourSimulator : MonoBehaviour {
 		if(GetComponent<Base>() != null){
 			Destroy(GetComponentInParent<Base>());
 		}
-		if(GetComponent<Dilute>() != null){
-			Destroy(GetComponentInParent<Dilute>());
+		if(GetComponent<Mixer>() != null){
+			Destroy(GetComponentInParent<Mixer>());
 		}
 		// transform.localPosition = startPos;
-		if(drinkZ >= 0){
-			drinkZ -= drainRate * Time.deltaTime;
-		}
+		// if(drinkZ >= 0){
+		// 	drinkZ -= drainRate * Time.deltaTime;
+		// }
 
-		if(drinkZ <= 0.01f && drinkY >= 0){
-			drinkY -= drainRate * Time.deltaTime;
-		}
+		// if(drinkZ <= 0.01f && drinkY >= 0){
+		// 	drinkY -= drainRate * Time.deltaTime;
+		// }
 
-		if(drinkZ <= 0.01f && drinkX >= 0){
-			drinkX -= drainRate * Time.deltaTime;
-		}
- 		transform.localScale = new Vector3 (drinkX, drinkY, drinkZ);
+		// if(drinkZ <= 0.01f && drinkX >= 0){
+		// 	drinkX -= drainRate * Time.deltaTime;
+		// }
+ 		// transform.localScale = new Vector3 (drinkX, drinkY, drinkZ);
+		transform.localScale = new Vector3 (0, 0, 0);
 	}
 
 	private void FillUp(){
 		if(drinkZ <= maxDrinkZ && (maxDrinkY - drinkY) <= 0.01f && (maxDrinkX - drinkX) <= 0.01f){
 			drinkZ += pourRate * Time.deltaTime;
-		}
+		} 
 
 		if(drinkY <= maxDrinkY){
 			drinkY += pourRate * Time.deltaTime;
@@ -120,6 +136,7 @@ public class PourSimulator : MonoBehaviour {
 		if(drinkX <= maxDrinkX){
 			drinkX += pourRate * Time.deltaTime;
 		}
+
  		transform.localScale = new Vector3 (drinkX, drinkY, drinkZ);
 	}
 }

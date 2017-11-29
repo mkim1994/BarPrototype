@@ -97,7 +97,7 @@ public class SnapTriggerArea : MonoBehaviour {
 				evaluateDrink = -1;
 				// Debug.Log("THIS IS NOT WHISKEY!");
             }
-        } else if(interactable.GetComponent<Dilute>() != null && interactable.GetComponent<Base>() == null){
+        } else if(interactable.GetComponent<Mixer>() != null && interactable.GetComponent<Base>() == null){
             evaluateDrink = -1;
         }
 	}

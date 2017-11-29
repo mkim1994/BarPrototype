@@ -114,8 +114,8 @@ public class DrinkControl : MonoBehaviour {
 						hud.UpdateDescriptionText("Left click to pick up " + objectName);
 												// pass to the FirstPersonUI class	
 					}
-					else if (objectToPickUp.GetComponent<Dilute>() != null){ //if it's a dilute, get the diluteName
-						objectName = objectToPickUp.GetComponent<Dilute>().diluteName;
+					else if (objectToPickUp.GetComponent<Mixer>() != null){ //if it's a dilute, get the diluteName
+						objectName = objectToPickUp.GetComponent<Mixer>().mixerName;
 						hud.UpdateDescriptionText("Left click to pick up " + objectName);
 					}
 					else if (objectToPickUp.GetComponent<Glass>() != null){ //if it's a dilute, get the diluteName
@@ -129,8 +129,8 @@ public class DrinkControl : MonoBehaviour {
 						hud.UpdateDescriptionText("Left click to pick up " + objectName);
 												// pass to the FirstPersonUI class	
 					}
-					else if (objectToSwap.GetComponent<Dilute>() != null){ //if it's a dilute, get the diluteName
-						objectName = objectToSwap.GetComponent<Dilute>().diluteName;
+					else if (objectToSwap.GetComponent<Mixer>() != null){ //if it's a dilute, get the diluteName
+						objectName = objectToSwap.GetComponent<Mixer>().mixerName;
 						hud.UpdateDescriptionText("Left click to pick up " + objectName);
 					}
 					else if (objectToSwap.GetComponent<Glass>() != null){ //if it's a dilute, get the diluteName
@@ -230,8 +230,8 @@ public class DrinkControl : MonoBehaviour {
 						hud.UpdateDescriptionText("Left click to pick up " + objectName);
 												// pass to the FirstPersonUI class	
 					}
-					else if (objectToDrop.GetComponent<Dilute>() != null){ //if it's a dilute, get the diluteName
-						objectName = objectToDrop.GetComponent<Dilute>().diluteName;
+					else if (objectToDrop.GetComponent<Mixer>() != null){ //if it's a dilute, get the diluteName
+						objectName = objectToDrop.GetComponent<Mixer>().mixerName;
 						hud.UpdateDescriptionText("Left click to pick up " + objectName);
 					}
 					else if (objectToDrop.GetComponent<Glass>() != null){ //if it's a dilute, get the diluteName
@@ -300,13 +300,13 @@ public class DrinkControl : MonoBehaviour {
 					objectToDrop.GetComponent<Interactable>().Pour();
 					isPouring = true;
 					//possible place to tell the UI to update drink level?
-					Ingredients.DiluteType myDiluteType;
-					myDiluteType = objectToDrop.GetComponent<Dilute>().diluteType;
-					glassInSight.GetComponentInChildren<PourSimulator>().FillUpWithDilute(myDiluteType);
-					if(glassInSight.GetComponent<Dilute>() == null && objectToDrop.GetComponent<Dilute>() != null){
+					Ingredients.MixerType myMixerType;
+					myMixerType = objectToDrop.GetComponent<Mixer>().mixerType;
+					glassInSight.GetComponentInChildren<PourSimulator>().FillUpWithDilute(myMixerType);
+					if(glassInSight.GetComponent<Mixer>() == null && objectToDrop.GetComponent<Mixer>() != null){
 						// Debug.Log("Base component added!");
-						glassInSight.AddComponent<Dilute>();
-						glassInSight.GetComponent<Dilute>().diluteType = objectToDrop.GetComponent<Dilute>().diluteType;	
+						glassInSight.AddComponent<Mixer>();
+						glassInSight.GetComponent<Mixer>().mixerType = objectToDrop.GetComponent<Mixer>().mixerType;	
 					} 	
 				} 
 				else {
@@ -337,8 +337,8 @@ public class DrinkControl : MonoBehaviour {
 						hud.UpdateDescriptionText("Left click to pour " + objectToDropName);
 												// pass to the FirstPersonUI class	
 					}
-					else if (objectToDrop.GetComponent<Dilute>() != null){ //if it's a dilute, get the diluteName
-						objectToDropName = objectToDrop.GetComponent<Dilute>().diluteName;
+					else if (objectToDrop.GetComponent<Mixer>() != null){ //if it's a dilute, get the diluteName
+						objectToDropName = objectToDrop.GetComponent<Mixer>().mixerName;
 						hud.UpdateDescriptionText("Left click to pour " + objectToDropName);
 					}
 					else if (objectToDrop.GetComponent<Glass>() != null){ //if it's a dilute, get the diluteName

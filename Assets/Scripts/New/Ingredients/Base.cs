@@ -5,6 +5,7 @@ using UnityEngine;
 public class Base : MonoBehaviour {
 	public Ingredients.BaseType baseType;
 	public string baseName;
+
 	void Start(){
 		switch (baseType){
 			case Ingredients.BaseType.GIN:
@@ -23,4 +24,6 @@ public class Base : MonoBehaviour {
 			break;
 		}
 	}
+
+
 }
