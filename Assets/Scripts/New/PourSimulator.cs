@@ -4,15 +4,26 @@ using UnityEngine;
 
 public class PourSimulator : MonoBehaviour {
 	
+	public enum PourState {
+		Pouring_Base,
+		Pouring_Mixer,
+		Not_pouring
+	}
+
+	private Ingredients.BaseType myBaseType;
+	private Ingredients.MixerType myMixerType;
+	public PourState pourState;
 	private Cocktail cocktail;
 	private Vector3 startPos;
 	private Vector3 startScale;
 	float pourRate = 1f;
 	float drainRate = 1f;
-	float maxDrinkZ = 1.09f;
+	float maxDrinkZ = 0.5f;
 	float maxDrinkY = 0.65f;
 	float maxDrinkX = 0.65f;
-
+	float posZ;
+	float startPosZ;
+	float maxPosZ = 0.5f;
 
 	private float scale; 
 	private float drinkZ;
@@ -20,12 +31,14 @@ public class PourSimulator : MonoBehaviour {
 	private float drinkX;
 	private Color baseColor;
 	private Color diluteColor;
-
 	//add quads for the toppings?
-
 	private MeshRenderer myMesh;
 	// Use this for initialization
+
 	void Start () {
+		startPosZ = transform.localPosition.z;
+		posZ = startPosZ;
+		pourState = PourState.Not_pouring;
 		cocktail = GetComponentInParent<Cocktail>();
 		startPos = transform.localPosition;
 		startScale = transform.localScale;
@@ -36,13 +49,39 @@ public class PourSimulator : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
+		switch (pourState)
+		{
+			case PourState.Pouring_Base:
+				if(drinkZ < maxDrinkZ && GetComponentInParent<Glass>().tweenToHandIsDone){
+					FillUp();
+ 					cocktail.AddBase(myBaseType);
+				}
+			break;
+			case PourState.Pouring_Mixer:
+			if(drinkZ < maxDrinkZ){
+					FillUp();
+ 					cocktail.AddMixer(myMixerType);
+				}
+			break;
+			case PourState.Not_pouring:
+				myMixerType = Ingredients.MixerType.NO_MIXER;
+				myBaseType = Ingredients.BaseType.NO_BASE;
+			break;
+			default:
+			break;
+		}
+
 	}
 
-	public void FillUpWithBase(Ingredients.BaseType baseType){
+	public void StopFillingUp(){
+		pourState = PourState.Not_pouring;
+	}
+	public void FillUpWithBase(Ingredients.BaseType _baseType){
+		pourState = PourState.Pouring_Base;
 		// scale += scaleGrowthRate * Time.deltaTime;
-		
-		switch (baseType){
+		Debug.Log("Filling up drink with base!");
+		myBaseType = _baseType;
+		switch (_baseType){
 			case Ingredients.BaseType.GIN:
  				myMesh.material.color = Color.white;
 				//  Debug.Log("Pouring gin!");
@@ -59,18 +98,20 @@ public class PourSimulator : MonoBehaviour {
 			break;
 		}
 
-		if(drinkZ < maxDrinkZ){
-			FillUp();
-			cocktail.AddBase(baseType);
-		}
-		else if(drinkZ >= maxDrinkZ){
-			Debug.Log("Drink is full!");
-		}
+		// if(drinkZ < maxDrinkZ){
+		// 	FillUp();
+ 		// 	cocktail.AddBase(_baseType);
+		// }
+		// else if(drinkZ >= maxDrinkZ){
+		// 	Debug.Log("Drink is full!");
+		// }
 	}
 
-	public void FillUpWithDilute(Ingredients.MixerType mixerType){
-
-		switch (mixerType){
+	public void FillUpWithDilute(Ingredients.MixerType _mixerType){
+		pourState = PourState.Pouring_Mixer;
+		myMixerType = _mixerType;
+		Debug.Log("Filling up drink with mixer!");
+		switch (_mixerType){
 			case Ingredients.MixerType.SODA:
  				myMesh.material.color = Color.red;
 				// Debug.Log("pouring soda!");
@@ -90,14 +131,14 @@ public class PourSimulator : MonoBehaviour {
 			break;
 		}
 		// scale += scaleGrowthRate * Time.deltaTime;
-		FillUp();
-		if(drinkZ < maxDrinkZ){
-			FillUp();
-			cocktail.AddMixer(mixerType);
-		}
-		else if(drinkZ >= maxDrinkZ){
-			Debug.Log("Drink is full!");
-		}
+		// FillUp();
+		// if(drinkZ < maxDrinkZ){
+		// 	FillUp();
+		// 	cocktail.AddMixer(mixerType);
+		// }
+		// else if(drinkZ >= maxDrinkZ){
+		// 	Debug.Log("Drink is full!");
+		// }
 	}
 
 	public void Empty(){
@@ -124,9 +165,14 @@ public class PourSimulator : MonoBehaviour {
 		transform.localScale = new Vector3 (0, 0, 0);
 	}
 
+
+
 	private void FillUp(){
 		if(drinkZ <= maxDrinkZ && (maxDrinkY - drinkY) <= 0.01f && (maxDrinkX - drinkX) <= 0.01f){
 			drinkZ += pourRate * Time.deltaTime;
+			if(posZ < maxPosZ){
+				posZ += (pourRate*0.35f) * Time.deltaTime;
+			}
 		} 
 
 		if(drinkY <= maxDrinkY){
@@ -137,6 +183,7 @@ public class PourSimulator : MonoBehaviour {
 			drinkX += pourRate * Time.deltaTime;
 		}
 
+		transform.localPosition = new Vector3 (0, 0, posZ);
  		transform.localScale = new Vector3 (drinkX, drinkY, drinkZ);
 	}
 }

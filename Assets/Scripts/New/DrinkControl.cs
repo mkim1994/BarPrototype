@@ -6,6 +6,7 @@ using Yarn.Unity;
 
 public class DrinkControl : MonoBehaviour {
 	
+	public KeyCode actionKey;
 	public CheckFloor checkFloor;
 	FirstPersonUI hud;
 	[SerializeField]GameObject objectToPickUp;
@@ -14,19 +15,16 @@ public class DrinkControl : MonoBehaviour {
 	private GameObject glassInSight;
 
 	private GameObject dropIndicator;
-
 	private Vector3 dropZone;
 	private Vector3 hideDropIndicatorPos;
 	private float mindDistanceToInteractable = 4f;
 	private string objectName;
-
 	public LayerMask layerMask;
 	public LayerMask projectionLayerMask;
 
 	public bool isHoldingObject = false;
-
+	public bool isLookingAtGlass;
 	public bool isLookingAtInteractable = false;
-
 	public bool isLookingAtSink = false;
 
 	public bool isPouring = false;
@@ -71,7 +69,7 @@ public class DrinkControl : MonoBehaviour {
 				//set the drop indicator to active.
 					DropzoneProjection();
 					DropObject(interactKey);
-					UseInteractable();
+					UseInteractable(actionKey);
 					break;
 				case PickUpState.NOT_HOLDING_OR_LOOKING_AT_OBJECT:
 					// dropIndicator.SetActive(false);
@@ -176,7 +174,6 @@ public class DrinkControl : MonoBehaviour {
 			//if you can't see the floor
 			if(objectToDrop != null){
 				objectToDrop.GetComponent<MeshRenderer>().enabled = true;
-
 				if (pickUpState == PickUpState.HOLDING_OBJECT && isHoldingObject && !isLookingAtGlass && !isLookingAtInteractable && !isLookingAtSink && canDropObject){
 					if(Vector3.Distance(objectToDrop.transform.position, dropZone) <= mindDistanceToInteractable){
 						Rigidbody rb = objectToDrop.GetComponent<Rigidbody>();
@@ -185,9 +182,10 @@ public class DrinkControl : MonoBehaviour {
 						isHoldingObject = false;
 						rb.useGravity = true;
 						rb.freezeRotation = false;
-					// rb.constraints = RigidbodyConstraints.FreezeRotationX;
-					// rb.constraints = RigidbodyConstraints.FreezeRotationZ;
-					// objectToDrop.transform.localPosition = Vector3.forward * 2;
+						rb.constraints = RigidbodyConstraints.FreezeRotationX;
+						rb.constraints = RigidbodyConstraints.FreezeRotationZ;
+						objectToDrop.transform.localPosition = Vector3.forward * 2;
+						objectToDrop.transform.eulerAngles = objectToDrop.GetComponent<Interactable>().startRot;
 						objectToDrop.transform.position = dropZone + objectToDrop.GetComponent<Interactable>().dropOffset;
 						objectToDrop.transform.SetParent(null);
 						rb.isKinematic = false;
@@ -243,7 +241,7 @@ public class DrinkControl : MonoBehaviour {
 		}
 	}
 
-	public void UseInteractable(){
+	public void UseInteractable(KeyCode key){
 		//if you're holding a base
 		FindGlassRay();
 		if(objectToDrop != null){
@@ -251,13 +249,25 @@ public class DrinkControl : MonoBehaviour {
 				// Debug.Log("Object to drop is BASE!");
 				//if we're holding a base, then look for glass.
 				//Need to have a check as to what kind of base is in it.
-				if(Input.GetMouseButton(0) && glassInSight != null && !isPouring){
+				if(Input.GetKey(key) && glassInSight != null && !isPouring){
 					// Debug.Log(objectToDrop.tag);
-					objectToDrop.GetComponent<Interactable>().Pour();
+					Glass glass = glassInSight.GetComponent<Glass>();
+					Vector3 handPos = Vector3.forward + (Vector3.left * 0.5f) + (Vector3.down * 0.25f);
 					isPouring = true;
 					Ingredients.BaseType myBaseType;
-					myBaseType = objectToDrop.GetComponent<Interactable>().baseType;
+					myBaseType = objectToDrop.GetComponent<Base>().baseType;
+					glassInSight.transform.SetParent(this.gameObject.transform);	
+					glassInSight.transform.localEulerAngles = glassInSight.GetComponent<Interactable>().startRot;
+					// glassInSight.transform.localPosition = Vector3.forward + (Vector3.left * 0.5f) + (Vector3.down * 0.25f);
+					glassInSight.GetComponent<Collider>().enabled = false;
+					glass.TweenToHand(handPos);
+					Rigidbody glassrb = glassInSight.GetComponent<Rigidbody>(); 
+					glassrb.isKinematic = true;
+					glassrb.useGravity = false;
+					glassrb.freezeRotation = true;
 					glassInSight.GetComponentInChildren<PourSimulator>().FillUpWithBase(myBaseType);
+					objectToDrop.GetComponent<Interactable>().Pour();
+					
 					//check what Base is in the glass
 					if(glassInSight.GetComponent<Base>() == null && objectToDrop.GetComponent<Base>() != null){
 						// Debug.Log("Base component added!");
@@ -275,15 +285,55 @@ public class DrinkControl : MonoBehaviour {
 						}
 					}
 				} 
-				else {
-					isPouring = false;
+				else if (Input.GetKeyUp(key) && !glassInSight.GetComponent<Glass>().tweenToHandIsDone){
+					Glass glass = glassInSight.GetComponent<Glass>();
+					glass.KillHandTween();
+					glass.TweenToTable(dropZone);
 					objectToDrop.GetComponent<Interactable>().StopPour();
+					isPouring = false;
+					Ingredients.BaseType myBaseType = objectToDrop.GetComponent<Interactable>().baseType;
+					objectToDrop.GetComponent<Interactable>().StopPour();
+					// glassInSight.transform.localPosition = glassInSight.GetComponent<Glass>().startPos;
+					// glassInSight.GetComponentInChildren<PourSimulator>().FillUpWithBase(myBaseType);
+					glassInSight.transform.SetParent(null);	
+					glassInSight.GetComponent<Collider>().enabled = true;
+ 					Rigidbody glassrb = glassInSight.GetComponent<Rigidbody>();
+					glassInSight.transform.localEulerAngles = glassInSight.GetComponent<Interactable>().startRot;
+					glassInSight.GetComponentInChildren<PourSimulator>().StopFillingUp(); 
+					if(glass.tweenToTableIsDone){
+						Debug.Log("Making glass use physics again!");
+						glassrb.isKinematic = false;
+						glassrb.useGravity = true;
+						glassrb.freezeRotation = false;
+						glassInSight = null;
+					}
+				}
+				else if (Input.GetKeyUp(key) && glassInSight.GetComponent<Glass>().tweenToHandIsDone) {
+					isPouring = false;
+					Ingredients.BaseType myBaseType = objectToDrop.GetComponent<Interactable>().baseType;
+					objectToDrop.GetComponent<Interactable>().StopPour();
+					// glassInSight.transform.localPosition = glassInSight.GetComponent<Glass>().startPos;
+					// glassInSight.GetComponentInChildren<PourSimulator>().FillUpWithBase(myBaseType);
+					glassInSight.transform.SetParent(null);	
+					glassInSight.GetComponent<Collider>().enabled = true;
+					Glass glass = glassInSight.GetComponent<Glass>();	
+					glass.TweenToTable(dropZone);
+					Rigidbody glassrb = glassInSight.GetComponent<Rigidbody>();
+					glassInSight.transform.localEulerAngles = glassInSight.GetComponent<Interactable>().startRot;
+					glassInSight.GetComponentInChildren<PourSimulator>().StopFillingUp(); 
+					if(glass.tweenToTableIsDone){
+						Debug.Log("Making glass use physics again!");
+						glassrb.isKinematic = false;
+						glassrb.useGravity = true;
+						glassrb.freezeRotation = false;
+						glassInSight = null;
+					}
 				} 
-			} 
+			}
 			//if the object you're holding is Glass
 			else if (objectToDrop.tag == "Glass"){
 				//do stuff for glasses here
-				if(Input.GetMouseButton(0) && objectToDrop.GetComponent<Glass>() != null && isLookingAtSink){
+				if(Input.GetKeyDown(key) && objectToDrop.GetComponent<Glass>() != null && isLookingAtSink){
 					objectToDrop.GetComponent<Glass>().EmptyGlass();
 				} else {
 					objectToDrop.GetComponent<Glass>().StopEmptyGlass();
@@ -295,31 +345,60 @@ public class DrinkControl : MonoBehaviour {
 			else if (objectToDrop.tag == "Dilute"){
 				// Debug.Log("Object to drop is DiluTE!");
 				// FindGlassRay();
-				if(Input.GetMouseButton(0) && glassInSight != null && !isPouring){
+				if(Input.GetKeyDown(key) && glassInSight != null && !isPouring){
 					// Debug.Log(objectToDrop.tag);
 					objectToDrop.GetComponent<Interactable>().Pour();
 					isPouring = true;
-					//possible place to tell the UI to update drink level?
+					
+					//new code
+					Vector3 handPos = Vector3.forward + (Vector3.left * 0.5f) + (Vector3.down * 0.25f);
+					objectToDrop.GetComponent<Interactable>().Pour();
+					isPouring = true;
 					Ingredients.MixerType myMixerType;
 					myMixerType = objectToDrop.GetComponent<Mixer>().mixerType;
+					glassInSight.transform.SetParent(this.gameObject.transform);	
+					glassInSight.transform.localEulerAngles = glassInSight.GetComponent<Interactable>().startRot;
+					// glassInSight.transform.localPosition = Vector3.forward + (Vector3.left * 0.5f) + (Vector3.down * 0.25f);
+					glassInSight.GetComponent<Collider>().enabled = false;
+					glassInSight.GetComponent<Glass>().TweenToHand(handPos);
 					glassInSight.GetComponentInChildren<PourSimulator>().FillUpWithDilute(myMixerType);
+					Rigidbody glassrb = glassInSight.GetComponent<Rigidbody>(); 
+					glassrb.isKinematic = true;
+					glassrb.useGravity = false;
+					glassrb.freezeRotation = true;
+					//
+
+					//possible place to tell the UI to update drink level?
+					// myMixerType = objectToDrop.GetComponent<Mixer>().mixerType;
+					// glassInSight.GetComponentInChildren<PourSimulator>().FillUpWithDilute(myMixerType);
 					if(glassInSight.GetComponent<Mixer>() == null && objectToDrop.GetComponent<Mixer>() != null){
 						// Debug.Log("Base component added!");
 						glassInSight.AddComponent<Mixer>();
 						glassInSight.GetComponent<Mixer>().mixerType = objectToDrop.GetComponent<Mixer>().mixerType;	
 					} 	
 				} 
-				else {
+				else if (Input.GetKeyUp(key)) {
 					isPouring = false;
-					objectToDrop.GetComponent<Interactable>().StopPour();			
+					objectToDrop.GetComponent<Interactable>().StopPour();	
+
+					Ingredients.MixerType myMixerType = objectToDrop.GetComponent<Mixer>().mixerType;
+
+					glassInSight.transform.SetParent(null);	
+					glassInSight.GetComponent<Collider>().enabled = true;
+					glassInSight.GetComponent<Glass>().TweenToTable(dropZone);
+					Rigidbody glassrb = glassInSight.GetComponent<Rigidbody>();
+					glassInSight.transform.localEulerAngles = glassInSight.GetComponent<Interactable>().startRot;
+					glassInSight.GetComponentInChildren<PourSimulator>().StopFillingUp(); 
+					glassrb.isKinematic = false;
+					glassrb.useGravity = true;
+					glassrb.freezeRotation = false;
+					glassInSight = null;		
 				} 
 			}
 		}
 
 		//if the object you're holding is a Base
 	}
-
-	public bool isLookingAtGlass;
 	public void FindGlassRay(){
 		Ray ray = new Ray(transform.position, transform.forward);
 		float rayDist = Mathf.Infinity;
@@ -329,21 +408,24 @@ public class DrinkControl : MonoBehaviour {
 		if(Physics.Raycast(ray, out hit, rayDist)){
 			if(hit.transform.tag == "Glass"){
 				isLookingAtGlass = true;
- 				glassInSight = hit.transform.gameObject;	
+				if(!isPouring){
+	 				glassInSight = hit.transform.gameObject;
+				}
 				string objectToDropName;	
+				//old code
 				if(objectToDrop != null){
 					if (objectToDrop.GetComponent<Base>() != null){ //if it's a base, get the baseName
 						objectToDropName = objectToDrop.GetComponent<Base>().baseName; 
-						hud.UpdateDescriptionText("Left click to pour " + objectToDropName);
+						hud.UpdateDescriptionText("Right click to pour " + objectToDropName);
 												// pass to the FirstPersonUI class	
 					}
 					else if (objectToDrop.GetComponent<Mixer>() != null){ //if it's a dilute, get the diluteName
 						objectToDropName = objectToDrop.GetComponent<Mixer>().mixerName;
-						hud.UpdateDescriptionText("Left click to pour " + objectToDropName);
+						hud.UpdateDescriptionText("Right click to pour " + objectToDropName);
 					}
 					else if (objectToDrop.GetComponent<Glass>() != null){ //if it's a dilute, get the diluteName
 						objectToDropName = objectToDrop.GetComponent<Glass>().glassName;
-						hud.UpdateDescriptionText("Left click to pour " + objectToDropName);
+						hud.UpdateDescriptionText("Right click to pour " + objectToDropName);
 					}	
 				}		
 			} else if (hit.transform.tag == "Sink"){
@@ -353,15 +435,15 @@ public class DrinkControl : MonoBehaviour {
 			else {
 				isLookingAtSink = false;
 				isLookingAtGlass = false;
-				glassInSight = null;
+				// glassInSight = null;
 			}
 		}
 	}
 
-
-
 	public void DropzoneProjection(){
-		dropIndicator.SetActive(true);
+		if(!isPouring){
+			dropIndicator.SetActive(true);
+		}
 		Ray ray = new Ray(transform.position, transform.forward);
 		float rayDist = Mathf.Infinity;
 		RaycastHit hit = new RaycastHit();

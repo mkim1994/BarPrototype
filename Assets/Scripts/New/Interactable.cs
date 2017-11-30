@@ -11,6 +11,13 @@ public class Interactable : MonoBehaviour {
 	[SerializeField] Vector3 myPourRotation;
 	[SerializeField]Vector3 myStopPourRotation;
 
+	public enum PourState{
+		Pouring,
+		Not_pouring
+	}
+
+	public PourState pourState;
+	private Glass glass;
 	public Vector3 dropOffset;
 	public Vector3 rotOffset;
 
@@ -63,9 +70,17 @@ public class Interactable : MonoBehaviour {
 
  	}
 
-	
+	 public void CheckForTween(){
+		 if(glass != null){
+			//  Pour(glass);
+		 }
+	 }
+
 	public void Pour(){
-		transform.DOLocalRotate(new Vector3(0, 25, 90f), 0.75f, RotateMode.Fast);
+		// glass = _glass;
+		// if(glass.tweenToHandIsDone){
+			transform.DOLocalRotate(myPourRotation, 0.75f, RotateMode.Fast);
+		// }
 		// transform.localEulerAngles = new Vector3(0, 25, 90f);
 		//drink level UI updating could also happen here?
 	} 

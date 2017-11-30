@@ -128,6 +128,7 @@ GameObject:
   - component: {fileID: 65309857067390570}
   - component: {fileID: 114841458691583614}
   - component: {fileID: 114735959425075700}
+  - component: {fileID: 114092173837167460}
   m_Layer: 11
   m_Name: whiskeyglass
   m_TagString: Glass
@@ -245,8 +246,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1598642820373074}
   m_LocalRotation: {x: -0.33053812, y: -0.62509567, z: -0.62509567, w: 0.33053812}
-  m_LocalPosition: {x: 4.425, y: -1.58, z: 4.025}
-  m_LocalScale: {x: 0.50000024, y: 0.50000024, z: 0.50000024}
+  m_LocalPosition: {x: 4.401, y: -1.58, z: 3.43}
+  m_LocalScale: {x: 0.50000036, y: 0.5000005, z: 0.5000004}
   m_Children:
   - {fileID: 4993361465731728}
   - {fileID: 4115416251533356}
@@ -280,7 +281,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1302740539036388}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.113}
+  m_LocalPosition: {x: 0, y: -0, z: 0.122}
   m_LocalScale: {x: 0, y: 0, z: 0.01}
   m_Children: []
   m_Father: {fileID: 4536695439586748}
@@ -715,6 +716,34 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.7296694, y: 0.72966945, z: 0.72775775}
   m_Center: {x: -0.004920892, y: -0.008185141, z: 0.3657906}
+--- !u!114 &114092173837167460
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1598642820373074}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c02ca7406b20904394765f713e45aaa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  whiskyVolume: 0
+  ginVolume: 0
+  rumVolume: 0
+  juiceVolume: 0
+  sodaVolume: 0
+  tonicVolume: 0
+  totalVolume: 0
+  requestedAlcoholPercentage: 0
+  requestedWhiskeyPercentage: 0
+  requestedGinPercentage: 0
+  requestedRumPercentage: 0
+  requestedJuicePercentage: 0
+  requestedSodaPercentage: 0
+  requestedTonicPercentage: 0
+  requestedBaseType: 0
+  requestedMixerType: 0
+  alcoholPercentage: 0
 --- !u!114 &114194725686743240
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -726,6 +755,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4132e9af7e4505c428f8df4dc8c95c7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pourState: 0
 --- !u!114 &114735959425075700
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -743,6 +773,7 @@ MonoBehaviour:
   - {fileID: 1933632591033068}
   - {fileID: 1697735523125664}
   - {fileID: 1001291129925390}
+  startPos: {x: 0, y: 0, z: 0}
   isDirty: 0
   stainHolder: {fileID: 0}
   glassName: Glass
@@ -757,6 +788,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4132e9af7e4505c428f8df4dc8c95c7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pourState: 0
 --- !u!114 &114841458691583614
 MonoBehaviour:
   m_ObjectHideFlags: 1

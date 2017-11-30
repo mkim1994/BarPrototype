@@ -1,12 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class Glass : MonoBehaviour {
-
+	private Vector3 handPos;
+	private Vector3 tablePos;
+	public bool tweenToHandIsDone;
+	public bool tweenToTableIsDone;
 	public GameObject[] stains;
 	Interactable interactable;
 	private Vector3 startRot;
+	public Vector3 startPos;
 
 	public bool isDirty = false;
 
@@ -14,6 +19,8 @@ public class Glass : MonoBehaviour {
 	public string glassName = "glass";
 	// Use this for initialization
 	void Start () {
+		tweenToHandIsDone = false;
+		startPos = transform.position;
 		startRot = transform.localEulerAngles;		
 		interactable = GetComponent<Interactable>();
 	}
@@ -25,6 +32,16 @@ public class Glass : MonoBehaviour {
 			ShrinkLiquid();
 			isDirty = true;
 		} 
+
+		if(Vector3.Distance(transform.localPosition, handPos) <= 0.1f){
+			tweenToHandIsDone = true;
+			Debug.Log("tween to hand is done is " + tweenToHandIsDone);
+		}
+
+		if (Vector3.Distance(transform.localPosition, tablePos) <= 0.1f){
+			tweenToTableIsDone = true;
+			Debug.Log("Tween to table is done is " + tweenToTableIsDone);
+		}
 	}
 
 	public void EmptyGlass(){
@@ -62,4 +79,17 @@ public class Glass : MonoBehaviour {
 		isDirty = true;
 	}
 
+	public void TweenToHand(Vector3 _handPos){
+		handPos = _handPos;
+		transform.DOLocalMove(_handPos, 1f, false);
+	}
+
+	public void TweenToTable(Vector3 _tablePos){
+		tablePos = _tablePos;
+		transform.DOMove(_tablePos, 1f, false);
+	}
+
+	public void KillHandTween(){
+		DOTween.KillAll();
+	}
 }
