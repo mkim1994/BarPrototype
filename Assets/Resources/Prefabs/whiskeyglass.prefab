@@ -245,9 +245,9 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1598642820373074}
-  m_LocalRotation: {x: -0.33053812, y: -0.62509567, z: -0.62509567, w: 0.33053812}
-  m_LocalPosition: {x: 4.401, y: -1.58, z: 3.43}
-  m_LocalScale: {x: 0.50000036, y: 0.5000005, z: 0.5000004}
+  m_LocalRotation: {x: -0.33053818, y: -0.6250956, z: -0.6250956, w: 0.33053818}
+  m_LocalPosition: {x: 4.023758, y: -1.58, z: 3.707812}
+  m_LocalScale: {x: 0.50000006, y: 0.50000066, z: 0.5000004}
   m_Children:
   - {fileID: 4993361465731728}
   - {fileID: 4115416251533356}
@@ -767,6 +767,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99cf15ce25d95314d8c46911064de8ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tweenToHandIsDone: 0
+  tweenToTableIsDone: 0
   stains:
   - {fileID: 1343808412938322}
   - {fileID: 1893730804345528}
@@ -802,6 +804,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myPourRotation: {x: 0, y: 0, z: 0}
   myStopPourRotation: {x: 0, y: 0, z: 0}
+  pourState: 0
   dropOffset: {x: 0, y: 0, z: 0}
   rotOffset: {x: 0, y: 0, z: 0}
   isHeld: 0

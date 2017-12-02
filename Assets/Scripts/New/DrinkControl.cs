@@ -39,6 +39,8 @@ public class DrinkControl : MonoBehaviour {
 
 	public enum PickUpState{
 		HOLDING_OBJECT,
+
+		HOLDING_TWO_OBJECTS,
 		NOT_HOLDING_OR_LOOKING_AT_OBJECT,
 		LOOKING_AT_OBJECT,
 		NEAR_OBJECTIVE
@@ -70,7 +72,12 @@ public class DrinkControl : MonoBehaviour {
 					DropzoneProjection();
 					DropObject(interactKey);
 					UseInteractable(actionKey);
+					PickUpSecondItem(interactKey);
+					//pick up second object function
 					break;
+				case PickUpState.HOLDING_TWO_OBJECTS:
+					DropObject(interactKey);
+				break;
 				case PickUpState.NOT_HOLDING_OR_LOOKING_AT_OBJECT:
 					// dropIndicator.SetActive(false);
 					break;
@@ -99,13 +106,13 @@ public class DrinkControl : MonoBehaviour {
 				objectToSwap = hit.transform.gameObject;
 				float distanceToInteractable = Vector3.Distance(transform.position, objectToSwap.transform.position);
 				if(distanceToInteractable <= mindDistanceToInteractable){
-					objectToSwap.GetComponent<Interactable>().ChangeMaterialOnRaycastHit();
+					objectToSwap.GetComponent<Interactable>().EnableHighlightMesh();
 				}
 				//if you're not holding an object and 
 				if(pickUpState != PickUpState.HOLDING_OBJECT && !isHoldingObject && distanceToInteractable <= mindDistanceToInteractable){
 					pickUpState = PickUpState.LOOKING_AT_OBJECT;
 					objectToPickUp = hit.transform.gameObject;
-					objectToPickUp.GetComponent<Interactable>().ChangeMaterialOnRaycastHit();
+					objectToPickUp.GetComponent<Interactable>().EnableHighlightMesh();
 					//check what kind of Interactable you're looking at for the text description
 					if (objectToPickUp.GetComponent<Base>() != null){ //if it's a base, get the baseName
 						objectName = objectToPickUp.GetComponent<Base>().baseName; 
@@ -144,6 +151,28 @@ public class DrinkControl : MonoBehaviour {
 		}
 	}
 
+	public void PickUpSecondItem(KeyCode key){
+		if(Input.GetKeyDown(key) && isLookingAtInteractable){
+			//if you're looking at an object and you're NOT holding anything:
+				projectionCreated = false;
+				float distanceToInteractable = Vector3.Distance(transform.position, objectToPickUp.transform.position);
+				if(distanceToInteractable <= mindDistanceToInteractable && objectToSwap.GetComponent<Glass>() != null){
+					isHoldingObject = true;
+					Rigidbody rb = objectToPickUp.GetComponent<Rigidbody>();
+					objectToPickUp.transform.SetParent(this.gameObject.transform);
+					objectToPickUp.GetComponent<Collider>().enabled = false;
+					rb.isKinematic = true;
+					rb.useGravity = false;
+					rb.freezeRotation = true;
+					hud.UpdateDescriptionText("Left click to drop " + objectName);
+					objectToPickUp.transform.localEulerAngles = objectToPickUp.GetComponent<Interactable>().startRot;
+					objectToPickUp.transform.localPosition = Vector3.forward + (Vector3.left * 0.5f) + (Vector3.down * 0.25f);
+					objectToDrop = objectToPickUp;
+					objectToDrop.GetComponent<Interactable>().isHeld = true;
+					pickUpState = PickUpState.HOLDING_OBJECT;
+				}
+		} 
+	}
 
 	public void PickUp(KeyCode key){
 		if(Input.GetKeyDown(key)){
@@ -266,7 +295,7 @@ public class DrinkControl : MonoBehaviour {
 					glassrb.useGravity = false;
 					glassrb.freezeRotation = true;
 					glassInSight.GetComponentInChildren<PourSimulator>().FillUpWithBase(myBaseType);
-					objectToDrop.GetComponent<Interactable>().Pour();
+					objectToDrop.GetComponent<Interactable>().ContextualAction();
 					
 					//check what Base is in the glass
 					if(glassInSight.GetComponent<Base>() == null && objectToDrop.GetComponent<Base>() != null){
@@ -289,10 +318,10 @@ public class DrinkControl : MonoBehaviour {
 					Glass glass = glassInSight.GetComponent<Glass>();
 					glass.KillHandTween();
 					glass.TweenToTable(dropZone);
-					objectToDrop.GetComponent<Interactable>().StopPour();
+					objectToDrop.GetComponent<Interactable>().StopContextualAction();
 					isPouring = false;
 					Ingredients.BaseType myBaseType = objectToDrop.GetComponent<Interactable>().baseType;
-					objectToDrop.GetComponent<Interactable>().StopPour();
+					objectToDrop.GetComponent<Interactable>().StopContextualAction();
 					// glassInSight.transform.localPosition = glassInSight.GetComponent<Glass>().startPos;
 					// glassInSight.GetComponentInChildren<PourSimulator>().FillUpWithBase(myBaseType);
 					glassInSight.transform.SetParent(null);	
@@ -311,7 +340,7 @@ public class DrinkControl : MonoBehaviour {
 				else if (Input.GetKeyUp(key) && glassInSight.GetComponent<Glass>().tweenToHandIsDone) {
 					isPouring = false;
 					Ingredients.BaseType myBaseType = objectToDrop.GetComponent<Interactable>().baseType;
-					objectToDrop.GetComponent<Interactable>().StopPour();
+					objectToDrop.GetComponent<Interactable>().StopContextualAction();
 					// glassInSight.transform.localPosition = glassInSight.GetComponent<Glass>().startPos;
 					// glassInSight.GetComponentInChildren<PourSimulator>().FillUpWithBase(myBaseType);
 					glassInSight.transform.SetParent(null);	
@@ -347,12 +376,12 @@ public class DrinkControl : MonoBehaviour {
 				// FindGlassRay();
 				if(Input.GetKeyDown(key) && glassInSight != null && !isPouring){
 					// Debug.Log(objectToDrop.tag);
-					objectToDrop.GetComponent<Interactable>().Pour();
+					objectToDrop.GetComponent<Interactable>().ContextualAction();
 					isPouring = true;
 					
 					//new code
 					Vector3 handPos = Vector3.forward + (Vector3.left * 0.5f) + (Vector3.down * 0.25f);
-					objectToDrop.GetComponent<Interactable>().Pour();
+					objectToDrop.GetComponent<Interactable>().ContextualAction();
 					isPouring = true;
 					Ingredients.MixerType myMixerType;
 					myMixerType = objectToDrop.GetComponent<Mixer>().mixerType;
@@ -379,7 +408,7 @@ public class DrinkControl : MonoBehaviour {
 				} 
 				else if (Input.GetKeyUp(key)) {
 					isPouring = false;
-					objectToDrop.GetComponent<Interactable>().StopPour();	
+					objectToDrop.GetComponent<Interactable>().StopContextualAction();	
 
 					Ingredients.MixerType myMixerType = objectToDrop.GetComponent<Mixer>().mixerType;
 
