@@ -85,14 +85,15 @@ public class Interactable : MonoBehaviour {
 		// handPos = _handPos;
 		transform.DOLocalMove(_handPos, 1f, false);
 		transform.DOLocalRotate(startRot, 1f, RotateMode.Fast);
-		Debug.Log("tweening" + this.gameObject.name + "to hand!");
+		// Debug.Log("tweening " + this.gameObject.name + " to hand!");
 	}
 
 	//all interactables can be given away, or "unequipped"/dropped.
 	public virtual void TweenToTable(Vector3 _tablePos){
 		// tablePos = _tablePos;
 		transform.DOMove(_tablePos, 1f, false);
-		Debug.Log("tweening" + this.gameObject.name + "to table!");
+		StartCoroutine(EnableColliderAfterTweenToTable(1f));
+		// Debug.Log("tweening " + this.gameObject.name + " to table!");
 	}
 
 	public virtual void OnTriggerEnter(Collider coll){
@@ -111,6 +112,14 @@ public class Interactable : MonoBehaviour {
 			transform.eulerAngles = startRot;
 			rb.isKinematic = false;
 		}
+	}
+	public virtual void DisableCollider(){
+		GetComponent<Collider>().enabled =  false;
+	}
+
+	public virtual IEnumerator EnableColliderAfterTweenToTable(float delay){
+		yield return new WaitForSeconds(delay);
+		GetComponent<Collider>().enabled =  true;
 	}
 }
 
