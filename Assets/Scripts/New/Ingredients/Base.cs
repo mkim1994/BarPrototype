@@ -1,12 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public class Base : MonoBehaviour {
+using DG.Tweening;
+public class Base : Interactable {
 	public Ingredients.BaseType baseType;
 	public string baseName;
+	public Vector3 myRightHandedPourRotation;
+	public Vector3 myLeftHandedPourRotation;
 
-	void Start(){
+	protected override void Start(){
+		base.Start();
 		switch (baseType){
 			case Ingredients.BaseType.GIN:
 			baseName = "gin";
@@ -24,6 +27,24 @@ public class Base : MonoBehaviour {
 			break;
 		}
 	}
+
+	public override void TwoHandedContextualAction(ObjectInHand _objectInOtherHand){
+		//all right handed actions
+		if(this.tag == "RightHand"){
+			if(_objectInOtherHand == ObjectInHand.Glass)
+				transform.DOLocalRotate(myRightHandedPourRotation, 0.75f, RotateMode.Fast);
+		}
+		//all left-handed actions
+		else if (this.tag == "LeftHand"){
+			if(_objectInOtherHand == ObjectInHand.Glass)
+				transform.DOLocalRotate(myLeftHandedPourRotation, 0.75f, RotateMode.Fast);
+		}
+	} 
+
+	public override void StopTwoHandedContextualAction(){
+		transform.DOLocalRotate(startRot, 0.3f, RotateMode.Fast);
+	}
+
 
 
 }

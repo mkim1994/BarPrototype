@@ -6,8 +6,6 @@ using DG.Tweening;
 public class Interactable : MonoBehaviour {
 
 	//exposed these to the Inspector because of tween weirdness.
-	[SerializeField]Vector3 myPourRotation;
-	[SerializeField]Vector3 myStopPourRotation;
 
 	public enum PourState{
 		Pouring,
@@ -26,8 +24,8 @@ public class Interactable : MonoBehaviour {
 	private Rigidbody rb;
 	public bool isHeld;
 	public Transform child;
-	public Ingredients.BaseType baseType;
-	public Ingredients.MixerType mixerType;
+	// public Ingredients.BaseType baseType;
+	// public Ingredients.MixerType mixerType;
 	public Vector3 startRot;
 	public Vector3 startPos;
 	// Use this for initialization
@@ -63,13 +61,20 @@ public class Interactable : MonoBehaviour {
 			transform.position = startPos;
 			transform.eulerAngles = startRot;
 		}
+
  	}
 
-	public virtual void ContextualAction(){
-		transform.DOLocalRotate(myPourRotation, 0.75f, RotateMode.Fast);
+	public virtual void TwoHandedContextualAction(ObjectInHand _objectInOtherHand){
+		// if(_objectInOtherHand == ObjectInHand.Bottle){
+		// 	//do left handed animation
+		// 	transform.DOLocalRotate(myLeftHandedPourRotation, 0.75f, RotateMode.Fast);
+		// } else if (_objectInOtherHand.tag == "LeftHand") {
+		// 	//Do right-handed animation
+		// 	transform.DOLocalRotate(myRightHandedPourRotation, 0.75f, RotateMode.Fast);
+		// }
 	} 
 
-	public virtual void StopContextualAction(){
+	public virtual void StopTwoHandedContextualAction(){
 		transform.DOLocalRotate(startRot, 0.3f, RotateMode.Fast);
 	}
 	public virtual void EnableHighlightMesh(){
@@ -92,6 +97,8 @@ public class Interactable : MonoBehaviour {
 	public virtual void TweenToTable(Vector3 _tablePos){
 		// tablePos = _tablePos;
 		transform.DOMove(_tablePos, 1f, false);
+		transform.DORotate(startRot, 1f, RotateMode.Fast);
+
 		StartCoroutine(EnableColliderAfterTweenToTable(1f));
 		// Debug.Log("tweening " + this.gameObject.name + " to table!");
 	}

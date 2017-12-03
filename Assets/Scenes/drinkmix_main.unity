@@ -757,6 +757,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 1289402415}
     m_Modifications:
+    - target: {fileID: 114360234117921938, guid: 1b6b907cb5ee0d8428fddd65a2d480e3,
+        type: 2}
+      propertyPath: actionEndRotation.Array.size
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4160381768097650, guid: 1b6b907cb5ee0d8428fddd65a2d480e3, type: 2}
       propertyPath: m_LocalPosition.x
       value: 2.376
@@ -829,7 +834,33 @@ Prefab:
       propertyPath: m_IsKinematic
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 114402355680132702, guid: 1b6b907cb5ee0d8428fddd65a2d480e3,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114360234117921938, guid: 1b6b907cb5ee0d8428fddd65a2d480e3,
+        type: 2}
+      propertyPath: myRightHandedPourRotation.x
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 114360234117921938, guid: 1b6b907cb5ee0d8428fddd65a2d480e3,
+        type: 2}
+      propertyPath: myRightHandedPourRotation.z
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 114360234117921938, guid: 1b6b907cb5ee0d8428fddd65a2d480e3,
+        type: 2}
+      propertyPath: myLeftHandedPourRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114360234117921938, guid: 1b6b907cb5ee0d8428fddd65a2d480e3,
+        type: 2}
+      propertyPath: myLeftHandedPourRotation.z
+      value: -50
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 114402355680132702, guid: 1b6b907cb5ee0d8428fddd65a2d480e3, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 1b6b907cb5ee0d8428fddd65a2d480e3, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &293224356
@@ -1738,7 +1769,38 @@ Prefab:
       propertyPath: m_IsKinematic
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 114735959425075700, guid: 0ccea903f3c08134db8ac0b9ea5b7294,
+        type: 2}
+      propertyPath: myRightHandedPourRotation.x
+      value: -37
+      objectReference: {fileID: 0}
+    - target: {fileID: 114735959425075700, guid: 0ccea903f3c08134db8ac0b9ea5b7294,
+        type: 2}
+      propertyPath: myLeftHandedPourRotation.x
+      value: -120
+      objectReference: {fileID: 0}
+    - target: {fileID: 114735959425075700, guid: 0ccea903f3c08134db8ac0b9ea5b7294,
+        type: 2}
+      propertyPath: myRightHandedPourRotation.y
+      value: -61
+      objectReference: {fileID: 0}
+    - target: {fileID: 114735959425075700, guid: 0ccea903f3c08134db8ac0b9ea5b7294,
+        type: 2}
+      propertyPath: myRightHandedPourRotation.z
+      value: -124
+      objectReference: {fileID: 0}
+    - target: {fileID: 114735959425075700, guid: 0ccea903f3c08134db8ac0b9ea5b7294,
+        type: 2}
+      propertyPath: myLeftHandedPourRotation.y
+      value: -100
+      objectReference: {fileID: 0}
+    - target: {fileID: 114735959425075700, guid: 0ccea903f3c08134db8ac0b9ea5b7294,
+        type: 2}
+      propertyPath: myLeftHandedPourRotation.z
+      value: -90
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 114841458691583614, guid: 0ccea903f3c08134db8ac0b9ea5b7294, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 0ccea903f3c08134db8ac0b9ea5b7294, type: 2}
   m_IsPrefabParent: 0
 --- !u!4 &566942137 stripped
@@ -2125,6 +2187,111 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2, y: 35.760384, z: 1.9021133}
   m_Center: {x: 0.000000059604645, y: 7.119808, z: -0.000000059604645}
+--- !u!1 &628728862
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 628728867}
+  - component: {fileID: 628728866}
+  - component: {fileID: 628728865}
+  - component: {fileID: 628728864}
+  - component: {fileID: 628728863}
+  m_Layer: 0
+  m_Name: Rag
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &628728863
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 628728862}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d584946615a7a5d4b962fe9af5997147, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pourState: 0
+  highlightState: 0
+  dropOffset: {x: 0, y: 0, z: 0}
+  rotOffset: {x: 0, y: 0, z: 0}
+  isHeld: 0
+  child: {fileID: 0}
+  startRot: {x: 0, y: 0, z: 0}
+  startPos: {x: 0, y: 0, z: 0}
+  myRightHandedPourRotation: {x: 0, y: 0, z: 0}
+  myLeftHandedPourRotation: {x: 0, y: 0, z: 0}
+--- !u!23 &628728864
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 628728862}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_Materials:
+  - {fileID: 2100000, guid: 3f690eea77f3c8047a5fd85067ece5d9, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 1
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!65 &628728865
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 628728862}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!33 &628728866
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 628728862}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &628728867
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 628728862}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 3.84, y: -0.446, z: -1.067}
+  m_LocalScale: {x: 0.51141757, y: 0.013072513, z: 0.5114175}
+  m_Children:
+  - {fileID: 1108708470}
+  m_Father: {fileID: 0}
+  m_RootOrder: 17
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &636176740
 GameObject:
   m_ObjectHideFlags: 0
@@ -3053,11 +3220,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99cf15ce25d95314d8c46911064de8ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pourState: 0
+  highlightState: 0
+  dropOffset: {x: 0, y: 0, z: 0}
+  rotOffset: {x: 0, y: 0, z: 0}
+  isHeld: 0
+  child: {fileID: 0}
+  startRot: {x: 0, y: 0, z: 0}
+  startPos: {x: 0, y: 0, z: 0}
   tweenToHandIsDone: 0
   tweenToTableIsDone: 0
   stains: []
-  startPos: {x: 0, y: 0, z: 0}
   isDirty: 0
+  myRightHandedPourRotation: {x: 0, y: 0, z: 0}
+  myLeftHandedPourRotation: {x: 0, y: 0, z: 0}
   stainHolder: {fileID: 0}
   glassName: glass
 --- !u!114 &899989187
@@ -3072,16 +3248,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d7c4cbb488d47e459070f167e8e2e25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myPourRotation: {x: 0, y: 0, z: 0}
-  myStopPourRotation: {x: 0, y: 0, z: 0}
   pourState: 0
   highlightState: 0
   dropOffset: {x: 0, y: 0, z: 0}
   rotOffset: {x: 0, y: 0, z: 0}
   isHeld: 0
   child: {fileID: 0}
-  baseType: 0
-  mixerType: 0
   startRot: {x: 0, y: 0, z: 0}
   startPos: {x: 0, y: 0, z: 0}
 --- !u!64 &899989188
@@ -3436,7 +3608,38 @@ Prefab:
       propertyPath: m_IsKinematic
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 114735959425075700, guid: 0ccea903f3c08134db8ac0b9ea5b7294,
+        type: 2}
+      propertyPath: myRightHandedPourRotation.x
+      value: -37
+      objectReference: {fileID: 0}
+    - target: {fileID: 114735959425075700, guid: 0ccea903f3c08134db8ac0b9ea5b7294,
+        type: 2}
+      propertyPath: myLeftHandedPourRotation.x
+      value: -120
+      objectReference: {fileID: 0}
+    - target: {fileID: 114735959425075700, guid: 0ccea903f3c08134db8ac0b9ea5b7294,
+        type: 2}
+      propertyPath: myRightHandedPourRotation.y
+      value: -61
+      objectReference: {fileID: 0}
+    - target: {fileID: 114735959425075700, guid: 0ccea903f3c08134db8ac0b9ea5b7294,
+        type: 2}
+      propertyPath: myRightHandedPourRotation.z
+      value: -124
+      objectReference: {fileID: 0}
+    - target: {fileID: 114735959425075700, guid: 0ccea903f3c08134db8ac0b9ea5b7294,
+        type: 2}
+      propertyPath: myLeftHandedPourRotation.y
+      value: -100
+      objectReference: {fileID: 0}
+    - target: {fileID: 114735959425075700, guid: 0ccea903f3c08134db8ac0b9ea5b7294,
+        type: 2}
+      propertyPath: myLeftHandedPourRotation.z
+      value: -90
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 114841458691583614, guid: 0ccea903f3c08134db8ac0b9ea5b7294, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 0ccea903f3c08134db8ac0b9ea5b7294, type: 2}
   m_IsPrefabParent: 0
 --- !u!4 &955874317 stripped
@@ -4111,13 +4314,46 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nearestDropzone: {fileID: 1127747837}
+  interactableCurrentlyInRangeAndLookedAt: {fileID: 0}
+  objectInLeftHand: 3
+  objectInRightHand: 3
+  objectsInHandList: []
   leftHandIsFree: 0
   rightHandIsFree: 0
+  lookingAtInteractable: 0
   pickUpKey: 323
   actionKey: 324
   layerMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!1 &1108708469
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1108708470}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1108708470
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1108708469}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 628728867}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1127747837
 GameObject:
   m_ObjectHideFlags: 0
@@ -4582,11 +4818,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99cf15ce25d95314d8c46911064de8ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pourState: 0
+  highlightState: 0
+  dropOffset: {x: 0, y: 0, z: 0}
+  rotOffset: {x: 0, y: 0, z: 0}
+  isHeld: 0
+  child: {fileID: 0}
+  startRot: {x: 0, y: 0, z: 0}
+  startPos: {x: 0, y: 0, z: 0}
   tweenToHandIsDone: 0
   tweenToTableIsDone: 0
   stains: []
-  startPos: {x: 0, y: 0, z: 0}
   isDirty: 0
+  myRightHandedPourRotation: {x: 0, y: 0, z: 0}
+  myLeftHandedPourRotation: {x: 0, y: 0, z: 0}
   stainHolder: {fileID: 0}
   glassName: glass
 --- !u!114 &1240868335
@@ -4601,16 +4846,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d7c4cbb488d47e459070f167e8e2e25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myPourRotation: {x: 0, y: 0, z: 0}
-  myStopPourRotation: {x: 0, y: 0, z: 0}
   pourState: 0
   highlightState: 0
   dropOffset: {x: 0, y: 0, z: 0}
   rotOffset: {x: 0, y: 0, z: 0}
   isHeld: 0
   child: {fileID: 0}
-  baseType: 0
-  mixerType: 0
   startRot: {x: 0, y: 0, z: 0}
   startPos: {x: 0, y: 0, z: 0}
 --- !u!65 &1240868336
@@ -4778,7 +5019,38 @@ Prefab:
       propertyPath: m_IsKinematic
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 114735959425075700, guid: 0ccea903f3c08134db8ac0b9ea5b7294,
+        type: 2}
+      propertyPath: myRightHandedPourRotation.x
+      value: -37
+      objectReference: {fileID: 0}
+    - target: {fileID: 114735959425075700, guid: 0ccea903f3c08134db8ac0b9ea5b7294,
+        type: 2}
+      propertyPath: myLeftHandedPourRotation.x
+      value: -120
+      objectReference: {fileID: 0}
+    - target: {fileID: 114735959425075700, guid: 0ccea903f3c08134db8ac0b9ea5b7294,
+        type: 2}
+      propertyPath: myRightHandedPourRotation.y
+      value: -61
+      objectReference: {fileID: 0}
+    - target: {fileID: 114735959425075700, guid: 0ccea903f3c08134db8ac0b9ea5b7294,
+        type: 2}
+      propertyPath: myRightHandedPourRotation.z
+      value: -124
+      objectReference: {fileID: 0}
+    - target: {fileID: 114735959425075700, guid: 0ccea903f3c08134db8ac0b9ea5b7294,
+        type: 2}
+      propertyPath: myLeftHandedPourRotation.y
+      value: -100
+      objectReference: {fileID: 0}
+    - target: {fileID: 114735959425075700, guid: 0ccea903f3c08134db8ac0b9ea5b7294,
+        type: 2}
+      propertyPath: myLeftHandedPourRotation.z
+      value: -90
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 114841458691583614, guid: 0ccea903f3c08134db8ac0b9ea5b7294, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 0ccea903f3c08134db8ac0b9ea5b7294, type: 2}
   m_IsPrefabParent: 0
 --- !u!4 &1256398677 stripped
@@ -4865,7 +5137,33 @@ Prefab:
       propertyPath: m_IsKinematic
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 114644755965722572, guid: 5a7bc9be83aa2094f9d5923e12178cb0,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114502354523142692, guid: 5a7bc9be83aa2094f9d5923e12178cb0,
+        type: 2}
+      propertyPath: myRightHandedPourRotation.x
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 114502354523142692, guid: 5a7bc9be83aa2094f9d5923e12178cb0,
+        type: 2}
+      propertyPath: myRightHandedPourRotation.z
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 114502354523142692, guid: 5a7bc9be83aa2094f9d5923e12178cb0,
+        type: 2}
+      propertyPath: myLeftHandedPourRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114502354523142692, guid: 5a7bc9be83aa2094f9d5923e12178cb0,
+        type: 2}
+      propertyPath: myLeftHandedPourRotation.z
+      value: -50
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 114644755965722572, guid: 5a7bc9be83aa2094f9d5923e12178cb0, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 5a7bc9be83aa2094f9d5923e12178cb0, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &1289402414
@@ -5711,7 +6009,38 @@ Prefab:
       propertyPath: m_IsKinematic
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 114735959425075700, guid: 0ccea903f3c08134db8ac0b9ea5b7294,
+        type: 2}
+      propertyPath: myRightHandedPourRotation.x
+      value: -37
+      objectReference: {fileID: 0}
+    - target: {fileID: 114735959425075700, guid: 0ccea903f3c08134db8ac0b9ea5b7294,
+        type: 2}
+      propertyPath: myLeftHandedPourRotation.x
+      value: -120
+      objectReference: {fileID: 0}
+    - target: {fileID: 114735959425075700, guid: 0ccea903f3c08134db8ac0b9ea5b7294,
+        type: 2}
+      propertyPath: myRightHandedPourRotation.z
+      value: -124
+      objectReference: {fileID: 0}
+    - target: {fileID: 114735959425075700, guid: 0ccea903f3c08134db8ac0b9ea5b7294,
+        type: 2}
+      propertyPath: myLeftHandedPourRotation.z
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 114735959425075700, guid: 0ccea903f3c08134db8ac0b9ea5b7294,
+        type: 2}
+      propertyPath: myRightHandedPourRotation.y
+      value: -61
+      objectReference: {fileID: 0}
+    - target: {fileID: 114735959425075700, guid: 0ccea903f3c08134db8ac0b9ea5b7294,
+        type: 2}
+      propertyPath: myLeftHandedPourRotation.y
+      value: -100
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 114841458691583614, guid: 0ccea903f3c08134db8ac0b9ea5b7294, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 0ccea903f3c08134db8ac0b9ea5b7294, type: 2}
   m_IsPrefabParent: 0
 --- !u!4 &1457469767 stripped
@@ -5892,11 +6221,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99cf15ce25d95314d8c46911064de8ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pourState: 0
+  highlightState: 0
+  dropOffset: {x: 0, y: 0, z: 0}
+  rotOffset: {x: 0, y: 0, z: 0}
+  isHeld: 0
+  child: {fileID: 0}
+  startRot: {x: 0, y: 0, z: 0}
+  startPos: {x: 0, y: 0, z: 0}
   tweenToHandIsDone: 0
   tweenToTableIsDone: 0
   stains: []
-  startPos: {x: 0, y: 0, z: 0}
   isDirty: 0
+  myRightHandedPourRotation: {x: 0, y: 0, z: 0}
+  myLeftHandedPourRotation: {x: 0, y: 0, z: 0}
   stainHolder: {fileID: 0}
   glassName: glass
 --- !u!114 &1501642968
@@ -5911,16 +6249,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d7c4cbb488d47e459070f167e8e2e25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myPourRotation: {x: 0, y: 0, z: 0}
-  myStopPourRotation: {x: 0, y: 0, z: 0}
   pourState: 0
   highlightState: 0
   dropOffset: {x: 0, y: 0, z: 0}
   rotOffset: {x: 0, y: 0, z: 0}
   isHeld: 0
   child: {fileID: 0}
-  baseType: 0
-  mixerType: 0
   startRot: {x: 0, y: 0, z: 0}
   startPos: {x: 0, y: 0, z: 0}
 --- !u!65 &1501642969
@@ -7312,7 +7646,38 @@ Prefab:
       propertyPath: m_IsKinematic
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 114735959425075700, guid: 0ccea903f3c08134db8ac0b9ea5b7294,
+        type: 2}
+      propertyPath: myRightHandedPourRotation.x
+      value: -37
+      objectReference: {fileID: 0}
+    - target: {fileID: 114735959425075700, guid: 0ccea903f3c08134db8ac0b9ea5b7294,
+        type: 2}
+      propertyPath: myLeftHandedPourRotation.x
+      value: -120
+      objectReference: {fileID: 0}
+    - target: {fileID: 114735959425075700, guid: 0ccea903f3c08134db8ac0b9ea5b7294,
+        type: 2}
+      propertyPath: myRightHandedPourRotation.y
+      value: -61
+      objectReference: {fileID: 0}
+    - target: {fileID: 114735959425075700, guid: 0ccea903f3c08134db8ac0b9ea5b7294,
+        type: 2}
+      propertyPath: myRightHandedPourRotation.z
+      value: -124
+      objectReference: {fileID: 0}
+    - target: {fileID: 114735959425075700, guid: 0ccea903f3c08134db8ac0b9ea5b7294,
+        type: 2}
+      propertyPath: myLeftHandedPourRotation.y
+      value: -100
+      objectReference: {fileID: 0}
+    - target: {fileID: 114735959425075700, guid: 0ccea903f3c08134db8ac0b9ea5b7294,
+        type: 2}
+      propertyPath: myLeftHandedPourRotation.z
+      value: -90
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 114841458691583614, guid: 0ccea903f3c08134db8ac0b9ea5b7294, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 0ccea903f3c08134db8ac0b9ea5b7294, type: 2}
   m_IsPrefabParent: 0
 --- !u!4 &1805832832 stripped
@@ -7385,7 +7750,38 @@ Prefab:
       propertyPath: m_IsKinematic
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 114735959425075700, guid: 0ccea903f3c08134db8ac0b9ea5b7294,
+        type: 2}
+      propertyPath: myRightHandedPourRotation.x
+      value: -37
+      objectReference: {fileID: 0}
+    - target: {fileID: 114735959425075700, guid: 0ccea903f3c08134db8ac0b9ea5b7294,
+        type: 2}
+      propertyPath: myLeftHandedPourRotation.x
+      value: -120
+      objectReference: {fileID: 0}
+    - target: {fileID: 114735959425075700, guid: 0ccea903f3c08134db8ac0b9ea5b7294,
+        type: 2}
+      propertyPath: myRightHandedPourRotation.y
+      value: -61
+      objectReference: {fileID: 0}
+    - target: {fileID: 114735959425075700, guid: 0ccea903f3c08134db8ac0b9ea5b7294,
+        type: 2}
+      propertyPath: myRightHandedPourRotation.z
+      value: -124
+      objectReference: {fileID: 0}
+    - target: {fileID: 114735959425075700, guid: 0ccea903f3c08134db8ac0b9ea5b7294,
+        type: 2}
+      propertyPath: myLeftHandedPourRotation.y
+      value: -100
+      objectReference: {fileID: 0}
+    - target: {fileID: 114735959425075700, guid: 0ccea903f3c08134db8ac0b9ea5b7294,
+        type: 2}
+      propertyPath: myLeftHandedPourRotation.z
+      value: -90
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 114841458691583614, guid: 0ccea903f3c08134db8ac0b9ea5b7294, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 0ccea903f3c08134db8ac0b9ea5b7294, type: 2}
   m_IsPrefabParent: 0
 --- !u!4 &1826840622 stripped
@@ -7406,7 +7802,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4257702657318100, guid: 55564a28420af5b4197ecea907b38083, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -1.14
+      value: -1.116
       objectReference: {fileID: 0}
     - target: {fileID: 4257702657318100, guid: 55564a28420af5b4197ecea907b38083, type: 2}
       propertyPath: m_LocalPosition.z
@@ -7414,7 +7810,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4257702657318100, guid: 55564a28420af5b4197ecea907b38083, type: 2}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4257702657318100, guid: 55564a28420af5b4197ecea907b38083, type: 2}
       propertyPath: m_LocalRotation.y
@@ -7422,7 +7818,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4257702657318100, guid: 55564a28420af5b4197ecea907b38083, type: 2}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4257702657318100, guid: 55564a28420af5b4197ecea907b38083, type: 2}
       propertyPath: m_LocalRotation.w
@@ -7467,7 +7863,45 @@ Prefab:
       propertyPath: m_IsKinematic
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 114954622600871380, guid: 55564a28420af5b4197ecea907b38083,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4257702657318100, guid: 55564a28420af5b4197ecea907b38083, type: 2}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -90.00001
+      objectReference: {fileID: 0}
+    - target: {fileID: 4257702657318100, guid: 55564a28420af5b4197ecea907b38083, type: 2}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4257702657318100, guid: 55564a28420af5b4197ecea907b38083, type: 2}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114884386473456210, guid: 55564a28420af5b4197ecea907b38083,
+        type: 2}
+      propertyPath: myRightHandedPourRotation.x
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 114884386473456210, guid: 55564a28420af5b4197ecea907b38083,
+        type: 2}
+      propertyPath: myRightHandedPourRotation.z
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 114884386473456210, guid: 55564a28420af5b4197ecea907b38083,
+        type: 2}
+      propertyPath: myLeftHandedPourRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114884386473456210, guid: 55564a28420af5b4197ecea907b38083,
+        type: 2}
+      propertyPath: myLeftHandedPourRotation.z
+      value: -50
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 114954622600871380, guid: 55564a28420af5b4197ecea907b38083, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 55564a28420af5b4197ecea907b38083, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &1843599212 stripped
