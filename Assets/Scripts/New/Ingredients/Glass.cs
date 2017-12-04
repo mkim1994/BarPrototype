@@ -16,6 +16,9 @@ public class Glass : Interactable {
 	public bool isDirty = false;
 	public Vector3 myRightHandedPourRotation;
 	public Vector3 myLeftHandedPourRotation;
+
+	Vector3 myInitHandPos;
+	Vector3 myInitHandRot;
 	public GameObject stainHolder;
 	public string glassName = "glass";
 	// Use this for initialization
@@ -86,21 +89,54 @@ public class Glass : Interactable {
 		if(this.tag == "RightHand"){
 			if(_objectInOtherHand == ObjectInHand.Bottle)
 				transform.DOLocalRotate(myRightHandedPourRotation, 0.75f, RotateMode.Fast);
+			//Rag
 			else if (_objectInOtherHand == ObjectInHand.Rag){
-				transform.DOLocalMove((Vector3.left*cleaningOffsetX) + Vector3.forward + (Vector3.down * 0.5f), 0.25f, false);
+				RightHandToRagTween();
 			}
 		}
 		//all left-handed actions
 		else if (this.tag == "LeftHand"){
+			//Bottle
 			if(_objectInOtherHand == ObjectInHand.Bottle)
 				transform.DOLocalRotate(myLeftHandedPourRotation, 0.75f, RotateMode.Fast);
+			//Rag
 			else if (_objectInOtherHand == ObjectInHand.Rag){
-				//do rag action
-				transform.DOLocalMove((Vector3.right*cleaningOffsetX) + Vector3.forward + (Vector3.down * 0.5f), 0.25f, false);
+				LeftHandToRagTween();
 			}
 		}
 	} 
 
+	// private void RightHandCleaningTween(){
+	// 	Sequence glassToRagSequence = DOTween.Sequence();
+	// 	glassToRagSequence.Append(transform.DOLocalMove((Vector3.left*cleaningOffsetX) + Vector3.forward + (Vector3.down * 0.5f), 0.25f, false));
+	// }
+
+	// private void LeftHandCleaningTween(){
+	// 	Sequence glassToRagSequence = DOTween.Sequence();
+	// 	glassToRagSequence.Append(transform.DOLocalMove((Vector3.right*cleaningOffsetX) + Vector3.forward + (Vector3.down * 0.5f), 0.25f, false));
+	// }
+
+	private void RightHandToRagTween(){
+		Sequence cleanSequence = DOTween.Sequence();
+		cleanSequence.Append(transform.DOLocalMove((Vector3.left*cleaningOffsetX) + Vector3.forward + (Vector3.down * 0.5f), 0.25f, false));
+		cleanSequence.OnComplete(()=>ReturnToInitHandPos(myInitHandPos, onTableRot));
+	}
+	private void LeftHandToRagTween(){
+		Sequence cleanSequence = DOTween.Sequence();
+ 		cleanSequence.Append(transform.DOLocalMove((Vector3.right*cleaningOffsetX) + Vector3.forward + (Vector3.down * 0.5f), 0.25f, false));
+		cleanSequence.OnComplete(()=>ReturnToInitHandPos(myInitHandPos, onTableRot));
+	}
+
+	public override void ReturnToInitHandPos(Vector3 _initHandPos, Vector3 _initHandRot){
+		transform.DOLocalMove(_initHandPos, 0.5f, false).SetDelay(2.6f);
+		transform.DOLocalRotate(_initHandRot, 0.5f, RotateMode.Fast).SetDelay(2.6f);
+	}
+
+	public override void TweenToHand(Vector3 _handPos){
+ 		myInitHandPos = _handPos;
+		transform.DOLocalMove(_handPos, 1f, false);
+		transform.DOLocalRotate(onTableRot, 1f, RotateMode.Fast);
+ 	}
 }
 
 

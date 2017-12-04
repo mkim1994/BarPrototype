@@ -32,9 +32,9 @@ public class Rag : Interactable {
 		}
 	} 
 
-	private void ReturnToInitHandPos(){
-		transform.DOLocalMove(myInitHandPosition, 0.5f, false);
-		transform.DOLocalRotate(myInitHandRotation, 0.5f, RotateMode.Fast);
+	public override void ReturnToInitHandPos(Vector3 _initHandPos, Vector3 _initHandRot){
+		transform.DOLocalMove(_initHandPos, 0.5f, false);
+		transform.DOLocalRotate(_initHandRot, 0.5f, RotateMode.Fast);
 	}
 
 	private void RightRagToGlassTween(){
@@ -55,7 +55,7 @@ public class Rag : Interactable {
 		ragSequence.Append(transform.DOLocalMove((Vector3.down*0.35f) + Vector3.forward, 0.35f, false));
 		// ragSequence.Append(transform.DOLocalMove(myInitHandPosition, 0.75f, false));
 		ragSequence.SetLoops(3);
-		ragSequence.OnComplete(()=>ReturnToInitHandPos());
+		ragSequence.OnComplete(()=>ReturnToInitHandPos(myInitHandPosition, myInitHandRotation));
 	}
 
 	private void LeftHandCleaningTween(){
@@ -64,7 +64,7 @@ public class Rag : Interactable {
 		ragSequence.Append(transform.DOLocalMove((Vector3.down*0.35f) + Vector3.forward, 0.35f, false));
 		// ragSequence.Append(transform.DOLocalMove(myInitHandPosition, 0.75f, false));
 		ragSequence.SetLoops(3);
-		ragSequence.OnComplete(()=>ReturnToInitHandPos());
+		ragSequence.OnComplete(()=>ReturnToInitHandPos(myInitHandPosition, myInitHandRotation));
 	}
 
 	public override void TweenToHand(Vector3 _handPos){

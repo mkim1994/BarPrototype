@@ -132,6 +132,26 @@ public class Interactable : MonoBehaviour {
 		yield return new WaitForSeconds(delay);
 		GetComponent<Collider>().enabled =  true;
 	}
+
+	public virtual void ReturnToInitHandPos(Vector3 _initHandPos, Vector3 _initHandRot){
+		transform.DOLocalMove(_initHandPos, 0.5f, false);
+		transform.DOLocalRotate(_initHandRot, 0.5f, RotateMode.Fast);
+	}
+	public virtual void TweenBackToIdleLeftHand(){
+
+	}
+
+	public virtual void TweenBackToIdleRightHand(){
+
+	}
+
+	public virtual void TweenLeftHandAction(){
+
+	}
+
+	public virtual void TweenRightHandAction(){
+
+	}
 }
 
 
