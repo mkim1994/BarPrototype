@@ -5,6 +5,7 @@ using UnityEngine;
 using DG.Tweening;
 
 public class Glass : Interactable {
+	private float cleaningOffsetX = -0.25f;
 	private Vector3 handPos;
 	private Vector3 tablePos;
 	public bool tweenToHandIsDone;
@@ -20,8 +21,8 @@ public class Glass : Interactable {
 	// Use this for initialization
 	protected override void Start () {
 		tweenToHandIsDone = false;
-		startPos = transform.position;
-		startRot = transform.localEulerAngles;		
+		onTablePos = transform.position;
+		onTableRot = transform.localEulerAngles;		
 		interactable = GetComponent<Interactable>();
 	}
 	
@@ -50,7 +51,7 @@ public class Glass : Interactable {
 	}
 
 	public void StopEmptyGlass(){
-		transform.localEulerAngles = startRot;
+		transform.localEulerAngles = onTableRot;
 	}
 
 	float newAlpha;
@@ -86,7 +87,7 @@ public class Glass : Interactable {
 			if(_objectInOtherHand == ObjectInHand.Bottle)
 				transform.DOLocalRotate(myRightHandedPourRotation, 0.75f, RotateMode.Fast);
 			else if (_objectInOtherHand == ObjectInHand.Rag){
-				//do rag action
+				transform.DOLocalMove((Vector3.left*cleaningOffsetX) + Vector3.forward + (Vector3.down * 0.5f), 0.25f, false);
 			}
 		}
 		//all left-handed actions
@@ -95,6 +96,7 @@ public class Glass : Interactable {
 				transform.DOLocalRotate(myLeftHandedPourRotation, 0.75f, RotateMode.Fast);
 			else if (_objectInOtherHand == ObjectInHand.Rag){
 				//do rag action
+				transform.DOLocalMove((Vector3.right*cleaningOffsetX) + Vector3.forward + (Vector3.down * 0.5f), 0.25f, false);
 			}
 		}
 	} 

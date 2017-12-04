@@ -26,15 +26,17 @@ public class Interactable : MonoBehaviour {
 	public Transform child;
 	// public Ingredients.BaseType baseType;
 	// public Ingredients.MixerType mixerType;
-	public Vector3 startRot;
-	public Vector3 startPos;
+	public Vector3 onTableRot;
+	public Vector3 onTablePos;
 	// Use this for initialization
 	protected virtual void Start () {
 		// child = gameObject.transform.Find("MouseOverBottle");
-		rb = GetComponent<Rigidbody>();
+		if(GetComponent<Rigidbody>() != null){
+			rb = GetComponent<Rigidbody>();
+		}
  		child = transform.GetChild(0);
-		startPos = transform.position;
- 		startRot = transform.eulerAngles;
+		onTablePos = transform.position;
+ 		onTableRot = transform.eulerAngles;
 		highlightState = HighlightState.Not_highlighted;
 	}
 	
@@ -47,7 +49,7 @@ public class Interactable : MonoBehaviour {
 				child.GetComponent<MeshRenderer>().enabled = true;
   				break;
 			case HighlightState.Not_highlighted:
-				child.GetComponent<MeshRenderer>().enabled = false;
+				child.GetComponent<MeshRenderer>().enabled = false;			
  				break;
 			default:
 				break;
@@ -57,9 +59,11 @@ public class Interactable : MonoBehaviour {
 
 		//teleport to original position if off-map
 		if(transform.position.y <= -5f){
-			rb.isKinematic = true;
-			transform.position = startPos;
-			transform.eulerAngles = startRot;
+			if(rb != null){
+				rb.isKinematic = true;
+			}
+			transform.position = onTablePos;
+			transform.eulerAngles = onTableRot;
 		}
 
  	}
@@ -75,7 +79,7 @@ public class Interactable : MonoBehaviour {
 	} 
 
 	public virtual void StopTwoHandedContextualAction(){
-		transform.DOLocalRotate(startRot, 0.3f, RotateMode.Fast);
+		transform.DOLocalRotate(onTableRot, 0.3f, RotateMode.Fast);
 	}
 	public virtual void EnableHighlightMesh(){
 		highlightState = HighlightState.Highlighted;
@@ -89,7 +93,7 @@ public class Interactable : MonoBehaviour {
 	public virtual void TweenToHand(Vector3 _handPos){
 		// handPos = _handPos;
 		transform.DOLocalMove(_handPos, 1f, false);
-		transform.DOLocalRotate(startRot, 1f, RotateMode.Fast);
+		transform.DOLocalRotate(onTableRot, 1f, RotateMode.Fast);
 		// Debug.Log("tweening " + this.gameObject.name + " to hand!");
 	}
 
@@ -97,7 +101,7 @@ public class Interactable : MonoBehaviour {
 	public virtual void TweenToTable(Vector3 _tablePos){
 		// tablePos = _tablePos;
 		transform.DOMove(_tablePos, 1f, false);
-		transform.DORotate(startRot, 1f, RotateMode.Fast);
+		transform.DORotate(onTableRot, 1f, RotateMode.Fast);
 
 		StartCoroutine(EnableColliderAfterTweenToTable(1f));
 		// Debug.Log("tweening " + this.gameObject.name + " to table!");
@@ -115,8 +119,8 @@ public class Interactable : MonoBehaviour {
 	public virtual void OnCollisionEnter(Collision coll){
 		if(coll.transform.tag == "Floor"){
 			rb.isKinematic = true;
-			transform.position = startPos;
-			transform.eulerAngles = startRot;
+			transform.position = onTablePos;
+			transform.eulerAngles = onTableRot;
 			rb.isKinematic = false;
 		}
 	}

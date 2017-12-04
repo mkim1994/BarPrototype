@@ -42,7 +42,7 @@ public class Base : Interactable {
 	} 
 
 	public override void StopTwoHandedContextualAction(){
-		transform.DOLocalRotate(startRot, 0.3f, RotateMode.Fast);
+		transform.DOLocalRotate(onTableRot, 0.3f, RotateMode.Fast);
 	}
 
 
