@@ -41,9 +41,10 @@ public class InteractionManager : MonoBehaviour {
 		if(!leftHandIsFree && !rightHandIsFree){
 			TwoHandedInteractableAction(rightActionKey, leftActionKey);
 			LeftHandAction(leftActionKey);
-			RightHandAction(rightActionKey);
+			// RightHandAction(rightActionKey);
 		} else if (leftHandIsFree && !rightHandIsFree) {
-			RightHandAction(rightActionKey);
+			// RightHandAction(rightActionKey);
+			LeftHandAction(leftActionKey);
 		} else if (!leftHandIsFree && rightHandIsFree){
 			LeftHandAction(leftActionKey);
 		} 
