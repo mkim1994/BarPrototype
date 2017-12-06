@@ -20,7 +20,8 @@ public class InteractionManager : MonoBehaviour {
 	private Vector3 leftHandPos;
 	public KeyCode rightHandPickUpKey;
 	public KeyCode leftHandPickUpKey;
-	public KeyCode actionKey;
+	public KeyCode leftActionKey;
+	public KeyCode rightActionKey;
 
 	public LayerMask layerMask;
 	// Use this for initialization
@@ -37,11 +38,13 @@ public class InteractionManager : MonoBehaviour {
 		LeftHandPickUp(leftHandPickUpKey);
  		FindInteractableRay();
 		if(!leftHandIsFree && !rightHandIsFree){
-			TwoHandedInteractableAction(actionKey);
+			TwoHandedInteractableAction(rightActionKey, leftActionKey);
+			LeftHandAction(leftActionKey);
+			RightHandAction(rightActionKey);
 		} else if (leftHandIsFree && !rightHandIsFree) {
-			//OneHandedInteractableAction(actionKey);
+			RightHandAction(rightActionKey);
 		} else if (!leftHandIsFree && rightHandIsFree){
-			//OneHandedInteractableAction(actionKey);
+			LeftHandAction(leftActionKey);
 		} 
  	}
 
@@ -78,9 +81,16 @@ public class InteractionManager : MonoBehaviour {
 	void OneHandedInteractableAction(KeyCode key){
 
 	}
+	void LeftHandAction(KeyCode leftKey){
 
-	bool isPouring = false;
-	void TwoHandedInteractableAction(KeyCode key){	
+	}
+
+	void RightHandAction(KeyCode rightKey){
+
+	}
+
+	bool isPerformingAction = false;
+	void TwoHandedInteractableAction(KeyCode rightKey, KeyCode leftKey){	
 		/* 
 		Interactable how to get reference to the other one? 
 		the interactable needs to know the ff:
@@ -93,25 +103,29 @@ public class InteractionManager : MonoBehaviour {
 			2)   
 		*/
 
-		if(Input.GetKey(key) && !isPouring){
-			foreach (GameObject objectInHand in objectsInHand){
-				if(objectInHand.tag == "RightHand"){
-					objectInHand.GetComponent<Interactable>().TwoHandedContextualAction(objectInLeftHand);
-				} else if (objectInHand.tag == "LeftHand") {
-					objectInHand.GetComponent<Interactable>().TwoHandedContextualAction(objectInRightHand);
-				}
+		if(Input.GetKey(rightKey) && !isPerformingAction){
+			if(Input.GetKey(leftKey)){
+				objectInRightHandGO.GetComponent<Interactable>().TwoHandedContextualAction(objectInLeftHand);
+				objectInLeftHandGO.GetComponent<Interactable>().TwoHandedContextualAction(objectInRightHand);
+				isPerformingAction = true;
 			}
-			isPouring = true;
-		} else if (Input.GetKeyUp(key) && isPouring){
-			isPouring = false;
-			// foreach (GameObject objectInHand in objectsInHand){
-			// 	if(objectInHand.tag == "RightHand"){
-			// 		objectInHand.GetComponent<Interactable>().TwoHandedContextualAction(objectInLeftHand);
-			// 	} else if (objectInHand.tag == "LeftHand") {
-			// 		objectInHand.GetComponent<Interactable>().TwoHandedContextualAction(objectInRightHand);
-			// 	}
-			// }
+		} else if ((Input.GetKeyUp(rightKey) || Input.GetKeyUp(leftKey)) && isPerformingAction){
+			Debug.Log("Stop performing action!");
+			isPerformingAction = false;
 		}
+
+		// if((Input.GetKey(rightKey) || Input.GetKey(leftKey)) && !isPerformingAction){
+		// 	foreach (GameObject objectInHand in objectsInHand){
+		// 		if(objectInHand.tag == "RightHand"){
+		// 			objectInHand.GetComponent<Interactable>().TwoHandedContextualAction(objectInLeftHand);
+		// 		} else if (objectInHand.tag == "LeftHand") {
+		// 			objectInHand.GetComponent<Interactable>().TwoHandedContextualAction(objectInRightHand);
+		// 		}
+		// 	}
+		// 	isPerformingAction = true;
+		// } else if ((Input.GetKeyUp(rightKey) || Input.GetKeyUp(leftKey)) && isPerformingAction){
+		// 	isPerformingAction = false;
+		// }
 	}
 
 	void LeftHandPickUp(KeyCode key){

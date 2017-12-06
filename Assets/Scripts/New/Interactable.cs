@@ -67,7 +67,6 @@ public class Interactable : MonoBehaviour {
 		}
 
  	}
-
 	public virtual void TwoHandedContextualAction(ObjectInHand _objectInOtherHand){
 		// if(_objectInOtherHand == ObjectInHand.Bottle){
 		// 	//do left handed animation
@@ -137,6 +136,7 @@ public class Interactable : MonoBehaviour {
 		transform.DOLocalMove(_initHandPos, 0.5f, false);
 		transform.DOLocalRotate(_initHandRot, 0.5f, RotateMode.Fast);
 	}
+
 	public virtual void TweenBackToIdleLeftHand(){
 
 	}

@@ -4334,12 +4334,15 @@ MonoBehaviour:
   objectInLeftHand: 3
   objectInRightHand: 3
   objectsInHandList: []
+  objectInLeftHandGO: {fileID: 0}
+  objectInRightHandGO: {fileID: 0}
   leftHandIsFree: 0
   rightHandIsFree: 0
   lookingAtInteractable: 0
   rightHandPickUpKey: 337
   leftHandPickUpKey: 336
-  actionKey: 334
+  leftActionKey: 334
+  rightActionKey: 335
   layerMask:
     serializedVersion: 2
     m_Bits: 4294967295
