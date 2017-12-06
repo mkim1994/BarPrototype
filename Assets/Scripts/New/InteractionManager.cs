@@ -10,12 +10,15 @@ public class InteractionManager : MonoBehaviour {
 	public ObjectInHand objectInLeftHand;
 	public ObjectInHand objectInRightHand;
 	public List<GameObject> objectsInHandList = new List<GameObject>();
+
+	public GameObject objectInleftHandGO;
 	public bool leftHandIsFree;
 	public bool rightHandIsFree;
 	public bool lookingAtInteractable;
 	private Vector3 rightHandPos;
 	private Vector3 leftHandPos;
-	public KeyCode pickUpKey;
+	public KeyCode rightHandPickUpKey;
+	public KeyCode leftHandPickUpKey;
 	public KeyCode actionKey;
 
 	public LayerMask layerMask;
@@ -29,7 +32,8 @@ public class InteractionManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		PickUp(pickUpKey);
+		PickUp(rightHandPickUpKey);
+		LeftHandPickUp(leftHandPickUpKey);
  		FindInteractableRay();
 		if(!leftHandIsFree && !rightHandIsFree){
 			TwoHandedInteractableAction(actionKey);
@@ -97,8 +101,7 @@ public class InteractionManager : MonoBehaviour {
 				}
 			}
 			isPouring = true;
-		} 
-		else if (Input.GetKeyUp(key) && isPouring){
+		} else if (Input.GetKeyUp(key) && isPouring){
 			isPouring = false;
 			// foreach (GameObject objectInHand in objectsInHand){
 			// 	if(objectInHand.tag == "RightHand"){
@@ -110,15 +113,47 @@ public class InteractionManager : MonoBehaviour {
 		}
 	}
 
-	void PickUp(KeyCode key){
-		if(interactableCurrentlyInRangeAndLookedAt != null){
+	void LeftHandPickUp(KeyCode key){
+	if(interactableCurrentlyInRangeAndLookedAt != null){
 			//pick up stuff.
 			if(Input.GetKeyDown(key)){
 				interactableCurrentlyInRangeAndLookedAt.transform.SetParent(this.transform);
 				Interactable interactable = interactableCurrentlyInRangeAndLookedAt.GetComponent<Interactable>();
 				//turn off the collider to avoid catching it in a raycast
 				interactable.DisableCollider();
-				interactable.TweenToHand(leftHandPos);
+				// interactable.TweenToHand(leftHandPos);
+				//both hands free, looking at interactable.			
+				if(leftHandIsFree){
+					// Debug.Log("both hands are free");
+					PickUpInteractableWithLeftHand(interactable);
+				}  
+				//swap!
+				else if (!leftHandIsFree){
+					//first check which hand is to be swapped.	
+					SwapInteractableInLeftHand(interactable);
+				} 
+				
+			}
+		//DROP STUFF
+		} else if (interactableCurrentlyInRangeAndLookedAt == null){
+			if(Input.GetKeyDown(key)){
+				if (!leftHandIsFree){
+					//drop the last grabbed object.
+					DropLastPickedUpInteractable(key);
+				} 
+			}
+		}	
+	}
+	void PickUp(KeyCode key){
+		if(interactableCurrentlyInRangeAndLookedAt != null){
+			//pick up stuff.
+			if(Input.GetKeyDown(key)){
+			// if(Input.GetKeyDown(key)){
+				interactableCurrentlyInRangeAndLookedAt.transform.SetParent(this.transform);
+				Interactable interactable = interactableCurrentlyInRangeAndLookedAt.GetComponent<Interactable>();
+				//turn off the collider to avoid catching it in a raycast
+				interactable.DisableCollider();
+				// interactable.TweenToHand(leftHandPos);
 				//both hands free, looking at interactable.			
 				if(leftHandIsFree && rightHandIsFree){
 					// Debug.Log("both hands are free");
@@ -151,11 +186,11 @@ public class InteractionManager : MonoBehaviour {
 			if(Input.GetKeyDown(key)){
 				if (!leftHandIsFree && !rightHandIsFree){
 					//drop the last grabbed object.
-					DropLastPickedUpInteractable();
+					DropLastPickedUpInteractable(key);
 				} else if (leftHandIsFree || rightHandIsFree){
 					//Drop the last remaining object.
 					Debug.Log("I should drop the object in my hand!");	
-					DropLastRemainingInteractable();
+					// DropLastRemainingInteractable();
 				}
 			}
 		}
@@ -173,7 +208,9 @@ public class InteractionManager : MonoBehaviour {
 			objectInLeftHand = ObjectInHand.Rag;
 		} 
 		leftHandIsFree = false;
-		objectsInHand.Push(interactableCurrentlyInRangeAndLookedAt);
+		objectInleftHandGO = interactableCurrentlyInRangeAndLookedAt;
+		// objectsInHandList.Add(interactableCurrentlyInRangeAndLookedAt);
+		// objectsInHand.Push(interactableCurrentlyInRangeAndLookedAt);
 	}
 
 	private void PickUpInteractableWithRightHand(Interactable _interactable){
@@ -195,11 +232,42 @@ public class InteractionManager : MonoBehaviour {
 		_interactable.TweenToHand(leftHandPos);
 		_interactable.tag = "LeftHand";				
 		_interactable.DisableCollider();
-		objectsInHand.Peek().tag = "Untagged";
-		objectsInHand.Peek().GetComponent<Interactable>().TweenToTable(nearestDropzone.transform.position);
-		objectsInHand.Pop().transform.SetParent(null);
-		objectsInHand.Push(_interactable.gameObject);
+		if(objectInleftHandGO != null){
+			objectInleftHandGO.tag = "Untagged";
+			objectInleftHandGO.transform.SetParent(null);
+			objectInleftHandGO.GetComponent<Interactable>().TweenToTable(nearestDropzone.transform.position);
+			objectInleftHandGO = null;
+			objectInleftHandGO = _interactable.gameObject;
+		}
+		// if(objectsInHandList.Count > 0){
+		// 	foreach (GameObject _object in objectsInHandList){
+		// 		if(_object.tag == "LeftHand"){
+		// 			_object.tag = "Untagged";
+		// 			_object.transform.SetParent(null);
+		// 			objectsInHandList.Remove(_object);
+		// 			_object.GetComponent<Interactable>().TweenToTable(nearestDropzone.transform.position);
+		// 		}
+		// 	}
+		// }
+		// objectsInHandList.Add(_interactable.gameObject);
+
+		// objectsInHand.Peek().tag = "Untagged";
+		// objectsInHand.Peek().GetComponent<Interactable>().TweenToTable(nearestDropzone.transform.position);
+		// objectsInHand.Pop().transform.SetParent(null);
+		// objectsInHand.Push(_interactable.gameObject);
+		
 	}
+
+	// private void SwapInteractableInLeftHand(Interactable _interactable){
+	// 	_interactable.TweenToHand(leftHandPos);
+	// 	_interactable.tag = "LeftHand";				
+	// 	_interactable.DisableCollider();
+	// 	objectsInHand.Peek().tag = "Untagged";
+	// 	objectsInHand.Peek().GetComponent<Interactable>().TweenToTable(nearestDropzone.transform.position);
+	// 	objectsInHand.Pop().transform.SetParent(null);
+	// 	objectsInHand.Push(_interactable.gameObject);
+	// }
+
 
 	private void SwapInteractableInRightHand(Interactable _interactable){
 		_interactable.TweenToHand(rightHandPos);
@@ -211,35 +279,58 @@ public class InteractionManager : MonoBehaviour {
 		objectsInHand.Push(_interactable.gameObject);
 	}
 
-	private void DropLastPickedUpInteractable(){
-		if(objectsInHand.Count>0){
-			objectsInHand.Peek().GetComponent<Interactable>().TweenToTable(nearestDropzone.transform.position);
-			if(objectsInHand.Peek().tag == "RightHand"){
-				rightHandIsFree = true;
-				objectsInHand.Peek().tag = "Untagged";
-				objectsInHand.Pop().transform.SetParent(null);
-				objectInRightHand = ObjectInHand.None;
-			} else {
-				leftHandIsFree = true;
-				objectsInHand.Peek().tag = "Untagged";
-				objectsInHand.Pop().transform.SetParent(null);
-				objectInLeftHand = ObjectInHand.None;
-			}	
-		}
-	}
-
-	private void DropLastRemainingInteractable(){
-		if(objectsInHand.Count>0){
-			objectsInHand.Peek().tag = "Untagged";
-			objectsInHand.Peek().transform.SetParent(null);
-			objectsInHand.Pop().GetComponent<Interactable>().TweenToTable(nearestDropzone.transform.position);
+	private void DropLastPickedUpInteractable(KeyCode key){
+		//check which hand to drop object from
+		if(key == leftHandPickUpKey){
+			Debug.Log("Left hand should drop something!");
+			if(objectInleftHandGO != null){
+				objectInleftHandGO.tag = "Untagged";
+				objectInleftHandGO.transform.SetParent(null);
+				objectInleftHandGO.GetComponent<Interactable>().TweenToTable(nearestDropzone.transform.position);
+				objectInleftHandGO = null;
+			}
+			// foreach (GameObject _object in objectsInHandList){
+			// 	if(_object.tag == "LeftHand"){
+			// 		_object.tag = "Untagged";
+			// 		_object.GetComponent<Interactable>().TweenToTable(nearestDropzone.transform.position);
+			// 		_object.transform.SetParent(null);
+			// 		objectsInHandList.Remove(_object);
+			// 	}
+			// }
 			leftHandIsFree = true;
-			rightHandIsFree = true;
 			objectInLeftHand = ObjectInHand.None;
-			objectInRightHand = ObjectInHand.None;
-		}	
+			}
+		}
+	
 	}
 
-	
-	
-}
+	// private void DropLastPickedUpInteractable(){
+	// 	if(objectsInHand.Count>0){
+	// 		objectsInHand.Peek().GetComponent<Interactable>().TweenToTable(nearestDropzone.transform.position);
+	// 		if(objectsInHand.Peek().tag == "RightHand"){
+	// 			rightHandIsFree = true;
+	// 			objectsInHand.Peek().tag = "Untagged";
+	// 			objectsInHand.Pop().transform.SetParent(null);
+	// 			objectInRightHand = ObjectInHand.None;
+	// 		} else {
+	// 			leftHandIsFree = true;
+	// 			objectsInHand.Peek().tag = "Untagged";
+	// 			objectsInHand.Pop().transform.SetParent(null);
+	// 			objectInLeftHand = ObjectInHand.None;
+	// 		}	
+	// 	}
+	// }
+
+	// private void DropLastRemainingInteractable(){
+	// 	if(objectsInHandLi.Count>0){
+	// 		objectsInHand.Peek().tag = "Untagged";
+	// 		objectsInHand.Peek().transform.SetParent(null);
+	// 		objectsInHand.Pop().GetComponent<Interactable>().TweenToTable(nearestDropzone.transform.position);
+	// 		leftHandIsFree = true;
+	// 		rightHandIsFree = true;
+	// 		objectInLeftHand = ObjectInHand.None;
+	// 		objectInRightHand = ObjectInHand.None;
+	// 	}	
+	// }
+
+

@@ -4337,8 +4337,9 @@ MonoBehaviour:
   leftHandIsFree: 0
   rightHandIsFree: 0
   lookingAtInteractable: 0
-  pickUpKey: 323
-  actionKey: 324
+  rightHandPickUpKey: 337
+  leftHandPickUpKey: 336
+  actionKey: 334
   layerMask:
     serializedVersion: 2
     m_Bits: 4294967295

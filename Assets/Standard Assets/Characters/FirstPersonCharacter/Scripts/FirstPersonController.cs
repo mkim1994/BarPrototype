@@ -213,8 +213,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
           //  if (CrossPlatformInputManager.GetAxis("Horizontal"))
 
             // Read input
-            float horizontal = CrossPlatformInputManager.GetAxisRaw("Horizontal");
-            float vertical = CrossPlatformInputManager.GetAxisRaw("Vertical");
+            float horizontal = CrossPlatformInputManager.GetAxis("Horizontal");
+            float vertical = CrossPlatformInputManager.GetAxis("Vertical");
 
             bool waswalking = m_IsWalking;
 
@@ -237,20 +237,20 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
             speed = m_IsWalking ? m_WalkSpeed : m_RunSpeed;
 
-            float horizontal2 = horizontal;
-            float vertical2 = vertical;
-            if (m_IsWalking)
-            {
-                if ((horizontal2 < 1 && horizontal2 > 0) || (horizontal2 > -1 && horizontal2 < 0))
-                {
-                    horizontal2 = 0f;
-                }
-                if ((vertical2 < 1 && vertical2 > 0) || (vertical2 > -1 && vertical2 < 0))
-                {
-                    vertical2 = 0f;
-                }
-            }
-            m_Input = new Vector2(horizontal2, vertical2);
+            // float horizontal2 = horizontal;
+            // float vertical2 = vertical;
+            // if (m_IsWalking)
+            // {
+            //     if ((horizontal2 < 1 && horizontal2 > 0) || (horizontal2 > -1 && horizontal2 < 0))
+            //     {
+            //         horizontal2 = 0f;
+            //     }
+            //     if ((vertical2 < 1 && vertical2 > 0) || (vertical2 > -1 && vertical2 < 0))
+            //     {
+            //         vertical2 = 0f;
+            //     }
+            // }
+            m_Input = new Vector2(horizontal, vertical);
 
             // handle speed change to give an fov kick
             // only if the player is going to a run, is running and the fovkick is to be used
