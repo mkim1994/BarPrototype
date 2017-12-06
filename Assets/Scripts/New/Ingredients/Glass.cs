@@ -16,9 +16,6 @@ public class Glass : Interactable {
 	public bool isDirty = false;
 	public Vector3 myRightHandedPourRotation;
 	public Vector3 myLeftHandedPourRotation;
-
-	Vector3 myInitHandPos;
-	Vector3 myInitHandRot;
 	public GameObject stainHolder;
 	public string glassName = "glass";
 	// Use this for initialization
@@ -127,13 +124,14 @@ public class Glass : Interactable {
 		cleanSequence.OnComplete(()=>ReturnToInitHandPos(myInitHandPos, onTableRot));
 	}
 
-	public override void ReturnToInitHandPos(Vector3 _initHandPos, Vector3 _initHandRot){
-		transform.DOLocalMove(_initHandPos, 0.5f, false).SetDelay(2.6f);
-		transform.DOLocalRotate(_initHandRot, 0.5f, RotateMode.Fast).SetDelay(2.6f);
-	}
+	// public override void ReturnToInitHandPos(Vector3 _initHandPos, Vector3 _initHandRot){
+	// 	transform.DOLocalMove(_initHandPos, 0.5f, false).SetDelay(2.6f);
+	// 	transform.DOLocalRotate(_initHandRot, 0.5f, RotateMode.Fast).SetDelay(2.6f);
+	// }
 
 	public override void TweenToHand(Vector3 _handPos){
  		myInitHandPos = _handPos;
+		myInitHandRot = onTableRot;
 		transform.DOLocalMove(_handPos, 1f, false);
 		transform.DOLocalRotate(onTableRot, 1f, RotateMode.Fast);
  	}

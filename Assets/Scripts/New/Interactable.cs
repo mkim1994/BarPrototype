@@ -28,6 +28,9 @@ public class Interactable : MonoBehaviour {
 	// public Ingredients.MixerType mixerType;
 	public Vector3 onTableRot;
 	public Vector3 onTablePos;
+
+	public Vector3 myInitHandPos;
+	public Vector3 myInitHandRot;
 	// Use this for initialization
 	protected virtual void Start () {
 		// child = gameObject.transform.Find("MouseOverBottle");
@@ -91,6 +94,8 @@ public class Interactable : MonoBehaviour {
 	//all Interactables can get picked up
 	public virtual void TweenToHand(Vector3 _handPos){
 		// handPos = _handPos;
+		myInitHandPos = _handPos;
+		myInitHandRot = onTableRot;
 		transform.DOLocalMove(_handPos, 1f, false);
 		transform.DOLocalRotate(onTableRot, 1f, RotateMode.Fast);
 		// Debug.Log("tweening " + this.gameObject.name + " to hand!");
@@ -137,6 +142,9 @@ public class Interactable : MonoBehaviour {
 		transform.DOLocalRotate(_initHandRot, 0.5f, RotateMode.Fast);
 	}
 
+	public virtual void KillAllTweens(){
+		DOTween.KillAll();
+	}
 	public virtual void TweenBackToIdleLeftHand(){
 
 	}

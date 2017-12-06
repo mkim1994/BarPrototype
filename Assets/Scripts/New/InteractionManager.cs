@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class InteractionManager : MonoBehaviour {
 
+	public bool isPerformingAction = false;
 	public GameObject nearestDropzone; 
 	public GameObject interactableCurrentlyInRangeAndLookedAt;
 	public Stack<GameObject> objectsInHand = new Stack<GameObject>();
@@ -82,27 +83,49 @@ public class InteractionManager : MonoBehaviour {
 
 	}
 	void LeftHandAction(KeyCode leftKey){
-
+		//only do this if (1) object in other hand is glass, or (2) if you're looking at a glass on the table.
+		if(Input.GetKeyDown(leftKey) || Input.GetKeyDown(rightActionKey) && !isPerformingAction){
+		//CASE 1: Object in left hand is BASE or MIXER, right hand is glass
+			
+			if((objectInLeftHandGO.GetComponent<Base>() != null || objectInLeftHandGO.GetComponent<Mixer>() != null) 
+				&& objectInRightHand == ObjectInHand.Glass){
+				objectInRightHandGO.GetComponent<Interactable>().TwoHandedContextualAction(objectInLeftHand);
+				objectInLeftHandGO.GetComponent<Interactable>().TwoHandedContextualAction(objectInRightHand);
+				// Debug.Log("You should be pouring with your left hand!");
+				// isPerformingAction = true;
+			}
+		//CASE 2: If you're looking at glass
+		 	else if(interactableCurrentlyInRangeAndLookedAt != null){
+				 //do different pouring animation
+				 if(interactableCurrentlyInRangeAndLookedAt.GetComponent<Glass>() != null && objectInLeftHand == ObjectInHand.Bottle && objectInRightHand != ObjectInHand.Glass)
+				 	Debug.Log("Pour with your left to something on the table!");
+			}
+		} else if (Input.GetKeyUp(leftKey) || Input.GetKeyUp (rightActionKey)){
+			Debug.Log("Killing tween!");
+			if(!leftHandIsFree && !rightHandIsFree){
+				Interactable leftHandObject = objectInLeftHandGO.GetComponent<Interactable>();
+				Interactable rightHandObject = objectInRightHandGO.GetComponent<Interactable>();
+				leftHandObject.KillAllTweens();
+				leftHandObject.ReturnToInitHandPos(leftHandObject.myInitHandPos, leftHandObject.myInitHandRot);
+				// rightHandObject.KillAllTweens();
+				rightHandObject.ReturnToInitHandPos(rightHandObject.myInitHandPos, rightHandObject.myInitHandRot);
+			}
+		}
 	}
 
 	void RightHandAction(KeyCode rightKey){
-
+		if(Input.GetKeyDown(rightKey) && !isPerformingAction){
+		//CASE 1: Object in left hand is BASE or MIXER, right hand is glass
+			if((objectInRightHandGO.GetComponent<Base>() != null || objectInRightHandGO.GetComponent<Mixer>() != null) 
+				&& !rightHandIsFree && objectInLeftHand == ObjectInHand.Glass){
+				objectInRightHandGO.GetComponent<Interactable>().TwoHandedContextualAction(objectInLeftHand);
+				objectInLeftHandGO.GetComponent<Interactable>().TwoHandedContextualAction(objectInRightHand);
+				isPerformingAction = true;
+			} 
+		}
 	}
 
-	bool isPerformingAction = false;
 	void TwoHandedInteractableAction(KeyCode rightKey, KeyCode leftKey){	
-		/* 
-		Interactable how to get reference to the other one? 
-		the interactable needs to know the ff:
-			1) Which Interactable is in the other hand
-			2) If it's in the left or right hand. 
-				- right now this info is in InteractionManager, or also in the Interactable class itself as a tag.				
-	
-		Another attempt:
-			1) When object is in hand, immediately store the Interactable type somewhere.
-			2)   
-		*/
-
 		if(Input.GetKey(rightKey) && !isPerformingAction){
 			if(Input.GetKey(leftKey)){
 				objectInRightHandGO.GetComponent<Interactable>().TwoHandedContextualAction(objectInLeftHand);
