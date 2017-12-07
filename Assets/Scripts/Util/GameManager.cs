@@ -31,6 +31,7 @@ public class GameManager : MonoBehaviour
 	{
 		Debug.Log("Services initialized!");
 		Services.GameManager = this;
+		Services.Dropzone_Manager = FindObjectOfType<Dropzone_Manager>();
 		Services.EventManager = new EventManager();
 		Services.TaskManager = new TaskManager();
 		Services.Prefabs = Resources.Load<PrefabDB>("Prefabs/Prefabs");

@@ -18,4 +18,6 @@ public static class Services {
     public static LightManager LightManager { get; set; }
 
     public static DayCycleManager DayCycleManager { get; set; }
+
+    public static Dropzone_Manager Dropzone_Manager { get; set; }
 }
