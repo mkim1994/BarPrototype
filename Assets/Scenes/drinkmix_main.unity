@@ -792,7 +792,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4160381768097650, guid: 1b6b907cb5ee0d8428fddd65a2d480e3, type: 2}
       propertyPath: m_RootOrder
-      value: 7
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 114402355680132702, guid: 1b6b907cb5ee0d8428fddd65a2d480e3,
         type: 2}
@@ -858,6 +858,111 @@ Prefab:
         type: 2}
       propertyPath: myLeftHandedPourRotation.z
       value: -50
+      objectReference: {fileID: 0}
+    - target: {fileID: 114360234117921938, guid: 1b6b907cb5ee0d8428fddd65a2d480e3,
+        type: 2}
+      propertyPath: myRightHandedActionRot.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114360234117921938, guid: 1b6b907cb5ee0d8428fddd65a2d480e3,
+        type: 2}
+      propertyPath: myRightHandedActionRot.z
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 114360234117921938, guid: 1b6b907cb5ee0d8428fddd65a2d480e3,
+        type: 2}
+      propertyPath: myLeftHandedActionRot.z
+      value: -50
+      objectReference: {fileID: 0}
+    - target: {fileID: 114360234117921938, guid: 1b6b907cb5ee0d8428fddd65a2d480e3,
+        type: 2}
+      propertyPath: posRightHandedAction.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114360234117921938, guid: 1b6b907cb5ee0d8428fddd65a2d480e3,
+        type: 2}
+      propertyPath: posRightHandedAction.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114360234117921938, guid: 1b6b907cb5ee0d8428fddd65a2d480e3,
+        type: 2}
+      propertyPath: posLeftHandedAction.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114360234117921938, guid: 1b6b907cb5ee0d8428fddd65a2d480e3,
+        type: 2}
+      propertyPath: posLeftHandedAction.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114360234117921938, guid: 1b6b907cb5ee0d8428fddd65a2d480e3,
+        type: 2}
+      propertyPath: rotRightHandedAction.x
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 114360234117921938, guid: 1b6b907cb5ee0d8428fddd65a2d480e3,
+        type: 2}
+      propertyPath: rotRightHandedAction.z
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 114360234117921938, guid: 1b6b907cb5ee0d8428fddd65a2d480e3,
+        type: 2}
+      propertyPath: rotLeftHandedAction.z
+      value: -50
+      objectReference: {fileID: 0}
+    - target: {fileID: 114360234117921938, guid: 1b6b907cb5ee0d8428fddd65a2d480e3,
+        type: 2}
+      propertyPath: rotLeftHandedAction.x
+      value: -60
+      objectReference: {fileID: 0}
+    - target: {fileID: 114360234117921938, guid: 1b6b907cb5ee0d8428fddd65a2d480e3,
+        type: 2}
+      propertyPath: rotLeftHandedAction.y
+      value: -33
+      objectReference: {fileID: 0}
+    - target: {fileID: 114360234117921938, guid: 1b6b907cb5ee0d8428fddd65a2d480e3,
+        type: 2}
+      propertyPath: rotRightHandedAction.y
+      value: -33
+      objectReference: {fileID: 0}
+    - target: {fileID: 114360234117921938, guid: 1b6b907cb5ee0d8428fddd65a2d480e3,
+        type: 2}
+      propertyPath: posRightHandedAction.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114360234117921938, guid: 1b6b907cb5ee0d8428fddd65a2d480e3,
+        type: 2}
+      propertyPath: posLeftHandedAction.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114360234117921938, guid: 1b6b907cb5ee0d8428fddd65a2d480e3,
+        type: 2}
+      propertyPath: rotLeftHandOnlyAction.x
+      value: 61.535
+      objectReference: {fileID: 0}
+    - target: {fileID: 114360234117921938, guid: 1b6b907cb5ee0d8428fddd65a2d480e3,
+        type: 2}
+      propertyPath: rotLeftHandOnlyAction.y
+      value: -33.38
+      objectReference: {fileID: 0}
+    - target: {fileID: 114360234117921938, guid: 1b6b907cb5ee0d8428fddd65a2d480e3,
+        type: 2}
+      propertyPath: rotLeftHandOnlyAction.z
+      value: -43.55
+      objectReference: {fileID: 0}
+    - target: {fileID: 114360234117921938, guid: 1b6b907cb5ee0d8428fddd65a2d480e3,
+        type: 2}
+      propertyPath: rotRightHandOnlyAction.x
+      value: 51.178
+      objectReference: {fileID: 0}
+    - target: {fileID: 114360234117921938, guid: 1b6b907cb5ee0d8428fddd65a2d480e3,
+        type: 2}
+      propertyPath: rotRightHandOnlyAction.y
+      value: 38.098
+      objectReference: {fileID: 0}
+    - target: {fileID: 114360234117921938, guid: 1b6b907cb5ee0d8428fddd65a2d480e3,
+        type: 2}
+      propertyPath: rotRightHandOnlyAction.z
+      value: 45.204
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114402355680132702, guid: 1b6b907cb5ee0d8428fddd65a2d480e3, type: 2}
@@ -1080,6 +1185,11 @@ GameObject:
   m_PrefabParentObject: {fileID: 1724579880345560, guid: e5f014542f6ee432b81efce2fcf24005,
     type: 2}
   m_PrefabInternal: {fileID: 1496513276}
+--- !u!4 &387871420 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4258885640849792, guid: b974ff71d46eb9447be0338142c0a45d,
+    type: 2}
+  m_PrefabInternal: {fileID: 1755528806}
 --- !u!1001 &416192448
 Prefab:
   m_ObjectHideFlags: 0
@@ -1798,6 +1908,51 @@ Prefab:
         type: 2}
       propertyPath: myLeftHandedPourRotation.z
       value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 114735959425075700, guid: 0ccea903f3c08134db8ac0b9ea5b7294,
+        type: 2}
+      propertyPath: myRightHandedActionPos.x
+      value: 0.159
+      objectReference: {fileID: 0}
+    - target: {fileID: 114735959425075700, guid: 0ccea903f3c08134db8ac0b9ea5b7294,
+        type: 2}
+      propertyPath: myRightHandedActionPos.y
+      value: -0.354
+      objectReference: {fileID: 0}
+    - target: {fileID: 114735959425075700, guid: 0ccea903f3c08134db8ac0b9ea5b7294,
+        type: 2}
+      propertyPath: myRightHandedActionPos.z
+      value: 1.137
+      objectReference: {fileID: 0}
+    - target: {fileID: 114735959425075700, guid: 0ccea903f3c08134db8ac0b9ea5b7294,
+        type: 2}
+      propertyPath: posRightHandedAction.x
+      value: 0.159
+      objectReference: {fileID: 0}
+    - target: {fileID: 114735959425075700, guid: 0ccea903f3c08134db8ac0b9ea5b7294,
+        type: 2}
+      propertyPath: posRightHandedAction.y
+      value: -0.354
+      objectReference: {fileID: 0}
+    - target: {fileID: 114735959425075700, guid: 0ccea903f3c08134db8ac0b9ea5b7294,
+        type: 2}
+      propertyPath: posRightHandedAction.z
+      value: 1.137
+      objectReference: {fileID: 0}
+    - target: {fileID: 114735959425075700, guid: 0ccea903f3c08134db8ac0b9ea5b7294,
+        type: 2}
+      propertyPath: posLeftHandedAction.y
+      value: -0.354
+      objectReference: {fileID: 0}
+    - target: {fileID: 114735959425075700, guid: 0ccea903f3c08134db8ac0b9ea5b7294,
+        type: 2}
+      propertyPath: posLeftHandedAction.x
+      value: -0.159
+      objectReference: {fileID: 0}
+    - target: {fileID: 114735959425075700, guid: 0ccea903f3c08134db8ac0b9ea5b7294,
+        type: 2}
+      propertyPath: posLeftHandedAction.z
+      value: 1.137
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114841458691583614, guid: 0ccea903f3c08134db8ac0b9ea5b7294, type: 2}
@@ -3161,7 +3316,7 @@ Transform:
   m_Children:
   - {fileID: 1137811959}
   m_Father: {fileID: 1289402415}
-  m_RootOrder: 4
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &899989186
 MonoBehaviour:
@@ -3175,6 +3330,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99cf15ce25d95314d8c46911064de8ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  posRightHandedAction: {x: 0, y: 0, z: 0}
+  posLeftHandedAction: {x: 0, y: 0, z: 0}
+  rotRightHandedAction: {x: 0, y: 0, z: 0}
+  rotLeftHandedAction: {x: 0, y: 0, z: 0}
+  rotLeftHandOnlyAction: {x: 0, y: 0, z: 0}
+  rotRightHandOnlyAction: {x: 0, y: 0, z: 0}
   pourState: 0
   highlightState: 0
   dropOffset: {x: 0, y: 0, z: 0}
@@ -3183,12 +3344,12 @@ MonoBehaviour:
   child: {fileID: 0}
   onTableRot: {x: 0, y: 0, z: 0}
   onTablePos: {x: 0, y: 0, z: 0}
+  myInitHandPos: {x: 0, y: 0, z: 0}
+  myInitHandRot: {x: 0, y: 0, z: 0}
   tweenToHandIsDone: 0
   tweenToTableIsDone: 0
   stains: []
   isDirty: 0
-  myRightHandedPourRotation: {x: 0, y: 0, z: 0}
-  myLeftHandedPourRotation: {x: 0, y: 0, z: 0}
   stainHolder: {fileID: 0}
   glassName: glass
 --- !u!114 &899989187
@@ -3203,6 +3364,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d7c4cbb488d47e459070f167e8e2e25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  posRightHandedAction: {x: 0, y: 0, z: 0}
+  posLeftHandedAction: {x: 0, y: 0, z: 0}
+  rotRightHandedAction: {x: 0, y: 0, z: 0}
+  rotLeftHandedAction: {x: 0, y: 0, z: 0}
+  rotLeftHandOnlyAction: {x: 0, y: 0, z: 0}
+  rotRightHandOnlyAction: {x: 0, y: 0, z: 0}
   pourState: 0
   highlightState: 0
   dropOffset: {x: 0, y: 0, z: 0}
@@ -3211,6 +3378,8 @@ MonoBehaviour:
   child: {fileID: 0}
   onTableRot: {x: 0, y: 0, z: 0}
   onTablePos: {x: 0, y: 0, z: 0}
+  myInitHandPos: {x: 0, y: 0, z: 0}
+  myInitHandRot: {x: 0, y: 0, z: 0}
 --- !u!64 &899989188
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -3592,6 +3761,51 @@ Prefab:
         type: 2}
       propertyPath: myLeftHandedPourRotation.z
       value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 114735959425075700, guid: 0ccea903f3c08134db8ac0b9ea5b7294,
+        type: 2}
+      propertyPath: myRightHandedActionPos.x
+      value: 0.159
+      objectReference: {fileID: 0}
+    - target: {fileID: 114735959425075700, guid: 0ccea903f3c08134db8ac0b9ea5b7294,
+        type: 2}
+      propertyPath: myRightHandedActionPos.y
+      value: -0.354
+      objectReference: {fileID: 0}
+    - target: {fileID: 114735959425075700, guid: 0ccea903f3c08134db8ac0b9ea5b7294,
+        type: 2}
+      propertyPath: myRightHandedActionPos.z
+      value: 1.137
+      objectReference: {fileID: 0}
+    - target: {fileID: 114735959425075700, guid: 0ccea903f3c08134db8ac0b9ea5b7294,
+        type: 2}
+      propertyPath: posRightHandedAction.x
+      value: 0.159
+      objectReference: {fileID: 0}
+    - target: {fileID: 114735959425075700, guid: 0ccea903f3c08134db8ac0b9ea5b7294,
+        type: 2}
+      propertyPath: posRightHandedAction.y
+      value: -0.354
+      objectReference: {fileID: 0}
+    - target: {fileID: 114735959425075700, guid: 0ccea903f3c08134db8ac0b9ea5b7294,
+        type: 2}
+      propertyPath: posRightHandedAction.z
+      value: 1.137
+      objectReference: {fileID: 0}
+    - target: {fileID: 114735959425075700, guid: 0ccea903f3c08134db8ac0b9ea5b7294,
+        type: 2}
+      propertyPath: posLeftHandedAction.y
+      value: -0.354
+      objectReference: {fileID: 0}
+    - target: {fileID: 114735959425075700, guid: 0ccea903f3c08134db8ac0b9ea5b7294,
+        type: 2}
+      propertyPath: posLeftHandedAction.x
+      value: -0.159
+      objectReference: {fileID: 0}
+    - target: {fileID: 114735959425075700, guid: 0ccea903f3c08134db8ac0b9ea5b7294,
+        type: 2}
+      propertyPath: posLeftHandedAction.z
+      value: 1.137
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114841458691583614, guid: 0ccea903f3c08134db8ac0b9ea5b7294, type: 2}
@@ -4090,7 +4304,103 @@ Prefab:
       propertyPath: m_IsKinematic
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 114166076644039960, guid: d5ac9e2f7aa2a514f829b6dd6ed1bad7,
+        type: 2}
+      propertyPath: mixerType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114166076644039960, guid: d5ac9e2f7aa2a514f829b6dd6ed1bad7,
+        type: 2}
+      propertyPath: child
+      value: 
+      objectReference: {fileID: 2098870753}
+    - target: {fileID: 114166076644039960, guid: d5ac9e2f7aa2a514f829b6dd6ed1bad7,
+        type: 2}
+      propertyPath: myRightHandedActionRot.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114166076644039960, guid: d5ac9e2f7aa2a514f829b6dd6ed1bad7,
+        type: 2}
+      propertyPath: myRightHandedActionRot.z
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 114166076644039960, guid: d5ac9e2f7aa2a514f829b6dd6ed1bad7,
+        type: 2}
+      propertyPath: myLeftHandedActionRot.z
+      value: -50
+      objectReference: {fileID: 0}
+    - target: {fileID: 114166076644039960, guid: d5ac9e2f7aa2a514f829b6dd6ed1bad7,
+        type: 2}
+      propertyPath: rotRightHandedAction.x
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 114166076644039960, guid: d5ac9e2f7aa2a514f829b6dd6ed1bad7,
+        type: 2}
+      propertyPath: rotRightHandedAction.y
+      value: -33
+      objectReference: {fileID: 0}
+    - target: {fileID: 114166076644039960, guid: d5ac9e2f7aa2a514f829b6dd6ed1bad7,
+        type: 2}
+      propertyPath: rotRightHandedAction.z
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 114166076644039960, guid: d5ac9e2f7aa2a514f829b6dd6ed1bad7,
+        type: 2}
+      propertyPath: rotLeftHandedAction.x
+      value: -60
+      objectReference: {fileID: 0}
+    - target: {fileID: 114166076644039960, guid: d5ac9e2f7aa2a514f829b6dd6ed1bad7,
+        type: 2}
+      propertyPath: rotLeftHandedAction.y
+      value: -33
+      objectReference: {fileID: 0}
+    - target: {fileID: 114166076644039960, guid: d5ac9e2f7aa2a514f829b6dd6ed1bad7,
+        type: 2}
+      propertyPath: rotLeftHandedAction.z
+      value: -50
+      objectReference: {fileID: 0}
+    - target: {fileID: 114166076644039960, guid: d5ac9e2f7aa2a514f829b6dd6ed1bad7,
+        type: 2}
+      propertyPath: posRightHandedAction.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114166076644039960, guid: d5ac9e2f7aa2a514f829b6dd6ed1bad7,
+        type: 2}
+      propertyPath: posLeftHandedAction.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114166076644039960, guid: d5ac9e2f7aa2a514f829b6dd6ed1bad7,
+        type: 2}
+      propertyPath: rotLeftHandOnlyAction.x
+      value: 61.535
+      objectReference: {fileID: 0}
+    - target: {fileID: 114166076644039960, guid: d5ac9e2f7aa2a514f829b6dd6ed1bad7,
+        type: 2}
+      propertyPath: rotLeftHandOnlyAction.y
+      value: -33.38
+      objectReference: {fileID: 0}
+    - target: {fileID: 114166076644039960, guid: d5ac9e2f7aa2a514f829b6dd6ed1bad7,
+        type: 2}
+      propertyPath: rotLeftHandOnlyAction.z
+      value: -43.55
+      objectReference: {fileID: 0}
+    - target: {fileID: 114166076644039960, guid: d5ac9e2f7aa2a514f829b6dd6ed1bad7,
+        type: 2}
+      propertyPath: rotRightHandOnlyAction.x
+      value: 51.178
+      objectReference: {fileID: 0}
+    - target: {fileID: 114166076644039960, guid: d5ac9e2f7aa2a514f829b6dd6ed1bad7,
+        type: 2}
+      propertyPath: rotRightHandOnlyAction.y
+      value: 38.098
+      objectReference: {fileID: 0}
+    - target: {fileID: 114166076644039960, guid: d5ac9e2f7aa2a514f829b6dd6ed1bad7,
+        type: 2}
+      propertyPath: rotRightHandOnlyAction.z
+      value: 45.204
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 114730562679946538, guid: d5ac9e2f7aa2a514f829b6dd6ed1bad7, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: d5ac9e2f7aa2a514f829b6dd6ed1bad7, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &1078046038
@@ -4329,6 +4639,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 461a035fcf8608e4998ff380a011c77e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPerformingAction: 0
   nearestDropzone: {fileID: 1127747837}
   interactableCurrentlyInRangeAndLookedAt: {fileID: 0}
   objectInLeftHand: 3
@@ -4751,6 +5062,11 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 9acca204b847e42228de8af3e256066d, type: 3}
   m_PrefabInternal: {fileID: 1160446893}
+--- !u!4 &1213647532 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4803003766315144, guid: 81e606e0d709bea4785c18f8feaaf925,
+    type: 2}
+  m_PrefabInternal: {fileID: 2145353696}
 --- !u!1 &1240868332
 GameObject:
   m_ObjectHideFlags: 0
@@ -4796,7 +5112,7 @@ Transform:
   - {fileID: 416309442}
   - {fileID: 1356874372}
   m_Father: {fileID: 1289402415}
-  m_RootOrder: 5
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: -89.98, y: 0, z: 0}
 --- !u!114 &1240868334
 MonoBehaviour:
@@ -4810,6 +5126,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99cf15ce25d95314d8c46911064de8ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  posRightHandedAction: {x: 0, y: 0, z: 0}
+  posLeftHandedAction: {x: 0, y: 0, z: 0}
+  rotRightHandedAction: {x: 0, y: 0, z: 0}
+  rotLeftHandedAction: {x: 0, y: 0, z: 0}
+  rotLeftHandOnlyAction: {x: 0, y: 0, z: 0}
+  rotRightHandOnlyAction: {x: 0, y: 0, z: 0}
   pourState: 0
   highlightState: 0
   dropOffset: {x: 0, y: 0, z: 0}
@@ -4818,12 +5140,12 @@ MonoBehaviour:
   child: {fileID: 0}
   onTableRot: {x: 0, y: 0, z: 0}
   onTablePos: {x: 0, y: 0, z: 0}
+  myInitHandPos: {x: 0, y: 0, z: 0}
+  myInitHandRot: {x: 0, y: 0, z: 0}
   tweenToHandIsDone: 0
   tweenToTableIsDone: 0
   stains: []
   isDirty: 0
-  myRightHandedPourRotation: {x: 0, y: 0, z: 0}
-  myLeftHandedPourRotation: {x: 0, y: 0, z: 0}
   stainHolder: {fileID: 0}
   glassName: glass
 --- !u!114 &1240868335
@@ -4838,6 +5160,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d7c4cbb488d47e459070f167e8e2e25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  posRightHandedAction: {x: 0, y: 0, z: 0}
+  posLeftHandedAction: {x: 0, y: 0, z: 0}
+  rotRightHandedAction: {x: 0, y: 0, z: 0}
+  rotLeftHandedAction: {x: 0, y: 0, z: 0}
+  rotLeftHandOnlyAction: {x: 0, y: 0, z: 0}
+  rotRightHandOnlyAction: {x: 0, y: 0, z: 0}
   pourState: 0
   highlightState: 0
   dropOffset: {x: 0, y: 0, z: 0}
@@ -4846,6 +5174,8 @@ MonoBehaviour:
   child: {fileID: 0}
   onTableRot: {x: 0, y: 0, z: 0}
   onTablePos: {x: 0, y: 0, z: 0}
+  myInitHandPos: {x: 0, y: 0, z: 0}
+  myInitHandRot: {x: 0, y: 0, z: 0}
 --- !u!65 &1240868336
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5041,6 +5371,51 @@ Prefab:
       propertyPath: myLeftHandedPourRotation.z
       value: -90
       objectReference: {fileID: 0}
+    - target: {fileID: 114735959425075700, guid: 0ccea903f3c08134db8ac0b9ea5b7294,
+        type: 2}
+      propertyPath: myRightHandedActionPos.x
+      value: 0.159
+      objectReference: {fileID: 0}
+    - target: {fileID: 114735959425075700, guid: 0ccea903f3c08134db8ac0b9ea5b7294,
+        type: 2}
+      propertyPath: myRightHandedActionPos.y
+      value: -0.354
+      objectReference: {fileID: 0}
+    - target: {fileID: 114735959425075700, guid: 0ccea903f3c08134db8ac0b9ea5b7294,
+        type: 2}
+      propertyPath: myRightHandedActionPos.z
+      value: 1.137
+      objectReference: {fileID: 0}
+    - target: {fileID: 114735959425075700, guid: 0ccea903f3c08134db8ac0b9ea5b7294,
+        type: 2}
+      propertyPath: posRightHandedAction.x
+      value: 0.159
+      objectReference: {fileID: 0}
+    - target: {fileID: 114735959425075700, guid: 0ccea903f3c08134db8ac0b9ea5b7294,
+        type: 2}
+      propertyPath: posRightHandedAction.y
+      value: -0.354
+      objectReference: {fileID: 0}
+    - target: {fileID: 114735959425075700, guid: 0ccea903f3c08134db8ac0b9ea5b7294,
+        type: 2}
+      propertyPath: posRightHandedAction.z
+      value: 1.137
+      objectReference: {fileID: 0}
+    - target: {fileID: 114735959425075700, guid: 0ccea903f3c08134db8ac0b9ea5b7294,
+        type: 2}
+      propertyPath: posLeftHandedAction.y
+      value: -0.354
+      objectReference: {fileID: 0}
+    - target: {fileID: 114735959425075700, guid: 0ccea903f3c08134db8ac0b9ea5b7294,
+        type: 2}
+      propertyPath: posLeftHandedAction.x
+      value: -0.159
+      objectReference: {fileID: 0}
+    - target: {fileID: 114735959425075700, guid: 0ccea903f3c08134db8ac0b9ea5b7294,
+        type: 2}
+      propertyPath: posLeftHandedAction.z
+      value: 1.137
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114841458691583614, guid: 0ccea903f3c08134db8ac0b9ea5b7294, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 0ccea903f3c08134db8ac0b9ea5b7294, type: 2}
@@ -5087,7 +5462,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4868300695024122, guid: 5a7bc9be83aa2094f9d5923e12178cb0, type: 2}
       propertyPath: m_RootOrder
-      value: 8
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 114644755965722572, guid: 5a7bc9be83aa2094f9d5923e12178cb0,
         type: 2}
@@ -5154,6 +5529,111 @@ Prefab:
       propertyPath: myLeftHandedPourRotation.z
       value: -50
       objectReference: {fileID: 0}
+    - target: {fileID: 114502354523142692, guid: 5a7bc9be83aa2094f9d5923e12178cb0,
+        type: 2}
+      propertyPath: myRightHandedActionRot.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114502354523142692, guid: 5a7bc9be83aa2094f9d5923e12178cb0,
+        type: 2}
+      propertyPath: myRightHandedActionRot.z
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 114502354523142692, guid: 5a7bc9be83aa2094f9d5923e12178cb0,
+        type: 2}
+      propertyPath: myLeftHandedActionRot.z
+      value: -50
+      objectReference: {fileID: 0}
+    - target: {fileID: 114502354523142692, guid: 5a7bc9be83aa2094f9d5923e12178cb0,
+        type: 2}
+      propertyPath: posRightHandedAction.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114502354523142692, guid: 5a7bc9be83aa2094f9d5923e12178cb0,
+        type: 2}
+      propertyPath: posRightHandedAction.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114502354523142692, guid: 5a7bc9be83aa2094f9d5923e12178cb0,
+        type: 2}
+      propertyPath: posLeftHandedAction.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114502354523142692, guid: 5a7bc9be83aa2094f9d5923e12178cb0,
+        type: 2}
+      propertyPath: posLeftHandedAction.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114502354523142692, guid: 5a7bc9be83aa2094f9d5923e12178cb0,
+        type: 2}
+      propertyPath: rotRightHandedAction.x
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 114502354523142692, guid: 5a7bc9be83aa2094f9d5923e12178cb0,
+        type: 2}
+      propertyPath: rotRightHandedAction.z
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 114502354523142692, guid: 5a7bc9be83aa2094f9d5923e12178cb0,
+        type: 2}
+      propertyPath: rotLeftHandedAction.z
+      value: -50
+      objectReference: {fileID: 0}
+    - target: {fileID: 114502354523142692, guid: 5a7bc9be83aa2094f9d5923e12178cb0,
+        type: 2}
+      propertyPath: rotRightHandedAction.y
+      value: -33
+      objectReference: {fileID: 0}
+    - target: {fileID: 114502354523142692, guid: 5a7bc9be83aa2094f9d5923e12178cb0,
+        type: 2}
+      propertyPath: rotLeftHandedAction.y
+      value: -33
+      objectReference: {fileID: 0}
+    - target: {fileID: 114502354523142692, guid: 5a7bc9be83aa2094f9d5923e12178cb0,
+        type: 2}
+      propertyPath: rotLeftHandedAction.x
+      value: -60
+      objectReference: {fileID: 0}
+    - target: {fileID: 114502354523142692, guid: 5a7bc9be83aa2094f9d5923e12178cb0,
+        type: 2}
+      propertyPath: posRightHandedAction.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114502354523142692, guid: 5a7bc9be83aa2094f9d5923e12178cb0,
+        type: 2}
+      propertyPath: posLeftHandedAction.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114502354523142692, guid: 5a7bc9be83aa2094f9d5923e12178cb0,
+        type: 2}
+      propertyPath: rotLeftHandOnlyAction.x
+      value: 61.535
+      objectReference: {fileID: 0}
+    - target: {fileID: 114502354523142692, guid: 5a7bc9be83aa2094f9d5923e12178cb0,
+        type: 2}
+      propertyPath: rotLeftHandOnlyAction.y
+      value: -33.38
+      objectReference: {fileID: 0}
+    - target: {fileID: 114502354523142692, guid: 5a7bc9be83aa2094f9d5923e12178cb0,
+        type: 2}
+      propertyPath: rotLeftHandOnlyAction.z
+      value: -43.55
+      objectReference: {fileID: 0}
+    - target: {fileID: 114502354523142692, guid: 5a7bc9be83aa2094f9d5923e12178cb0,
+        type: 2}
+      propertyPath: rotRightHandOnlyAction.x
+      value: 51.178
+      objectReference: {fileID: 0}
+    - target: {fileID: 114502354523142692, guid: 5a7bc9be83aa2094f9d5923e12178cb0,
+        type: 2}
+      propertyPath: rotRightHandOnlyAction.y
+      value: 38.098
+      objectReference: {fileID: 0}
+    - target: {fileID: 114502354523142692, guid: 5a7bc9be83aa2094f9d5923e12178cb0,
+        type: 2}
+      propertyPath: rotRightHandOnlyAction.z
+      value: 45.204
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114644755965722572, guid: 5a7bc9be83aa2094f9d5923e12178cb0, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 5a7bc9be83aa2094f9d5923e12178cb0, type: 2}
@@ -5188,12 +5668,12 @@ Transform:
   - {fileID: 1953742957}
   - {fileID: 1933732636}
   - {fileID: 131299983}
-  - {fileID: 1501642966}
-  - {fileID: 899989185}
-  - {fileID: 1240868333}
   - {fileID: 9478777}
   - {fileID: 696004767}
   - {fileID: 1363920157}
+  - {fileID: 1501642966}
+  - {fileID: 899989185}
+  - {fileID: 1240868333}
   - {fileID: 1251438453}
   - {fileID: 1805832832}
   - {fileID: 566942137}
@@ -6031,6 +6511,51 @@ Prefab:
       propertyPath: myLeftHandedPourRotation.y
       value: -100
       objectReference: {fileID: 0}
+    - target: {fileID: 114735959425075700, guid: 0ccea903f3c08134db8ac0b9ea5b7294,
+        type: 2}
+      propertyPath: myRightHandedActionPos.x
+      value: 0.159
+      objectReference: {fileID: 0}
+    - target: {fileID: 114735959425075700, guid: 0ccea903f3c08134db8ac0b9ea5b7294,
+        type: 2}
+      propertyPath: myRightHandedActionPos.y
+      value: -0.354
+      objectReference: {fileID: 0}
+    - target: {fileID: 114735959425075700, guid: 0ccea903f3c08134db8ac0b9ea5b7294,
+        type: 2}
+      propertyPath: myRightHandedActionPos.z
+      value: 1.137
+      objectReference: {fileID: 0}
+    - target: {fileID: 114735959425075700, guid: 0ccea903f3c08134db8ac0b9ea5b7294,
+        type: 2}
+      propertyPath: posRightHandedAction.x
+      value: 0.159
+      objectReference: {fileID: 0}
+    - target: {fileID: 114735959425075700, guid: 0ccea903f3c08134db8ac0b9ea5b7294,
+        type: 2}
+      propertyPath: posRightHandedAction.y
+      value: -0.354
+      objectReference: {fileID: 0}
+    - target: {fileID: 114735959425075700, guid: 0ccea903f3c08134db8ac0b9ea5b7294,
+        type: 2}
+      propertyPath: posRightHandedAction.z
+      value: 1.137
+      objectReference: {fileID: 0}
+    - target: {fileID: 114735959425075700, guid: 0ccea903f3c08134db8ac0b9ea5b7294,
+        type: 2}
+      propertyPath: posLeftHandedAction.y
+      value: -0.354
+      objectReference: {fileID: 0}
+    - target: {fileID: 114735959425075700, guid: 0ccea903f3c08134db8ac0b9ea5b7294,
+        type: 2}
+      propertyPath: posLeftHandedAction.x
+      value: -0.159
+      objectReference: {fileID: 0}
+    - target: {fileID: 114735959425075700, guid: 0ccea903f3c08134db8ac0b9ea5b7294,
+        type: 2}
+      propertyPath: posLeftHandedAction.z
+      value: 1.137
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114841458691583614, guid: 0ccea903f3c08134db8ac0b9ea5b7294, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 0ccea903f3c08134db8ac0b9ea5b7294, type: 2}
@@ -6199,7 +6724,7 @@ Transform:
   m_Children:
   - {fileID: 555796569}
   m_Father: {fileID: 1289402415}
-  m_RootOrder: 3
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1501642967
 MonoBehaviour:
@@ -6213,6 +6738,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99cf15ce25d95314d8c46911064de8ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  posRightHandedAction: {x: 0, y: 0, z: 0}
+  posLeftHandedAction: {x: 0, y: 0, z: 0}
+  rotRightHandedAction: {x: 0, y: 0, z: 0}
+  rotLeftHandedAction: {x: 0, y: 0, z: 0}
+  rotLeftHandOnlyAction: {x: 0, y: 0, z: 0}
+  rotRightHandOnlyAction: {x: 0, y: 0, z: 0}
   pourState: 0
   highlightState: 0
   dropOffset: {x: 0, y: 0, z: 0}
@@ -6221,12 +6752,12 @@ MonoBehaviour:
   child: {fileID: 0}
   onTableRot: {x: 0, y: 0, z: 0}
   onTablePos: {x: 0, y: 0, z: 0}
+  myInitHandPos: {x: 0, y: 0, z: 0}
+  myInitHandRot: {x: 0, y: 0, z: 0}
   tweenToHandIsDone: 0
   tweenToTableIsDone: 0
   stains: []
   isDirty: 0
-  myRightHandedPourRotation: {x: 0, y: 0, z: 0}
-  myLeftHandedPourRotation: {x: 0, y: 0, z: 0}
   stainHolder: {fileID: 0}
   glassName: glass
 --- !u!114 &1501642968
@@ -6241,6 +6772,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d7c4cbb488d47e459070f167e8e2e25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  posRightHandedAction: {x: 0, y: 0, z: 0}
+  posLeftHandedAction: {x: 0, y: 0, z: 0}
+  rotRightHandedAction: {x: 0, y: 0, z: 0}
+  rotLeftHandedAction: {x: 0, y: 0, z: 0}
+  rotLeftHandOnlyAction: {x: 0, y: 0, z: 0}
+  rotRightHandOnlyAction: {x: 0, y: 0, z: 0}
   pourState: 0
   highlightState: 0
   dropOffset: {x: 0, y: 0, z: 0}
@@ -6249,6 +6786,8 @@ MonoBehaviour:
   child: {fileID: 0}
   onTableRot: {x: 0, y: 0, z: 0}
   onTablePos: {x: 0, y: 0, z: 0}
+  myInitHandPos: {x: 0, y: 0, z: 0}
+  myInitHandRot: {x: 0, y: 0, z: 0}
 --- !u!65 &1501642969
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7372,7 +7911,98 @@ Prefab:
       propertyPath: m_IsKinematic
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 114860763883193398, guid: b974ff71d46eb9447be0338142c0a45d,
+        type: 2}
+      propertyPath: child
+      value: 
+      objectReference: {fileID: 387871420}
+    - target: {fileID: 114860763883193398, guid: b974ff71d46eb9447be0338142c0a45d,
+        type: 2}
+      propertyPath: myRightHandedActionRot.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114860763883193398, guid: b974ff71d46eb9447be0338142c0a45d,
+        type: 2}
+      propertyPath: myRightHandedActionRot.z
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 114860763883193398, guid: b974ff71d46eb9447be0338142c0a45d,
+        type: 2}
+      propertyPath: myLeftHandedActionRot.z
+      value: -50
+      objectReference: {fileID: 0}
+    - target: {fileID: 114860763883193398, guid: b974ff71d46eb9447be0338142c0a45d,
+        type: 2}
+      propertyPath: rotRightHandedAction.x
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 114860763883193398, guid: b974ff71d46eb9447be0338142c0a45d,
+        type: 2}
+      propertyPath: rotRightHandedAction.y
+      value: -33
+      objectReference: {fileID: 0}
+    - target: {fileID: 114860763883193398, guid: b974ff71d46eb9447be0338142c0a45d,
+        type: 2}
+      propertyPath: rotRightHandedAction.z
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 114860763883193398, guid: b974ff71d46eb9447be0338142c0a45d,
+        type: 2}
+      propertyPath: rotLeftHandedAction.x
+      value: -60
+      objectReference: {fileID: 0}
+    - target: {fileID: 114860763883193398, guid: b974ff71d46eb9447be0338142c0a45d,
+        type: 2}
+      propertyPath: rotLeftHandedAction.y
+      value: -33
+      objectReference: {fileID: 0}
+    - target: {fileID: 114860763883193398, guid: b974ff71d46eb9447be0338142c0a45d,
+        type: 2}
+      propertyPath: rotLeftHandedAction.z
+      value: -50
+      objectReference: {fileID: 0}
+    - target: {fileID: 114860763883193398, guid: b974ff71d46eb9447be0338142c0a45d,
+        type: 2}
+      propertyPath: posRightHandedAction.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114860763883193398, guid: b974ff71d46eb9447be0338142c0a45d,
+        type: 2}
+      propertyPath: posLeftHandedAction.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114860763883193398, guid: b974ff71d46eb9447be0338142c0a45d,
+        type: 2}
+      propertyPath: rotLeftHandOnlyAction.x
+      value: 61.535
+      objectReference: {fileID: 0}
+    - target: {fileID: 114860763883193398, guid: b974ff71d46eb9447be0338142c0a45d,
+        type: 2}
+      propertyPath: rotLeftHandOnlyAction.y
+      value: -33.38
+      objectReference: {fileID: 0}
+    - target: {fileID: 114860763883193398, guid: b974ff71d46eb9447be0338142c0a45d,
+        type: 2}
+      propertyPath: rotLeftHandOnlyAction.z
+      value: -43.55
+      objectReference: {fileID: 0}
+    - target: {fileID: 114860763883193398, guid: b974ff71d46eb9447be0338142c0a45d,
+        type: 2}
+      propertyPath: rotRightHandOnlyAction.x
+      value: 51.178
+      objectReference: {fileID: 0}
+    - target: {fileID: 114860763883193398, guid: b974ff71d46eb9447be0338142c0a45d,
+        type: 2}
+      propertyPath: rotRightHandOnlyAction.y
+      value: 38.098
+      objectReference: {fileID: 0}
+    - target: {fileID: 114860763883193398, guid: b974ff71d46eb9447be0338142c0a45d,
+        type: 2}
+      propertyPath: rotRightHandOnlyAction.z
+      value: 45.204
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 114269455867805118, guid: b974ff71d46eb9447be0338142c0a45d, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: b974ff71d46eb9447be0338142c0a45d, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &1776932790
@@ -7670,6 +8300,51 @@ Prefab:
       propertyPath: myLeftHandedPourRotation.z
       value: -90
       objectReference: {fileID: 0}
+    - target: {fileID: 114735959425075700, guid: 0ccea903f3c08134db8ac0b9ea5b7294,
+        type: 2}
+      propertyPath: myRightHandedActionPos.x
+      value: 0.159
+      objectReference: {fileID: 0}
+    - target: {fileID: 114735959425075700, guid: 0ccea903f3c08134db8ac0b9ea5b7294,
+        type: 2}
+      propertyPath: myRightHandedActionPos.y
+      value: -0.354
+      objectReference: {fileID: 0}
+    - target: {fileID: 114735959425075700, guid: 0ccea903f3c08134db8ac0b9ea5b7294,
+        type: 2}
+      propertyPath: myRightHandedActionPos.z
+      value: 1.137
+      objectReference: {fileID: 0}
+    - target: {fileID: 114735959425075700, guid: 0ccea903f3c08134db8ac0b9ea5b7294,
+        type: 2}
+      propertyPath: posRightHandedAction.x
+      value: 0.159
+      objectReference: {fileID: 0}
+    - target: {fileID: 114735959425075700, guid: 0ccea903f3c08134db8ac0b9ea5b7294,
+        type: 2}
+      propertyPath: posRightHandedAction.y
+      value: -0.354
+      objectReference: {fileID: 0}
+    - target: {fileID: 114735959425075700, guid: 0ccea903f3c08134db8ac0b9ea5b7294,
+        type: 2}
+      propertyPath: posRightHandedAction.z
+      value: 1.137
+      objectReference: {fileID: 0}
+    - target: {fileID: 114735959425075700, guid: 0ccea903f3c08134db8ac0b9ea5b7294,
+        type: 2}
+      propertyPath: posLeftHandedAction.y
+      value: -0.354
+      objectReference: {fileID: 0}
+    - target: {fileID: 114735959425075700, guid: 0ccea903f3c08134db8ac0b9ea5b7294,
+        type: 2}
+      propertyPath: posLeftHandedAction.x
+      value: -0.159
+      objectReference: {fileID: 0}
+    - target: {fileID: 114735959425075700, guid: 0ccea903f3c08134db8ac0b9ea5b7294,
+        type: 2}
+      propertyPath: posLeftHandedAction.z
+      value: 1.137
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114841458691583614, guid: 0ccea903f3c08134db8ac0b9ea5b7294, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 0ccea903f3c08134db8ac0b9ea5b7294, type: 2}
@@ -7774,6 +8449,51 @@ Prefab:
       propertyPath: myLeftHandedPourRotation.z
       value: -90
       objectReference: {fileID: 0}
+    - target: {fileID: 114735959425075700, guid: 0ccea903f3c08134db8ac0b9ea5b7294,
+        type: 2}
+      propertyPath: myRightHandedActionPos.x
+      value: 0.159
+      objectReference: {fileID: 0}
+    - target: {fileID: 114735959425075700, guid: 0ccea903f3c08134db8ac0b9ea5b7294,
+        type: 2}
+      propertyPath: myRightHandedActionPos.y
+      value: -0.354
+      objectReference: {fileID: 0}
+    - target: {fileID: 114735959425075700, guid: 0ccea903f3c08134db8ac0b9ea5b7294,
+        type: 2}
+      propertyPath: myRightHandedActionPos.z
+      value: 1.137
+      objectReference: {fileID: 0}
+    - target: {fileID: 114735959425075700, guid: 0ccea903f3c08134db8ac0b9ea5b7294,
+        type: 2}
+      propertyPath: posRightHandedAction.x
+      value: 0.159
+      objectReference: {fileID: 0}
+    - target: {fileID: 114735959425075700, guid: 0ccea903f3c08134db8ac0b9ea5b7294,
+        type: 2}
+      propertyPath: posRightHandedAction.y
+      value: -0.354
+      objectReference: {fileID: 0}
+    - target: {fileID: 114735959425075700, guid: 0ccea903f3c08134db8ac0b9ea5b7294,
+        type: 2}
+      propertyPath: posRightHandedAction.z
+      value: 1.137
+      objectReference: {fileID: 0}
+    - target: {fileID: 114735959425075700, guid: 0ccea903f3c08134db8ac0b9ea5b7294,
+        type: 2}
+      propertyPath: posLeftHandedAction.y
+      value: -0.354
+      objectReference: {fileID: 0}
+    - target: {fileID: 114735959425075700, guid: 0ccea903f3c08134db8ac0b9ea5b7294,
+        type: 2}
+      propertyPath: posLeftHandedAction.x
+      value: -0.159
+      objectReference: {fileID: 0}
+    - target: {fileID: 114735959425075700, guid: 0ccea903f3c08134db8ac0b9ea5b7294,
+        type: 2}
+      propertyPath: posLeftHandedAction.z
+      value: 1.137
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114841458691583614, guid: 0ccea903f3c08134db8ac0b9ea5b7294, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 0ccea903f3c08134db8ac0b9ea5b7294, type: 2}
@@ -7820,7 +8540,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4257702657318100, guid: 55564a28420af5b4197ecea907b38083, type: 2}
       propertyPath: m_RootOrder
-      value: 6
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 54888133621035392, guid: 55564a28420af5b4197ecea907b38083,
         type: 2}
@@ -7893,6 +8613,111 @@ Prefab:
         type: 2}
       propertyPath: myLeftHandedPourRotation.z
       value: -50
+      objectReference: {fileID: 0}
+    - target: {fileID: 114884386473456210, guid: 55564a28420af5b4197ecea907b38083,
+        type: 2}
+      propertyPath: myRightHandedActionRot.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114884386473456210, guid: 55564a28420af5b4197ecea907b38083,
+        type: 2}
+      propertyPath: myRightHandedActionRot.z
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 114884386473456210, guid: 55564a28420af5b4197ecea907b38083,
+        type: 2}
+      propertyPath: myLeftHandedActionRot.z
+      value: -50
+      objectReference: {fileID: 0}
+    - target: {fileID: 114884386473456210, guid: 55564a28420af5b4197ecea907b38083,
+        type: 2}
+      propertyPath: posRightHandedAction.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114884386473456210, guid: 55564a28420af5b4197ecea907b38083,
+        type: 2}
+      propertyPath: posRightHandedAction.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114884386473456210, guid: 55564a28420af5b4197ecea907b38083,
+        type: 2}
+      propertyPath: posLeftHandedAction.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114884386473456210, guid: 55564a28420af5b4197ecea907b38083,
+        type: 2}
+      propertyPath: posLeftHandedAction.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114884386473456210, guid: 55564a28420af5b4197ecea907b38083,
+        type: 2}
+      propertyPath: rotRightHandedAction.x
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 114884386473456210, guid: 55564a28420af5b4197ecea907b38083,
+        type: 2}
+      propertyPath: rotRightHandedAction.z
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 114884386473456210, guid: 55564a28420af5b4197ecea907b38083,
+        type: 2}
+      propertyPath: rotLeftHandedAction.z
+      value: -50
+      objectReference: {fileID: 0}
+    - target: {fileID: 114884386473456210, guid: 55564a28420af5b4197ecea907b38083,
+        type: 2}
+      propertyPath: rotRightHandedAction.y
+      value: -33
+      objectReference: {fileID: 0}
+    - target: {fileID: 114884386473456210, guid: 55564a28420af5b4197ecea907b38083,
+        type: 2}
+      propertyPath: rotLeftHandedAction.x
+      value: -60
+      objectReference: {fileID: 0}
+    - target: {fileID: 114884386473456210, guid: 55564a28420af5b4197ecea907b38083,
+        type: 2}
+      propertyPath: rotLeftHandedAction.y
+      value: -33
+      objectReference: {fileID: 0}
+    - target: {fileID: 114884386473456210, guid: 55564a28420af5b4197ecea907b38083,
+        type: 2}
+      propertyPath: posRightHandedAction.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114884386473456210, guid: 55564a28420af5b4197ecea907b38083,
+        type: 2}
+      propertyPath: posLeftHandedAction.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114884386473456210, guid: 55564a28420af5b4197ecea907b38083,
+        type: 2}
+      propertyPath: rotLeftHandOnlyAction.x
+      value: 61.535
+      objectReference: {fileID: 0}
+    - target: {fileID: 114884386473456210, guid: 55564a28420af5b4197ecea907b38083,
+        type: 2}
+      propertyPath: rotLeftHandOnlyAction.y
+      value: -33.38
+      objectReference: {fileID: 0}
+    - target: {fileID: 114884386473456210, guid: 55564a28420af5b4197ecea907b38083,
+        type: 2}
+      propertyPath: rotLeftHandOnlyAction.z
+      value: -43.55
+      objectReference: {fileID: 0}
+    - target: {fileID: 114884386473456210, guid: 55564a28420af5b4197ecea907b38083,
+        type: 2}
+      propertyPath: rotRightHandOnlyAction.x
+      value: 51.178
+      objectReference: {fileID: 0}
+    - target: {fileID: 114884386473456210, guid: 55564a28420af5b4197ecea907b38083,
+        type: 2}
+      propertyPath: rotRightHandOnlyAction.y
+      value: 38.098
+      objectReference: {fileID: 0}
+    - target: {fileID: 114884386473456210, guid: 55564a28420af5b4197ecea907b38083,
+        type: 2}
+      propertyPath: rotRightHandOnlyAction.z
+      value: 45.204
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114954622600871380, guid: 55564a28420af5b4197ecea907b38083, type: 2}
@@ -8232,6 +9057,11 @@ Prefab:
         type: 2}
       propertyPath: dialogueOption2.m_Bits
       value: 65536
+      objectReference: {fileID: 0}
+    - target: {fileID: 114927053773189382, guid: 2bc9b6f9d94804817a7d814ac20e7184,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2bc9b6f9d94804817a7d814ac20e7184, type: 2}
@@ -9129,6 +9959,11 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.19811, y: 1.5781596, z: 1.1459161}
   m_Center: {x: -0.16212639, y: -0.34235302, z: -0.04281581}
+--- !u!4 &2098870753 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4351757755860380, guid: d5ac9e2f7aa2a514f829b6dd6ed1bad7,
+    type: 2}
+  m_PrefabInternal: {fileID: 1046638575}
 --- !u!114 &2124372610 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 114484278800911728, guid: 740fb337bef8f4a52be48ef9cf68ff20,
@@ -9286,6 +10121,102 @@ Prefab:
       propertyPath: m_IsKinematic
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 114061078412594610, guid: 81e606e0d709bea4785c18f8feaaf925,
+        type: 2}
+      propertyPath: mixerType
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114061078412594610, guid: 81e606e0d709bea4785c18f8feaaf925,
+        type: 2}
+      propertyPath: child
+      value: 
+      objectReference: {fileID: 1213647532}
+    - target: {fileID: 114061078412594610, guid: 81e606e0d709bea4785c18f8feaaf925,
+        type: 2}
+      propertyPath: myRightHandedActionRot.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114061078412594610, guid: 81e606e0d709bea4785c18f8feaaf925,
+        type: 2}
+      propertyPath: myRightHandedActionRot.z
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 114061078412594610, guid: 81e606e0d709bea4785c18f8feaaf925,
+        type: 2}
+      propertyPath: myLeftHandedActionRot.z
+      value: -50
+      objectReference: {fileID: 0}
+    - target: {fileID: 114061078412594610, guid: 81e606e0d709bea4785c18f8feaaf925,
+        type: 2}
+      propertyPath: rotRightHandedAction.x
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 114061078412594610, guid: 81e606e0d709bea4785c18f8feaaf925,
+        type: 2}
+      propertyPath: rotRightHandedAction.y
+      value: -33
+      objectReference: {fileID: 0}
+    - target: {fileID: 114061078412594610, guid: 81e606e0d709bea4785c18f8feaaf925,
+        type: 2}
+      propertyPath: rotRightHandedAction.z
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 114061078412594610, guid: 81e606e0d709bea4785c18f8feaaf925,
+        type: 2}
+      propertyPath: rotLeftHandedAction.x
+      value: -60
+      objectReference: {fileID: 0}
+    - target: {fileID: 114061078412594610, guid: 81e606e0d709bea4785c18f8feaaf925,
+        type: 2}
+      propertyPath: rotLeftHandedAction.y
+      value: -33
+      objectReference: {fileID: 0}
+    - target: {fileID: 114061078412594610, guid: 81e606e0d709bea4785c18f8feaaf925,
+        type: 2}
+      propertyPath: rotLeftHandedAction.z
+      value: -50
+      objectReference: {fileID: 0}
+    - target: {fileID: 114061078412594610, guid: 81e606e0d709bea4785c18f8feaaf925,
+        type: 2}
+      propertyPath: posRightHandedAction.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114061078412594610, guid: 81e606e0d709bea4785c18f8feaaf925,
+        type: 2}
+      propertyPath: posLeftHandedAction.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114061078412594610, guid: 81e606e0d709bea4785c18f8feaaf925,
+        type: 2}
+      propertyPath: rotLeftHandOnlyAction.x
+      value: 61.535
+      objectReference: {fileID: 0}
+    - target: {fileID: 114061078412594610, guid: 81e606e0d709bea4785c18f8feaaf925,
+        type: 2}
+      propertyPath: rotLeftHandOnlyAction.y
+      value: -33.38
+      objectReference: {fileID: 0}
+    - target: {fileID: 114061078412594610, guid: 81e606e0d709bea4785c18f8feaaf925,
+        type: 2}
+      propertyPath: rotLeftHandOnlyAction.z
+      value: -43.55
+      objectReference: {fileID: 0}
+    - target: {fileID: 114061078412594610, guid: 81e606e0d709bea4785c18f8feaaf925,
+        type: 2}
+      propertyPath: rotRightHandOnlyAction.x
+      value: 51.178
+      objectReference: {fileID: 0}
+    - target: {fileID: 114061078412594610, guid: 81e606e0d709bea4785c18f8feaaf925,
+        type: 2}
+      propertyPath: rotRightHandOnlyAction.y
+      value: 38.098
+      objectReference: {fileID: 0}
+    - target: {fileID: 114061078412594610, guid: 81e606e0d709bea4785c18f8feaaf925,
+        type: 2}
+      propertyPath: rotRightHandOnlyAction.z
+      value: 45.204
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 114280122191555850, guid: 81e606e0d709bea4785c18f8feaaf925, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 81e606e0d709bea4785c18f8feaaf925, type: 2}
   m_IsPrefabParent: 0

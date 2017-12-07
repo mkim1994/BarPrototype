@@ -39,15 +39,22 @@ public class InteractionManager : MonoBehaviour {
 		LeftHandPickUp(leftHandPickUpKey);
  		FindInteractableRay();
 		if(!leftHandIsFree && !rightHandIsFree){
-			TwoHandedInteractableAction(rightActionKey, leftActionKey);
-			LeftHandAction(leftActionKey);
-			// RightHandAction(rightActionKey);
-		} else if (leftHandIsFree && !rightHandIsFree) {
-			// RightHandAction(rightActionKey);
-			LeftHandAction(leftActionKey);
-		} else if (!leftHandIsFree && rightHandIsFree){
-			LeftHandAction(leftActionKey);
-		} 
+			if(objectInLeftHand == ObjectInHand.Bottle && objectInRightHand == ObjectInHand.Bottle){
+				DualPour(rightActionKey, leftActionKey);
+			} else {
+				TwoHandedInteractableAction(rightActionKey, leftActionKey);
+			}
+		}
+		
+		if (interactableCurrentlyInRangeAndLookedAt != null){
+			OneHandedPour();
+		}
+		// else if (leftHandIsFree && !rightHandIsFree) {
+		// 	// RightHandAction(rightActionKey);
+		// 	OneHandedAction(leftActionKey);
+		// } else if (!leftHandIsFree && rightHandIsFree){
+		// 	OneHandedAction(leftActionKey);
+		// } 
  	}
 
 	void FindInteractableRay(){
@@ -80,76 +87,118 @@ public class InteractionManager : MonoBehaviour {
 		}
 	}
 
-	void OneHandedInteractableAction(KeyCode key){
-
-	}
-	void LeftHandAction(KeyCode leftKey){
-		//only do this if (1) object in other hand is glass, or (2) if you're looking at a glass on the table.
-		if(Input.GetKeyDown(leftKey) || Input.GetKeyDown(rightActionKey) && !isPerformingAction){
-		//CASE 1: Object in left hand is BASE or MIXER, right hand is glass
-			
-			if((objectInLeftHandGO.GetComponent<Base>() != null || objectInLeftHandGO.GetComponent<Mixer>() != null) 
-				&& objectInRightHand == ObjectInHand.Glass){
-				objectInRightHandGO.GetComponent<Interactable>().TwoHandedContextualAction(objectInLeftHand);
-				objectInLeftHandGO.GetComponent<Interactable>().TwoHandedContextualAction(objectInRightHand);
-				// Debug.Log("You should be pouring with your left hand!");
-				// isPerformingAction = true;
-			}
-		//CASE 2: If you're looking at glass
-		 	else if(interactableCurrentlyInRangeAndLookedAt != null){
-				 //do different pouring animation
-				 if(interactableCurrentlyInRangeAndLookedAt.GetComponent<Glass>() != null && objectInLeftHand == ObjectInHand.Bottle && objectInRightHand != ObjectInHand.Glass)
-				 	Debug.Log("Pour with your left to something on the table!");
-			}
-		} else if (Input.GetKeyUp(leftKey) || Input.GetKeyUp (rightActionKey)){
-			Debug.Log("Killing tween!");
-			if(!leftHandIsFree && !rightHandIsFree){
-				Interactable leftHandObject = objectInLeftHandGO.GetComponent<Interactable>();
-				Interactable rightHandObject = objectInRightHandGO.GetComponent<Interactable>();
-				leftHandObject.KillAllTweens();
-				leftHandObject.ReturnToInitHandPos(leftHandObject.myInitHandPos, leftHandObject.myInitHandRot);
-				// rightHandObject.KillAllTweens();
-				rightHandObject.ReturnToInitHandPos(rightHandObject.myInitHandPos, rightHandObject.myInitHandRot);
+	void DualPour(KeyCode rightKey, KeyCode leftKey){
+		if(!leftHandIsFree && !rightHandIsFree){
+			if(objectInLeftHand == ObjectInHand.Bottle && objectInRightHand == ObjectInHand.Bottle){
+				if(Input.GetKeyDown(leftActionKey) || Input.GetKeyDown(rightActionKey)){
+					Interactable leftHandObject = objectInLeftHandGO.GetComponent<Interactable>();
+					leftHandObject.OneHandedContextualAction();
+					if(objectInLeftHandGO.GetComponent<Base>() != null){
+						interactableCurrentlyInRangeAndLookedAt.GetComponentInChildren<PourSimulator>().FillUpWithBase(objectInLeftHandGO.GetComponent<Base>().baseType);
+					} else if (objectInLeftHandGO.GetComponent<Mixer>() != null){
+						interactableCurrentlyInRangeAndLookedAt.GetComponentInChildren<PourSimulator>().FillUpWithMixer(objectInLeftHandGO.GetComponent<Mixer>().mixerType);
+					}
+					Interactable rightHandObject = objectInRightHandGO.GetComponent<Interactable>();
+					rightHandObject.OneHandedContextualAction();
+					if(objectInRightHandGO.GetComponent<Base>() != null){
+						interactableCurrentlyInRangeAndLookedAt.GetComponentInChildren<PourSimulator>().FillUpWithBase(objectInRightHandGO.GetComponent<Base>().baseType);
+					} else if (objectInRightHandGO.GetComponent<Mixer>() != null){
+						interactableCurrentlyInRangeAndLookedAt.GetComponentInChildren<PourSimulator>().FillUpWithMixer(objectInRightHandGO.GetComponent<Mixer>().mixerType);
+					}
+				} else if (Input.GetKeyUp(leftActionKey) || Input.GetKeyUp(rightActionKey)) {
+					interactableCurrentlyInRangeAndLookedAt.GetComponentInChildren<PourSimulator>().StopFillingUp();
+					Interactable leftHandObject = objectInLeftHandGO.GetComponent<Interactable>();
+					leftHandObject.KillAllTweens();
+					leftHandObject.ReturnToInitHandPos(leftHandObject.myInitHandPos, leftHandObject.myInitHandRot);
+					isPerformingAction = false;	
+					interactableCurrentlyInRangeAndLookedAt.GetComponentInChildren<PourSimulator>().StopFillingUp();
+					Interactable rightHandObject = objectInRightHandGO.GetComponent<Interactable>();
+					// rightHandObject.KillAllTweens();
+					rightHandObject.ReturnToInitHandPos(rightHandObject.myInitHandPos, rightHandObject.myInitHandRot);
+					isPerformingAction = false;	
+				} 
 			}
 		}
 	}
-
-	void RightHandAction(KeyCode rightKey){
-		if(Input.GetKeyDown(rightKey) && !isPerformingAction){
-		//CASE 1: Object in left hand is BASE or MIXER, right hand is glass
-			if((objectInRightHandGO.GetComponent<Base>() != null || objectInRightHandGO.GetComponent<Mixer>() != null) 
-				&& !rightHandIsFree && objectInLeftHand == ObjectInHand.Glass){
-				objectInRightHandGO.GetComponent<Interactable>().TwoHandedContextualAction(objectInLeftHand);
-				objectInLeftHandGO.GetComponent<Interactable>().TwoHandedContextualAction(objectInRightHand);
-				isPerformingAction = true;
+	void OneHandedPour(){
+			if(interactableCurrentlyInRangeAndLookedAt.GetComponent<Glass>() != null){
+					//case 1: bottle in left hand
+				if(!leftHandIsFree && rightHandIsFree){
+					if(objectInLeftHand == ObjectInHand.Bottle){
+						if(Input.GetKeyDown(leftActionKey) || Input.GetKeyDown(rightActionKey)){
+							Interactable leftHandObject = objectInLeftHandGO.GetComponent<Interactable>();
+							leftHandObject.OneHandedContextualAction();
+							if(objectInLeftHandGO.GetComponent<Base>() != null){
+								interactableCurrentlyInRangeAndLookedAt.GetComponentInChildren<PourSimulator>().FillUpWithBase(objectInLeftHandGO.GetComponent<Base>().baseType);
+							} else if (objectInLeftHandGO.GetComponent<Mixer>() != null){
+								interactableCurrentlyInRangeAndLookedAt.GetComponentInChildren<PourSimulator>().FillUpWithMixer(objectInLeftHandGO.GetComponent<Mixer>().mixerType);
+							}
+						} else if (Input.GetKeyUp(leftActionKey) || Input.GetKeyUp(rightActionKey)) {
+							interactableCurrentlyInRangeAndLookedAt.GetComponentInChildren<PourSimulator>().StopFillingUp();
+							Interactable leftHandObject = objectInLeftHandGO.GetComponent<Interactable>();
+							leftHandObject.KillAllTweens();
+ 							leftHandObject.ReturnToInitHandPos(leftHandObject.myInitHandPos, leftHandObject.myInitHandRot);
+							isPerformingAction = false;	
+						}
+					}
+				} 
+				//case 2: bottle in right hand
+				if(leftHandIsFree && !rightHandIsFree){
+					if(objectInRightHand == ObjectInHand.Bottle){
+						if(Input.GetKeyDown(leftActionKey) || Input.GetKeyDown(rightActionKey)){
+							Interactable rightHandObject = objectInRightHandGO.GetComponent<Interactable>();
+							rightHandObject.OneHandedContextualAction();
+							if(objectInRightHandGO.GetComponent<Base>() != null){
+								interactableCurrentlyInRangeAndLookedAt.GetComponentInChildren<PourSimulator>().FillUpWithBase(objectInRightHandGO.GetComponent<Base>().baseType);
+							} else if (objectInRightHandGO.GetComponent<Mixer>() != null){
+								interactableCurrentlyInRangeAndLookedAt.GetComponentInChildren<PourSimulator>().FillUpWithMixer(objectInRightHandGO.GetComponent<Mixer>().mixerType);
+							}
+						} else if (Input.GetKeyUp(leftActionKey) || Input.GetKeyUp(rightActionKey)) {
+							interactableCurrentlyInRangeAndLookedAt.GetComponentInChildren<PourSimulator>().StopFillingUp();
+							Interactable rightHandObject = objectInRightHandGO.GetComponent<Interactable>();
+							rightHandObject.KillAllTweens();
+ 							rightHandObject.ReturnToInitHandPos(rightHandObject.myInitHandPos, rightHandObject.myInitHandRot);
+							isPerformingAction = false;	
+						}
+					}
+				} 
 			} 
-		}
+		
 	}
 
 	void TwoHandedInteractableAction(KeyCode rightKey, KeyCode leftKey){	
-		if(Input.GetKey(rightKey) && !isPerformingAction){
-			if(Input.GetKey(leftKey)){
+		if(!isPerformingAction){
+			if(Input.GetKey(leftKey) || Input.GetKey(rightKey)){
 				objectInRightHandGO.GetComponent<Interactable>().TwoHandedContextualAction(objectInLeftHand);
 				objectInLeftHandGO.GetComponent<Interactable>().TwoHandedContextualAction(objectInRightHand);
+				if(objectInLeftHandGO.GetComponent<Base>() != null){
+					objectInRightHandGO.GetComponentInChildren<PourSimulator>().FillUpWithBase(objectInLeftHandGO.GetComponent<Base>().baseType);
+				} else if (objectInLeftHandGO.GetComponent<Mixer>() != null){
+					objectInRightHandGO.GetComponentInChildren<PourSimulator>().FillUpWithMixer(objectInLeftHandGO.GetComponent<Mixer>().mixerType);
+				}
+
+				if(objectInRightHandGO.GetComponent<Base>() != null){
+					objectInLeftHandGO.GetComponentInChildren<PourSimulator>().FillUpWithBase(objectInRightHandGO.GetComponent<Base>().baseType);
+				} else if (objectInRightHandGO.GetComponent<Mixer>() != null){
+					objectInLeftHandGO.GetComponentInChildren<PourSimulator>().FillUpWithMixer(objectInRightHandGO.GetComponent<Mixer>().mixerType);
+				}
 				isPerformingAction = true;
 			}
 		} else if ((Input.GetKeyUp(rightKey) || Input.GetKeyUp(leftKey)) && isPerformingAction){
 			Debug.Log("Stop performing action!");
+			Interactable leftHandObject = objectInLeftHandGO.GetComponent<Interactable>();
+			Interactable rightHandObject = objectInRightHandGO.GetComponent<Interactable>();
+			leftHandObject.KillAllTweens();
+			leftHandObject.ReturnToInitHandPos(leftHandObject.myInitHandPos, leftHandObject.myInitHandRot);
+			rightHandObject.ReturnToInitHandPos(rightHandObject.myInitHandPos, rightHandObject.myInitHandRot);
+			//identify which hand has the glass.
+			if(objectInLeftHandGO.GetComponent<Glass> () != null){
+				objectInLeftHandGO.GetComponentInChildren<PourSimulator>().StopFillingUp();
+			} else if(objectInRightHandGO.GetComponent<Glass>() != null){
+				objectInRightHandGO.GetComponentInChildren<PourSimulator>().StopFillingUp();
+			}
 			isPerformingAction = false;
 		}
-
-		// if((Input.GetKey(rightKey) || Input.GetKey(leftKey)) && !isPerformingAction){
-		// 	foreach (GameObject objectInHand in objectsInHand){
-		// 		if(objectInHand.tag == "RightHand"){
-		// 			objectInHand.GetComponent<Interactable>().TwoHandedContextualAction(objectInLeftHand);
-		// 		} else if (objectInHand.tag == "LeftHand") {
-		// 			objectInHand.GetComponent<Interactable>().TwoHandedContextualAction(objectInRightHand);
-		// 		}
-		// 	}
-		// 	isPerformingAction = true;
-		// } else if ((Input.GetKeyUp(rightKey) || Input.GetKeyUp(leftKey)) && isPerformingAction){
-		// 	isPerformingAction = false;
-		// }
 	}
 
 	void LeftHandPickUp(KeyCode key){
@@ -256,6 +305,14 @@ public class InteractionManager : MonoBehaviour {
 			objectInLeftHandGO.GetComponent<Interactable>().TweenToTable(nearestDropzone.transform.position);
 			objectInLeftHandGO = null;
 			objectInLeftHandGO = _interactable.gameObject;
+			if(_interactable.gameObject.GetComponent<Base>() != null || _interactable.gameObject.GetComponent<Mixer>() != null){
+				//then it's a bottle
+				objectInLeftHand = ObjectInHand.Bottle;
+			} else if (_interactable.gameObject.GetComponent<Glass>() != null){
+				objectInLeftHand = ObjectInHand.Glass;
+			} else if (_interactable.gameObject.GetComponent<Rag>() != null){
+				objectInLeftHand = ObjectInHand.Rag;
+			} 
 		}
 	}
 
@@ -269,6 +326,14 @@ public class InteractionManager : MonoBehaviour {
 			objectInRightHandGO.GetComponent<Interactable>().TweenToTable(nearestDropzone.transform.position);
 			objectInRightHandGO = null;
 			objectInRightHandGO = _interactable.gameObject;
+			if(_interactable.gameObject.GetComponent<Base>() != null || _interactable.gameObject.GetComponent<Mixer>() != null){
+				//then it's a bottle
+				objectInRightHand = ObjectInHand.Bottle;
+			} else if (_interactable.gameObject.GetComponent<Glass>() != null){
+				objectInRightHand = ObjectInHand.Glass;
+			} else if (_interactable.gameObject.GetComponent<Rag>() != null){
+				objectInRightHand = ObjectInHand.Rag;
+			} 
 		}
 	}
 

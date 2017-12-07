@@ -6,7 +6,13 @@ using DG.Tweening;
 public class Interactable : MonoBehaviour {
 
 	//exposed these to the Inspector because of tween weirdness.
+	public Vector3 posRightHandedAction;
+	public Vector3 posLeftHandedAction;
+	public Vector3 rotRightHandedAction;
+	public Vector3 rotLeftHandedAction;
 
+	public Vector3 rotLeftHandOnlyAction;
+	public Vector3 rotRightHandOnlyAction;
 	public enum PourState{
 		Pouring,
 		Not_pouring
@@ -78,6 +84,10 @@ public class Interactable : MonoBehaviour {
 		// 	//Do right-handed animation
 		// 	transform.DOLocalRotate(myRightHandedPourRotation, 0.75f, RotateMode.Fast);
 		// }
+	}
+
+	public virtual void OneHandedContextualAction(){
+		
 	} 
 
 	public virtual void StopTwoHandedContextualAction(){
@@ -144,6 +154,7 @@ public class Interactable : MonoBehaviour {
 
 	public virtual void KillAllTweens(){
 		DOTween.KillAll();
+		// transform.DOKill(this.transform);
 	}
 	public virtual void TweenBackToIdleLeftHand(){
 

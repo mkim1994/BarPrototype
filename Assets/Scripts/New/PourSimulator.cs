@@ -52,7 +52,8 @@ public class PourSimulator : MonoBehaviour {
 		switch (pourState)
 		{
 			case PourState.Pouring_Base:
-				if(drinkZ < maxDrinkZ && GetComponentInParent<Glass>().tweenToHandIsDone){
+				// if(drinkZ < maxDrinkZ && GetComponentInParent<Glass>().tweenToHandIsDone){
+				if(drinkZ < maxDrinkZ){	
 					FillUp();
  					cocktail.AddBase(myBaseType);
 				}
@@ -84,47 +85,47 @@ public class PourSimulator : MonoBehaviour {
 		switch (_baseType){
 			case Ingredients.BaseType.GIN:
  				myMesh.material.color = Color.white;
-				//  Debug.Log("Pouring gin!");
+				 Debug.Log("Pouring gin!");
 			break;
 			case Ingredients.BaseType.WHISKY:
  				myMesh.material.color = Color.yellow;
-				//  Debug.Log("Pouring whisky!");
+				 Debug.Log("Pouring whisky!");
 			break;
 			case Ingredients.BaseType.RUM:
  				myMesh.material.color = Color.red;
-				//  Debug.Log("Pouring rum!");
+				 Debug.Log("Pouring rum!");
 			break;
 			default:
 			break;
 		}
 
-		// if(drinkZ < maxDrinkZ){
-		// 	FillUp();
- 		// 	cocktail.AddBase(_baseType);
-		// }
-		// else if(drinkZ >= maxDrinkZ){
-		// 	Debug.Log("Drink is full!");
-		// }
+		if(drinkZ < maxDrinkZ){
+			FillUp();
+ 			cocktail.AddBase(_baseType);
+		}
+		else if(drinkZ >= maxDrinkZ){
+			Debug.Log("Drink is full!");
+		}
 	}
 
-	public void FillUpWithDilute(Ingredients.MixerType _mixerType){
+	public void FillUpWithMixer(Ingredients.MixerType _mixerType){
 		pourState = PourState.Pouring_Mixer;
 		myMixerType = _mixerType;
 		Debug.Log("Filling up drink with mixer!");
 		switch (_mixerType){
 			case Ingredients.MixerType.SODA:
  				myMesh.material.color = Color.red;
-				// Debug.Log("pouring soda!");
+				Debug.Log("pouring soda!");
 			break;
 			
 			case Ingredients.MixerType.JUICE:
  				myMesh.material.color = Color.yellow;
-				// Debug.Log("pouring juice!");
+				Debug.Log("pouring juice!");
 			break;
 			
 			case Ingredients.MixerType.TONIC_WATER:
  				myMesh.material.color = Color.blue;
-				// Debug.Log("pouring tonic water!");
+				Debug.Log("pouring tonic water!");
 			break;
 			
 			default:
@@ -132,13 +133,13 @@ public class PourSimulator : MonoBehaviour {
 		}
 		// scale += scaleGrowthRate * Time.deltaTime;
 		// FillUp();
-		// if(drinkZ < maxDrinkZ){
-		// 	FillUp();
-		// 	cocktail.AddMixer(mixerType);
-		// }
-		// else if(drinkZ >= maxDrinkZ){
-		// 	Debug.Log("Drink is full!");
-		// }
+		if(drinkZ < maxDrinkZ){
+			FillUp();
+			cocktail.AddMixer(_mixerType);
+		}
+		else if(drinkZ >= maxDrinkZ){
+			Debug.Log("Drink is full!");
+		}
 	}
 
 	public void Empty(){

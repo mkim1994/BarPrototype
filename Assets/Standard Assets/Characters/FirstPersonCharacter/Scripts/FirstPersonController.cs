@@ -213,8 +213,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
           //  if (CrossPlatformInputManager.GetAxis("Horizontal"))
 
             // Read input
-            float horizontal = CrossPlatformInputManager.GetAxis("Horizontal");
-            float vertical = CrossPlatformInputManager.GetAxis("Vertical");
+            float horizontal = CrossPlatformInputManager.GetAxisRaw("Horizontal");
+            float vertical = CrossPlatformInputManager.GetAxisRaw("Vertical");
 
             bool waswalking = m_IsWalking;
 
@@ -235,7 +235,9 @@ namespace UnityStandardAssets.Characters.FirstPerson
             }*/
 
 
-            speed = m_IsWalking ? m_WalkSpeed : m_RunSpeed;
+            // speed = m_IsWalking ? m_WalkSpeed : m_RunSpeed;
+            speed = m_WalkSpeed;
+
 
             // float horizontal2 = horizontal;
             // float vertical2 = vertical;

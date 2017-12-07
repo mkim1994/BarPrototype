@@ -12,10 +12,7 @@ public class Glass : Interactable {
 	public bool tweenToTableIsDone;
 	public GameObject[] stains;
 	Interactable interactable;
-
 	public bool isDirty = false;
-	public Vector3 myRightHandedPourRotation;
-	public Vector3 myLeftHandedPourRotation;
 	public GameObject stainHolder;
 	public string glassName = "glass";
 	// Use this for initialization
@@ -84,8 +81,9 @@ public class Glass : Interactable {
 		//all right handed actions
 		Debug.Log("Rotating glass!");
 		if(this.tag == "RightHand"){
-			if(_objectInOtherHand == ObjectInHand.Bottle)
-				transform.DOLocalRotate(myRightHandedPourRotation, 0.75f, RotateMode.Fast);
+			if(_objectInOtherHand == ObjectInHand.Bottle){
+				transform.DOLocalMove(posRightHandedAction, 0.75f, false);
+			}
 			//Rag
 			else if (_objectInOtherHand == ObjectInHand.Rag){
 				RightHandToRagTween();
@@ -94,8 +92,10 @@ public class Glass : Interactable {
 		//all left-handed actions
 		else if (this.tag == "LeftHand"){
 			//Bottle
-			if(_objectInOtherHand == ObjectInHand.Bottle)
-				transform.DOLocalRotate(myLeftHandedPourRotation, 0.75f, RotateMode.Fast);
+			if(_objectInOtherHand == ObjectInHand.Bottle){
+				transform.DOLocalMove(posLeftHandedAction, 0.75f, false);
+			}
+				// transform.DOLocalRotate(myLeftHandedPourRotation, 0.75f, RotateMode.Fast);
 			//Rag
 			else if (_objectInOtherHand == ObjectInHand.Rag){
 				LeftHandToRagTween();
@@ -116,12 +116,12 @@ public class Glass : Interactable {
 	private void RightHandToRagTween(){
 		Sequence cleanSequence = DOTween.Sequence();
 		cleanSequence.Append(transform.DOLocalMove((Vector3.left*cleaningOffsetX) + Vector3.forward + (Vector3.down * 0.5f), 0.25f, false));
-		cleanSequence.OnComplete(()=>ReturnToInitHandPos(myInitHandPos, onTableRot));
+		// cleanSequence.OnComplete(()=>ReturnToInitHandPos(myInitHandPos, onTableRot));
 	}
 	private void LeftHandToRagTween(){
 		Sequence cleanSequence = DOTween.Sequence();
  		cleanSequence.Append(transform.DOLocalMove((Vector3.right*cleaningOffsetX) + Vector3.forward + (Vector3.down * 0.5f), 0.25f, false));
-		cleanSequence.OnComplete(()=>ReturnToInitHandPos(myInitHandPos, onTableRot));
+		// cleanSequence.OnComplete(()=>ReturnToInitHandPos(myInitHandPos, onTableRot));
 	}
 
 	// public override void ReturnToInitHandPos(Vector3 _initHandPos, Vector3 _initHandRot){

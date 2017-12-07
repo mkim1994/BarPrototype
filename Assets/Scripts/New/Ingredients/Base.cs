@@ -5,8 +5,6 @@ using DG.Tweening;
 public class Base : Interactable {
 	public Ingredients.BaseType baseType;
 	public string baseName;
-	public Vector3 myRightHandedPourRotation;
-	public Vector3 myLeftHandedPourRotation;
 
 	protected override void Start(){
 		base.Start();
@@ -32,17 +30,30 @@ public class Base : Interactable {
 		//all right handed actions
 		if(this.tag == "RightHand"){
 			if(_objectInOtherHand == ObjectInHand.Glass)
-				transform.DOLocalRotate(myRightHandedPourRotation, 0.75f, RotateMode.Fast);
+				transform.DOLocalRotate(rotRightHandedAction, 0.75f, RotateMode.Fast);
+				transform.DOLocalMoveY(0, 0.75f, false);
 		}
 		//all left-handed actions
 		else if (this.tag == "LeftHand"){
 			if(_objectInOtherHand == ObjectInHand.Glass)
-				transform.DOLocalRotate(myLeftHandedPourRotation, 0.75f, RotateMode.Fast);
+				transform.DOLocalRotate(rotLeftHandedAction, 0.75f, RotateMode.Fast);
+				transform.DOLocalMoveY(0, 0.75f, false);
 		}
 	} 
 
 	public override void StopTwoHandedContextualAction(){
 		transform.DOLocalRotate(onTableRot, 0.3f, RotateMode.Fast);
+	}
+
+	public override void OneHandedContextualAction(){
+		if(this.tag == "RightHand"){
+			transform.DOLocalRotate(rotLeftHandOnlyAction, 0.75f, RotateMode.Fast);
+			// transform.DOLocalMoveY(0, 0.75f, false);
+			// transform.DOLocalMoveX(1,)
+		} else if (this.tag == "LeftHand"){
+			transform.DOLocalRotate(rotLeftHandOnlyAction, 0.75f, RotateMode.Fast);
+			// transform.DOLocalMoveY(0, 0.75f, false);
+		}	
 	}
 
 
