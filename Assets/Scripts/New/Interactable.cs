@@ -108,14 +108,15 @@ public class Interactable : MonoBehaviour {
 		myInitHandRot = onTableRot;
 		transform.DOLocalMove(_handPos, 1f, false);
 		transform.DOLocalRotate(onTableRot, 1f, RotateMode.Fast);
+		StartCoroutine(DisableColliderForTweenToHand(0.5f));
 		// Debug.Log("tweening " + this.gameObject.name + " to hand!");
 	}
 
 	//all interactables can be given away, or "unequipped"/dropped.
 	public virtual void TweenToTable(Vector3 _tablePos){
 		// tablePos = _tablePos;
-		transform.DOMove(_tablePos, 1f, false);
-		transform.DORotate(onTableRot, 1f, RotateMode.Fast);
+		transform.DOMove(_tablePos, 0.5f, false);
+		transform.DORotate(onTableRot, 0.5f, RotateMode.Fast);
 
 		StartCoroutine(EnableColliderAfterTweenToTable(1f));
 		// Debug.Log("tweening " + this.gameObject.name + " to table!");
@@ -138,8 +139,13 @@ public class Interactable : MonoBehaviour {
 			rb.isKinematic = false;
 		}
 	}
-	public virtual void DisableCollider(){
-		GetComponent<Collider>().enabled =  false;
+	// public virtual void DisableCollider(){
+	// 	GetComponent<Collider>().enabled =  false;
+	// }
+
+	public virtual IEnumerator DisableColliderForTweenToHand(float delay){
+		yield return new WaitForSeconds(delay);
+		GetComponent<Collider>().enabled = false;
 	}
 
 	public virtual IEnumerator EnableColliderAfterTweenToTable(float delay){

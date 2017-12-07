@@ -23,19 +23,18 @@ public class InteractionManager : MonoBehaviour {
 	public KeyCode leftHandPickUpKey;
 	public KeyCode leftActionKey;
 	public KeyCode rightActionKey;
-
-	public List<GameObject> dropzones = new List<GameObject>();
-	public float[] dropzoneDistance = new float[9];
 	public GameObject[] dropzoneArray;
+	public float[] dropzoneDistance;
+
 	public LayerMask layerMask;
 	// Use this for initialization
 	void Start () {
-		
+		dropzoneArray = GameObject.FindGameObjectsWithTag("DropZone");
 		leftHandIsFree = true;
 		rightHandIsFree = true;
 		leftHandPos = Vector3.forward + (Vector3.left * 0.5f) + (Vector3.down * 0.25f);
 		rightHandPos = Vector3.forward + (Vector3.right * 0.5f) + (Vector3.down * 0.25f);
-		dropzoneArray = GameObject.FindGameObjectsWithTag("DropZone");
+		dropzoneDistance = new float[dropzoneArray.Length];
 	}
 	
 	// Update is called once per frame
@@ -127,20 +126,6 @@ public class InteractionManager : MonoBehaviour {
 		}
 	}
 
-	// public void DetectNearestDropZone(){
-	// 	for (int i = 0; i < dropzones.Count; i++) {
-	// 		dropzoneDistance[i] = Vector3.Distance(dropzones[i].transform.position, transform.position);
-    //         for (int j = i+1; j < dropzones.Count; j++) {
-    //             if ( (dropzoneDistance[i] > dropzoneDistance[j]) && (i != j) ) {
-	// 				GameObject tempGameObject;
-	// 				tempGameObject = dropzones[j];
-	// 				dropzones[j] = dropzones[i];
-	// 				dropzones[i] = tempGameObject;
-    //             }
-    //         }
-    //     }
-	// }
-
 	public void DetectNearestDropZone(){
 		for (int i = 0; i < dropzoneArray.Length; i++) {
 			dropzoneDistance[i] = Vector3.Distance(dropzoneArray[i].transform.position, transform.position);
@@ -152,6 +137,18 @@ public class InteractionManager : MonoBehaviour {
 					dropzoneArray[i] = tempGameObject;
                 }
             }
+			while(dropzoneArray[0].GetComponent<DropzoneManager>().isOccupied){
+				nearestDropzone = dropzoneArray[i];
+			}
+			// if(!dropzoneArray[i].GetComponent<DropzoneManager>().isOccupied){
+			// 	nearestDropzone = dropzoneArray[0];
+			// } else { 
+			// 	nearestDropzone = dropzoneArray[i];
+			// 	break;
+			// }
+			// if(nearestDropzone.GetComponent<DropzoneManager>().isOccupied)
+			// 	nearestDropzone = dropzoneArray[i];
+			// 	break;
         }
 	}
 	void OneHandedPour(){
@@ -242,7 +239,7 @@ public class InteractionManager : MonoBehaviour {
 				interactableCurrentlyInRangeAndLookedAt.transform.SetParent(this.transform);
 				Interactable interactable = interactableCurrentlyInRangeAndLookedAt.GetComponent<Interactable>();
 				//turn off the collider to avoid catching it in a raycast
-				interactable.DisableCollider();
+				// interactable.DisableCollider();
 				// interactable.TweenToHand(leftHandPos);
 				//both hands free, looking at interactable.			
 				if(leftHandIsFree){
@@ -272,7 +269,7 @@ public class InteractionManager : MonoBehaviour {
 				interactableCurrentlyInRangeAndLookedAt.transform.SetParent(this.transform);
 				Interactable interactable = interactableCurrentlyInRangeAndLookedAt.GetComponent<Interactable>();
 				//turn off the collider to avoid catching it in a raycast
-				interactable.DisableCollider();
+				// interactable.DisableCollider();
 				// interactable.TweenToHand(leftHandPos);
 				//both hands free, looking at interactable.			
 				if(rightHandIsFree){
@@ -332,12 +329,11 @@ public class InteractionManager : MonoBehaviour {
 	private void SwapInteractableInLeftHand(Interactable _interactable){
 		_interactable.TweenToHand(leftHandPos);
 		_interactable.tag = "LeftHand";				
-		_interactable.DisableCollider();
+		// _interactable.DisableCollider();
 		if(objectInLeftHandGO != null){
 			objectInLeftHandGO.tag = "Untagged";
 			objectInLeftHandGO.transform.SetParent(null);
-			// objectInLeftHandGO.GetComponent<Interactable>().TweenToTable(nearestDropzone.transform.position);
-			objectInLeftHandGO.GetComponent<Interactable>().TweenToTable(dropzoneArray[0].transform.position);
+			objectInLeftHandGO.GetComponent<Interactable>().TweenToTable(nearestDropzone.transform.position);
 			objectInLeftHandGO = null;
 			objectInLeftHandGO = _interactable.gameObject;
 			if(_interactable.gameObject.GetComponent<Base>() != null || _interactable.gameObject.GetComponent<Mixer>() != null){
@@ -354,7 +350,7 @@ public class InteractionManager : MonoBehaviour {
 	private void SwapInteractableInRightHand(Interactable _interactable){
 		_interactable.TweenToHand(rightHandPos);
 		_interactable.tag = "RightHand";
-		_interactable.DisableCollider();
+		// _interactable.DisableCollider();
 		if(objectInRightHandGO != null){
 			objectInRightHandGO.tag = "Untagged";
 			objectInRightHandGO.transform.SetParent(null);
@@ -377,8 +373,8 @@ public class InteractionManager : MonoBehaviour {
 		if(key == leftHandPickUpKey){
  			if(objectInLeftHandGO != null){
 				objectInLeftHandGO.tag = "Untagged";
+				objectInLeftHandGO.GetComponent<Interactable>().TweenToTable(nearestDropzone.transform.position);
 				objectInLeftHandGO.transform.SetParent(null);
-				objectInLeftHandGO.GetComponent<Interactable>().TweenToTable(dropzoneArray[0].transform.position);
 				objectInLeftHandGO = null;
 			}
 			leftHandIsFree = true;
@@ -386,8 +382,8 @@ public class InteractionManager : MonoBehaviour {
 		} else if (key == rightHandPickUpKey){
 			if(objectInRightHandGO != null){
 				objectInRightHandGO.tag = "Untagged";
-				objectInRightHandGO.transform.SetParent(null);
 				objectInRightHandGO.GetComponent<Interactable>().TweenToTable(dropzoneArray[0].transform.position);
+				objectInRightHandGO.transform.SetParent(null);
 				objectInRightHandGO = null;
 			}
 			rightHandIsFree = true;

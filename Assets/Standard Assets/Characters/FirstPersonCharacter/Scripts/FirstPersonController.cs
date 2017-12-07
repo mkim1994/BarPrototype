@@ -215,7 +215,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             // Read input
             float horizontal = CrossPlatformInputManager.GetAxisRaw("Horizontal");
             float vertical = CrossPlatformInputManager.GetAxisRaw("Vertical");
-
+            
             bool waswalking = m_IsWalking;
 
 #if !MOBILE_INPUT
@@ -253,7 +253,9 @@ namespace UnityStandardAssets.Characters.FirstPerson
             //     }
             // }
             m_Input = new Vector2(horizontal, vertical);
-
+            if (m_Input.magnitude <= .25f){
+                m_Input = Vector2.zero;
+            }
             // handle speed change to give an fov kick
             // only if the player is going to a run, is running and the fovkick is to be used
             if (m_IsWalking != waswalking && m_UseFovKick && m_CharacterController.velocity.sqrMagnitude > 0)
