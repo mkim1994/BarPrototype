@@ -583,7 +583,7 @@ GameObject:
   - component: {fileID: 208451172}
   m_Layer: 0
   m_Name: TEMP_dropzone (7)
-  m_TagString: Untagged
+  m_TagString: DropZone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1397,7 +1397,7 @@ GameObject:
   - component: {fileID: 418132913}
   m_Layer: 0
   m_Name: TEMP_dropzone (2)
-  m_TagString: Untagged
+  m_TagString: DropZone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1579,7 +1579,7 @@ GameObject:
   - component: {fileID: 543833638}
   m_Layer: 0
   m_Name: TEMP_dropzone (1)
-  m_TagString: Untagged
+  m_TagString: DropZone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1746,7 +1746,7 @@ GameObject:
   - component: {fileID: 564113013}
   m_Layer: 0
   m_Name: TEMP_dropzone (8)
-  m_TagString: Untagged
+  m_TagString: DropZone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3555,7 +3555,7 @@ GameObject:
   - component: {fileID: 940263014}
   m_Layer: 0
   m_Name: TEMP_dropzone (4)
-  m_TagString: Untagged
+  m_TagString: DropZone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4654,6 +4654,18 @@ MonoBehaviour:
   leftHandPickUpKey: 336
   leftActionKey: 334
   rightActionKey: 335
+  dropzones: []
+  dropzoneDistance:
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  dropzoneArray: []
   layerMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -4671,7 +4683,7 @@ GameObject:
   - component: {fileID: 1127747842}
   m_Layer: 0
   m_Name: TEMP_dropzone
-  m_TagString: Untagged
+  m_TagString: DropZone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6055,7 +6067,7 @@ GameObject:
   - component: {fileID: 1371355299}
   m_Layer: 0
   m_Name: TEMP_dropzone (3)
-  m_TagString: Untagged
+  m_TagString: DropZone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7539,7 +7551,7 @@ GameObject:
   - component: {fileID: 1690013880}
   m_Layer: 0
   m_Name: TEMP_dropzone (5)
-  m_TagString: Untagged
+  m_TagString: DropZone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7675,7 +7687,7 @@ GameObject:
   - component: {fileID: 1700108706}
   m_Layer: 0
   m_Name: TEMP_dropzone (6)
-  m_TagString: Untagged
+  m_TagString: DropZone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

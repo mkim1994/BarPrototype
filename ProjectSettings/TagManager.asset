@@ -15,6 +15,7 @@ TagManager:
   - Lights
   - RightHand
   - LeftHand
+  - DropZone
   layers:
   - Default
   - TransparentFX

@@ -24,17 +24,23 @@ public class InteractionManager : MonoBehaviour {
 	public KeyCode leftActionKey;
 	public KeyCode rightActionKey;
 
+	public List<GameObject> dropzones = new List<GameObject>();
+	public float[] dropzoneDistance = new float[9];
+	public GameObject[] dropzoneArray;
 	public LayerMask layerMask;
 	// Use this for initialization
 	void Start () {
+		
 		leftHandIsFree = true;
 		rightHandIsFree = true;
 		leftHandPos = Vector3.forward + (Vector3.left * 0.5f) + (Vector3.down * 0.25f);
 		rightHandPos = Vector3.forward + (Vector3.right * 0.5f) + (Vector3.down * 0.25f);
+		dropzoneArray = GameObject.FindGameObjectsWithTag("DropZone");
 	}
 	
 	// Update is called once per frame
 	void Update () {
+		DetectNearestDropZone();
 		RightHandPickUp(rightHandPickUpKey);
 		LeftHandPickUp(leftHandPickUpKey);
  		FindInteractableRay();
@@ -119,6 +125,34 @@ public class InteractionManager : MonoBehaviour {
 				} 
 			}
 		}
+	}
+
+	// public void DetectNearestDropZone(){
+	// 	for (int i = 0; i < dropzones.Count; i++) {
+	// 		dropzoneDistance[i] = Vector3.Distance(dropzones[i].transform.position, transform.position);
+    //         for (int j = i+1; j < dropzones.Count; j++) {
+    //             if ( (dropzoneDistance[i] > dropzoneDistance[j]) && (i != j) ) {
+	// 				GameObject tempGameObject;
+	// 				tempGameObject = dropzones[j];
+	// 				dropzones[j] = dropzones[i];
+	// 				dropzones[i] = tempGameObject;
+    //             }
+    //         }
+    //     }
+	// }
+
+	public void DetectNearestDropZone(){
+		for (int i = 0; i < dropzoneArray.Length; i++) {
+			dropzoneDistance[i] = Vector3.Distance(dropzoneArray[i].transform.position, transform.position);
+            for (int j = i+1; j < dropzoneArray.Length; j++) {
+                if ( (dropzoneDistance[i] > dropzoneDistance[j]) && (i != j) ) {
+					GameObject tempGameObject;
+					tempGameObject = dropzoneArray[j];
+					dropzoneArray[j] = dropzoneArray[i];
+					dropzoneArray[i] = tempGameObject;
+                }
+            }
+        }
 	}
 	void OneHandedPour(){
 			if(interactableCurrentlyInRangeAndLookedAt.GetComponent<Glass>() != null){
@@ -302,7 +336,8 @@ public class InteractionManager : MonoBehaviour {
 		if(objectInLeftHandGO != null){
 			objectInLeftHandGO.tag = "Untagged";
 			objectInLeftHandGO.transform.SetParent(null);
-			objectInLeftHandGO.GetComponent<Interactable>().TweenToTable(nearestDropzone.transform.position);
+			// objectInLeftHandGO.GetComponent<Interactable>().TweenToTable(nearestDropzone.transform.position);
+			objectInLeftHandGO.GetComponent<Interactable>().TweenToTable(dropzoneArray[0].transform.position);
 			objectInLeftHandGO = null;
 			objectInLeftHandGO = _interactable.gameObject;
 			if(_interactable.gameObject.GetComponent<Base>() != null || _interactable.gameObject.GetComponent<Mixer>() != null){
@@ -343,7 +378,7 @@ public class InteractionManager : MonoBehaviour {
  			if(objectInLeftHandGO != null){
 				objectInLeftHandGO.tag = "Untagged";
 				objectInLeftHandGO.transform.SetParent(null);
-				objectInLeftHandGO.GetComponent<Interactable>().TweenToTable(nearestDropzone.transform.position);
+				objectInLeftHandGO.GetComponent<Interactable>().TweenToTable(dropzoneArray[0].transform.position);
 				objectInLeftHandGO = null;
 			}
 			leftHandIsFree = true;
@@ -352,7 +387,7 @@ public class InteractionManager : MonoBehaviour {
 			if(objectInRightHandGO != null){
 				objectInRightHandGO.tag = "Untagged";
 				objectInRightHandGO.transform.SetParent(null);
-				objectInRightHandGO.GetComponent<Interactable>().TweenToTable(nearestDropzone.transform.position);
+				objectInRightHandGO.GetComponent<Interactable>().TweenToTable(dropzoneArray[0].transform.position);
 				objectInRightHandGO = null;
 			}
 			rightHandIsFree = true;
