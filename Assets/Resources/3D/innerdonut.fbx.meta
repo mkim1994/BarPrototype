@@ -1,51 +1,82 @@
 fileFormatVersion: 2
-guid: 7a003f84420de614ab2cd7bb89435fd3
-timeCreated: 1512408585
+guid: 3f3c41949bf204110b4f3169d45a10b1
+timeCreated: 1512979941
 licenseType: Free
 ModelImporter:
-  serializedVersion: 21
+  serializedVersion: 22
   fileIDToRecycleName:
-    100000: pCube1
-    100002: pCube2
+    100000: //RootNode
+    100002: pCube1
     100004: pCube3
     100006: pCube4
     100008: pCube5
     100010: pCube6
-    100012: pCube7
-    100014: //RootNode
-    400000: pCube1
-    400002: pCube2
+    100012: pCylinder1
+    100014: pCylinder2
+    100016: pCylinder3
+    100018: transform1
+    100020: transform2
+    100022: transform3
+    100024: transform4
+    100026: transform5
+    100028: transform6
+    100030: transform7
+    400000: //RootNode
+    400002: pCube1
     400004: pCube3
     400006: pCube4
     400008: pCube5
     400010: pCube6
-    400012: pCube7
-    400014: //RootNode
-    2300000: pCube1
-    2300002: pCube2
-    2300004: pCube3
-    2300006: pCube4
-    2300008: pCube5
-    2300010: pCube6
-    2300012: pCube7
-    3300000: pCube1
-    3300002: pCube2
-    3300004: pCube3
-    3300006: pCube4
-    3300008: pCube5
-    3300010: pCube6
-    3300012: pCube7
-    4300000: pCube1
-    4300002: pCube2
-    4300004: pCube3
-    4300006: pCube4
-    4300008: pCube5
-    4300010: pCube6
-    4300012: pCube7
+    400012: pCylinder1
+    400014: pCylinder2
+    400016: pCylinder3
+    400018: transform1
+    400020: transform2
+    400022: transform3
+    400024: transform4
+    400026: transform5
+    400028: transform6
+    400030: transform7
+    2300000: pCube6
+    3300000: pCube6
+    4300000: pCube6
+    9500000: //RootNode
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: innerdonut_base
+    second: {fileID: 2100000, guid: c574a7db2b27e4f0d9158d9845cee01a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: innerdonut_frame
+    second: {fileID: 2100000, guid: 7b6983cf6a7a54e55a02616d090ecb5f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: innerdonut_light
+    second: {fileID: 2100000, guid: 5f2f3613f05cf4e5f96f59c38b89980e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: innerdonut_poles
+    second: {fileID: 2100000, guid: 8de386ae887c048498834f1ea833b71e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: innerdonut_roof
+    second: {fileID: 2100000, guid: 6e6736ba666b54de0a0e3b477b704185, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lambert1
+    second: {fileID: 2100000, guid: 8481cdd9647ca4f5db48a84ee2a4837a, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
     materialSearch: 1
+    materialLocation: 0
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
@@ -58,6 +89,7 @@ ModelImporter:
     animationImportWarnings: 
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
     animationCompression: 1
     animationRotationError: 0.5
     animationPositionError: 0.5
@@ -69,7 +101,7 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 1
+    globalScale: 300
     meshCompression: 0
     addColliders: 0
     importVisibility: 1
@@ -111,7 +143,7 @@ ModelImporter:
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 0
+  animationType: 2
   humanoidOversampling: 1
   additionalBone: 0
   userData: 
