@@ -1,0 +1,82 @@
+[
+	{
+		"title": "Start",
+		"tags": "",
+		"body": "<<set $gameover to false>>\n\nCustomer: Ha...\nCustomer: Whiskey please.\n",
+		"position": {
+			"x": 337,
+			"y": 161
+		},
+		"colorID": 0
+	},
+	{
+		"title": "GetGlassWhiskey",
+		"tags": "",
+		"body": "Customer: Thank you.\nCustomer: Been a while since I ended up at this bar.\nCustomer: I don't recall seeing you here last time.\nCustomer: Are you new?\n\n[[Yes|2A]]\n[[No, not really|2B]]",
+		"position": {
+			"x": 598,
+			"y": 133
+		},
+		"colorID": 0
+	},
+	{
+		"title": "2A",
+		"tags": "",
+		"body": "Customer: Ah.\nCustomer: Wonder what happened to the last bartender.\nCustomer: Doesn't matter though.\nCustomer: I've missed this.\nCustomer: ...Hey.\nCustomer: Am I pretty?\n\n[[Sure thing|3A]]\n[[What?|3B]]",
+		"position": {
+			"x": 904,
+			"y": 166
+		},
+		"colorID": 0
+	},
+	{
+		"title": "2B",
+		"tags": "",
+		"body": "Customer: Interesting.\nCustomer: I must've been away longer than I thought.\nCustomer: Doesn't matter though.\nCustomer: I've missed this.\nCustomer: ...Hey.\nCustomer: Am I pretty?\n\n[[Sure thing|3A]]\n[[What?|3B]]",
+		"position": {
+			"x": 978,
+			"y": 414
+		},
+		"colorID": 0
+	},
+	{
+		"title": "GetNotWhiskey",
+		"tags": "",
+		"body": "Customer: Thank you...?\nCustomer: Sigh.\nCustomer: Been a while since I ended up at this bar.\nCustomer: I don't recall seeing you here last time.\nCustomer: Are you new?\n\n[[Yes|2A]]\n[[No, not really|2B]]",
+		"position": {
+			"x": 574,
+			"y": 378
+		},
+		"colorID": 0
+	},
+	{
+		"title": "GetWhiskey",
+		"tags": "",
+		"body": "Customer: Uh...this is a lot.\nCustomer: But thank you.\nCustomer: Been a while since I ended up at this bar.\nCustomer: I don't recall seeing you here last time.\nCustomer: Are you new?\n\n[[Yes|2A]]\n[[No, not really|2B]]",
+		"position": {
+			"x": 564,
+			"y": 659
+		},
+		"colorID": 0
+	},
+	{
+		"title": "3A",
+		"tags": "",
+		"body": "Customer: Hah. You're just doing your job.\nCustomer: ...\nCustomer: Thank you.\nCustomer: Well, that's it for today then.\nCustomer: I'll be back, unfortunately.\nCustomer: Good-bye.\n\n<<set $gameover to true>>\n<<customerleave Dialogue>>",
+		"position": {
+			"x": 1218,
+			"y": 169
+		},
+		"colorID": 0
+	},
+	{
+		"title": "3B",
+		"tags": "",
+		"body": "Customer: Nevermind...\nCustomer: Anyway, that's it for today then.\nCustomer: I'll be back, unfortunately.\nCustomer: Good-bye.\n\n<<set $gameover to true>>\n<<customerleave Dialogue>>",
+		"position": {
+			"x": 1260,
+			"y": 445
+		},
+		"colorID": 0
+	}
+]
