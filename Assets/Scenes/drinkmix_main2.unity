@@ -88,7 +88,6 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaDirect: 0.5
     m_PVRFilteringAtrousPositionSigmaIndirect: 2
     m_PVRFilteringAtrousPositionSigmaAO: 1
-    m_ShowResolutionOverlay: 1
   m_LightingDataAsset: {fileID: 0}
   m_UseShadowmask: 1
 --- !u!196 &4
@@ -1721,17 +1720,17 @@ Prefab:
     - target: {fileID: 224123756501157798, guid: 7401661106e72aa4e80b0113a4083689,
         type: 2}
       propertyPath: m_LocalPosition.x
-      value: -238.01709
+      value: 542.44
       objectReference: {fileID: 0}
     - target: {fileID: 224123756501157798, guid: 7401661106e72aa4e80b0113a4083689,
         type: 2}
       propertyPath: m_LocalPosition.y
-      value: 254.06
+      value: 301.06
       objectReference: {fileID: 0}
     - target: {fileID: 224123756501157798, guid: 7401661106e72aa4e80b0113a4083689,
         type: 2}
       propertyPath: m_LocalPosition.z
-      value: 14.50602
+      value: -7.73
       objectReference: {fileID: 0}
     - target: {fileID: 4396446137613410, guid: 7401661106e72aa4e80b0113a4083689, type: 2}
       propertyPath: m_LocalEulerAnglesHint.y
@@ -2088,7 +2087,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &242139560
 Transform:
   m_ObjectHideFlags: 0
@@ -5743,7 +5742,7 @@ Prefab:
       objectReference: {fileID: 1931150502}
     - target: {fileID: 1523803566536458, guid: 1b5eaac766ac2ed42ac8602ab4ed5823, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1b5eaac766ac2ed42ac8602ab4ed5823, type: 2}
@@ -8091,6 +8090,38 @@ Transform:
   m_PrefabParentObject: {fileID: 4345316543488682, guid: 10e99daa392b8da4cbdaf8ff8b8237e3,
     type: 2}
   m_PrefabInternal: {fileID: 874590052}
+--- !u!1 &875176153 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1598642820373074, guid: 0ccea903f3c08134db8ac0b9ea5b7294,
+    type: 2}
+  m_PrefabInternal: {fileID: 894292488}
+--- !u!114 &875176154
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 875176153}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d7c4cbb488d47e459070f167e8e2e25, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  posRightHandedAction: {x: 0, y: 0, z: 0}
+  posLeftHandedAction: {x: 0, y: 0, z: 0}
+  rotRightHandedAction: {x: 0, y: 0, z: 0}
+  rotLeftHandedAction: {x: 0, y: 0, z: 0}
+  rotLeftHandOnlyAction: {x: 0, y: 0, z: 0}
+  rotRightHandOnlyAction: {x: 0, y: 0, z: 0}
+  pourState: 0
+  highlightState: 0
+  dropOffset: {x: 0, y: 0, z: 0}
+  rotOffset: {x: 0, y: 0, z: 0}
+  isHeld: 0
+  tweensAreActive: 0
+  onTableRot: {x: 0, y: 0, z: 0}
+  onTablePos: {x: 0, y: 0, z: 0}
+  myInitHandPos: {x: 0, y: 0, z: 0}
+  myInitHandRot: {x: 0, y: 0, z: 0}
 --- !u!1001 &894292488
 Prefab:
   m_ObjectHideFlags: 0
@@ -8171,6 +8202,7 @@ Prefab:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
+    - {fileID: 114735959425075700, guid: 0ccea903f3c08134db8ac0b9ea5b7294, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 0ccea903f3c08134db8ac0b9ea5b7294, type: 2}
   m_IsPrefabParent: 0
 --- !u!4 &894292489 stripped

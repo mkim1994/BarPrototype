@@ -132,8 +132,10 @@ public class Glass : Interactable {
 	public override void TweenToHand(Vector3 _handPos){
  		myInitHandPos = _handPos;
 		myInitHandRot = onTableRot;
+		tweensAreActive = true;
+		Sequence myTweenToHandSeq = DOTween.Sequence();
+		myTweenToHandSeq.Append(transform.DOLocalRotate(onTableRot, 1f, RotateMode.Fast)).OnComplete(()=>SetTweenToInactive());
 		transform.DOLocalMove(_handPos, 1f, false);
-		transform.DOLocalRotate(onTableRot, 1f, RotateMode.Fast);
  	}
 }
 
