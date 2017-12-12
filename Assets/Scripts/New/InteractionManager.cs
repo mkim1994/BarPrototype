@@ -156,18 +156,6 @@ public class InteractionManager : MonoBehaviour {
 		}
 	}
 
-	public GameObject FindTheClosestFreeDropZone(){
-		GameObject _nearest = dropzoneArray[0];
-		float shortestDist = Vector3.Distance(dropzoneArray[0].transform.position, transform.position);
-		for(int i = 0; i < dropzoneArray.Length; i++){			
-			if(Vector3.Distance(dropzoneArray[i].transform.position, transform.position) <= shortestDist && !dropzoneArray[i].GetComponent<DropzoneManager>().isOccupied){
-				shortestDist = Vector3.Distance(dropzoneArray[i].transform.position, transform.position);
-				_nearest = dropzoneArray[i];
-			}
-		}
-		// _nearest.GetComponent<DropzoneManager>().RevealNearestDropzone();
-		return _nearest;
-	}
 	void OneHandedPour(){
 			if(interactableCurrentlyInRangeAndLookedAt.GetComponent<Glass>() != null){
 					//case 1: bottle in left hand

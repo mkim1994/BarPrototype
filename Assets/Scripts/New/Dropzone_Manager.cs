@@ -29,7 +29,8 @@ public class Dropzone_Manager : MonoBehaviour {
 		DropzoneManager _nearest = dropzones[0];
 		float shortestDist = Vector3.Distance(dropzones[0].transform.position, player.transform.position);
 		for(int i = 0; i < dropzones.Count; i++){			
-			if(Vector3.Distance(dropzones[i].transform.position, player.transform.position) <= shortestDist && !dropzones[i].isOccupied
+			if(Vector3.Distance(dropzones[i].transform.position, player.transform.position) <= shortestDist 
+			&& !dropzones[i].isOccupied
 			&& dropzones[i].AngleToPlayer() <= angleToPlayerRange){
 				shortestDist = Vector3.Distance(dropzones[i].transform.position, player.transform.position);
 				_nearest = dropzones[i];

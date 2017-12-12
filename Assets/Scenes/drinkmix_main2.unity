@@ -190,6 +190,11 @@ Prefab:
       propertyPath: m_CastShadows
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114735959425075700, guid: 0ccea903f3c08134db8ac0b9ea5b7294,
+        type: 2}
+      propertyPath: dropOffset.y
+      value: -0.2
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
   m_ParentPrefab: {fileID: 100100000, guid: 0ccea903f3c08134db8ac0b9ea5b7294, type: 2}
@@ -354,6 +359,11 @@ Prefab:
       propertyPath: m_CastShadows
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114735959425075700, guid: 0ccea903f3c08134db8ac0b9ea5b7294,
+        type: 2}
+      propertyPath: dropOffset.y
+      value: -0.2
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
   m_ParentPrefab: {fileID: 100100000, guid: 0ccea903f3c08134db8ac0b9ea5b7294, type: 2}
@@ -440,6 +450,11 @@ Prefab:
         type: 2}
       propertyPath: m_CastShadows
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114735959425075700, guid: 0ccea903f3c08134db8ac0b9ea5b7294,
+        type: 2}
+      propertyPath: dropOffset.y
+      value: -0.2
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
@@ -612,6 +627,11 @@ Prefab:
       propertyPath: m_CastShadows
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114735959425075700, guid: 0ccea903f3c08134db8ac0b9ea5b7294,
+        type: 2}
+      propertyPath: dropOffset.y
+      value: -0.2
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
   m_ParentPrefab: {fileID: 100100000, guid: 0ccea903f3c08134db8ac0b9ea5b7294, type: 2}
@@ -698,6 +718,11 @@ Prefab:
         type: 2}
       propertyPath: m_CastShadows
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114735959425075700, guid: 0ccea903f3c08134db8ac0b9ea5b7294,
+        type: 2}
+      propertyPath: dropOffset.y
+      value: -0.2
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
@@ -913,6 +938,11 @@ Prefab:
       propertyPath: m_CastShadows
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114735959425075700, guid: 0ccea903f3c08134db8ac0b9ea5b7294,
+        type: 2}
+      propertyPath: dropOffset.y
+      value: -0.2
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
   m_ParentPrefab: {fileID: 100100000, guid: 0ccea903f3c08134db8ac0b9ea5b7294, type: 2}
@@ -1008,6 +1038,11 @@ Prefab:
         type: 2}
       propertyPath: m_CastShadows
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114735959425075700, guid: 0ccea903f3c08134db8ac0b9ea5b7294,
+        type: 2}
+      propertyPath: dropOffset.y
+      value: -0.2
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
@@ -1167,6 +1202,11 @@ Prefab:
         type: 2}
       propertyPath: m_CastShadows
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114735959425075700, guid: 0ccea903f3c08134db8ac0b9ea5b7294,
+        type: 2}
+      propertyPath: dropOffset.y
+      value: -0.2
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
@@ -1571,7 +1611,7 @@ MonoBehaviour:
   rotRightHandOnlyAction: {x: 0, y: 0, z: 0}
   pourState: 0
   highlightState: 0
-  dropOffset: {x: 0, y: 0, z: 0}
+  dropOffset: {x: 0, y: 0.2, z: 0}
   rotOffset: {x: 0, y: 0, z: 0}
   isHeld: 0
   tweensAreActive: 0
@@ -1720,12 +1760,12 @@ Prefab:
     - target: {fileID: 224123756501157798, guid: 7401661106e72aa4e80b0113a4083689,
         type: 2}
       propertyPath: m_LocalPosition.x
-      value: 542.44
+      value: 412.94
       objectReference: {fileID: 0}
     - target: {fileID: 224123756501157798, guid: 7401661106e72aa4e80b0113a4083689,
         type: 2}
       propertyPath: m_LocalPosition.y
-      value: 301.06
+      value: 228.06
       objectReference: {fileID: 0}
     - target: {fileID: 224123756501157798, guid: 7401661106e72aa4e80b0113a4083689,
         type: 2}
@@ -1816,6 +1856,11 @@ Prefab:
         type: 2}
       propertyPath: m_CastShadows
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114735959425075700, guid: 0ccea903f3c08134db8ac0b9ea5b7294,
+        type: 2}
+      propertyPath: dropOffset.y
+      value: -0.2
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
@@ -2210,6 +2255,7 @@ Transform:
   - {fileID: 1324324964}
   - {fileID: 298579750}
   - {fileID: 987265998}
+  - {fileID: 1605988776}
   m_Father: {fileID: 0}
   m_RootOrder: 21
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2435,6 +2481,11 @@ Prefab:
       propertyPath: m_CastShadows
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114735959425075700, guid: 0ccea903f3c08134db8ac0b9ea5b7294,
+        type: 2}
+      propertyPath: dropOffset.y
+      value: -0.2
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
   m_ParentPrefab: {fileID: 100100000, guid: 0ccea903f3c08134db8ac0b9ea5b7294, type: 2}
@@ -2549,7 +2600,7 @@ MonoBehaviour:
   rotRightHandOnlyAction: {x: 0, y: 0, z: 0}
   pourState: 0
   highlightState: 0
-  dropOffset: {x: 0, y: 0, z: 0}
+  dropOffset: {x: 0, y: 0.2, z: 0}
   rotOffset: {x: 0, y: 0, z: 0}
   isHeld: 0
   tweensAreActive: 0
@@ -2616,7 +2667,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4345316543488682, guid: 10e99daa392b8da4cbdaf8ff8b8237e3, type: 2}
       propertyPath: m_RootOrder
-      value: 114
+      value: 110
       objectReference: {fileID: 0}
     - target: {fileID: 23216565332865516, guid: 10e99daa392b8da4cbdaf8ff8b8237e3,
         type: 2}
@@ -2728,6 +2779,11 @@ Prefab:
         type: 2}
       propertyPath: m_CastShadows
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114735959425075700, guid: 0ccea903f3c08134db8ac0b9ea5b7294,
+        type: 2}
+      propertyPath: dropOffset.y
+      value: -0.2
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
@@ -2958,6 +3014,11 @@ Prefab:
       propertyPath: m_CastShadows
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114735959425075700, guid: 0ccea903f3c08134db8ac0b9ea5b7294,
+        type: 2}
+      propertyPath: dropOffset.y
+      value: -0.2
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
   m_ParentPrefab: {fileID: 100100000, guid: 0ccea903f3c08134db8ac0b9ea5b7294, type: 2}
@@ -3116,6 +3177,11 @@ Prefab:
         type: 2}
       propertyPath: m_CastShadows
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114735959425075700, guid: 0ccea903f3c08134db8ac0b9ea5b7294,
+        type: 2}
+      propertyPath: dropOffset.y
+      value: -0.2
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
@@ -3501,6 +3567,11 @@ Prefab:
       propertyPath: m_CastShadows
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114735959425075700, guid: 0ccea903f3c08134db8ac0b9ea5b7294,
+        type: 2}
+      propertyPath: dropOffset.y
+      value: -0.2
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
   m_ParentPrefab: {fileID: 100100000, guid: 0ccea903f3c08134db8ac0b9ea5b7294, type: 2}
@@ -3597,6 +3668,11 @@ Prefab:
       propertyPath: m_CastShadows
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114735959425075700, guid: 0ccea903f3c08134db8ac0b9ea5b7294,
+        type: 2}
+      propertyPath: dropOffset.y
+      value: -0.2
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
   m_ParentPrefab: {fileID: 100100000, guid: 0ccea903f3c08134db8ac0b9ea5b7294, type: 2}
@@ -3683,6 +3759,11 @@ Prefab:
         type: 2}
       propertyPath: m_CastShadows
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114735959425075700, guid: 0ccea903f3c08134db8ac0b9ea5b7294,
+        type: 2}
+      propertyPath: dropOffset.y
+      value: -0.2
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
@@ -3842,6 +3923,11 @@ Prefab:
         type: 2}
       propertyPath: m_CastShadows
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114735959425075700, guid: 0ccea903f3c08134db8ac0b9ea5b7294,
+        type: 2}
+      propertyPath: dropOffset.y
+      value: -0.2
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
@@ -4146,6 +4232,11 @@ Prefab:
       propertyPath: m_CastShadows
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114735959425075700, guid: 0ccea903f3c08134db8ac0b9ea5b7294,
+        type: 2}
+      propertyPath: dropOffset.y
+      value: -0.2
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
   m_ParentPrefab: {fileID: 100100000, guid: 0ccea903f3c08134db8ac0b9ea5b7294, type: 2}
@@ -4232,6 +4323,11 @@ Prefab:
         type: 2}
       propertyPath: m_CastShadows
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114735959425075700, guid: 0ccea903f3c08134db8ac0b9ea5b7294,
+        type: 2}
+      propertyPath: dropOffset.y
+      value: -0.2
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
@@ -4333,6 +4429,11 @@ Prefab:
         type: 2}
       propertyPath: m_CastShadows
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114735959425075700, guid: 0ccea903f3c08134db8ac0b9ea5b7294,
+        type: 2}
+      propertyPath: dropOffset.y
+      value: -0.2
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
@@ -4563,6 +4664,11 @@ Prefab:
       propertyPath: m_CastShadows
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114735959425075700, guid: 0ccea903f3c08134db8ac0b9ea5b7294,
+        type: 2}
+      propertyPath: dropOffset.y
+      value: -0.2
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
   m_ParentPrefab: {fileID: 100100000, guid: 0ccea903f3c08134db8ac0b9ea5b7294, type: 2}
@@ -4723,6 +4829,11 @@ Prefab:
         type: 2}
       propertyPath: m_CastShadows
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114735959425075700, guid: 0ccea903f3c08134db8ac0b9ea5b7294,
+        type: 2}
+      propertyPath: dropOffset.y
+      value: -0.2
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
@@ -4954,6 +5065,11 @@ Prefab:
         type: 2}
       propertyPath: m_CastShadows
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114735959425075700, guid: 0ccea903f3c08134db8ac0b9ea5b7294,
+        type: 2}
+      propertyPath: dropOffset.y
+      value: -0.2
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
@@ -5272,6 +5388,11 @@ Prefab:
       propertyPath: m_CastShadows
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114735959425075700, guid: 0ccea903f3c08134db8ac0b9ea5b7294,
+        type: 2}
+      propertyPath: dropOffset.y
+      value: -0.2
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
   m_ParentPrefab: {fileID: 100100000, guid: 0ccea903f3c08134db8ac0b9ea5b7294, type: 2}
@@ -5570,6 +5691,11 @@ Prefab:
       propertyPath: m_CastShadows
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114735959425075700, guid: 0ccea903f3c08134db8ac0b9ea5b7294,
+        type: 2}
+      propertyPath: dropOffset.y
+      value: -0.2
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
   m_ParentPrefab: {fileID: 100100000, guid: 0ccea903f3c08134db8ac0b9ea5b7294, type: 2}
@@ -5656,6 +5782,11 @@ Prefab:
         type: 2}
       propertyPath: m_CastShadows
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114735959425075700, guid: 0ccea903f3c08134db8ac0b9ea5b7294,
+        type: 2}
+      propertyPath: dropOffset.y
+      value: -0.2
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
@@ -5824,6 +5955,11 @@ Prefab:
         type: 2}
       propertyPath: m_CastShadows
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114735959425075700, guid: 0ccea903f3c08134db8ac0b9ea5b7294,
+        type: 2}
+      propertyPath: dropOffset.y
+      value: -0.2
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
@@ -6330,6 +6466,11 @@ Prefab:
       propertyPath: m_CastShadows
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114735959425075700, guid: 0ccea903f3c08134db8ac0b9ea5b7294,
+        type: 2}
+      propertyPath: dropOffset.y
+      value: -0.2
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
   m_ParentPrefab: {fileID: 100100000, guid: 0ccea903f3c08134db8ac0b9ea5b7294, type: 2}
@@ -6554,6 +6695,11 @@ Prefab:
       propertyPath: m_CastShadows
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114735959425075700, guid: 0ccea903f3c08134db8ac0b9ea5b7294,
+        type: 2}
+      propertyPath: dropOffset.y
+      value: -0.2
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
   m_ParentPrefab: {fileID: 100100000, guid: 0ccea903f3c08134db8ac0b9ea5b7294, type: 2}
@@ -6640,6 +6786,11 @@ Prefab:
         type: 2}
       propertyPath: m_CastShadows
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114735959425075700, guid: 0ccea903f3c08134db8ac0b9ea5b7294,
+        type: 2}
+      propertyPath: dropOffset.y
+      value: -0.2
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
@@ -6945,6 +7096,11 @@ Prefab:
         type: 2}
       propertyPath: m_CastShadows
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114735959425075700, guid: 0ccea903f3c08134db8ac0b9ea5b7294,
+        type: 2}
+      propertyPath: dropOffset.y
+      value: -0.2
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
@@ -7645,6 +7801,11 @@ Prefab:
       propertyPath: m_CastShadows
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114735959425075700, guid: 0ccea903f3c08134db8ac0b9ea5b7294,
+        type: 2}
+      propertyPath: dropOffset.y
+      value: -0.2
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
   m_ParentPrefab: {fileID: 100100000, guid: 0ccea903f3c08134db8ac0b9ea5b7294, type: 2}
@@ -7803,6 +7964,11 @@ Prefab:
         type: 2}
       propertyPath: m_CastShadows
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114735959425075700, guid: 0ccea903f3c08134db8ac0b9ea5b7294,
+        type: 2}
+      propertyPath: dropOffset.y
+      value: -0.2
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
@@ -8103,7 +8269,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 875176153}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2d7c4cbb488d47e459070f167e8e2e25, type: 3}
+  m_Script: {fileID: 11500000, guid: 99cf15ce25d95314d8c46911064de8ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   posRightHandedAction: {x: 0, y: 0, z: 0}
@@ -8114,7 +8280,7 @@ MonoBehaviour:
   rotRightHandOnlyAction: {x: 0, y: 0, z: 0}
   pourState: 0
   highlightState: 0
-  dropOffset: {x: 0, y: 0, z: 0}
+  dropOffset: {x: 0, y: -0.2, z: 0}
   rotOffset: {x: 0, y: 0, z: 0}
   isHeld: 0
   tweensAreActive: 0
@@ -8122,6 +8288,12 @@ MonoBehaviour:
   onTablePos: {x: 0, y: 0, z: 0}
   myInitHandPos: {x: 0, y: 0, z: 0}
   myInitHandRot: {x: 0, y: 0, z: 0}
+  tweenToHandIsDone: 0
+  tweenToTableIsDone: 0
+  stains: []
+  isDirty: 0
+  stainHolder: {fileID: 0}
+  glassName: glass
 --- !u!1001 &894292488
 Prefab:
   m_ObjectHideFlags: 0
@@ -8497,6 +8669,11 @@ Prefab:
       propertyPath: m_CastShadows
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114735959425075700, guid: 0ccea903f3c08134db8ac0b9ea5b7294,
+        type: 2}
+      propertyPath: dropOffset.y
+      value: -0.2
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
   m_ParentPrefab: {fileID: 100100000, guid: 0ccea903f3c08134db8ac0b9ea5b7294, type: 2}
@@ -8584,6 +8761,11 @@ Prefab:
       propertyPath: m_CastShadows
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114735959425075700, guid: 0ccea903f3c08134db8ac0b9ea5b7294,
+        type: 2}
+      propertyPath: dropOffset.y
+      value: -0.2
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
   m_ParentPrefab: {fileID: 100100000, guid: 0ccea903f3c08134db8ac0b9ea5b7294, type: 2}
@@ -8670,6 +8852,11 @@ Prefab:
         type: 2}
       propertyPath: m_CastShadows
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114735959425075700, guid: 0ccea903f3c08134db8ac0b9ea5b7294,
+        type: 2}
+      propertyPath: dropOffset.y
+      value: -0.2
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
@@ -9106,6 +9293,11 @@ Prefab:
       propertyPath: m_CastShadows
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114735959425075700, guid: 0ccea903f3c08134db8ac0b9ea5b7294,
+        type: 2}
+      propertyPath: dropOffset.y
+      value: -0.2
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
   m_ParentPrefab: {fileID: 100100000, guid: 0ccea903f3c08134db8ac0b9ea5b7294, type: 2}
@@ -9152,7 +9344,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4345316543488682, guid: 10e99daa392b8da4cbdaf8ff8b8237e3, type: 2}
       propertyPath: m_RootOrder
-      value: 112
+      value: 108
       objectReference: {fileID: 0}
     - target: {fileID: 23216565332865516, guid: 10e99daa392b8da4cbdaf8ff8b8237e3,
         type: 2}
@@ -9318,7 +9510,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4345316543488682, guid: 10e99daa392b8da4cbdaf8ff8b8237e3, type: 2}
       propertyPath: m_RootOrder
-      value: 115
+      value: 111
       objectReference: {fileID: 0}
     - target: {fileID: 23216565332865516, guid: 10e99daa392b8da4cbdaf8ff8b8237e3,
         type: 2}
@@ -9431,6 +9623,11 @@ Prefab:
       propertyPath: m_CastShadows
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114735959425075700, guid: 0ccea903f3c08134db8ac0b9ea5b7294,
+        type: 2}
+      propertyPath: dropOffset.y
+      value: -0.2
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
   m_ParentPrefab: {fileID: 100100000, guid: 0ccea903f3c08134db8ac0b9ea5b7294, type: 2}
@@ -9526,6 +9723,11 @@ Prefab:
         type: 2}
       propertyPath: m_CastShadows
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114735959425075700, guid: 0ccea903f3c08134db8ac0b9ea5b7294,
+        type: 2}
+      propertyPath: dropOffset.y
+      value: -0.2
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
@@ -9783,6 +9985,11 @@ Prefab:
         type: 2}
       propertyPath: m_CastShadows
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114735959425075700, guid: 0ccea903f3c08134db8ac0b9ea5b7294,
+        type: 2}
+      propertyPath: dropOffset.y
+      value: -0.2
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
@@ -10195,6 +10402,11 @@ Prefab:
       propertyPath: m_CastShadows
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114735959425075700, guid: 0ccea903f3c08134db8ac0b9ea5b7294,
+        type: 2}
+      propertyPath: dropOffset.y
+      value: -0.2
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
   m_ParentPrefab: {fileID: 100100000, guid: 0ccea903f3c08134db8ac0b9ea5b7294, type: 2}
@@ -10346,6 +10558,11 @@ Prefab:
         type: 2}
       propertyPath: m_CastShadows
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114735959425075700, guid: 0ccea903f3c08134db8ac0b9ea5b7294,
+        type: 2}
+      propertyPath: dropOffset.y
+      value: -0.2
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
@@ -10770,6 +10987,11 @@ Prefab:
       propertyPath: m_CastShadows
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114735959425075700, guid: 0ccea903f3c08134db8ac0b9ea5b7294,
+        type: 2}
+      propertyPath: dropOffset.y
+      value: -0.2
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
   m_ParentPrefab: {fileID: 100100000, guid: 0ccea903f3c08134db8ac0b9ea5b7294, type: 2}
@@ -10856,6 +11078,11 @@ Prefab:
         type: 2}
       propertyPath: m_CastShadows
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114735959425075700, guid: 0ccea903f3c08134db8ac0b9ea5b7294,
+        type: 2}
+      propertyPath: dropOffset.y
+      value: -0.2
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
@@ -11020,6 +11247,11 @@ Prefab:
         type: 2}
       propertyPath: m_CastShadows
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114735959425075700, guid: 0ccea903f3c08134db8ac0b9ea5b7294,
+        type: 2}
+      propertyPath: dropOffset.y
+      value: -0.2
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
@@ -11310,6 +11542,11 @@ Prefab:
       propertyPath: m_CastShadows
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114735959425075700, guid: 0ccea903f3c08134db8ac0b9ea5b7294,
+        type: 2}
+      propertyPath: dropOffset.y
+      value: -0.2
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
   m_ParentPrefab: {fileID: 100100000, guid: 0ccea903f3c08134db8ac0b9ea5b7294, type: 2}
@@ -11451,6 +11688,11 @@ Prefab:
         type: 2}
       propertyPath: m_CastShadows
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114735959425075700, guid: 0ccea903f3c08134db8ac0b9ea5b7294,
+        type: 2}
+      propertyPath: dropOffset.y
+      value: -0.2
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
@@ -12306,6 +12548,11 @@ Prefab:
       propertyPath: m_CastShadows
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114735959425075700, guid: 0ccea903f3c08134db8ac0b9ea5b7294,
+        type: 2}
+      propertyPath: dropOffset.y
+      value: -0.2
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
   m_ParentPrefab: {fileID: 100100000, guid: 0ccea903f3c08134db8ac0b9ea5b7294, type: 2}
@@ -12455,6 +12702,11 @@ Prefab:
         type: 2}
       propertyPath: m_CastShadows
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114735959425075700, guid: 0ccea903f3c08134db8ac0b9ea5b7294,
+        type: 2}
+      propertyPath: dropOffset.y
+      value: -0.2
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
@@ -12973,6 +13225,11 @@ Prefab:
       propertyPath: m_CastShadows
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114735959425075700, guid: 0ccea903f3c08134db8ac0b9ea5b7294,
+        type: 2}
+      propertyPath: dropOffset.y
+      value: -0.2
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
   m_ParentPrefab: {fileID: 100100000, guid: 0ccea903f3c08134db8ac0b9ea5b7294, type: 2}
@@ -13019,7 +13276,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4345316543488682, guid: 10e99daa392b8da4cbdaf8ff8b8237e3, type: 2}
       propertyPath: m_RootOrder
-      value: 113
+      value: 109
       objectReference: {fileID: 0}
     - target: {fileID: 23216565332865516, guid: 10e99daa392b8da4cbdaf8ff8b8237e3,
         type: 2}
@@ -14055,6 +14312,11 @@ Prefab:
       propertyPath: m_CastShadows
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114735959425075700, guid: 0ccea903f3c08134db8ac0b9ea5b7294,
+        type: 2}
+      propertyPath: dropOffset.y
+      value: -0.2
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
   m_ParentPrefab: {fileID: 100100000, guid: 0ccea903f3c08134db8ac0b9ea5b7294, type: 2}
@@ -14351,6 +14613,11 @@ Prefab:
       propertyPath: m_CastShadows
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114735959425075700, guid: 0ccea903f3c08134db8ac0b9ea5b7294,
+        type: 2}
+      propertyPath: dropOffset.y
+      value: -0.2
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
   m_ParentPrefab: {fileID: 100100000, guid: 0ccea903f3c08134db8ac0b9ea5b7294, type: 2}
@@ -14492,6 +14759,11 @@ Prefab:
         type: 2}
       propertyPath: m_CastShadows
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114735959425075700, guid: 0ccea903f3c08134db8ac0b9ea5b7294,
+        type: 2}
+      propertyPath: dropOffset.y
+      value: -0.2
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
@@ -14652,6 +14924,11 @@ Prefab:
       propertyPath: m_CastShadows
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114735959425075700, guid: 0ccea903f3c08134db8ac0b9ea5b7294,
+        type: 2}
+      propertyPath: dropOffset.y
+      value: -0.2
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
   m_ParentPrefab: {fileID: 100100000, guid: 0ccea903f3c08134db8ac0b9ea5b7294, type: 2}
@@ -14739,6 +15016,11 @@ Prefab:
       propertyPath: m_CastShadows
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114735959425075700, guid: 0ccea903f3c08134db8ac0b9ea5b7294,
+        type: 2}
+      propertyPath: dropOffset.y
+      value: -0.2
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
   m_ParentPrefab: {fileID: 100100000, guid: 0ccea903f3c08134db8ac0b9ea5b7294, type: 2}
@@ -14814,6 +15096,11 @@ Prefab:
         type: 2}
       propertyPath: m_CastShadows
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114735959425075700, guid: 0ccea903f3c08134db8ac0b9ea5b7294,
+        type: 2}
+      propertyPath: dropOffset.y
+      value: -0.2
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
@@ -14956,6 +15243,11 @@ Prefab:
         type: 2}
       propertyPath: m_CastShadows
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114735959425075700, guid: 0ccea903f3c08134db8ac0b9ea5b7294,
+        type: 2}
+      propertyPath: dropOffset.y
+      value: -0.2
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
@@ -15580,6 +15872,11 @@ Prefab:
       propertyPath: m_CastShadows
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114735959425075700, guid: 0ccea903f3c08134db8ac0b9ea5b7294,
+        type: 2}
+      propertyPath: dropOffset.y
+      value: -0.2
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
   m_ParentPrefab: {fileID: 100100000, guid: 0ccea903f3c08134db8ac0b9ea5b7294, type: 2}
@@ -15907,6 +16204,11 @@ Prefab:
       propertyPath: m_CastShadows
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114735959425075700, guid: 0ccea903f3c08134db8ac0b9ea5b7294,
+        type: 2}
+      propertyPath: dropOffset.y
+      value: -0.2
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
   m_ParentPrefab: {fileID: 100100000, guid: 0ccea903f3c08134db8ac0b9ea5b7294, type: 2}
@@ -15916,6 +16218,78 @@ Transform:
   m_PrefabParentObject: {fileID: 4536695439586748, guid: 0ccea903f3c08134db8ac0b9ea5b7294,
     type: 2}
   m_PrefabInternal: {fileID: 1591821041}
+--- !u!1001 &1605988775
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 242139560}
+    m_Modifications:
+    - target: {fileID: 4345316543488682, guid: 10e99daa392b8da4cbdaf8ff8b8237e3, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 3.851
+      objectReference: {fileID: 0}
+    - target: {fileID: 4345316543488682, guid: 10e99daa392b8da4cbdaf8ff8b8237e3, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 2.533
+      objectReference: {fileID: 0}
+    - target: {fileID: 4345316543488682, guid: 10e99daa392b8da4cbdaf8ff8b8237e3, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -18.878
+      objectReference: {fileID: 0}
+    - target: {fileID: 4345316543488682, guid: 10e99daa392b8da4cbdaf8ff8b8237e3, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4345316543488682, guid: 10e99daa392b8da4cbdaf8ff8b8237e3, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0.021082517
+      objectReference: {fileID: 0}
+    - target: {fileID: 4345316543488682, guid: 10e99daa392b8da4cbdaf8ff8b8237e3, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4345316543488682, guid: 10e99daa392b8da4cbdaf8ff8b8237e3, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 0.99977773
+      objectReference: {fileID: 0}
+    - target: {fileID: 4345316543488682, guid: 10e99daa392b8da4cbdaf8ff8b8237e3, type: 2}
+      propertyPath: m_RootOrder
+      value: 112
+      objectReference: {fileID: 0}
+    - target: {fileID: 23216565332865516, guid: 10e99daa392b8da4cbdaf8ff8b8237e3,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4345316543488682, guid: 10e99daa392b8da4cbdaf8ff8b8237e3, type: 2}
+      propertyPath: m_LocalScale.x
+      value: 0.29784998
+      objectReference: {fileID: 0}
+    - target: {fileID: 4345316543488682, guid: 10e99daa392b8da4cbdaf8ff8b8237e3, type: 2}
+      propertyPath: m_LocalScale.y
+      value: 0.29784998
+      objectReference: {fileID: 0}
+    - target: {fileID: 4345316543488682, guid: 10e99daa392b8da4cbdaf8ff8b8237e3, type: 2}
+      propertyPath: m_LocalScale.z
+      value: 0.29784998
+      objectReference: {fileID: 0}
+    - target: {fileID: 1742924368798820, guid: 10e99daa392b8da4cbdaf8ff8b8237e3, type: 2}
+      propertyPath: m_Name
+      value: dropzone (68)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4345316543488682, guid: 10e99daa392b8da4cbdaf8ff8b8237e3, type: 2}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -2.4160001
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 10e99daa392b8da4cbdaf8ff8b8237e3, type: 2}
+  m_IsPrefabParent: 0
+--- !u!4 &1605988776 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4345316543488682, guid: 10e99daa392b8da4cbdaf8ff8b8237e3,
+    type: 2}
+  m_PrefabInternal: {fileID: 1605988775}
 --- !u!1001 &1614247641
 Prefab:
   m_ObjectHideFlags: 0
@@ -16003,6 +16377,11 @@ Prefab:
       propertyPath: m_CastShadows
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114735959425075700, guid: 0ccea903f3c08134db8ac0b9ea5b7294,
+        type: 2}
+      propertyPath: dropOffset.y
+      value: -0.2
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
   m_ParentPrefab: {fileID: 100100000, guid: 0ccea903f3c08134db8ac0b9ea5b7294, type: 2}
@@ -16089,6 +16468,11 @@ Prefab:
         type: 2}
       propertyPath: m_CastShadows
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114735959425075700, guid: 0ccea903f3c08134db8ac0b9ea5b7294,
+        type: 2}
+      propertyPath: dropOffset.y
+      value: -0.2
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
@@ -16910,6 +17294,11 @@ Prefab:
       propertyPath: m_CastShadows
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114735959425075700, guid: 0ccea903f3c08134db8ac0b9ea5b7294,
+        type: 2}
+      propertyPath: dropOffset.y
+      value: -0.2
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
   m_ParentPrefab: {fileID: 100100000, guid: 0ccea903f3c08134db8ac0b9ea5b7294, type: 2}
@@ -17172,6 +17561,11 @@ Prefab:
       propertyPath: m_CastShadows
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114735959425075700, guid: 0ccea903f3c08134db8ac0b9ea5b7294,
+        type: 2}
+      propertyPath: dropOffset.y
+      value: -0.2
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
   m_ParentPrefab: {fileID: 100100000, guid: 0ccea903f3c08134db8ac0b9ea5b7294, type: 2}
@@ -17433,6 +17827,11 @@ Prefab:
       propertyPath: m_CastShadows
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114735959425075700, guid: 0ccea903f3c08134db8ac0b9ea5b7294,
+        type: 2}
+      propertyPath: dropOffset.y
+      value: -0.2
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
   m_ParentPrefab: {fileID: 100100000, guid: 0ccea903f3c08134db8ac0b9ea5b7294, type: 2}
@@ -17520,6 +17919,11 @@ Prefab:
       propertyPath: m_CastShadows
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114735959425075700, guid: 0ccea903f3c08134db8ac0b9ea5b7294,
+        type: 2}
+      propertyPath: dropOffset.y
+      value: -0.2
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
   m_ParentPrefab: {fileID: 100100000, guid: 0ccea903f3c08134db8ac0b9ea5b7294, type: 2}
@@ -17606,6 +18010,11 @@ Prefab:
         type: 2}
       propertyPath: m_CastShadows
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114735959425075700, guid: 0ccea903f3c08134db8ac0b9ea5b7294,
+        type: 2}
+      propertyPath: dropOffset.y
+      value: -0.2
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
@@ -18091,6 +18500,11 @@ Prefab:
       propertyPath: m_CastShadows
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114735959425075700, guid: 0ccea903f3c08134db8ac0b9ea5b7294,
+        type: 2}
+      propertyPath: dropOffset.y
+      value: -0.2
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
   m_ParentPrefab: {fileID: 100100000, guid: 0ccea903f3c08134db8ac0b9ea5b7294, type: 2}
@@ -18405,6 +18819,11 @@ Prefab:
       propertyPath: m_CastShadows
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114735959425075700, guid: 0ccea903f3c08134db8ac0b9ea5b7294,
+        type: 2}
+      propertyPath: dropOffset.y
+      value: -0.2
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
   m_ParentPrefab: {fileID: 100100000, guid: 0ccea903f3c08134db8ac0b9ea5b7294, type: 2}
@@ -18492,6 +18911,11 @@ Prefab:
       propertyPath: m_CastShadows
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114735959425075700, guid: 0ccea903f3c08134db8ac0b9ea5b7294,
+        type: 2}
+      propertyPath: dropOffset.y
+      value: -0.2
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
   m_ParentPrefab: {fileID: 100100000, guid: 0ccea903f3c08134db8ac0b9ea5b7294, type: 2}
@@ -18578,6 +19002,11 @@ Prefab:
         type: 2}
       propertyPath: m_CastShadows
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114735959425075700, guid: 0ccea903f3c08134db8ac0b9ea5b7294,
+        type: 2}
+      propertyPath: dropOffset.y
+      value: -0.2
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
@@ -18718,7 +19147,7 @@ MonoBehaviour:
   rotRightHandOnlyAction: {x: 0, y: 0, z: 0}
   pourState: 0
   highlightState: 0
-  dropOffset: {x: 0, y: 0, z: 0}
+  dropOffset: {x: 0, y: 0.2, z: 0}
   rotOffset: {x: 0, y: 0, z: 0}
   isHeld: 0
   tweensAreActive: 0
@@ -18820,6 +19249,11 @@ Prefab:
         type: 2}
       propertyPath: m_CastShadows
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114735959425075700, guid: 0ccea903f3c08134db8ac0b9ea5b7294,
+        type: 2}
+      propertyPath: dropOffset.y
+      value: -0.2
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
@@ -19035,6 +19469,11 @@ Prefab:
         type: 2}
       propertyPath: m_CastShadows
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114735959425075700, guid: 0ccea903f3c08134db8ac0b9ea5b7294,
+        type: 2}
+      propertyPath: dropOffset.y
+      value: -0.2
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
@@ -19646,6 +20085,11 @@ Prefab:
       propertyPath: m_CastShadows
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114735959425075700, guid: 0ccea903f3c08134db8ac0b9ea5b7294,
+        type: 2}
+      propertyPath: dropOffset.y
+      value: -0.2
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
   m_ParentPrefab: {fileID: 100100000, guid: 0ccea903f3c08134db8ac0b9ea5b7294, type: 2}
@@ -19732,6 +20176,11 @@ Prefab:
         type: 2}
       propertyPath: m_CastShadows
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114735959425075700, guid: 0ccea903f3c08134db8ac0b9ea5b7294,
+        type: 2}
+      propertyPath: dropOffset.y
+      value: -0.2
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
@@ -20069,6 +20518,11 @@ Prefab:
       propertyPath: m_CastShadows
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114735959425075700, guid: 0ccea903f3c08134db8ac0b9ea5b7294,
+        type: 2}
+      propertyPath: dropOffset.y
+      value: -0.2
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
   m_ParentPrefab: {fileID: 100100000, guid: 0ccea903f3c08134db8ac0b9ea5b7294, type: 2}
@@ -20260,6 +20714,11 @@ Prefab:
         type: 2}
       propertyPath: m_CastShadows
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114735959425075700, guid: 0ccea903f3c08134db8ac0b9ea5b7294,
+        type: 2}
+      propertyPath: dropOffset.y
+      value: -0.2
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
@@ -20640,6 +21099,11 @@ Prefab:
       propertyPath: m_CastShadows
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114735959425075700, guid: 0ccea903f3c08134db8ac0b9ea5b7294,
+        type: 2}
+      propertyPath: dropOffset.y
+      value: -0.2
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
   m_ParentPrefab: {fileID: 100100000, guid: 0ccea903f3c08134db8ac0b9ea5b7294, type: 2}
@@ -20726,6 +21190,11 @@ Prefab:
         type: 2}
       propertyPath: m_CastShadows
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114735959425075700, guid: 0ccea903f3c08134db8ac0b9ea5b7294,
+        type: 2}
+      propertyPath: dropOffset.y
+      value: -0.2
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
@@ -20885,6 +21354,11 @@ Prefab:
         type: 2}
       propertyPath: m_CastShadows
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114735959425075700, guid: 0ccea903f3c08134db8ac0b9ea5b7294,
+        type: 2}
+      propertyPath: dropOffset.y
+      value: -0.2
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}

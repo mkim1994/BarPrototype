@@ -128,7 +128,7 @@ public class Interactable : MonoBehaviour {
 		// tablePos = _tablePos;
 		Sequence myTweenToTableSeq = DOTween.Sequence();
 		tweensAreActive = true;
-		myTweenToTableSeq.Append(transform.DOMove(_tablePos, 0.5f, false)).OnComplete(()=>SetTweenToInactive());
+		myTweenToTableSeq.Append(transform.DOMove(_tablePos + dropOffset, 0.5f, false)).OnComplete(()=>SetTweenToInactive());
 		transform.DORotate(onTableRot, 0.5f, RotateMode.Fast);
 		// GetComponent<Collider>().enabled = true;
 		// StartCoroutine(EnableColliderAfterTweenToTable(1f));
