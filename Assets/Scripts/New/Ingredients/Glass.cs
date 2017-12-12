@@ -33,12 +33,12 @@ public class Glass : Interactable {
 
 		if(Vector3.Distance(transform.localPosition, handPos) <= 0.1f){
 			tweenToHandIsDone = true;
-			Debug.Log("tween to hand is done is " + tweenToHandIsDone);
+			// Debug.Log("tween to hand is done is " + tweenToHandIsDone);
 		}
 
 		if (Vector3.Distance(transform.localPosition, tablePos) <= 0.1f){
 			tweenToTableIsDone = true;
-			Debug.Log("Tween to table is done is " + tweenToTableIsDone);
+			// Debug.Log("Tween to table is done is " + tweenToTableIsDone);
 		}
 	}
 

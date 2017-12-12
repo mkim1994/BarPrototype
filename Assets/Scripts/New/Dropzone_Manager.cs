@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityStandardAssets.Characters.FirstPerson;
 public class Dropzone_Manager : MonoBehaviour {
 
+	private float angleToPlayerRange = 25f;
+	public float maxDistToPlayer = 4f;
 	private GameObject player;
 	public DropzoneManager nearest;
 	private List<DropzoneManager> dropzones = new List<DropzoneManager>();
@@ -18,8 +20,8 @@ public class Dropzone_Manager : MonoBehaviour {
 	void Update () {
 		nearest = FindTheClosestFreeDropZone();
 		HighlightNearest();
-		if(nearest != null)
-			Debug.Log(nearest.PlayerIsFacingDropzone());
+		// if(nearest != null)
+			// Debug.Log(nearest.PlayerIsFacingDropzone());
 			// Debug.Log()
 	}
 
@@ -28,7 +30,7 @@ public class Dropzone_Manager : MonoBehaviour {
 		float shortestDist = Vector3.Distance(dropzones[0].transform.position, player.transform.position);
 		for(int i = 0; i < dropzones.Count; i++){			
 			if(Vector3.Distance(dropzones[i].transform.position, player.transform.position) <= shortestDist && !dropzones[i].isOccupied
-			&& dropzones[i].AngleToPlayer() <= 25f){
+			&& dropzones[i].AngleToPlayer() <= angleToPlayerRange){
 				shortestDist = Vector3.Distance(dropzones[i].transform.position, player.transform.position);
 				_nearest = dropzones[i];
 			}

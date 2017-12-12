@@ -19,17 +19,11 @@ public class DropzoneManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		myAngleToPlayer = AngleToPlayer();
-		// if(!isOccupied){
-		// 	//if nothing is in it
-		// 	GetComponent<MeshRenderer>().material.color = Color.red;
-		// } else {
-		// 	GetComponent<MeshRenderer>().material.color = Color.blue;
-		// } 
 	}
 
 	void OnTriggerEnter(Collider collider){
 		if(collider.GetComponent<Interactable>() != null){
+			// Debug.Log(collider.name);
 			isOccupied = true;
 		}
 	}
@@ -64,5 +58,11 @@ public class DropzoneManager : MonoBehaviour {
 		angleToPlayer = Vector3.Angle(playerCam.transform.forward, (transform.position-playerCam.transform.position));
 		// Debug.Log("Nearest's angle to player is " + angleToPlayer);
 		return angleToPlayer;
+	}
+
+	public float DistToPlayer(){
+		float distToPlayer = 0f;
+		distToPlayer = Vector3.Distance(playerCam.transform.position, transform.position);
+		return distToPlayer;
 	}
 }

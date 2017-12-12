@@ -29,6 +29,7 @@ public class Interactable : MonoBehaviour {
 
 	private Rigidbody rb;
 	public bool isHeld;
+	public bool tweensAreActive = false;
 	// public Transform child;
 	// public Ingredients.BaseType baseType;
 	// public Ingredients.MixerType mixerType;
@@ -100,27 +101,38 @@ public class Interactable : MonoBehaviour {
 	public virtual void DisableHighlightMesh(){
 		highlightState = HighlightState.Not_highlighted;
  	}
-
+	public virtual void SetTweenToInactive(){
+		tweensAreActive = false;
+	}
 	//all Interactables can get picked up
 	public virtual void TweenToHand(Vector3 _handPos){
 		// handPos = _handPos;
 		myInitHandPos = _handPos;
 		myInitHandRot = onTableRot;
+		tweensAreActive = true;
+		Sequence myTweenToHandSeq = DOTween.Sequence();
+		myTweenToHandSeq.Append(transform.DOLocalRotate(onTableRot, 1f, RotateMode.Fast)).OnComplete(()=>SetTweenToInactive());
 		transform.DOLocalMove(_handPos, 1f, false);
-		transform.DOLocalRotate(onTableRot, 1f, RotateMode.Fast);
-		StartCoroutine(DisableColliderForTweenToHand(0.5f));
+	
+		// transform.DOLocalRotate(onTableRot, 1f, RotateMode.Fast);
+		
+		// GetComponent<Collider>().enabled = false;
+		// StartCoroutine(DisableColliderForTweenToHand(0.5f));
 		// Debug.Log("tweening " + this.gameObject.name + " to hand!");
 	}
+
+	
 
 	//all interactables can be given away, or "unequipped"/dropped.
 	public virtual void TweenToTable(Vector3 _tablePos){
 		// tablePos = _tablePos;
-		transform.DOMove(_tablePos, 0.5f, false);
+		Sequence myTweenToTableSeq = DOTween.Sequence();
+		tweensAreActive = true;
+		myTweenToTableSeq.Append(transform.DOMove(_tablePos, 0.5f, false)).OnComplete(()=>SetTweenToInactive());
 		transform.DORotate(onTableRot, 0.5f, RotateMode.Fast);
-
-		StartCoroutine(EnableColliderAfterTweenToTable(1f));
-		// Debug.Log("tweening " + this.gameObject.name + " to table!");
-	}
+		// GetComponent<Collider>().enabled = true;
+		// StartCoroutine(EnableColliderAfterTweenToTable(1f));
+ 	}
 
 	public virtual void OnTriggerEnter(Collider coll){
 		//check if Trigger is a SnapTriggerArea
@@ -162,21 +174,8 @@ public class Interactable : MonoBehaviour {
 		DOTween.KillAll();
 		// transform.DOKill(this.transform);
 	}
-	public virtual void TweenBackToIdleLeftHand(){
 
-	}
 
-	public virtual void TweenBackToIdleRightHand(){
-
-	}
-
-	public virtual void TweenLeftHandAction(){
-
-	}
-
-	public virtual void TweenRightHandAction(){
-
-	}
 }
 
 
