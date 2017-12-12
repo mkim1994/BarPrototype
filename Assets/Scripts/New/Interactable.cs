@@ -29,7 +29,7 @@ public class Interactable : MonoBehaviour {
 
 	private Rigidbody rb;
 	public bool isHeld;
-	public Transform child;
+	// public Transform child;
 	// public Ingredients.BaseType baseType;
 	// public Ingredients.MixerType mixerType;
 	public Vector3 onTableRot;
@@ -43,7 +43,7 @@ public class Interactable : MonoBehaviour {
 		if(GetComponent<Rigidbody>() != null){
 			rb = GetComponent<Rigidbody>();
 		}
- 		child = transform.GetChild(0);
+ 		// child = transform.GetChild(0);
 		onTablePos = transform.position;
  		onTableRot = transform.eulerAngles;
 		highlightState = HighlightState.Not_highlighted;
@@ -55,10 +55,10 @@ public class Interactable : MonoBehaviour {
 		//enable or disable the highlight mesh
 		switch(highlightState){
 			case HighlightState.Highlighted:
-				child.GetComponent<MeshRenderer>().enabled = true;
+				// child.GetComponent<MeshRenderer>().enabled = true;
   				break;
 			case HighlightState.Not_highlighted:
-				child.GetComponent<MeshRenderer>().enabled = false;			
+				// child.GetComponent<MeshRenderer>().enabled = false;			
  				break;
 			default:
 				break;

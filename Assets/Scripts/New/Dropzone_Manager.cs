@@ -1,16 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityStandardAssets.Characters.FirstPerson;
 public class Dropzone_Manager : MonoBehaviour {
 
-	public GameObject player;
+	private GameObject player;
 	public DropzoneManager nearest;
 	private List<DropzoneManager> dropzones = new List<DropzoneManager>();
 	// Use this for initialization
 
 	void Start () {
-		player = GameObject.Find("FPSController");
+		player = FindObjectOfType<FirstPersonController>().gameObject;
 		dropzones.AddRange(FindObjectsOfType<DropzoneManager>());
 	}
 	
@@ -18,13 +18,17 @@ public class Dropzone_Manager : MonoBehaviour {
 	void Update () {
 		nearest = FindTheClosestFreeDropZone();
 		HighlightNearest();
+		if(nearest != null)
+			Debug.Log(nearest.PlayerIsFacingDropzone());
+			// Debug.Log()
 	}
 
 	public DropzoneManager FindTheClosestFreeDropZone(){
 		DropzoneManager _nearest = dropzones[0];
 		float shortestDist = Vector3.Distance(dropzones[0].transform.position, player.transform.position);
 		for(int i = 0; i < dropzones.Count; i++){			
-			if(Vector3.Distance(dropzones[i].transform.position, player.transform.position) <= shortestDist && !dropzones[i].isOccupied){
+			if(Vector3.Distance(dropzones[i].transform.position, player.transform.position) <= shortestDist && !dropzones[i].isOccupied
+			&& dropzones[i].AngleToPlayer() <= 25f){
 				shortestDist = Vector3.Distance(dropzones[i].transform.position, player.transform.position);
 				_nearest = dropzones[i];
 			}

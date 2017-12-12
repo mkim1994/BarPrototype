@@ -46,7 +46,9 @@ public class InteractionManager : MonoBehaviour {
  		FindInteractableRay();
 		if(!leftHandIsFree && !rightHandIsFree){
 			if(objectInLeftHand == ObjectInHand.Bottle && objectInRightHand == ObjectInHand.Bottle){
-				DualPour(rightActionKey, leftActionKey);
+				if(interactableCurrentlyInRangeAndLookedAt != null){
+					DualPour(rightActionKey, leftActionKey);
+				}
 			} else {
 				TwoHandedInteractableAction(rightActionKey, leftActionKey);
 			}
