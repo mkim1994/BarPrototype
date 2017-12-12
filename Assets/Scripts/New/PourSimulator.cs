@@ -80,20 +80,20 @@ public class PourSimulator : MonoBehaviour {
 	public void FillUpWithBase(Ingredients.BaseType _baseType){
 		pourState = PourState.Pouring_Base;
 		// scale += scaleGrowthRate * Time.deltaTime;
-		Debug.Log("Filling up drink with base!");
+		// Debug.Log("Filling up drink with base!");
 		myBaseType = _baseType;
 		switch (_baseType){
 			case Ingredients.BaseType.GIN:
  				myMesh.material.color = Color.white;
-				 Debug.Log("Pouring gin!");
+				//  Debug.Log("Pouring gin!");
 			break;
 			case Ingredients.BaseType.WHISKY:
  				myMesh.material.color = Color.yellow;
-				 Debug.Log("Pouring whisky!");
+				//  Debug.Log("Pouring whisky!");
 			break;
 			case Ingredients.BaseType.RUM:
  				myMesh.material.color = Color.red;
-				 Debug.Log("Pouring rum!");
+				//  Debug.Log("Pouring rum!");
 			break;
 			default:
 			break;

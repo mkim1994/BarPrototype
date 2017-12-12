@@ -244,9 +244,9 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1598642820373074}
-  m_LocalRotation: {x: -0.33053818, y: -0.6250956, z: -0.6250956, w: 0.33053818}
-  m_LocalPosition: {x: 4.023758, y: -1.58, z: 3.707812}
-  m_LocalScale: {x: 0.50000006, y: 0.50000066, z: 0.5000004}
+  m_LocalRotation: {x: -0.5, y: -0.5, z: -0.5, w: 0.5}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children:
   - {fileID: 4993361465731728}
   - {fileID: 4115416251533356}
@@ -254,7 +254,7 @@ Transform:
   - {fileID: 4614937213418516}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -90.00001, y: 22.3, z: -89.942}
+  m_LocalEulerAnglesHint: {x: -90.00001, y: 0, z: -90}
 --- !u!4 &4614937213418516
 Transform:
   m_ObjectHideFlags: 1
@@ -536,7 +536,7 @@ MeshRenderer:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1598642820373074}
   m_Enabled: 1
-  m_CastShadows: 1
+  m_CastShadows: 0
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_MotionVectors: 1
@@ -704,8 +704,8 @@ Rigidbody:
   m_Mass: 1
   m_Drag: 0
   m_AngularDrag: 0
-  m_UseGravity: 1
-  m_IsKinematic: 0
+  m_UseGravity: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 2
@@ -784,17 +784,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99cf15ce25d95314d8c46911064de8ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  posRightHandedAction: {x: 0, y: 0, z: 0}
-  posLeftHandedAction: {x: 0, y: 0, z: 0}
+  posRightHandedAction: {x: 0.159, y: -0.354, z: 1.137}
+  posLeftHandedAction: {x: -0.082, y: -0.354, z: 1.137}
   rotRightHandedAction: {x: 0, y: 0, z: 0}
   rotLeftHandedAction: {x: 0, y: 0, z: 0}
   rotLeftHandOnlyAction: {x: 0, y: 0, z: 0}
   rotRightHandOnlyAction: {x: 0, y: 0, z: 0}
+  handOffset: {x: 0, y: 0, z: 0}
   pourState: 0
   highlightState: 0
-  dropOffset: {x: 0, y: 0, z: 0}
+  dropOffset: {x: 0, y: -0.2, z: 0}
   rotOffset: {x: 0, y: 0, z: 0}
   isHeld: 0
+  tweensAreActive: 0
   onTableRot: {x: 0, y: 0, z: 0}
   onTablePos: {x: 0, y: 0, z: 0}
   myInitHandPos: {x: 0, y: 0, z: 0}

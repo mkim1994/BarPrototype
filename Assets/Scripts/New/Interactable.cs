@@ -13,6 +13,8 @@ public class Interactable : MonoBehaviour {
 
 	public Vector3 rotLeftHandOnlyAction;
 	public Vector3 rotRightHandOnlyAction;
+
+	public Vector3 handOffset;
 	public enum PourState{
 		Pouring,
 		Not_pouring
@@ -107,12 +109,12 @@ public class Interactable : MonoBehaviour {
 	//all Interactables can get picked up
 	public virtual void TweenToHand(Vector3 _handPos){
 		// handPos = _handPos;
-		myInitHandPos = _handPos;
-		myInitHandRot = onTableRot;
 		tweensAreActive = true;
 		Sequence myTweenToHandSeq = DOTween.Sequence();
 		myTweenToHandSeq.Append(transform.DOLocalRotate(onTableRot, 1f, RotateMode.Fast)).OnComplete(()=>SetTweenToInactive());
-		transform.DOLocalMove(_handPos, 1f, false);
+		myInitHandPos = _handPos + handOffset;
+		myInitHandRot = onTableRot;
+		transform.DOLocalMove(_handPos + handOffset, 1f, false);
 	
 		// transform.DOLocalRotate(onTableRot, 1f, RotateMode.Fast);
 		
@@ -136,9 +138,9 @@ public class Interactable : MonoBehaviour {
 
 	public virtual void OnTriggerEnter(Collider coll){
 		//check if Trigger is a SnapTriggerArea
-		if(coll.GetComponent<SnapTriggerArea>()!= null){
-			coll.GetComponent<SnapTriggerArea>().posOffset = dropOffset;
-		}
+		// if(coll.GetComponent<SnapTriggerArea>()!= null){
+		// 	coll.GetComponent<SnapTriggerArea>().posOffset = dropOffset;
+		// }
 		//check if trigger is the floor
 	}
 

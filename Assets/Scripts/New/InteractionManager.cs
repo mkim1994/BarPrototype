@@ -33,8 +33,10 @@ public class InteractionManager : MonoBehaviour {
 		dropzoneArray = GameObject.FindGameObjectsWithTag("DropZone");
 		leftHandIsFree = true;
 		rightHandIsFree = true;
-		leftHandPos = Vector3.forward + (Vector3.left * 0.5f) + (Vector3.down * 0.25f);
-		rightHandPos = Vector3.forward + (Vector3.right * 0.5f) + (Vector3.down * 0.25f);
+		// leftHandPos = (Vector3.forward*2) + (Vector3.left * 0.5f) + (Vector3.down * 0.25f);
+		// rightHandPos = (Vector3.forward*2) + (Vector3.right * 0.5f) + (Vector3.down * 0.25f);
+		leftHandPos = new Vector3 (-0.462f, -0.5f, 0.719f);
+		rightHandPos = new Vector3 (0.477f, -0.5f, 0.719f);
 		dropzoneDistance = new float[dropzoneArray.Length];
 		Services.Dropzone_Manager.maxDistToPlayer = maxInteractionDist;
 	}
@@ -49,7 +51,9 @@ public class InteractionManager : MonoBehaviour {
 		if(!leftHandIsFree && !rightHandIsFree){
 			if(objectInLeftHand == ObjectInHand.Bottle && objectInRightHand == ObjectInHand.Bottle){
 				if(interactableCurrentlyInRangeAndLookedAt != null){
-					DualPour(rightActionKey, leftActionKey);
+					OneHandedPour();
+
+					// DualPour(rightActionKey, leftActionKey);
 				}
 			} else {
 				TwoHandedInteractableAction(rightActionKey, leftActionKey);
@@ -196,6 +200,44 @@ public class InteractionManager : MonoBehaviour {
  							rightHandObject.ReturnToInitHandPos(rightHandObject.myInitHandPos, rightHandObject.myInitHandRot);
 							isPerformingAction = false;	
 						}
+					}
+				}
+
+				//case 3: dual wield bottles
+				if(!leftHandIsFree && !rightHandIsFree){
+					if(objectInLeftHand == ObjectInHand.Bottle && objectInRightHand == ObjectInHand.Bottle){
+						if(Input.GetKeyDown(leftActionKey)){
+							Interactable leftHandObject = objectInLeftHandGO.GetComponent<Interactable>();
+							leftHandObject.OneHandedContextualAction();
+							if(objectInLeftHandGO.GetComponent<Base>() != null){
+								interactableCurrentlyInRangeAndLookedAt.GetComponentInChildren<PourSimulator>().FillUpWithBase(objectInLeftHandGO.GetComponent<Base>().baseType);
+							} else if (objectInLeftHandGO.GetComponent<Mixer>() != null){
+								interactableCurrentlyInRangeAndLookedAt.GetComponentInChildren<PourSimulator>().FillUpWithMixer(objectInLeftHandGO.GetComponent<Mixer>().mixerType);
+							}
+						} else if (Input.GetKeyUp(leftActionKey)) {
+							interactableCurrentlyInRangeAndLookedAt.GetComponentInChildren<PourSimulator>().StopFillingUp();
+							Interactable leftHandObject = objectInLeftHandGO.GetComponent<Interactable>();
+							leftHandObject.KillAllTweens();
+ 							leftHandObject.ReturnToInitHandPos(leftHandObject.myInitHandPos, leftHandObject.myInitHandRot);
+							isPerformingAction = false;	
+						}
+
+						if(Input.GetKeyDown(rightActionKey)){
+							Interactable rightHandObject = objectInRightHandGO.GetComponent<Interactable>();
+							rightHandObject.OneHandedContextualAction();
+							if(objectInRightHandGO.GetComponent<Base>() != null){
+								interactableCurrentlyInRangeAndLookedAt.GetComponentInChildren<PourSimulator>().FillUpWithBase(objectInRightHandGO.GetComponent<Base>().baseType);
+							} else if (objectInRightHandGO.GetComponent<Mixer>() != null){
+								interactableCurrentlyInRangeAndLookedAt.GetComponentInChildren<PourSimulator>().FillUpWithMixer(objectInRightHandGO.GetComponent<Mixer>().mixerType);
+							}
+						} else if (Input.GetKeyUp(rightActionKey)) {
+							interactableCurrentlyInRangeAndLookedAt.GetComponentInChildren<PourSimulator>().StopFillingUp();
+							Interactable rightHandObject = objectInRightHandGO.GetComponent<Interactable>();
+							rightHandObject.KillAllTweens();
+ 							rightHandObject.ReturnToInitHandPos(rightHandObject.myInitHandPos, rightHandObject.myInitHandRot);
+							isPerformingAction = false;	
+						}
+					
 					}
 				} 
 			} 
