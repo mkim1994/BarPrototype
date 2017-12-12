@@ -252,9 +252,11 @@ public class InteractionManager : MonoBehaviour {
 	void LeftHandPickUp(KeyCode key){
 	if(interactableCurrentlyInRangeAndLookedAt != null){
 			//pick up stuff.
+			Interactable interactable = interactableCurrentlyInRangeAndLookedAt.GetComponent<Interactable>();
+
 			if(Input.GetKeyDown(key)){
 				interactableCurrentlyInRangeAndLookedAt.transform.SetParent(this.transform);
-				Interactable interactable = interactableCurrentlyInRangeAndLookedAt.GetComponent<Interactable>();
+				// Interactable interactable = interactableCurrentlyInRangeAndLookedAt.GetComponent<Interactable>();
 				//turn off the collider to avoid catching it in a raycast
 				// interactable.DisableCollider();
 				// interactable.TweenToHand(leftHandPos);
@@ -349,7 +351,7 @@ public class InteractionManager : MonoBehaviour {
 		_interactable.TweenToHand(leftHandPos);
 		_interactable.tag = "LeftHand";				
 		// _interactable.DisableCollider();
-		if(objectInLeftHandGO != null){
+		if(objectInLeftHandGO != null && !objectInLeftHandGO.GetComponent<Interactable>().tweensAreActive){
 			objectInLeftHandGO.tag = "Untagged";
 			objectInLeftHandGO.GetComponent<Interactable>().TweenToTable(Services.Dropzone_Manager.nearest.transform.position);
 			objectInLeftHandGO.transform.SetParent(null);
@@ -370,7 +372,7 @@ public class InteractionManager : MonoBehaviour {
 		_interactable.TweenToHand(rightHandPos);
 		_interactable.tag = "RightHand";
 		// _interactable.DisableCollider();
-		if(objectInRightHandGO != null){
+		if(objectInRightHandGO != null && !objectInRightHandGO.GetComponent<Interactable>().tweensAreActive){
 			objectInRightHandGO.tag = "Untagged";
 			objectInRightHandGO.GetComponent<Interactable>().TweenToTable(Services.Dropzone_Manager.nearest.transform.position);
 			objectInRightHandGO.transform.SetParent(null);
