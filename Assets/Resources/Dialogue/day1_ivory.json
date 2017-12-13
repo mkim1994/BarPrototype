@@ -1,0 +1,122 @@
+[
+	{
+		"title": "Start",
+		"tags": "",
+		"body": "<<set $gameover to false>>\n\nIvory: Ha...\nIvory: Whiskey please.\n",
+		"position": {
+			"x": 337,
+			"y": 161
+		},
+		"colorID": 0
+	},
+	{
+		"title": "GetGlassDrink1",
+		"tags": "",
+		"body": "<<set $rightdrink to 0>>\nIvory: Thanks.\nIvory: It's been a while since I ended up here.\nIvory: I don't think I've seen you?\nIvory: You new?\n\n[[Yes|2A]]\n[[No, not really|2B]]",
+		"position": {
+			"x": 598,
+			"y": 133
+		},
+		"colorID": 0
+	},
+	{
+		"title": "2A",
+		"tags": "",
+		"body": "Ivory: Oh. Okay.\nIvory: Wonder what happened to the last bartender.\nIvory: Doesn't matter though.\nIvory: I've missed this.\nIvory: ...Hey.\nIvory: Can I get another?",
+		"position": {
+			"x": 880,
+			"y": 173
+		},
+		"colorID": 0
+	},
+	{
+		"title": "2B",
+		"tags": "",
+		"body": "Ivory: Huh.\nIvory: I must've been away longer than I thought.\nIvory: Doesn't matter though.\nIvory: I've missed this.\nIvory: ...Hey.\nIvory: Can I get another?",
+		"position": {
+			"x": 882,
+			"y": 464
+		},
+		"colorID": 0
+	},
+	{
+		"title": "GetNotDrink1",
+		"tags": "",
+		"body": "<<set $rightdrink to 2>>\n\nIvory: Thanks...?\nIvory: Sigh.\nIvory: It's been a while since I ended up here.\nIvory: I don't think I've seen you?\nIvory: You new?\n\n[[Yes|2A]]\n[[No, not really|2B]]",
+		"position": {
+			"x": 574,
+			"y": 378
+		},
+		"colorID": 0
+	},
+	{
+		"title": "GetDrink1",
+		"tags": "",
+		"body": "<<set $rightdrink to 1>>\n\nIvory: Uh...this is a lot.\nIvory: Can't you just give it to me in a glass? Or something?",
+		"position": {
+			"x": 329,
+			"y": 499
+		},
+		"colorID": 0
+	},
+	{
+		"title": "3A",
+		"tags": "",
+		"body": "Customer: Hah. You're just doing your job.\nCustomer: ...\nCustomer: Thank you.\nCustomer: Well, that's it for today then.\nCustomer: I'll be back, unfortunately.\nCustomer: Good-bye.\n\n<<set $gameover to true>>\n<<customerleave Dialogue>>",
+		"position": {
+			"x": 1652,
+			"y": 268
+		},
+		"colorID": 0
+	},
+	{
+		"title": "3B",
+		"tags": "",
+		"body": "Ivory: Bet I didn't help with that.\nIvory: Haha...\nIvory: \n\n<<set $gameover to true>>\n<<customerleave Dialogue>>",
+		"position": {
+			"x": 1669,
+			"y": 518
+		},
+		"colorID": 0
+	},
+	{
+		"title": "GetGlassDrink2",
+		"tags": "",
+		"body": "<<if $rightdrink < 2>>\nIvory: Thanks.\n<<else>>\nIvory: Hey, you got it right this time.\nIvory: Haha.\n<<endif>>\n\n<<set $rightdrink to 0>>\n\nIvory: This is some smooth whiskey.\nIvory: Thanks again.\nIvory: Nice break from all the shit that's been happening.\n\n\n[[What's been happening?|3A]]\n[[You know it.|3B]]",
+		"position": {
+			"x": 1166,
+			"y": 175
+		},
+		"colorID": 0
+	},
+	{
+		"title": "GetNotDrink2",
+		"tags": "",
+		"body": "<<if $rightdrink < 2>>\nIvory: Uhh.\nIvory: Did I not order whiskey the first time...?\n<<else>>\nIvory: Okay.\nIvory: Uh.\nIvory: I know you're new and all, but seriously?\n<<endif>>\n\n<<set $rightdrink to 2>>\n\nIvory: Whatever.\nIvory: It's not the worst thing that happened today, I guess.\n\n[[What's the worst thing?|3A]]\n[[Sorry.|3C]]\n\n",
+		"position": {
+			"x": 1165,
+			"y": 419
+		},
+		"colorID": 0
+	},
+	{
+		"title": "GetDrink2",
+		"tags": "",
+		"body": "<<if $rightdrink is 1>>\nIvory: Again?\nIvory: C'mon, man. Just put it in a cup...\n<<else>>\nIvory: Uh...this is a lot.\nIvory: Can't you just give it to me in a glass? Or something?\n<<endif>>",
+		"position": {
+			"x": 1012,
+			"y": 701
+		},
+		"colorID": 0
+	},
+	{
+		"title": "3C",
+		"tags": "",
+		"body": "Empty Text",
+		"position": {
+			"x": 1559,
+			"y": 697
+		},
+		"colorID": 0
+	}
+]
