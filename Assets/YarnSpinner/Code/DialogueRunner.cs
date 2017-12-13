@@ -429,46 +429,50 @@ namespace Yarn.Unity
         }
 
         public void EvalDrink(){
-            if (Services.DayCycleManager.currentDay == 0)
+            if (Services.DayCycleManager.currentDay == 0 &&
+                Services.DayCycleManager.CustomerIvory.activeSelf)
             {
                 if (dialogueCount == 0)
                 {
                     if (barManager.coaster1.evaluateDrink == 1)
                     {
                         //dialogueCount++;
+                        barManager.coaster1.evaluateDrink = 0;
                         StartCoroutine(WaitForDialogue(1f, "GetDrink1"));
 
                     }
                     else if (barManager.coaster1.evaluateDrink == -1)
                     {
-
+                        barManager.coaster1.evaluateDrink = 0;
                         dialogueCount++;
                         StartCoroutine(WaitForDialogue(1f, "GetNotDrink1"));
                     }
                     else if (barManager.coaster1.evaluateDrink == 2)
                     {
-
+                        barManager.coaster1.evaluateDrink = 0;
                         dialogueCount++;
                         StartCoroutine(WaitForDialogue(1f, "GetGlassDrink1"));
                     }
                 }
                 if (dialogueCount == 1)
                 {
+                    Debug.Log("dialogueCount 1, "+ barManager.coaster1.evaluateDrink);
                     if (barManager.coaster1.evaluateDrink == 1)
                     {
                         //dialogueCount++;
+                        barManager.coaster1.evaluateDrink = 0;
                         StartCoroutine(WaitForDialogue(1f, "GetDrink2"));
 
                     }
                     else if (barManager.coaster1.evaluateDrink == -1)
                     {
-
+                        barManager.coaster1.evaluateDrink = 0;
                         dialogueCount++;
                         StartCoroutine(WaitForDialogue(1f, "GetNotDrink2"));
                     }
                     else if (barManager.coaster1.evaluateDrink == 2)
                     {
-
+                        barManager.coaster1.evaluateDrink = 0;
                         dialogueCount++;
                         StartCoroutine(WaitForDialogue(1f, "GetGlassDrink2"));
                     }
@@ -567,7 +571,7 @@ namespace Yarn.Unity
         [YarnCommand("customerleave")]
         public void CustomerLeave()
         {
-            Services.DayCycleManager.numCustomersLeft++;
+            Services.DayCycleManager.numCustomersThatLeft++;
         }
     }
 

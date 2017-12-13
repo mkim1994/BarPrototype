@@ -19,7 +19,8 @@ public class SnapTriggerArea : DropzoneManager {
 	public enum SnapTriggerAreaState{
 		INTERACTABLE_IS_IN,
 		INTERACTABLE_IS_OUT,
-		INTERACTABLE_IS_POSITIONED
+		INTERACTABLE_IS_POSITIONED,
+        INTERACTABLE_HASBEEN_POSITIONED
 
 	}
 
@@ -122,6 +123,7 @@ public class SnapTriggerArea : DropzoneManager {
 		else {
             evaluateDrink = -1;
         }
+        snapState = SnapTriggerAreaState.INTERACTABLE_HASBEEN_POSITIONED;
 	}
 
 }
