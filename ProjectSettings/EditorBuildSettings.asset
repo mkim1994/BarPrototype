@@ -12,5 +12,8 @@ EditorBuildSettings:
     path: Assets/Scenes/drinkmix_main.unity
     guid: 4815a2fb88fbd6e40ae2fdc4978043e0
   - enabled: 1
+    path: Assets/Scenes/drinkmix_start.unity
+    guid: 944d1dd8cec2741819876a7343c458f6
+  - enabled: 1
     path: Assets/Scenes/drinkmix_main2.unity
     guid: ba71a1bb22d9653439f5e37f7079f29c
