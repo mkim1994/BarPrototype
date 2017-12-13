@@ -25,7 +25,8 @@ public class SnapTriggerArea : DropzoneManager {
 
 	public SnapTriggerAreaState snapState;
 
-	void Start () {
+	public override void Start () {
+		base.Start();
 		snapPos = transform.parent.position;
 		snapRot = transform.parent.eulerAngles;
 		snapState = SnapTriggerAreaState.INTERACTABLE_IS_OUT;
@@ -84,20 +85,41 @@ public class SnapTriggerArea : DropzoneManager {
 	}
 
 	void EvaluateDrink(){
-		if(interactable.GetComponent<Base>() != null){
+
+		//2 is get glass of whiskey!
+		//-1 is get NOT whiskey!
+		//1 is full bottle 
+		if(interactable.GetComponent<Glass>() != null){
 			Base thisDrink = interactable.GetComponent<Base>();
-            if (thisDrink.baseType == Ingredients.BaseType.WHISKY &&
-                thisDrink.GetComponent<Glass>() != null){
-                evaluateDrink = 2;
-            }
-			else if(thisDrink.baseType == Ingredients.BaseType.WHISKY){
-				evaluateDrink = 1;
-				// Debug.Log("Whiskey dropped!");
-            }else{
+			Cocktail thisCocktail = interactable.GetComponent<Cocktail>();
+			//correct!
+			if(thisCocktail.whiskyVolume > 0){
+				evaluateDrink = 2;
+			} 
+			//NOT WHISKEY, but some other drink 
+			else if (thisCocktail.whiskyVolume <= 0){
 				evaluateDrink = -1;
-				// Debug.Log("THIS IS NOT WHISKEY!");
-            }
-        } else if(interactable.GetComponent<Mixer>() != null && interactable.GetComponent<Base>() == null){
+
+			} 		   
+		    // if (thisDrink.baseType == Ingredients.BaseType.WHISKY &&
+            //     thisDrink.GetComponent<Glass>() != null){
+            //     evaluateDrink = 2;
+            // }
+			// else if(thisDrink.baseType == Ingredients.BaseType.WHISKY){
+			// 	evaluateDrink = 1;
+			// 	// Debug.Log("Whiskey dropped!");
+            // }else{
+			// 	evaluateDrink = -1;
+			// 	// Debug.Log("THIS IS NOT WHISKEY!");
+            // }
+        } 
+		//if it's a bottle of whiskey
+		else if (interactable.GetComponent<Glass>() == null && interactable.GetComponent<Base> () != null 
+		&& interactable.GetComponent<Base>().baseType == Ingredients.BaseType.WHISKY){
+			evaluateDrink = 1;
+		}
+		//if it's not a glass nor whiskey
+		else {
             evaluateDrink = -1;
         }
 	}

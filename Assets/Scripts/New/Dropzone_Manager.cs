@@ -6,9 +6,9 @@ public class Dropzone_Manager : MonoBehaviour {
 
 	private float angleToPlayerRange = 25f;
 	public float maxDistToPlayer = 4f;
-	private GameObject player;
+	public GameObject player;
 	public DropzoneManager nearest;
-	private List<DropzoneManager> dropzones = new List<DropzoneManager>();
+	public List<DropzoneManager> dropzones = new List<DropzoneManager>();
 	// Use this for initialization
 
 	void Start () {

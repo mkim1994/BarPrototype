@@ -88,7 +88,6 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaDirect: 0.5
     m_PVRFilteringAtrousPositionSigmaIndirect: 2
     m_PVRFilteringAtrousPositionSigmaAO: 1
-    m_ShowResolutionOverlay: 1
   m_LightingDataAsset: {fileID: 0}
   m_UseShadowmask: 1
 --- !u!196 &4
@@ -113,6 +112,28 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &28235067 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1742924368798820, guid: 10e99daa392b8da4cbdaf8ff8b8237e3,
+    type: 2}
+  m_PrefabInternal: {fileID: 1324324963}
+--- !u!114 &28235068
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 28235067}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7a6d13a89de29540b66c7486580b155, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myAngleToPlayer: 0
+  isOccupied: 0
+  evaluateDrink: 0
+  posOffset: {x: 0, y: 0, z: 0}
+  rotOffset: {x: 0, y: 0, z: 0}
+  snapState: 0
 --- !u!1001 &32872120
 Prefab:
   m_ObjectHideFlags: 0
@@ -10101,6 +10122,11 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 10e99daa392b8da4cbdaf8ff8b8237e3, type: 2}
   m_IsPrefabParent: 0
+--- !u!4 &1001069998 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4143629696633620, guid: 68507c20790bebe45899d9445e9de136,
+    type: 2}
+  m_PrefabInternal: {fileID: 1059473401}
 --- !u!1001 &1016611456
 Prefab:
   m_ObjectHideFlags: 0
@@ -10988,10 +11014,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 68507c20790bebe45899d9445e9de136, type: 2}
   m_IsPrefabParent: 0
---- !u!4 &1059473402 stripped
-Transform:
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 1059473401}
 --- !u!1001 &1072700386
 Prefab:
   m_ObjectHideFlags: 0
@@ -13758,13 +13780,14 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1742924368798820, guid: 10e99daa392b8da4cbdaf8ff8b8237e3, type: 2}
       propertyPath: m_Name
-      value: dropzone (63)
+      value: customer_dropzone
       objectReference: {fileID: 0}
     - target: {fileID: 4345316543488682, guid: 10e99daa392b8da4cbdaf8ff8b8237e3, type: 2}
       propertyPath: m_LocalEulerAnglesHint.y
       value: -0.37500003
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 114653514334731160, guid: 10e99daa392b8da4cbdaf8ff8b8237e3, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 10e99daa392b8da4cbdaf8ff8b8237e3, type: 2}
   m_IsPrefabParent: 0
 --- !u!4 &1324324964 stripped
@@ -18147,7 +18170,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1059473402}
+  - {fileID: 1001069998}
   - {fileID: 2000121793}
   - {fileID: 1096389658}
   m_Father: {fileID: 0}

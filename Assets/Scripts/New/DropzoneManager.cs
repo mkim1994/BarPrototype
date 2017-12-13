@@ -11,7 +11,7 @@ public class DropzoneManager : MonoBehaviour {
 	Dropzone_Manager dropzone_Manager;
 	public bool isOccupied;
 	// Use this for initialization
-	void Start () {
+	public virtual void Start () {
 		isOccupied = false;
 		player = FindObjectOfType<FirstPersonController>().gameObject;
 		playerCam = player.GetComponentInChildren<Camera>();
