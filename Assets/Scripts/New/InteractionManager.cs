@@ -4,10 +4,12 @@ using UnityEngine;
 using DG.Tweening;
 public class InteractionManager : MonoBehaviour {
 	
-	private float maxInteractionDist = 4f;
+	private float maxInteractionDist = 5f;
 	public bool isPerformingAction = false;
 	public GameObject nearestDropzone; 
 	public GameObject interactableCurrentlyInRangeAndLookedAt;
+
+	public GameObject coasterInRangeAndLookedAt;
 
 	public bool lookingAtCoaster = false;
 	public Stack<GameObject> objectsInHand = new Stack<GameObject>();
@@ -90,15 +92,18 @@ public class InteractionManager : MonoBehaviour {
 					//now we have a reference to what's in range and looked at.	
 				} 
 			} 
-			else if ( hitObj.GetComponent<SnapTriggerArea>() != null
+			else if ( hitObj.GetComponent<SnapTriggerArea>() != null 
+				&& Vector3.Distance(transform.position, hitObj.transform.position) <= maxInteractionDist
 				// hitObj.name.Contains("customer_dropzone")
-				){
+			){
+				coasterInRangeAndLookedAt = hitObj;
 				lookingAtCoaster = true;
 			} 
 			else {
 				//ray hit, but not an interactable
 				lookingAtInteractable = false;
 				lookingAtCoaster = false;
+				hitObj = null;
 				//since you're looking at something but it's not interactable, make this null.
 				interactableCurrentlyInRangeAndLookedAt = null;
 			}			
@@ -404,7 +409,12 @@ public class InteractionManager : MonoBehaviour {
 		// _interactable.DisableCollider();
 		if(objectInLeftHandGO != null && !objectInLeftHandGO.GetComponent<Interactable>().tweensAreActive){
 			objectInLeftHandGO.tag = "Untagged";
-			objectInLeftHandGO.GetComponent<Interactable>().TweenToTable(Services.Dropzone_Manager.nearest.transform.position);
+			if(!lookingAtCoaster){
+					objectInLeftHandGO.GetComponent<Interactable>().TweenToTable(Services.Dropzone_Manager.nearest.transform.position);
+				} else {
+					objectInLeftHandGO.GetComponent<Interactable>().TweenToTable(coasterInRangeAndLookedAt.transform.position);
+			}
+			// objectInLeftHandGO.GetComponent<Interactable>().TweenToTable(Services.Dropzone_Manager.nearest.transform.position);
 			objectInLeftHandGO.transform.SetParent(null);
 			objectInLeftHandGO = null;
 			objectInLeftHandGO = _interactable.gameObject;
@@ -425,7 +435,12 @@ public class InteractionManager : MonoBehaviour {
 		// _interactable.DisableCollider();
 		if(objectInRightHandGO != null && !objectInRightHandGO.GetComponent<Interactable>().tweensAreActive){
 			objectInRightHandGO.tag = "Untagged";
-			objectInRightHandGO.GetComponent<Interactable>().TweenToTable(Services.Dropzone_Manager.nearest.transform.position);
+			if(!lookingAtCoaster){
+				objectInRightHandGO.GetComponent<Interactable>().TweenToTable(Services.Dropzone_Manager.nearest.transform.position);
+			} else {
+				objectInRightHandGO.GetComponent<Interactable>().TweenToTable(coasterInRangeAndLookedAt.transform.position);
+			}
+			// objectInRightHandGO.GetComponent<Interactable>().TweenToTable(Services.Dropzone_Manager.nearest.transform.position);
 			objectInRightHandGO.transform.SetParent(null);
 			objectInRightHandGO = null;
 			objectInRightHandGO = _interactable.gameObject;
@@ -445,7 +460,11 @@ public class InteractionManager : MonoBehaviour {
 		if(key == leftHandPickUpKey){
  			if(objectInLeftHandGO != null && !objectInLeftHandGO.GetComponent<Interactable>().tweensAreActive){
 				objectInLeftHandGO.tag = "Untagged";
-				objectInLeftHandGO.GetComponent<Interactable>().TweenToTable(Services.Dropzone_Manager.nearest.transform.position);
+				if(!lookingAtCoaster){
+					objectInLeftHandGO.GetComponent<Interactable>().TweenToTable(Services.Dropzone_Manager.nearest.transform.position);
+				} else {
+					objectInLeftHandGO.GetComponent<Interactable>().TweenToTable(coasterInRangeAndLookedAt.transform.position);
+				}
 				objectInLeftHandGO.transform.SetParent(null);
 				objectInLeftHandGO = null;
 				leftHandIsFree = true;
@@ -454,7 +473,11 @@ public class InteractionManager : MonoBehaviour {
 		} else if (key == rightHandPickUpKey){
 			if(objectInRightHandGO != null && !objectInRightHandGO.GetComponent<Interactable>().tweensAreActive){
 				objectInRightHandGO.tag = "Untagged";
-				objectInRightHandGO.GetComponent<Interactable>().TweenToTable(Services.Dropzone_Manager.nearest.transform.position);
+				if(!lookingAtCoaster){
+					objectInRightHandGO.GetComponent<Interactable>().TweenToTable(Services.Dropzone_Manager.nearest.transform.position);
+				} else {
+					objectInRightHandGO.GetComponent<Interactable>().TweenToTable(coasterInRangeAndLookedAt.transform.position);
+				}
 				objectInRightHandGO.transform.SetParent(null);
 				objectInRightHandGO = null;
 				rightHandIsFree = true;
