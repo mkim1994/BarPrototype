@@ -56,6 +56,12 @@ MonoBehaviour:
   tabDialogue: 0
   worldDialogue: 1
   playerCam: {fileID: 0}
+  dialogueOption1:
+    serializedVersion: 2
+    m_Bits: 0
+  dialogueOption2:
+    serializedVersion: 2
+    m_Bits: 0
   dialogueContainer: {fileID: 0}
   tabDirection: {fileID: 0}
   lineText: {fileID: 0}
@@ -95,12 +101,12 @@ MonoBehaviour:
   barManager: {fileID: 0}
   dialogueCount: 0
   sourceText:
-  - {fileID: 4900000, guid: 062fb37c3613f4ef5b30649eef98214a, type: 3}
+  - {fileID: 4900000, guid: 04687831380874c1faf2bc9f4ec6ebb7, type: 3}
   stringGroups: []
   shouldOverrideLanguage: 0
   overrideLanguage: 10
   variableStorage: {fileID: 114617530836908008}
   dialogueUI: {fileID: 114567530668998350}
   startNode: Start
-  startAutomatically: 0
+  startAutomatically: 1
   automaticCommands: 1

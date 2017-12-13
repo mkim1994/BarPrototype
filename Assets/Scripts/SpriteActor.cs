@@ -22,6 +22,7 @@ public class SpriteActor : MonoBehaviour {
 
     void RotateSpriteTowardPlayer(){
         transform.LookAt(player);
+        transform.eulerAngles += new Vector3(0, 180f, 0);
     }
 
 }
