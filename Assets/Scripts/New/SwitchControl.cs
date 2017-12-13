@@ -20,12 +20,12 @@ public class SwitchControl : MonoBehaviour {
 		if(Physics.Raycast(ray, out hit, Mathf.Infinity)){
 			if(hit.transform.GetComponent<SwitchEngine>() != null){
 				SwitchEngine switchEngine = hit.transform.GetComponent<SwitchEngine>();
-				switchEngine.ShowMouseOverObject();
-				if(Input.GetMouseButtonDown(0)){
+				// switchEngine.ShowMouseOverObject();
+				if(Input.GetKeyDown(KeyCode.Joystick1Button5) || Input.GetKeyDown(KeyCode.Joystick1Button4)){
 					if(Services.DayCycleManager.dayHasEnded){
 						switchEngine.AnimateButtonPress();
 						audioController.spotlightSfx.PlayScheduled(AudioSettings.dspTime);
-						switchEngine.HideMouseOverObject();
+						// switchEngine.HideMouseOverObject();
 						/*foreach(GameObject light in lights){
 							light.SetActive(false);
 						}*/
