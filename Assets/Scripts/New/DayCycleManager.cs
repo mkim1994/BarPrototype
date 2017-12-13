@@ -9,7 +9,7 @@ public class DayCycleManager : MonoBehaviour {
 
     public List<Day> day;
 
-    public int numCustomersLeft;
+    public int numCustomersThatLeft;
     public int currentDay;
 
     public GameObject CustomerIvory;
@@ -36,7 +36,7 @@ public class DayCycleManager : MonoBehaviour {
         day.Add(new Day(1)); //just one customer on the first day
         day.Add(new Day(2)); //two customers on the second day, etc.
 
-        numCustomersLeft = 0;
+        numCustomersThatLeft = 0;
         currentDay = 0;
         //currentNumCustomers = day[0].numCustomers;
 
@@ -47,17 +47,12 @@ public class DayCycleManager : MonoBehaviour {
     }
 
     public void Update(){
-        if (dayHasEnded)
-        {
-            ResetDay();
-        }
-        else
-        {
+        if(!dayHasEnded){
 
             Day(currentDay);
         }
-        if(numCustomersLeft == day[currentDay].numCustomers){
-            numCustomersLeft = 0;
+        if(numCustomersThatLeft == day[currentDay].numCustomers){
+            numCustomersThatLeft = 0;
             currentDay++;
             dayHasEnded = true;
 
@@ -94,6 +89,9 @@ public class DayCycleManager : MonoBehaviour {
                     numCurrentCustomers++;
                 }
             }
+        }
+        if(numCustomersThatLeft == 1){
+            CustomerIvory.SetActive(false);
         }
     }
     private void Day1(){
