@@ -1,0 +1,32 @@
+[
+	{
+		"title": "Start",
+		"tags": "",
+		"body": "Ivory: Hey, long time no see.\nIvory: Just kidding.\nIvory: How about gin and tonic this time?",
+		"position": {
+			"x": -390,
+			"y": -125
+		},
+		"colorID": 0
+	},
+	{
+		"title": "GetGlassDrink1",
+		"tags": "",
+		"body": "<<set $rightdrink to 0>>\n\nIvory: Thanks again.",
+		"position": {
+			"x": -22,
+			"y": 245
+		},
+		"colorID": 0
+	},
+	{
+		"title": "GetNotDrink1",
+		"tags": "",
+		"body": "<<set $rightdrink to 2>>\n\nIvory: Okay, I know you're new, but that's kind of fucked up, man.\nIvory: Guess I'll leave now...\nIvory: Fuck me for ending up here every time.\nIvory: Bye.",
+		"position": {
+			"x": -6,
+			"y": -63
+		},
+		"colorID": 0
+	}
+]

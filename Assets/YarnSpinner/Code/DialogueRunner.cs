@@ -153,25 +153,7 @@ namespace Yarn.Unity
                 Invoke("GoToTitleScreen", FindObjectOfType<Fade>().BeginFade(1) + 1f);
             }*/
 
-            if (dialogueCount == 0)
-            {
-                if (barManager.coaster1.evaluateDrink == 1)
-                {
-                    dialogueCount++;
-                    StartCoroutine(WaitForDialogue(1f, "GetWhiskey"));
-
-                }
-                else if (barManager.coaster1.evaluateDrink == -1)
-                {
-
-                    dialogueCount++;
-                    StartCoroutine(WaitForDialogue(1f, "GetNotWhiskey"));
-                } else if(barManager.coaster1.evaluateDrink == 2){
-
-                    dialogueCount++;
-                    StartCoroutine(WaitForDialogue(1f, "GetGlassWhiskey"));
-                }
-            }
+            EvalDrink();
 
         }
         IEnumerator WaitForDialogue(float sec, string diag){
@@ -444,6 +426,54 @@ namespace Yarn.Unity
             }
 
             return numberOfMethodsFound > 0;
+        }
+
+        public void EvalDrink(){
+            if (barManager.dayCycleManager.currentDay == 0)
+            {
+                if (dialogueCount == 0)
+                {
+                    if (barManager.coaster1.evaluateDrink == 1)
+                    {
+                        //dialogueCount++;
+                        StartCoroutine(WaitForDialogue(1f, "GetDrink1"));
+
+                    }
+                    else if (barManager.coaster1.evaluateDrink == -1)
+                    {
+
+                        dialogueCount++;
+                        StartCoroutine(WaitForDialogue(1f, "GetNotDrink1"));
+                    }
+                    else if (barManager.coaster1.evaluateDrink == 2)
+                    {
+
+                        dialogueCount++;
+                        StartCoroutine(WaitForDialogue(1f, "GetGlassDrink1"));
+                    }
+                }
+                if (dialogueCount == 1)
+                {
+                    if (barManager.coaster1.evaluateDrink == 1)
+                    {
+                        //dialogueCount++;
+                        StartCoroutine(WaitForDialogue(1f, "GetDrink2"));
+
+                    }
+                    else if (barManager.coaster1.evaluateDrink == -1)
+                    {
+
+                        dialogueCount++;
+                        StartCoroutine(WaitForDialogue(1f, "GetNotDrink2"));
+                    }
+                    else if (barManager.coaster1.evaluateDrink == 2)
+                    {
+
+                        dialogueCount++;
+                        StartCoroutine(WaitForDialogue(1f, "GetGlassDrink2"));
+                    }
+                }
+            }
         }
 
 

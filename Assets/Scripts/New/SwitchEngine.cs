@@ -10,7 +10,7 @@ public class SwitchEngine : MonoBehaviour {
 	private GameObject mouseOver;
 	// Use this for initialization
 	void Start () {
-		mouseOver = transform.GetChild(1).gameObject;
+		//mouseOver = transform.GetChild(1).gameObject;
 	}
 	
 	// Update is called once per frame
@@ -33,10 +33,10 @@ public class SwitchEngine : MonoBehaviour {
 	}
 	
 	public void ShowMouseOverObject(){
-		mouseOver.SetActive(true);
+		//mouseOver.SetActive(true);
 	}
 
 	public void HideMouseOverObject(){
-		mouseOver.SetActive(false);
+		//mouseOver.SetActive(false);
 	}
 }

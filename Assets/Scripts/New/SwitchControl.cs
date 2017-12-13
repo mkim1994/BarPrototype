@@ -5,11 +5,11 @@ using UnityEngine;
 public class SwitchControl : MonoBehaviour {
 
 	public AudioController audioController;
-	private GameObject[] lights;
+	//private GameObject[] lights;
 	private CameraController cameraController;
 	// Use this for initialization
 	void Start () {
-		lights = GameObject.FindGameObjectsWithTag("Lights");
+		//lights = GameObject.FindGameObjectsWithTag("Lights");
 		cameraController = GetComponent<CameraController>();
 	}
 	
@@ -26,9 +26,9 @@ public class SwitchControl : MonoBehaviour {
 						switchEngine.AnimateButtonPress();
 						audioController.spotlightSfx.PlayScheduled(AudioSettings.dspTime);
 						switchEngine.HideMouseOverObject();
-						foreach(GameObject light in lights){
+						/*foreach(GameObject light in lights){
 							light.SetActive(false);
-						}
+						}*/
 						this.enabled = false;
 					} else {
 						Debug.Log("Some customers still need you.");

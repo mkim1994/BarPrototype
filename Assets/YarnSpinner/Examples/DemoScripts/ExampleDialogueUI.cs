@@ -107,7 +107,18 @@ namespace Yarn.Unity.Example {
         {
             if (tabDialogue)
             {
-                if (optionCount > 1)
+                if (runningOptions)
+                {
+                    if (Input.GetKey(KeyCode.JoystickButton0))
+                    { // square
+                        SetOption(0);
+                    }
+                    else if (Input.GetKey(KeyCode.JoystickButton2))
+                    { // circle
+                        SetOption(1);
+                    }
+                }
+                /*if (optionCount > 1)
                 {
                     tabDirection.SetActive(false);
                 }
@@ -140,7 +151,7 @@ namespace Yarn.Unity.Example {
                         }
                     }
 
-                }
+                }*/
             }
 
             if (worldDialogue && runningOptions)
@@ -217,7 +228,8 @@ namespace Yarn.Unity.Example {
 
             // Wait for any user input
             //while (Input.anyKeyDown == false) {
-            while (Input.GetMouseButtonUp(0) == false){
+            //while (Input.GetMouseButtonUp(0) == false){
+            while(Input.GetKeyDown(KeyCode.JoystickButton1) == false){ //X controller
                 yield return null;
             }
 
