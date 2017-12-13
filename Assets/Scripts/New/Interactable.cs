@@ -107,10 +107,11 @@ public class Interactable : MonoBehaviour {
 		tweensAreActive = false;
 	}
 	//all Interactables can get picked up
+	Sequence myTweenToHandSeq;
 	public virtual void TweenToHand(Vector3 _handPos){
 		// handPos = _handPos;
 		tweensAreActive = true;
-		Sequence myTweenToHandSeq = DOTween.Sequence();
+		myTweenToHandSeq = DOTween.Sequence();
 		myTweenToHandSeq.Append(transform.DOLocalRotate(onTableRot, 1f, RotateMode.Fast)).OnComplete(()=>SetTweenToInactive());
 		myInitHandPos = _handPos + handOffset;
 		myInitHandRot = onTableRot;
@@ -124,11 +125,11 @@ public class Interactable : MonoBehaviour {
 	}
 
 	
-
+	Sequence myTweenToTableSeq;
 	//all interactables can be given away, or "unequipped"/dropped.
 	public virtual void TweenToTable(Vector3 _tablePos){
 		// tablePos = _tablePos;
-		Sequence myTweenToTableSeq = DOTween.Sequence();
+		myTweenToTableSeq = DOTween.Sequence();
 		tweensAreActive = true;
 		myTweenToTableSeq.Append(transform.DOMove(_tablePos + dropOffset, 0.5f, false)).OnComplete(()=>SetTweenToInactive());
 		transform.DORotate(onTableRot, 0.5f, RotateMode.Fast);
@@ -167,16 +168,26 @@ public class Interactable : MonoBehaviour {
 		GetComponent<Collider>().enabled =  true;
 	}
 
+	Sequence returnSequence;
 	public virtual void ReturnToInitHandPos(Vector3 _initHandPos, Vector3 _initHandRot){
-		transform.DOLocalMove(_initHandPos, 0.5f, false);
-		transform.DOLocalRotate(_initHandRot, 0.5f, RotateMode.Fast);
-	}
+		if(!tweensAreActive){
+ 			returnSequence = DOTween.Sequence();
+			returnSequence.Append(transform.DOLocalMove(_initHandPos, 0.5f, false)).OnComplete(()=>SetTweenToInactive());
+			transform.DOLocalRotate(_initHandRot, 0.5f, RotateMode.Fast);
+		}
+ 	}
 
 	public virtual void KillAllTweens(){
 		DOTween.KillAll();
+		tweensAreActive = false;
 		// transform.DOKill(this.transform);
 	}
 
+	public virtual void KillTweenOnThis(){
+		// DOTween.Kill(this);
+		
+		tweensAreActive = false;
+	}
 
 }
 

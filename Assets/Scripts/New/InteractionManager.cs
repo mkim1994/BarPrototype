@@ -101,39 +101,39 @@ public class InteractionManager : MonoBehaviour {
 		}
 	}
 
-	void DualPour(KeyCode rightKey, KeyCode leftKey){
-		if(!leftHandIsFree && !rightHandIsFree){
-			if(objectInLeftHand == ObjectInHand.Bottle && objectInRightHand == ObjectInHand.Bottle){
-				if(Input.GetKeyDown(leftActionKey) || Input.GetKeyDown(rightActionKey)){
-					Interactable leftHandObject = objectInLeftHandGO.GetComponent<Interactable>();
-					leftHandObject.OneHandedContextualAction();
-					if(objectInLeftHandGO.GetComponent<Base>() != null){
-						interactableCurrentlyInRangeAndLookedAt.GetComponentInChildren<PourSimulator>().FillUpWithBase(objectInLeftHandGO.GetComponent<Base>().baseType);
-					} else if (objectInLeftHandGO.GetComponent<Mixer>() != null){
-						interactableCurrentlyInRangeAndLookedAt.GetComponentInChildren<PourSimulator>().FillUpWithMixer(objectInLeftHandGO.GetComponent<Mixer>().mixerType);
-					}
-					Interactable rightHandObject = objectInRightHandGO.GetComponent<Interactable>();
-					rightHandObject.OneHandedContextualAction();
-					if(objectInRightHandGO.GetComponent<Base>() != null){
-						interactableCurrentlyInRangeAndLookedAt.GetComponentInChildren<PourSimulator>().FillUpWithBase(objectInRightHandGO.GetComponent<Base>().baseType);
-					} else if (objectInRightHandGO.GetComponent<Mixer>() != null){
-						interactableCurrentlyInRangeAndLookedAt.GetComponentInChildren<PourSimulator>().FillUpWithMixer(objectInRightHandGO.GetComponent<Mixer>().mixerType);
-					}
-				} else if (Input.GetKeyUp(leftActionKey) || Input.GetKeyUp(rightActionKey)) {
-					interactableCurrentlyInRangeAndLookedAt.GetComponentInChildren<PourSimulator>().StopFillingUp();
-					Interactable leftHandObject = objectInLeftHandGO.GetComponent<Interactable>();
-					leftHandObject.KillAllTweens();
-					leftHandObject.ReturnToInitHandPos(leftHandObject.myInitHandPos, leftHandObject.myInitHandRot);
-					isPerformingAction = false;	
-					interactableCurrentlyInRangeAndLookedAt.GetComponentInChildren<PourSimulator>().StopFillingUp();
-					Interactable rightHandObject = objectInRightHandGO.GetComponent<Interactable>();
-					// rightHandObject.KillAllTweens();
-					rightHandObject.ReturnToInitHandPos(rightHandObject.myInitHandPos, rightHandObject.myInitHandRot);
-					isPerformingAction = false;	
-				} 
-			}
-		}
-	}
+	// void DualPour(KeyCode rightKey, KeyCode leftKey){
+	// 	if(!leftHandIsFree && !rightHandIsFree){
+	// 		if(objectInLeftHand == ObjectInHand.Bottle && objectInRightHand == ObjectInHand.Bottle){
+	// 			if(Input.GetKeyDown(leftActionKey) || Input.GetKeyDown(rightActionKey)){
+	// 				Interactable leftHandObject = objectInLeftHandGO.GetComponent<Interactable>();
+	// 				leftHandObject.OneHandedContextualAction();
+	// 				if(objectInLeftHandGO.GetComponent<Base>() != null){
+	// 					interactableCurrentlyInRangeAndLookedAt.GetComponentInChildren<PourSimulator>().FillUpWithBase(objectInLeftHandGO.GetComponent<Base>().baseType);
+	// 				} else if (objectInLeftHandGO.GetComponent<Mixer>() != null){
+	// 					interactableCurrentlyInRangeAndLookedAt.GetComponentInChildren<PourSimulator>().FillUpWithMixer(objectInLeftHandGO.GetComponent<Mixer>().mixerType);
+	// 				}
+	// 				Interactable rightHandObject = objectInRightHandGO.GetComponent<Interactable>();
+	// 				rightHandObject.OneHandedContextualAction();
+	// 				if(objectInRightHandGO.GetComponent<Base>() != null){
+	// 					interactableCurrentlyInRangeAndLookedAt.GetComponentInChildren<PourSimulator>().FillUpWithBase(objectInRightHandGO.GetComponent<Base>().baseType);
+	// 				} else if (objectInRightHandGO.GetComponent<Mixer>() != null){
+	// 					interactableCurrentlyInRangeAndLookedAt.GetComponentInChildren<PourSimulator>().FillUpWithMixer(objectInRightHandGO.GetComponent<Mixer>().mixerType);
+	// 				}
+	// 			} else if (Input.GetKeyUp(leftActionKey) || Input.GetKeyUp(rightActionKey)) {
+	// 				interactableCurrentlyInRangeAndLookedAt.GetComponentInChildren<PourSimulator>().StopFillingUp();
+	// 				Interactable leftHandObject = objectInLeftHandGO.GetComponent<Interactable>();
+	// 				leftHandObject.KillAllTweens();
+	// 				leftHandObject.ReturnToInitHandPos(leftHandObject.myInitHandPos, leftHandObject.myInitHandRot);
+	// 				isPerformingAction = false;	
+	// 				interactableCurrentlyInRangeAndLookedAt.GetComponentInChildren<PourSimulator>().StopFillingUp();
+	// 				Interactable rightHandObject = objectInRightHandGO.GetComponent<Interactable>();
+	// 				// rightHandObject.KillAllTweens();
+	// 				rightHandObject.ReturnToInitHandPos(rightHandObject.myInitHandPos, rightHandObject.myInitHandRot);
+	// 				isPerformingAction = false;	
+	// 			} 
+	// 		}
+	// 	}
+	// }
 
 	public void DetectNearestDropZone(){
 		for (int i = 0; i < dropzoneArray.Length; i++) {
@@ -177,6 +177,7 @@ public class InteractionManager : MonoBehaviour {
 							interactableCurrentlyInRangeAndLookedAt.GetComponentInChildren<PourSimulator>().StopFillingUp();
 							Interactable leftHandObject = objectInLeftHandGO.GetComponent<Interactable>();
 							leftHandObject.KillAllTweens();
+							// DOTween.Kill(leftHandObject);
  							leftHandObject.ReturnToInitHandPos(leftHandObject.myInitHandPos, leftHandObject.myInitHandRot);
 							isPerformingAction = false;	
 						}
@@ -197,6 +198,7 @@ public class InteractionManager : MonoBehaviour {
 							interactableCurrentlyInRangeAndLookedAt.GetComponentInChildren<PourSimulator>().StopFillingUp();
 							Interactable rightHandObject = objectInRightHandGO.GetComponent<Interactable>();
 							rightHandObject.KillAllTweens();
+							// DOTween.Kill(rightHandObject);
  							rightHandObject.ReturnToInitHandPos(rightHandObject.myInitHandPos, rightHandObject.myInitHandRot);
 							isPerformingAction = false;	
 						}
@@ -217,7 +219,10 @@ public class InteractionManager : MonoBehaviour {
 						} else if (Input.GetKeyUp(leftActionKey)) {
 							interactableCurrentlyInRangeAndLookedAt.GetComponentInChildren<PourSimulator>().StopFillingUp();
 							Interactable leftHandObject = objectInLeftHandGO.GetComponent<Interactable>();
-							leftHandObject.KillAllTweens();
+							// leftHandObject.KillAllTweens();
+							// DOTween.Kill(leftHandObject);
+							// leftHandObject.tweensAreActive = false;
+							leftHandObject.KillTweenOnThis();
  							leftHandObject.ReturnToInitHandPos(leftHandObject.myInitHandPos, leftHandObject.myInitHandRot);
 							isPerformingAction = false;	
 						}
@@ -232,15 +237,22 @@ public class InteractionManager : MonoBehaviour {
 							}
 						} else if (Input.GetKeyUp(rightActionKey)) {
 							interactableCurrentlyInRangeAndLookedAt.GetComponentInChildren<PourSimulator>().StopFillingUp();
-							Interactable rightHandObject = objectInRightHandGO.GetComponent<Interactable>();
-							rightHandObject.KillAllTweens();
+							Base rightHandObject = objectInRightHandGO.GetComponent<Base>();
+							// rightHandObject.KillAllTweens();
+							// DOTween.Kill(rightHandObject);
+							// rightHandObject.tweensAreActive = false;
+							// rightHandObject.KillTweenOnThis();
+							rightHandObject.KillTweenOnRight();
  							rightHandObject.ReturnToInitHandPos(rightHandObject.myInitHandPos, rightHandObject.myInitHandRot);
 							isPerformingAction = false;	
 						}
 					
 					}
 				} 
-			} 
+			} else {
+				//if interactable is no longer in view.				
+				// DOTween.KillAll(true);
+			}
 		
 	}
 

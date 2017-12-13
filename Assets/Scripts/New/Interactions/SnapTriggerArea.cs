@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class SnapTriggerArea : MonoBehaviour {
+public class SnapTriggerArea : DropzoneManager {
 
 	private Text descriptionText;
 	

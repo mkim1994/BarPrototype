@@ -45,15 +45,33 @@ public class Base : Interactable {
 		transform.DOLocalRotate(onTableRot, 0.3f, RotateMode.Fast);
 	}
 
+	Sequence leftPourSequence;
+	Sequence rightPourSequence;
 	public override void OneHandedContextualAction(){
 		if(this.tag == "RightHand"){
-			transform.DOLocalRotate(rotLeftHandOnlyAction, 0.75f, RotateMode.Fast);
-			// transform.DOLocalMoveY(0, 0.75f, false);
-			// transform.DOLocalMoveX(1,)
+			if(!tweensAreActive){
+				rightPourSequence = DOTween.Sequence();
+				rightPourSequence.Append(transform.DOLocalRotate(rotRightHandOnlyAction, 0.75f, RotateMode.Fast)).OnComplete(()=>SetTweenToInactive());
+				tweensAreActive = true;
+			}
 		} else if (this.tag == "LeftHand"){
-			transform.DOLocalRotate(rotLeftHandOnlyAction, 0.75f, RotateMode.Fast);
-			// transform.DOLocalMoveY(0, 0.75f, false);
+			if(!tweensAreActive){
+				leftPourSequence = DOTween.Sequence();
+				leftPourSequence.Append(transform.DOLocalRotate(rotLeftHandOnlyAction, 0.75f, RotateMode.Fast)).OnComplete(()=>SetTweenToInactive());
+				tweensAreActive = true;
+			}
 		}	
+	}
+
+	public override void KillTweenOnThis(){
+		leftPourSequence.Kill(false);
+		// rightPourSequence.Kill(false);
+		tweensAreActive = false;
+	}
+
+	public void KillTweenOnRight(){
+		rightPourSequence.Kill(false);
+		tweensAreActive = false;
 	}
 
 
