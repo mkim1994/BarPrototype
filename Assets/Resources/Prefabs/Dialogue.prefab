@@ -53,8 +53,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04317fce65da54f4997a5c4465b4e93c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tabDialogue: 0
-  worldDialogue: 1
+  tabDialogue: 1
+  worldDialogue: 0
   playerCam: {fileID: 0}
   dialogueOption1:
     serializedVersion: 2
@@ -108,5 +108,5 @@ MonoBehaviour:
   variableStorage: {fileID: 114617530836908008}
   dialogueUI: {fileID: 114567530668998350}
   startNode: Start
-  startAutomatically: 1
+  startAutomatically: 0
   automaticCommands: 1

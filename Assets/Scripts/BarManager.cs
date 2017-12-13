@@ -11,7 +11,6 @@ public class BarManager : MonoBehaviour {
     public SnapTriggerArea coaster1;
     public SnapTriggerArea coaster2;
 
-    public DayCycleManager dayCycleManager;
 
 	// Use this for initialization
 	void Start () {

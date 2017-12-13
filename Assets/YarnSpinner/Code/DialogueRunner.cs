@@ -429,7 +429,7 @@ namespace Yarn.Unity
         }
 
         public void EvalDrink(){
-            if (barManager.dayCycleManager.currentDay == 0)
+            if (Services.DayCycleManager.currentDay == 0)
             {
                 if (dialogueCount == 0)
                 {

@@ -25,6 +25,7 @@ public class GameManager : MonoBehaviour
 	void Update()
 	{
 		Services.TaskManager.Update();
+        Services.DayCycleManager.Update();
 	}
 
 	void InitializeServices()

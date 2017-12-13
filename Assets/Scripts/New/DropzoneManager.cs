@@ -6,7 +6,7 @@ using UnityStandardAssets.Characters.FirstPerson;
 public class DropzoneManager : MonoBehaviour {
 
 	private GameObject player;
-	private Camera playerCam;
+	//private Camera playerCam;
 	[SerializeField]float myAngleToPlayer;
 	Dropzone_Manager dropzone_Manager;
 	public bool isOccupied;
@@ -14,7 +14,7 @@ public class DropzoneManager : MonoBehaviour {
 	public virtual void Start () {
 		isOccupied = false;
 		player = FindObjectOfType<FirstPersonController>().gameObject;
-		playerCam = player.GetComponentInChildren<Camera>();
+		//playerCam = player.GetComponentInChildren<Camera>();
 	}
 	
 	// Update is called once per frame
@@ -54,15 +54,19 @@ public class DropzoneManager : MonoBehaviour {
 	}
 
 	public float AngleToPlayer(){
-		float angleToPlayer = 0f;
-		angleToPlayer = Vector3.Angle(playerCam.transform.forward, (transform.position-playerCam.transform.position));
-		// Debug.Log("Nearest's angle to player is " + angleToPlayer);
-		return angleToPlayer;
+        if (gameObject.activeSelf)
+        {
+            float angleToPlayer = 0f;
+            angleToPlayer = Vector3.Angle(Services.GameManager.currentCamera.transform.forward, (transform.position - Services.GameManager.currentCamera.transform.position));
+            // Debug.Log("Nearest's angle to player is " + angleToPlayer);
+            return angleToPlayer;
+        }
+        return 999999999f;
 	}
 
 	public float DistToPlayer(){
 		float distToPlayer = 0f;
-		distToPlayer = Vector3.Distance(playerCam.transform.position, transform.position);
+        distToPlayer = Vector3.Distance(Services.GameManager.currentCamera.transform.position, transform.position);
 		return distToPlayer;
 	}
 }
