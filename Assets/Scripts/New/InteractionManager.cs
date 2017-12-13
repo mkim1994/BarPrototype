@@ -8,6 +8,8 @@ public class InteractionManager : MonoBehaviour {
 	public bool isPerformingAction = false;
 	public GameObject nearestDropzone; 
 	public GameObject interactableCurrentlyInRangeAndLookedAt;
+
+	public bool lookingAtCoaster = false;
 	public Stack<GameObject> objectsInHand = new Stack<GameObject>();
 	public ObjectInHand objectInLeftHand;
 	public ObjectInHand objectInRightHand;
@@ -87,9 +89,16 @@ public class InteractionManager : MonoBehaviour {
 					interactableCurrentlyInRangeAndLookedAt = hitObj;
 					//now we have a reference to what's in range and looked at.	
 				} 
-			} else {
+			} 
+			else if ( hitObj.GetComponent<SnapTriggerArea>() != null
+				// hitObj.name.Contains("customer_dropzone")
+				){
+				lookingAtCoaster = true;
+			} 
+			else {
 				//ray hit, but not an interactable
 				lookingAtInteractable = false;
+				lookingAtCoaster = false;
 				//since you're looking at something but it's not interactable, make this null.
 				interactableCurrentlyInRangeAndLookedAt = null;
 			}			

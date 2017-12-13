@@ -17,7 +17,7 @@ public class FirstPersonUI : MonoBehaviour {
 	}
 
 	void Update(){
-		if(interactionManager.interactableCurrentlyInRangeAndLookedAt != null){
+		if(interactionManager.interactableCurrentlyInRangeAndLookedAt != null || interactionManager.lookingAtCoaster){
 			reticle.rectTransform.localScale = new Vector3 (2, 2, 2); 
 			reticle.color = Color.green;
 		} else {
