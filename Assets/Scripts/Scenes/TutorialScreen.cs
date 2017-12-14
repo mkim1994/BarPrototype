@@ -17,6 +17,7 @@ public class TutorialScreen : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         if(!called && Input.GetKeyDown(KeyCode.JoystickButton1)){
+            GetComponent<AudioSource>().Play();
             called = true;
             tutrenderer.material = tutmat;
             GetComponent<Animator>().SetTrigger("triggerIntroAnim");
