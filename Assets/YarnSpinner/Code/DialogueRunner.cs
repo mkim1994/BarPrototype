@@ -28,8 +28,10 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 using System.Text.RegularExpressions;
 using CsvHelper;
+using UnityStandardAssets.Characters.FirstPerson;
 
 namespace Yarn.Unity
 {
@@ -169,11 +171,17 @@ namespace Yarn.Unity
         }
         IEnumerator WaitSecondsHelper(float sec, GameObject p, Vector3 rpos, Quaternion rrot, GameObject bp)
         {
+            yield return new WaitForSeconds(sec - 2f);
+            bp.transform.GetChild(0).gameObject.SetActive(true);
             yield return new WaitForSeconds(sec);
             p.transform.position = rpos;
             p.transform.rotation = rrot;
+            bp.transform.GetChild(0).GetComponent<Text>().text = "TO BE CONTINUED";
+            bp.transform.GetChild(0).gameObject.SetActive(false);
             bp.SetActive(false);
-            Services.DayCycleManager.DayCycleTrueReset();
+            Services.DayCycleManager.safeToEnableInteraction = true;
+            /*p.GetComponent<InteractionManager>().enabled = true;
+            p.GetComponentInChildren<FirstPersonController>().enabled = true;*/
 
         }
 
