@@ -460,26 +460,26 @@ namespace Yarn.Unity
                     if (barManager.coaster1.evaluateDrink == -2)
                     {
                         barManager.coaster1.evaluateDrink = 0;
-                        StartCoroutine(WaitForDialogue(1f, "GetEmptyGlass1"));
+                        StartCoroutine(WaitForDialogue(1f, "GetEmptyGlass1IvoryDay1"));
                     }
                     else if (barManager.coaster1.evaluateDrink == 1)
                     {
                         //dialogueCount++;
                         barManager.coaster1.evaluateDrink = 0;
-                        StartCoroutine(WaitForDialogue(1f, "GetDrink1"));
+                        StartCoroutine(WaitForDialogue(1f, "GetDrink1IvoryDay1"));
 
                     }
                     else if (barManager.coaster1.evaluateDrink == -1)
                     {
                         barManager.coaster1.evaluateDrink = 0;
                         dialogueCount++;
-                        StartCoroutine(WaitForDialogue(1f, "GetNotDrink1"));
+                        StartCoroutine(WaitForDialogue(1f, "GetNotDrink1IvoryDay1"));
                     }
                     else if (barManager.coaster1.evaluateDrink == 2)
                     {
                         barManager.coaster1.evaluateDrink = 0;
                         dialogueCount++;
-                        StartCoroutine(WaitForDialogue(1f, "GetGlassDrink1"));
+                        StartCoroutine(WaitForDialogue(1f, "GetGlassDrink1IvoryDay1"));
                     } 
                 }
                 if (dialogueCount == 1)
@@ -487,29 +487,29 @@ namespace Yarn.Unity
                     if (barManager.coaster1.evaluateDrink == -2)
                     {
                         barManager.coaster1.evaluateDrink = 0;
-                        StartCoroutine(WaitForDialogue(1f, "GetEmptyGlass2"));
+                        StartCoroutine(WaitForDialogue(1f, "GetEmptyGlass2IvoryDay1"));
                     }
                     else if (barManager.coaster1.evaluateDrink == 1)
                     {
                         //dialogueCount++;
                         barManager.coaster1.evaluateDrink = 0;
-                        StartCoroutine(WaitForDialogue(1f, "GetDrink2"));
+                        StartCoroutine(WaitForDialogue(1f, "GetDrink2IvoryDay1"));
 
                     }
                     else if (barManager.coaster1.evaluateDrink == -1)
                     {
                         barManager.coaster1.evaluateDrink = 0;
                         dialogueCount++;
-                        StartCoroutine(WaitForDialogue(1f, "GetNotDrink2"));
+                        StartCoroutine(WaitForDialogue(1f, "GetNotDrink2IvoryDay1"));
                     }
                     else if (barManager.coaster1.evaluateDrink == 2)
                     {
                         barManager.coaster1.evaluateDrink = 0;
                         dialogueCount++;
-                        StartCoroutine(WaitForDialogue(1f, "GetGlassDrink2"));
+                        StartCoroutine(WaitForDialogue(1f, "GetGlassDrink2IvoryDay1"));
                     }
                 }
-            } else if(Services.DayCycleManager.currentDay == 2){
+            } else if(Services.DayCycleManager.currentDay == 1){
                 
             }
         }

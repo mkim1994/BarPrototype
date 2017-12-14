@@ -103,45 +103,70 @@ public class SnapTriggerArea : DropzoneManager {
 
 	void EvaluateDrink(){
 
-		//2 is get glass of whiskey!
-		//-1 is get NOT whiskey!
-		//1 is full bottle 
-		if(interactable.GetComponent<Glass>() != null){
-			Base thisDrink = interactable.GetComponent<Base>();
-			Cocktail thisCocktail = interactable.GetComponent<Cocktail>();
-			//correct!
-			if(thisCocktail.whiskyVolume > 0){
-				evaluateDrink = 2;
-			} 
-			//NOT WHISKEY, but some other drink 
-            else if (thisCocktail.whiskyVolume <= 0 && thisCocktail.totalVolume > 0){
-				evaluateDrink = -1;
-			} else if (thisCocktail.totalVolume <= 0){
-				evaluateDrink = -2;
-			}
-			// else if (thisCocktail) 		   
-		    // if (thisDrink.baseType == Ingredients.BaseType.WHISKY &&
-            //     thisDrink.GetComponent<Glass>() != null){
-            //     evaluateDrink = 2;
-            // }
-			// else if(thisDrink.baseType == Ingredients.BaseType.WHISKY){
-			// 	evaluateDrink = 1;
-			// 	// Debug.Log("Whiskey dropped!");
-            // }else{
-			// 	evaluateDrink = -1;
-			// 	// Debug.Log("THIS IS NOT WHISKEY!");
-            // }
-        } 
-		//if it's a bottle of whiskey
-		else if (interactable.GetComponent<Glass>() == null && interactable.GetComponent<Base> () != null 
-		&& interactable.GetComponent<Base>().baseType == Ingredients.BaseType.WHISKY){
-			evaluateDrink = 1;
-		}
-		//if it's not a glass nor whiskey
-		else {
-            evaluateDrink = -1;
+        if (Services.DayCycleManager.currentDay == 0) // day 1
+        {
+            //2 is get glass of whiskey!
+            //-1 is get NOT whiskey!
+            //1 is full bottle 
+            if (interactable.GetComponent<Glass>() != null)
+            {
+                Base thisDrink = interactable.GetComponent<Base>();
+                Cocktail thisCocktail = interactable.GetComponent<Cocktail>();
+                //correct!
+                if (thisCocktail.whiskyVolume > 0)
+                {
+                    evaluateDrink = 2;
+                }
+                //NOT WHISKEY, but some other drink 
+                else if (thisCocktail.whiskyVolume <= 0 && thisCocktail.totalVolume > 0)
+                {
+                    evaluateDrink = -1;
+                }
+                else if (thisCocktail.totalVolume <= 0)
+                {
+                    evaluateDrink = -2;
+                }
+                // else if (thisCocktail) 		   
+                // if (thisDrink.baseType == Ingredients.BaseType.WHISKY &&
+                //     thisDrink.GetComponent<Glass>() != null){
+                //     evaluateDrink = 2;
+                // }
+                // else if(thisDrink.baseType == Ingredients.BaseType.WHISKY){
+                // 	evaluateDrink = 1;
+                // 	// Debug.Log("Whiskey dropped!");
+                // }else{
+                // 	evaluateDrink = -1;
+                // 	// Debug.Log("THIS IS NOT WHISKEY!");
+                // }
+            }
+            //if it's a bottle of whiskey
+            else if (interactable.GetComponent<Glass>() == null && interactable.GetComponent<Base>() != null
+            && interactable.GetComponent<Base>().baseType == Ingredients.BaseType.WHISKY)
+            {
+                evaluateDrink = 1;
+            }
+            //if it's not a glass nor whiskey
+            else
+            {
+                evaluateDrink = -1;
+            }
+            snapState = SnapTriggerAreaState.INTERACTABLE_HASBEEN_POSITIONED;
+        } else if(Services.DayCycleManager.currentDay == 1){ //day 2
+            if(Services.DayCycleManager.CustomerSahana.activeSelf){ //if sahana is there. 
+                /* asks for something non-alcoholic.
+                 * -2 = empty glass
+                 * -1 = full bottle
+                 * 1 = alcoholic (if you added anything alcoholic)
+                 * 2 = nonalcoholic
+                 * */
+            } else{ //if ivory is there. 
+                /* asks for "gin and tonic."
+                 * -1 = doesn't contain gin and tonic; empty glass; full bottle (even of gin and tonic); etc.
+                 * 1 = more than 50% gin
+                 * 2 = less than 50% gin
+                 * */
+            }
         }
-        snapState = SnapTriggerAreaState.INTERACTABLE_HASBEEN_POSITIONED;
 	}
 
 }

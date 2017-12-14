@@ -1,6 +1,6 @@
 [
 	{
-		"title": "Start",
+		"title": "StartIvoryDay2",
 		"tags": "",
 		"body": "Customer: Hey, long time no see.\nCustomer: Just kidding.\nCustomer: How about gin and tonic this time?",
 		"position": {
@@ -10,17 +10,17 @@
 		"colorID": 0
 	},
 	{
-		"title": "GetGlassDrink1A",
+		"title": "GetGlassDrink1AIvoryDay2",
 		"tags": "",
-		"body": "<<set $rightdrink to 0>>\n<<set $alcoholicaf to true>>\n\nCustomer: Thanks again.\nCustomer: Just trying something new, y'know?\nCustomer: Whiskey's all I've known. \n\n[[Since when?|1A]]\n[[That's a little limited.|1B]]",
+		"body": "<<set $rightdrink to 0>>\n<<set $alcoholicaf to true>>\n\nCustomer: Thanks again.\nCustomer: Just trying something new, y'know?\nCustomer: Whiskey's all I've known. \n\n[[Since when?|1AIvoryDay2]]\n[[That's a little limited.|1BIvoryDay2]]",
 		"position": {
-			"x": -99,
+			"x": -100,
 			"y": 139
 		},
 		"colorID": 0
 	},
 	{
-		"title": "GetNotDrink1",
+		"title": "GetNotDrink1IvoryDay2",
 		"tags": "",
 		"body": "<<set $rightdrink to 2>>\n\nCustomer: Okay, I know you're new, but that's kind of fucked up, man.\nCustomer: Especially after yesterday.\nCustomer: Guess I'll leave now...\nCustomer: Fuck me for ending up here every time.\nCustomer: Bye.\n\n<<customerleave Dialogue>>",
 		"position": {
@@ -30,9 +30,9 @@
 		"colorID": 0
 	},
 	{
-		"title": "1A",
+		"title": "1AIvoryDay2",
 		"tags": "",
-		"body": "Customer: Since... high school?\nCustomer: I don't know, it's all my dad drank.\n\n<<if $alcoholicaf is true>>\nCustomer: Snuck some from his stash, haha.\nCustomer: He'd get real mad.\nCustomer: Not that he needed any more reasons to get mad, but...\nCustomer: I was born to piss him off, I guess.\nCustomer: Haha, if he saw me drinking this right now--\nCustomer: Not sure what he'd do first, beat me up or.\nCustomer: What was it?\nCustomer: Threaten to disown me for the hundredth time?\n<<else>>\nCustomer: The good old days!\nCustomer: Not that I'd go back to it, but.\nCustomer: Some things were simpler back then.\n<<endif>>\nCustomer: Anyway.\n\n[[You alright?|2A]]\n[[Nice childhood.|2B]]",
+		"body": "Customer: Since... high school?\nCustomer: I don't know, it's all my dad drank.\n\n<<if $alcoholicaf is true>>\nCustomer: Snuck some from his stash, haha.\nCustomer: He'd get real mad.\nCustomer: Not that he needed any more reasons to get mad, but...\nCustomer: I was born to piss him off, I guess.\nCustomer: Haha, if he saw me drinking this right now--\nCustomer: Not sure what he'd do first, beat me up or.\nCustomer: What was it?\nCustomer: Threaten to disown me for the hundredth time?\n<<else>>\nCustomer: The good old days!\nCustomer: Not that I'd go back to it, but.\nCustomer: Some things were simpler back then.\n<<endif>>\nCustomer: Anyway.\n\n[[You alright?|2AIvoryDay2]]\n[[Nice childhood.|2BIvoryDay2]]",
 		"position": {
 			"x": 351,
 			"y": -92
@@ -40,9 +40,9 @@
 		"colorID": 0
 	},
 	{
-		"title": "1B",
+		"title": "1BIvoryDay2",
 		"tags": "",
-		"body": "Customer: Yeah, I know.\nCustomer: That's what everyone told me in college.\nCustomer: Not everyone grew up on their dad's drinking habits, I guess.\n\n<<if $alcoholicaf is true>>\nCustomer: He'd get some every day, just 'cause he'd go through so much of it.\nCustomer: It was pretty easy to sneak some.\nCustomer: Then he'd get real mad.\nCustomer: Not that he needed any more reasons to get mad, but...\nCustomer: I was born to piss him off, I guess.\nCustomer: Haha, if he saw me drinking this right now--\nCustomer: Not sure what he'd do first, beat me up or.\nCustomer: What was it?\nCustomer: Threaten to disown me for the hundredth time?\n<<else>>\nCustomer: The good old days!\nCustomer: Not that I'd go back to it, but.\nCustomer: Some things were simpler back then.\n<<endif>>\nCustomer: Anyway.\n\n[[You alright?|2A]]\n[[Nice childhood.|2B]]",
+		"body": "Customer: Yeah, I know.\nCustomer: That's what everyone told me in college.\nCustomer: Not everyone grew up on their dad's drinking habits, I guess.\n\n<<if $alcoholicaf is true>>\nCustomer: He'd get some every day, just 'cause he'd go through so much of it.\nCustomer: It was pretty easy to sneak some.\nCustomer: Then he'd get real mad.\nCustomer: Not that he needed any more reasons to get mad, but...\nCustomer: I was born to piss him off, I guess.\nCustomer: Haha, if he saw me drinking this right now--\nCustomer: Not sure what he'd do first, beat me up or.\nCustomer: What was it?\nCustomer: Threaten to disown me for the hundredth time?\n<<else>>\nCustomer: The good old days!\nCustomer: Not that I'd go back to it, but.\nCustomer: Some things were simpler back then.\n<<endif>>\nCustomer: Anyway.\n\n[[You alright?|2AIvoryDay2]]\n[[Nice childhood.|2BIvoryDay2]]",
 		"position": {
 			"x": 293,
 			"y": 432
@@ -50,9 +50,9 @@
 		"colorID": 0
 	},
 	{
-		"title": "GetGlassDrink1B",
+		"title": "GetGlassDrink1BIvoryDay2",
 		"tags": "",
-		"body": "<<set $rightdrink to 0>>\n<<set $alcoholicaf to false>>\n\nCustomer: Thanks again.\nCustomer: Just trying something new, y'know?\nCustomer: Whiskey's all I've known. \n\n[[Since when?|1A]]\n[[That's a little limited.|1B]]",
+		"body": "<<set $rightdrink to 0>>\n<<set $alcoholicaf to false>>\n\nCustomer: Thanks again.\nCustomer: Just trying something new, y'know?\nCustomer: Whiskey's all I've known. \n\n[[Since when?|1AIvoryDay2]]\n[[That's a little limited.|1BIvoryDay2]]",
 		"position": {
 			"x": -121,
 			"y": 379
@@ -60,7 +60,7 @@
 		"colorID": 0
 	},
 	{
-		"title": "2A",
+		"title": "2AIvoryDay2",
 		"tags": "",
 		"body": "<<if $alcoholicaf is true>>\nCustomer: Uhmm.\nCustomer: Yeah, sorry, I think I'm fucking drunk.\nCustomer: Guess I got what I ask for.\n<<else>>\nCustomer: Yeeep.\nCustomer: Thanks.\n<<endif>>\n\nCustomer: ...Time to head back.\n<<if $alcoholicaf is true>>\nCustomer: Before I spout more bullshit.\n<<else>>\nCustomer: Get me more drunk next time.\n<<endif>>\n<<customerleave Dialogue>>",
 		"position": {
@@ -70,7 +70,7 @@
 		"colorID": 0
 	},
 	{
-		"title": "2B",
+		"title": "2BIvoryDay2",
 		"tags": "",
 		"body": "<<if $alcoholicaf is true>>\nCustomer: Nah dude, it's a great one!\nCustomer: I'm not too fucked up now, right?\nCustomer: ...\nCustomer: Yeah, sorry, I think I'm fucking drunk.\nCustomer: Guess I got what I ask for.\n<<else>>\nCustomer: Hahaha.\nCustomer: You can say that again.\nCustomer: I'd say I didn't have the best one, but.\nCustomer: I'm fine now, right?\n<<endif>>\n\nCustomer: ...Time to head back.\n<<if $alcoholicaf is true>>\nCustomer: Before I spout more bullshit.\n<<else>>\nCustomer: Get me more drunk next time.\n<<endif>>\n<<customerleave Dialogue>>",
 		"position": {
