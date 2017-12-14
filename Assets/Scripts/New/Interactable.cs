@@ -146,11 +146,7 @@ public class Interactable : MonoBehaviour {
 			this.gameObject.layer = 0;
 		}
 	}
-	public virtual void OnTriggerEnter(Collider coll){
-		if(coll.gameObject.layer == 17){
 
-		}
-	}
 
 	
 

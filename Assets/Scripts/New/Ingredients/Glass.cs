@@ -138,7 +138,7 @@ public class Glass : Interactable {
 		transform.DOLocalMove(_handPos, 1f, false);
  	}
 	void OnTriggerEnter(Collider coll){
-		if(coll.gameObject.layer == 17 && GameObject.Find("CustomerIvory") != null){
+		if(coll.gameObject.layer == 17 && (GameObject.Find("CustomerIvory") != null || GameObject.Find("CustomerSahana") != null)){
 			StartCoroutine(DepleteDrink(1f));		
 		}
 	}

@@ -10,6 +10,8 @@ public class DropzoneManager : MonoBehaviour {
 	[SerializeField]float myAngleToPlayer;
 	Dropzone_Manager dropzone_Manager;
 	public bool isOccupied;
+	public bool isFacingPlayer = false;
+	public bool isCloseToPlayer = false;
 	// Use this for initialization
 	public virtual void Start () {
 		isOccupied = false;
@@ -20,6 +22,8 @@ public class DropzoneManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		myAngleToPlayer = AngleToPlayer();
+		isFacingPlayer = PlayerIsFacingDropzone();
+
 	}
 
 	void OnTriggerEnter(Collider collider){
@@ -48,8 +52,7 @@ public class DropzoneManager : MonoBehaviour {
 
 	public bool PlayerIsFacingDropzone(){
 		bool playerIsFacing = false;
-		float angleToDropzone = Vector3.Angle(player.transform.forward, (player.transform.position-transform.position));
-		if(angleToDropzone <= 20f)
+		if(myAngleToPlayer <= 20f)
 			playerIsFacing = true;
 		return playerIsFacing;
 	}
@@ -70,4 +73,10 @@ public class DropzoneManager : MonoBehaviour {
         distToPlayer = Vector3.Distance(Services.GameManager.currentCamera.transform.position, transform.position);
 		return distToPlayer;
 	}
+
+	private bool PlayerIsClose(){
+		
+		return false;
+	}
+
 }
