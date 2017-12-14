@@ -55,12 +55,13 @@ public class InteractionManager : MonoBehaviour {
 		// DetectNearestDropZone();
 		// FindTheClosestFreeDropZone();
 
-		CheckForAnyActiveTweens();
+		// CheckForAnyActiveTweens();
 		if(!CheckForAnyActiveTweens()){
 			RightHandPickUp(rightHandPickUpKey);
 			LeftHandPickUp(leftHandPickUpKey);	
 			FindSnapTriggerAreaRay();
 	 		FindInteractableRay();
+		}
 			if(!leftHandIsFree && !rightHandIsFree){
 				if(objectInLeftHand == ObjectInHand.Bottle && objectInRightHand == ObjectInHand.Bottle){
 					if(interactableCurrentlyInRangeAndLookedAt != null){
@@ -76,7 +77,6 @@ public class InteractionManager : MonoBehaviour {
 			if (interactableCurrentlyInRangeAndLookedAt != null){
 				OneHandedPour();
 			}
-		}
 		// else if (leftHandIsFree && !rightHandIsFree) {
 		// 	// RightHandAction(rightActionKey);
 		// 	OneHandedAction(leftActionKey);

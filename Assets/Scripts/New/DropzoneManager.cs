@@ -19,6 +19,7 @@ public class DropzoneManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		myAngleToPlayer = AngleToPlayer();
 	}
 
 	void OnTriggerEnter(Collider collider){
@@ -57,7 +58,7 @@ public class DropzoneManager : MonoBehaviour {
         if (gameObject.activeSelf)
         {
             float angleToPlayer = 0f;
-            angleToPlayer = Vector3.Angle(Services.GameManager.currentCamera.transform.forward, (transform.position - Services.GameManager.currentCamera.transform.position));
+            angleToPlayer = Vector3.Angle(Services.DayCycleManager.player.GetComponentInChildren<Camera>().transform.forward, (transform.position - Services.DayCycleManager.player.GetComponentInChildren<Camera>().transform.position));
             // Debug.Log("Nearest's angle to player is " + angleToPlayer);
             return angleToPlayer;
         }

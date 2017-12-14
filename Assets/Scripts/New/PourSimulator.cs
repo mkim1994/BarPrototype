@@ -37,7 +37,7 @@ public class PourSimulator : MonoBehaviour {
 	void Start () {
 		startPosZ = transform.localPosition.z;
 		posZ = startPosZ;
-		Debug.Log(startPosZ);
+		// Debug.Log(startPosZ);
 		pourState = PourState.Not_pouring;
 		cocktail = GetComponentInParent<Cocktail>();
 		startPos = transform.localPosition;
