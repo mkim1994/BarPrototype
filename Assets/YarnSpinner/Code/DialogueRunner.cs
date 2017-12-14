@@ -164,24 +164,27 @@ namespace Yarn.Unity
 
         }
 
-        public void WaitSeconds(float sec, GameObject p, Vector3 rpos, Quaternion rrot, GameObject bp){
+        public void WaitSeconds(int curr, float sec, GameObject p, Vector3 rpos, Quaternion rrot, GameObject bp){
 
-            StartCoroutine(WaitSecondsHelper(sec, p, rpos, rrot, bp));
+            StartCoroutine(WaitSecondsHelper(curr, sec, p, rpos, rrot, bp));
 
         }
-        IEnumerator WaitSecondsHelper(float sec, GameObject p, Vector3 rpos, Quaternion rrot, GameObject bp)
+        IEnumerator WaitSecondsHelper(int curr, float sec, GameObject p, Vector3 rpos, Quaternion rrot, GameObject bp)
         {
             yield return new WaitForSeconds(sec - 2f);
             bp.transform.GetChild(0).gameObject.SetActive(true);
-            yield return new WaitForSeconds(sec);
-            p.transform.position = rpos;
-            p.transform.rotation = rrot;
-            bp.transform.GetChild(0).GetComponent<Text>().text = "TO BE CONTINUED";
-            bp.transform.GetChild(0).gameObject.SetActive(false);
-            bp.SetActive(false);
-            Services.DayCycleManager.safeToEnableInteraction = true;
-            /*p.GetComponent<InteractionManager>().enabled = true;
-            p.GetComponentInChildren<FirstPersonController>().enabled = true;*/
+            if (curr < 2)
+            { //day 3
+                yield return new WaitForSeconds(sec);
+                p.transform.position = rpos;
+                p.transform.rotation = rrot;
+                bp.transform.GetChild(0).GetComponent<Text>().text = "TO BE CONTINUED";
+                bp.transform.GetChild(0).gameObject.SetActive(false);
+                bp.SetActive(false);
+                Services.DayCycleManager.safeToEnableInteraction = true;
+                /*p.GetComponent<InteractionManager>().enabled = true;
+                p.GetComponentInChildren<FirstPersonController>().enabled = true;*/
+            }
 
         }
 
