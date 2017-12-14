@@ -500,6 +500,8 @@ namespace Yarn.Unity
                         StartCoroutine(WaitForDialogue(1f, "GetGlassDrink2"));
                     }
                 }
+            } else if(Services.DayCycleManager.currentDay == 2){
+                
             }
         }
 
