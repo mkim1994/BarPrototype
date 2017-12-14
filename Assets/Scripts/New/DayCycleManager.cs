@@ -57,6 +57,7 @@ public class DayCycleManager : MonoBehaviour {
         day = new List<Day>();
         day.Add(new Day(1)); //just one customer on the first day
         day.Add(new Day(2)); //two customers on the second day, etc.
+        day.Add(new Day(1));
 
         numCustomersThatLeft = 0;
         currentDay = 0;
@@ -81,26 +82,32 @@ public class DayCycleManager : MonoBehaviour {
     }
 
     public void Update(){
-        if(safeToEnableInteraction){
-            safeToEnableInteraction = false;
-            DayCycleTrueReset();
+        if (currentDay < 3)
+        {
+            if (safeToEnableInteraction)
+            {
+                safeToEnableInteraction = false;
+                DayCycleTrueReset();
+            }
+            if (!dayHasEnded)
+            {
+
+                Day(currentDay);
+
+            }
+            if (numCustomersThatLeft == day[currentDay].numCustomers)
+            {
+                numCustomersThatLeft = 0;
+                currentDay++;
+                dayHasEnded = true;
+
+            }
+
+            if (dayHasEnded && switchOff)
+            {
+                ResetDay();
+            }
         }
-        if(!dayHasEnded){
-
-            Day(currentDay);
-
-        }
-        if(numCustomersThatLeft == day[currentDay].numCustomers){
-            numCustomersThatLeft = 0;
-            currentDay++;
-            dayHasEnded = true;
-
-        }
-
-        if(dayHasEnded && switchOff){
-            ResetDay();
-        }
-
 
 
     }

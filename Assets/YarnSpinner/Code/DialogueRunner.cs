@@ -546,13 +546,15 @@ namespace Yarn.Unity
                         }
                         else if (barManager.coaster1.evaluateDrink == 1)
                         {
-                            //dialogueCount++;
+                            Debug.Log("evaluDrink ==1");
+                            dialogueCount++;
                             barManager.coaster1.evaluateDrink = 0;
                             StartCoroutine(WaitForDialogue(1f, "GetGlassDrink1AIvoryDay2"));
 
                         }
                         else if (barManager.coaster1.evaluateDrink == 2)
                         {
+                            Debug.Log("evaluDrink == 2");
                             barManager.coaster1.evaluateDrink = 0;
                             dialogueCount++;
                             StartCoroutine(WaitForDialogue(1f, "GetGlassDrink1BIvoryDay2"));
