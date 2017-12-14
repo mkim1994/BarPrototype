@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using Yarn.Unity;
 public class InteractionManager : MonoBehaviour {
 	
 	private float maxInteractionDist = 5f;

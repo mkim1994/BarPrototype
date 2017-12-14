@@ -142,11 +142,24 @@ public class Interactable : MonoBehaviour {
 	public virtual void OnTriggerStay(Collider coll){
 		if(coll.gameObject.layer == 17 && dialogueRunner.isDialogueRunning){
 			this.gameObject.layer = 2;
+			// coll.GetComponent<SnapTriggerArea>().enabled = false;
 		} else {
 			this.gameObject.layer = 0;
+			// coll.GetComponent<SnapTriggerArea>().enabled = true;
 		}
 	}
 
+	public virtual void OnTriggerEnter(Collider coll){
+		if(coll.GetComponent<SnapTriggerArea>() != null){
+			coll.GetComponent<SnapTriggerArea>().enabled = false;
+		} 
+	}
+
+	public virtual void OnTriggerExit(Collider coll){
+		if(coll.GetComponent<SnapTriggerArea>() != null){
+			coll.GetComponent<SnapTriggerArea>().enabled = true;
+		}	
+	}
 
 	
 
