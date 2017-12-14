@@ -88,7 +88,6 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaDirect: 0.5
     m_PVRFilteringAtrousPositionSigmaIndirect: 2
     m_PVRFilteringAtrousPositionSigmaAO: 1
-    m_ShowResolutionOverlay: 1
   m_LightingDataAsset: {fileID: 0}
   m_UseShadowmask: 1
 --- !u!196 &4
@@ -126,7 +125,7 @@ GameObject:
   - component: {fileID: 28235070}
   - component: {fileID: 28235069}
   - component: {fileID: 28235068}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: customer_dropzone
   m_TagString: DropZone
   m_Icon: {fileID: 0}
@@ -1844,6 +1843,31 @@ Prefab:
     - target: {fileID: 1983359588266448, guid: 7401661106e72aa4e80b0113a4083689, type: 2}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 224123756501157798, guid: 7401661106e72aa4e80b0113a4083689,
+        type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 220.54
+      objectReference: {fileID: 0}
+    - target: {fileID: 224123756501157798, guid: 7401661106e72aa4e80b0113a4083689,
+        type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 8.35
+      objectReference: {fileID: 0}
+    - target: {fileID: 224123756501157798, guid: 7401661106e72aa4e80b0113a4083689,
+        type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -401
+      objectReference: {fileID: 0}
+    - target: {fileID: 114566905864080838, guid: 7401661106e72aa4e80b0113a4083689,
+        type: 2}
+      propertyPath: coasterMask.m_Bits
+      value: 131072
+      objectReference: {fileID: 0}
+    - target: {fileID: 114566905864080838, guid: 7401661106e72aa4e80b0113a4083689,
+        type: 2}
+      propertyPath: layerMask.m_Bits
+      value: 4294836219
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7401661106e72aa4e80b0113a4083689, type: 2}
@@ -13174,12 +13198,12 @@ Prefab:
     - target: {fileID: 224754900139249494, guid: e5f014542f6ee432b81efce2fcf24005,
         type: 2}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 401
       objectReference: {fileID: 0}
     - target: {fileID: 224754900139249494, guid: e5f014542f6ee432b81efce2fcf24005,
         type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 225.5
       objectReference: {fileID: 0}
     - target: {fileID: 224754900139249494, guid: e5f014542f6ee432b81efce2fcf24005,
         type: 2}
@@ -14202,7 +14226,7 @@ GameObject:
   - component: {fileID: 1329554492}
   - component: {fileID: 1329554491}
   - component: {fileID: 1329554490}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: customer_dropzone (1)
   m_TagString: DropZone
   m_Icon: {fileID: 0}

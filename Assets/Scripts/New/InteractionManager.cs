@@ -33,6 +33,8 @@ public class InteractionManager : MonoBehaviour {
 	public List<Interactable> activeInteractables = new List<Interactable>();
 
 	public LayerMask layerMask;
+
+	public LayerMask coasterMask;
 	// Use this for initialization
 	void Start () {
 		dropzoneArray = GameObject.FindGameObjectsWithTag("DropZone");
@@ -57,6 +59,7 @@ public class InteractionManager : MonoBehaviour {
 		if(!CheckForAnyActiveTweens()){
 			RightHandPickUp(rightHandPickUpKey);
 			LeftHandPickUp(leftHandPickUpKey);	
+			FindSnapTriggerAreaRay();
 	 		FindInteractableRay();
 			if(!leftHandIsFree && !rightHandIsFree){
 				if(objectInLeftHand == ObjectInHand.Bottle && objectInRightHand == ObjectInHand.Bottle){
@@ -81,7 +84,7 @@ public class InteractionManager : MonoBehaviour {
 		// 	OneHandedAction(leftActionKey);
 		// } 
  	}
-	private bool CheckForAnyActiveTweens(){
+	public bool CheckForAnyActiveTweens(){
 		//if there are no tweens, i
 		foreach (Interactable interactable in allInteractables){
 			if(interactable.tweensAreActive){
@@ -102,6 +105,26 @@ public class InteractionManager : MonoBehaviour {
 		return false;
 	}
 
+	void FindSnapTriggerAreaRay(){
+		Ray ray = new Ray(transform.position, transform.forward);
+		float rayDist = Mathf.Infinity;
+		RaycastHit hit = new RaycastHit();
+
+		if(Physics.Raycast(ray, out hit, rayDist, coasterMask)){
+			GameObject hitObj = hit.transform.gameObject;
+			//only check if you're looking at a coaster if you're holding something
+			if(!rightHandIsFree || !leftHandIsFree){
+				if(hitObj.GetComponent<SnapTriggerArea>() != null){
+					lookingAtCoaster = true;
+					coasterInRangeAndLookedAt = hitObj;
+				} else {
+					lookingAtCoaster = false;
+				}
+			}
+		} else {
+			lookingAtCoaster = false;
+		}
+	}
 	void FindInteractableRay(){
 		Ray ray = new Ray(transform.position, transform.forward);
 		float rayDist = Mathf.Infinity;
@@ -123,14 +146,11 @@ public class InteractionManager : MonoBehaviour {
 				&& Vector3.Distance(transform.position, hitObj.transform.position) <= maxInteractionDist
 				// hitObj.name.Contains("customer_dropzone")
 			){
-				coasterInRangeAndLookedAt = hitObj;
-				lookingAtCoaster = true;
-			} 
+ 			} 
 			else {
 				//ray hit, but not an interactable
 				lookingAtInteractable = false;
-				lookingAtCoaster = false;
-				hitObj = null;
+ 				hitObj = null;
 				//since you're looking at something but it's not interactable, make this null.
 				interactableCurrentlyInRangeAndLookedAt = null;
 			}			
