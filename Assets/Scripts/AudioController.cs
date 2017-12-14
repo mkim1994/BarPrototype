@@ -5,7 +5,8 @@ using UnityEngine;
 public class AudioController : MonoBehaviour {
 
     public AudioSource spotlightSfx;
-    public AudioSource bgm;
+    public AudioSource bgm1;
+    public AudioSource bgm2;
 
 	// Use this for initialization
 	void Start () {

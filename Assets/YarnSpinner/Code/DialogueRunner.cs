@@ -510,7 +510,42 @@ namespace Yarn.Unity
                     }
                 }
             } else if(Services.DayCycleManager.currentDay == 1){
-                
+                if(Services.DayCycleManager.CustomerSahana.activeSelf){
+                    if(barManager.coaster2.evaluateDrink == -2){
+                        barManager.coaster2.evaluateDrink = 0;
+                        StartCoroutine(WaitForDialogue(1f, "GetEmptyGlass1SahanaDay2"));
+                    } else if (barManager.coaster2.evaluateDrink == -1)
+                    {
+                        barManager.coaster2.evaluateDrink = 0;
+                        StartCoroutine(WaitForDialogue(1f, "GetDrink1SahanaDay2"));
+                    } else if(barManager.coaster2.evaluateDrink == 1){
+                        barManager.coaster2.evaluateDrink = 0;
+                        StartCoroutine(WaitForDialogue(1f, "GetGlassDrink1ASahanaDay2"));
+                    }else if (barManager.coaster2.evaluateDrink == 2)
+                    {
+                        barManager.coaster2.evaluateDrink = 0;
+                        StartCoroutine(WaitForDialogue(1f, "GetGlassDrink1BSahanaDay2"));
+                    }
+                } else if(Services.DayCycleManager.CustomerIvory.activeSelf){
+                    if (barManager.coaster1.evaluateDrink == -1)
+                    {
+                        barManager.coaster1.evaluateDrink = 0;
+                        StartCoroutine(WaitForDialogue(1f, "GetNotDrink1IvoryDay2"));
+                    }
+                    else if (barManager.coaster1.evaluateDrink == 1)
+                    {
+                        //dialogueCount++;
+                        barManager.coaster1.evaluateDrink = 0;
+                        StartCoroutine(WaitForDialogue(1f, "GetGlassDrink1AIvoryDay2"));
+
+                    }
+                    else if (barManager.coaster1.evaluateDrink == 2)
+                    {
+                        barManager.coaster1.evaluateDrink = 0;
+                        dialogueCount++;
+                        StartCoroutine(WaitForDialogue(1f, "GetGlassDrink1BIvoryDay2"));
+                    }
+                }
             }
         }
 
@@ -606,6 +641,7 @@ namespace Yarn.Unity
         public void CustomerLeave()
         {
             Services.DayCycleManager.numCustomersThatLeft++;
+            Services.DayCycleManager.numCurrentCustomers--;
         }
     }
 

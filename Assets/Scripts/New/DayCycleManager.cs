@@ -22,13 +22,14 @@ public class DayCycleManager : MonoBehaviour {
 
     public GameObject blackPanel;
 
-    private int numCurrentCustomers;
+    public int numCurrentCustomers;
 
     public Vector3 resetPos;
     public Quaternion resetRot;
 
     private SnapTriggerArea[] snaps;
 
+    AudioController audioController;
     public bool safeToEnableInteraction;
 
 	// Use this for initialization
@@ -37,6 +38,7 @@ public class DayCycleManager : MonoBehaviour {
 
     }
 	public void Start () {
+        audioController = FindObjectOfType<AudioController>();
         safeToEnableInteraction = false;
         snaps = FindObjectsOfType<SnapTriggerArea>();
         // player = GameObject.Find("FPS Controller");
@@ -65,10 +67,14 @@ public class DayCycleManager : MonoBehaviour {
 	}
 
     public void ResetDay(){
+        dialogue.dialogueCount = 0;
+        numCustomersThatLeft = 0;
+        numCurrentCustomers = 0;
         dayHasEnded = false;
        //safeToEnableInteraction = false;
         switchOff = false;
         blackPanel.SetActive(true);
+        audioController.bgm1.Stop();
         //Invoke("WaitTillNextDay", 5f);
         WaitTillNextDay();
     }
@@ -110,7 +116,7 @@ public class DayCycleManager : MonoBehaviour {
     }
     private void Day0(){
         
-        if (numCurrentCustomers == 0)
+        if (numCurrentCustomers == 0 && numCustomersThatLeft == 0)
         {
             Ray ray = new Ray(player.GetComponentInChildren<Camera>().transform.position, player.GetComponentInChildren<Camera>().transform.forward);
             float rayDist = Mathf.Infinity;
@@ -122,6 +128,8 @@ public class DayCycleManager : MonoBehaviour {
                 {
                     //for snaptriggerarea: if day == 1
                     CustomerIvory.SetActive(true);
+                    audioController.spotlightSfx.Play();
+                    audioController.bgm1.Play();
                     dialogue.StartDialogue();
                     numCurrentCustomers++;
                 }
@@ -132,7 +140,7 @@ public class DayCycleManager : MonoBehaviour {
         }
     }
     private void Day1(){
-        if (numCurrentCustomers == 0)
+        if (numCurrentCustomers == 0 && numCustomersThatLeft == 0)
         {
             Ray ray = new Ray(player.GetComponentInChildren<Camera>().transform.position, player.GetComponentInChildren<Camera>().transform.forward);
             float rayDist = Mathf.Infinity;
@@ -144,10 +152,37 @@ public class DayCycleManager : MonoBehaviour {
                 {
                     //for snaptriggerarea: if day == 2 & sahana is active
                     CustomerSahana.SetActive(true);
+                    audioController.spotlightSfx.Play();
+
+                    audioController.bgm2.Play();
                     dialogue.StartDialogue("StartSahanaDay2");
                     numCurrentCustomers++;
                 }
             }
+        } else if (numCustomersThatLeft == 1){ //after sahana leaves
+            if (numCurrentCustomers == 0)
+            {
+
+                CustomerSahana.SetActive(false);
+                Ray ray = new Ray(player.GetComponentInChildren<Camera>().transform.position, player.GetComponentInChildren<Camera>().transform.forward);
+                float rayDist = Mathf.Infinity;
+                RaycastHit hit = new RaycastHit();
+
+                if (Physics.Raycast(ray, out hit, rayDist))
+                {
+                    if (hit.transform.name.Contains("InitialCustomerTrigger"))
+                    {
+                        //for snaptriggerarea: if day == 1
+                        CustomerIvory.SetActive(true);
+                        audioController.spotlightSfx.Play();
+                        dialogue.StartDialogue("StartIvoryDay2");
+                        numCurrentCustomers++;
+                    }
+                }
+            }
+        }
+        if(numCustomersThatLeft == 2){
+            CustomerIvory.SetActive(false);
         }
     }
 
@@ -160,6 +195,7 @@ public class DayCycleManager : MonoBehaviour {
 
         player.GetComponentInChildren<InteractionManager>().enabled = true;
         player.GetComponent<FirstPersonController>().enabled = true;
+
     }
 
 
