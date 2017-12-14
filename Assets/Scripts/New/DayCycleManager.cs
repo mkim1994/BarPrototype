@@ -25,6 +25,7 @@ public class DayCycleManager : MonoBehaviour {
 
     }
 	public void Start () {
+        // player = GameObject.Find("FPS Controller");
         player = Instantiate(Services.Prefabs.Player, new Vector3(0, 4.16f, 8.35f), Quaternion.Euler(0,180,0));
         CustomerIvory = GameObject.Find("CustomerIvory");
         CustomerSahana = GameObject.Find("CustomerSahana");
@@ -78,7 +79,7 @@ public class DayCycleManager : MonoBehaviour {
         
         if (numCurrentCustomers == 0)
         {
-            Ray ray = new Ray(Services.GameManager.currentCamera.transform.position, Services.GameManager.currentCamera.transform.forward);
+            Ray ray = new Ray(player.GetComponentInChildren<Camera>().transform.position, player.GetComponentInChildren<Camera>().transform.forward);
             float rayDist = Mathf.Infinity;
             RaycastHit hit = new RaycastHit();
 

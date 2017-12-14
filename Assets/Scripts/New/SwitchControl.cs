@@ -4,13 +4,14 @@ using UnityEngine;
 using UnityStandardAssets.Characters.FirstPerson;
 public class SwitchControl : MonoBehaviour {
 
-	public AudioController audioController;
+	AudioController audioController;
 	//private GameObject[] lights;
 	private List<Light> lights = new List<Light>();
 	private CameraController cameraController;
 	// Use this for initialization
 	void Start () {
 		//lights = GameObject.FindGameObjectsWithTag("Lights");
+		audioController = FindObjectOfType<AudioController>();
 		cameraController = GetComponent<CameraController>();
 		lights.AddRange(FindObjectsOfType<Light>());
 	}
