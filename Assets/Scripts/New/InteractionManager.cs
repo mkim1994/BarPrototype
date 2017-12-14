@@ -5,6 +5,7 @@ using DG.Tweening;
 using Yarn.Unity;
 public class InteractionManager : MonoBehaviour {
 	
+
 	private float maxInteractionDist = 5f;
 	public bool isPerformingAction = false;
 	public GameObject nearestDropzone; 
@@ -30,6 +31,7 @@ public class InteractionManager : MonoBehaviour {
 	public GameObject[] dropzoneArray;
 	public float[] dropzoneDistance;
 
+	public DialogueRunner dialogueRunner;
 	private List<Interactable> allInteractables = new List<Interactable>();
 	public List<Interactable> activeInteractables = new List<Interactable>();
 
@@ -48,6 +50,7 @@ public class InteractionManager : MonoBehaviour {
 		dropzoneDistance = new float[dropzoneArray.Length];
 		allInteractables.AddRange(FindObjectsOfType<Interactable>());
 		Services.Dropzone_Manager.maxDistToPlayer = maxInteractionDist;
+		dialogueRunner = FindObjectOfType<DialogueRunner>();
 	}
 	
 	
@@ -459,7 +462,7 @@ public class InteractionManager : MonoBehaviour {
 			objectInLeftHandGO.tag = "Untagged";
 			if(!lookingAtCoaster){
 					objectInLeftHandGO.GetComponent<Interactable>().TweenToTable(Services.Dropzone_Manager.nearest.transform.position);
-				} else {
+				} else if (lookingAtCoaster){
 					objectInLeftHandGO.GetComponent<Interactable>().TweenToTable(coasterInRangeAndLookedAt.transform.position);
 			}
 			// objectInLeftHandGO.GetComponent<Interactable>().TweenToTable(Services.Dropzone_Manager.nearest.transform.position);
