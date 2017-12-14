@@ -162,6 +162,21 @@ namespace Yarn.Unity
 
         }
 
+        public void WaitSeconds(float sec, GameObject p, Vector3 rpos, Quaternion rrot, GameObject bp){
+
+            StartCoroutine(WaitSecondsHelper(sec, p, rpos, rrot, bp));
+
+        }
+        IEnumerator WaitSecondsHelper(float sec, GameObject p, Vector3 rpos, Quaternion rrot, GameObject bp)
+        {
+            yield return new WaitForSeconds(sec);
+            p.transform.position = rpos;
+            p.transform.rotation = rrot;
+            bp.SetActive(false);
+            Services.DayCycleManager.DayCycleTrueReset();
+
+        }
+
         /// Add a string of text to a script
         public void AddScript(string text) {
             dialogue.LoadString(text);
