@@ -7,14 +7,17 @@ public class TutorialScreen : MonoBehaviour {
 
     public Material tutmat;
     public Renderer tutrenderer;
+    bool called;
 	// Use this for initialization
 	void Start () {
         Cursor.lockState = CursorLockMode.Locked;
+        called = false;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        if(Input.GetKeyDown(KeyCode.JoystickButton1)){
+        if(!called && Input.GetKeyDown(KeyCode.JoystickButton1)){
+            called = true;
             tutrenderer.material = tutmat;
             GetComponent<Animator>().SetTrigger("triggerIntroAnim");
         }

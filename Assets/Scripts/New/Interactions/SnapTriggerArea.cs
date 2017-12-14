@@ -114,7 +114,7 @@ public class SnapTriggerArea : DropzoneManager {
 				evaluateDrink = 2;
 			} 
 			//NOT WHISKEY, but some other drink 
-			else if (thisCocktail.whiskyVolume <= 0){
+            else if (thisCocktail.whiskyVolume <= 0 && thisCocktail.totalVolume > 0){
 				evaluateDrink = -1;
 			} else if (thisCocktail.totalVolume <= 0){
 				evaluateDrink = -2;

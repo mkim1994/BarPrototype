@@ -457,7 +457,12 @@ namespace Yarn.Unity
             {
                 if (dialogueCount == 0)
                 {
-                    if (barManager.coaster1.evaluateDrink == 1)
+                    if (barManager.coaster1.evaluateDrink == -2)
+                    {
+                        barManager.coaster1.evaluateDrink = 0;
+                        StartCoroutine(WaitForDialogue(1f, "GetEmptyGlass1"));
+                    }
+                    else if (barManager.coaster1.evaluateDrink == 1)
                     {
                         //dialogueCount++;
                         barManager.coaster1.evaluateDrink = 0;
@@ -475,12 +480,16 @@ namespace Yarn.Unity
                         barManager.coaster1.evaluateDrink = 0;
                         dialogueCount++;
                         StartCoroutine(WaitForDialogue(1f, "GetGlassDrink1"));
-                    }
+                    } 
                 }
                 if (dialogueCount == 1)
                 {
-                    Debug.Log("dialogueCount 1, "+ barManager.coaster1.evaluateDrink);
-                    if (barManager.coaster1.evaluateDrink == 1)
+                    if (barManager.coaster1.evaluateDrink == -2)
+                    {
+                        barManager.coaster1.evaluateDrink = 0;
+                        StartCoroutine(WaitForDialogue(1f, "GetEmptyGlass2"));
+                    }
+                    else if (barManager.coaster1.evaluateDrink == 1)
                     {
                         //dialogueCount++;
                         barManager.coaster1.evaluateDrink = 0;

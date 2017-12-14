@@ -78,21 +78,6 @@ public class DayCycleManager : MonoBehaviour {
             safeToEnableInteraction = false;
             DayCycleTrueReset();
         }
-        /*if(dialogue.isDialogueRunning){
-            for (int i = 0; i < snaps.Length; ++i){
-                if(snaps[i].gameObject.activeSelf){
-                    snaps[i].gameObject.SetActive(false);
-                }
-            }
-        } else{
-            for (int i = 0; i < snaps.Length; ++i)
-            {
-                if (!snaps[i].gameObject.activeSelf)
-                {
-                    snaps[i].gameObject.SetActive(true);
-                }
-            }
-        }*/
         if(!dayHasEnded){
 
             Day(currentDay);
