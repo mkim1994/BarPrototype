@@ -159,12 +159,60 @@ public class SnapTriggerArea : DropzoneManager {
                  * 1 = alcoholic (if you added anything alcoholic)
                  * 2 = nonalcoholic
                  * */
+				if (interactable.GetComponent<Glass>() != null) {
+					Base thisDrink = interactable.GetComponent<Base>();
+					Cocktail thisCocktail = interactable.GetComponent<Cocktail>();
+					
+					//empty glass
+					if (thisCocktail.totalVolume <= 0) {
+						evaluateDrink = -2;
+					} 
+					//alcoholic
+					else if (thisCocktail.alcoholPercentage > 0)
+					{
+						evaluateDrink = 1;
+					}
+					//non-alcoholic
+					else if (thisCocktail.totalVolume > 0 && thisCocktail.alcoholPercentage <= 0)
+					{
+						evaluateDrink = 2;
+					}
+           		}
+           		else if (interactable.GetComponent<Glass>() == null && (interactable.GetComponent<Base>() != null || interactable.GetComponent<Mixer>() != null))
+            	{ 
+					evaluateDrink = -1;
+            	}
             } else{ //if ivory is there. 
+
                 /* asks for "gin and tonic."
                  * -1 = doesn't contain gin and tonic; empty glass; full bottle (even of gin and tonic); etc.
                  * 1 = more than 50% gin
                  * 2 = less than 50% gin
                  * */
+				if (interactable.GetComponent<Glass>() != null) {
+					Base thisDrink = interactable.GetComponent<Base>();
+					Cocktail thisCocktail = interactable.GetComponent<Cocktail>();
+					
+					//empty glass
+					if ((thisCocktail.ginVolume <= 0 && thisCocktail.tonicVolume <= 0) || thisCocktail.totalVolume <= 0) {
+						evaluateDrink = -1;
+					} 
+					//alcoholic
+					else if (thisCocktail.ginVolume >= 23)
+					{
+						evaluateDrink = 1;
+					}
+					//non-alcoholic
+					else if (thisCocktail.ginVolume < 23 && thisCocktail.ginVolume > 0)
+					{
+						evaluateDrink = 2;
+					}
+           		}
+            //if it's a full bottle of whiskey
+           		else if (interactable.GetComponent<Glass>() == null && (interactable.GetComponent<Base>() != null || interactable.GetComponent<Mixer>() != null))
+            	{ 
+					evaluateDrink = -1;
+            	}
             }
         }
 	}
