@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
 	void Start()
 	{
 		Services.DayCycleManager.Start();
+		Services.Dropzone_Manager.FindPlayer();
 		// Services.EventManager.Register<Reset>(Reset);
 		// Services.SceneStackManager.PushScene<TitleScreen>();
 	}

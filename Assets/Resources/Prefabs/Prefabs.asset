@@ -20,3 +20,4 @@ MonoBehaviour:
     type: 2}
   dropIndicator: {fileID: 1331173114055176, guid: aee3e1bbb1efb3347b65099bb55b218c,
     type: 2}
+  player: {fileID: 1877018155867266, guid: 6389603eec7eb804da3c115dcf3fa695, type: 2}

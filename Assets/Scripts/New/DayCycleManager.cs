@@ -8,7 +8,7 @@ public class DayCycleManager : MonoBehaviour {
 	public bool dayHasEnded;
 
     public List<Day> day;
-
+    public GameObject player;
     public int numCustomersThatLeft;
     public int currentDay;
 
@@ -25,6 +25,7 @@ public class DayCycleManager : MonoBehaviour {
 
     }
 	public void Start () {
+        player = Instantiate(Services.Prefabs.Player, new Vector3(0, 4.16f, 8.35f), Quaternion.Euler(0,180,0));
         CustomerIvory = GameObject.Find("CustomerIvory");
         CustomerSahana = GameObject.Find("CustomerSahana");
         dialogue = FindObjectOfType<DialogueRunner>();
@@ -38,6 +39,7 @@ public class DayCycleManager : MonoBehaviour {
 
         numCustomersThatLeft = 0;
         currentDay = 0;
+
         //currentNumCustomers = day[0].numCustomers;
 
 	}
