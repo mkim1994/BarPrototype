@@ -102,6 +102,8 @@ MonoBehaviour:
   dialogueCount: 0
   sourceText:
   - {fileID: 4900000, guid: 04687831380874c1faf2bc9f4ec6ebb7, type: 3}
+  - {fileID: 4900000, guid: 8e1fdc0ee24c1487bb2d507108e7540d, type: 3}
+  - {fileID: 4900000, guid: e7b97b90c76b64849a9b78c600e738cf, type: 3}
   stringGroups: []
   shouldOverrideLanguage: 0
   overrideLanguage: 10

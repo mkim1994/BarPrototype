@@ -118,5 +118,25 @@
 			"y": 688
 		},
 		"colorID": 0
+	},
+	{
+		"title": "GetEmptyGlass1",
+		"tags": "",
+		"body": "<<set $rightdrink to 2>>\n\nCustomer: Alright.\nCustomer: You take one of those bottles there...\nCustomer: And you pour it into a glass.\nCustomer: It's not that hard, is it?",
+		"position": {
+			"x": 549,
+			"y": 667
+		},
+		"colorID": 0
+	},
+	{
+		"title": "GetEmptyGlass2",
+		"tags": "",
+		"body": "Customer: Haha, dude--you managed to give me something last time!\nCustomer: You take one of those bottles there...\nCustomer: And you pour it into a glass.\nCustomer: It's not that hard, is it?",
+		"position": {
+			"x": 775,
+			"y": 755
+		},
+		"colorID": 0
 	}
 ]
