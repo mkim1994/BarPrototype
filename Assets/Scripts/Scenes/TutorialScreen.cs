@@ -6,12 +6,14 @@ using UnityEngine.SceneManagement;
 public class TutorialScreen : MonoBehaviour {
 
     public Material tutmat;
+    public Material tutmat2;
     public Renderer tutrenderer;
     bool called;
 	// Use this for initialization
 	void Start () {
         Cursor.lockState = CursorLockMode.Locked;
         called = false;
+        tutrenderer.material = tutmat2;
 	}
 	
 	// Update is called once per frame
