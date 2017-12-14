@@ -7,6 +7,8 @@ public class DayCycleManager : MonoBehaviour {
 
 	public bool dayHasEnded;
 
+    public bool switchOff;
+
     public List<Day> day;
     public GameObject player;
     public int numCustomersThatLeft;
@@ -17,7 +19,14 @@ public class DayCycleManager : MonoBehaviour {
 
     private DialogueRunner dialogue;
 
+    public GameObject blackPanel;
+
     private int numCurrentCustomers;
+
+    public Vector3 resetPos;
+    public Quaternion resetRot;
+
+    private SnapTriggerArea[] snaps;
 
 	// Use this for initialization
     public void Awake(){
@@ -25,10 +34,15 @@ public class DayCycleManager : MonoBehaviour {
 
     }
 	public void Start () {
+        snaps = FindObjectsOfType<SnapTriggerArea>();
         // player = GameObject.Find("FPS Controller");
         player = Instantiate(Services.Prefabs.Player, new Vector3(0, 4.16f, 8.35f), Quaternion.Euler(0,180,0));
+        resetPos = player.transform.position;
+        resetRot = player.transform.rotation;
         CustomerIvory = GameObject.Find("CustomerIvory");
         CustomerSahana = GameObject.Find("CustomerSahana");
+        blackPanel = GameObject.Find("BarCanvas").transform.GetChild(2).gameObject;
+
         dialogue = FindObjectOfType<DialogueRunner>();
         CustomerIvory.SetActive(false);
         CustomerSahana.SetActive(false);
@@ -40,6 +54,7 @@ public class DayCycleManager : MonoBehaviour {
 
         numCustomersThatLeft = 0;
         currentDay = 0;
+        switchOff = false;
 
         //currentNumCustomers = day[0].numCustomers;
 
@@ -47,18 +62,42 @@ public class DayCycleManager : MonoBehaviour {
 
     public void ResetDay(){
         dayHasEnded = false;
+        switchOff = false;
+        blackPanel.SetActive(true);
+        //Invoke("WaitTillNextDay", 5f);
+        WaitTillNextDay();
     }
 
     public void Update(){
+        if(dialogue.isDialogueRunning){
+            for (int i = 0; i < snaps.Length; ++i){
+                if(snaps[i].gameObject.activeSelf){
+                    snaps[i].gameObject.SetActive(false);
+                }
+            }
+        } else{
+            for (int i = 0; i < snaps.Length; ++i)
+            {
+                if (!snaps[i].gameObject.activeSelf)
+                {
+                    snaps[i].gameObject.SetActive(true);
+                }
+            }
+        }
         if(!dayHasEnded){
 
             Day(currentDay);
+
         }
         if(numCustomersThatLeft == day[currentDay].numCustomers){
             numCustomersThatLeft = 0;
             currentDay++;
             dayHasEnded = true;
 
+        }
+
+        if(dayHasEnded && switchOff){
+            ResetDay();
         }
 
 
@@ -101,7 +140,14 @@ public class DayCycleManager : MonoBehaviour {
         
     }
 
+    private void WaitTillNextDay(){
+        dialogue.WaitSeconds(5f, player, resetPos,resetRot,blackPanel);
 
+    }
+
+    public void DayCycleTrueReset(){
+        
+    }
 
 
 

@@ -34,6 +34,7 @@ public class SwitchControl : MonoBehaviour {
 						// }
 						GetComponentInParent<InteractionManager>().enabled = false;
 						GetComponentInParent<FirstPersonController>().enabled = false;
+                        Services.DayCycleManager.switchOff = true;
 						// fpc.enabled = false;
 						this.enabled = false;
 					} else {
