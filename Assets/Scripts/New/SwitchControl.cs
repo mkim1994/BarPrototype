@@ -25,6 +25,8 @@ public class SwitchControl : MonoBehaviour {
 				// switchEngine.ShowMouseOverObject();
 				if(Input.GetKeyDown(KeyCode.Joystick1Button5) || Input.GetKeyDown(KeyCode.Joystick1Button4)){
 					if(Services.DayCycleManager.dayHasEnded){
+
+                        Debug.Log("switch!!!");
 						// switchEngine.AnimateButtonPress();
 						// switchEngine.myName = "Close up.";
 						audioController.spotlightSfx.PlayScheduled(AudioSettings.dspTime);
@@ -36,7 +38,7 @@ public class SwitchControl : MonoBehaviour {
 						GetComponentInParent<FirstPersonController>().enabled = false;
                         Services.DayCycleManager.switchOff = true;
 						// fpc.enabled = false;
-						this.enabled = false;
+						//this.enabled = false;
 					} else {
 						// switchEngine.myName = "Close up.";
 						Debug.Log("Some customers still need you.");

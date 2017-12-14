@@ -77,7 +77,9 @@ public class DayCycleManager : MonoBehaviour {
         switchOff = false;
         blackPanel.SetActive(true);
         audioController.bgm1.Stop();
+        audioController.bgm2.Stop();
         //Invoke("WaitTillNextDay", 5f);
+
         WaitTillNextDay();
     }
 
@@ -100,13 +102,18 @@ public class DayCycleManager : MonoBehaviour {
                 numCustomersThatLeft = 0;
                 currentDay++;
                 dayHasEnded = true;
+                Debug.Log(currentDay + ", " + dayHasEnded);
 
             }
 
-            if (dayHasEnded && switchOff)
+          /*  if (dayHasEnded && switchOff)
             {
                 ResetDay();
-            }
+            }*/
+        }
+        if (dayHasEnded && switchOff)
+        {
+            ResetDay();
         }
 
 
@@ -195,7 +202,7 @@ public class DayCycleManager : MonoBehaviour {
     }
 
     private void WaitTillNextDay(){
-        dialogue.WaitSeconds(5f, player, resetPos,resetRot,blackPanel);
+        dialogue.WaitSeconds(currentDay, 5f, player, resetPos,resetRot,blackPanel);
 
     }
 
