@@ -13,7 +13,7 @@ public class DropzoneManager : MonoBehaviour {
 	// Use this for initialization
 	public virtual void Start () {
 		isOccupied = false;
-		player = FindObjectOfType<FirstPersonController>().gameObject;
+		// player = FindObjectOfType<FirstPersonController>().gameObject;
 		//playerCam = player.GetComponentInChildren<Camera>();
 	}
 	

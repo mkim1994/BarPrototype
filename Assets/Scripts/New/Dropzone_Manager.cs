@@ -12,8 +12,12 @@ public class Dropzone_Manager : MonoBehaviour {
 	// Use this for initialization
 
 	void Start () {
-		player = FindObjectOfType<FirstPersonController>().gameObject;
+		// player = FindObjectOfType<FirstPersonController>().gameObject;
 		dropzones.AddRange(FindObjectsOfType<DropzoneManager>());
+	}
+
+	public void FindPlayer(){
+		player = FindObjectOfType<FirstPersonController>().gameObject;
 	}
 	
 	// Update is called once per frame

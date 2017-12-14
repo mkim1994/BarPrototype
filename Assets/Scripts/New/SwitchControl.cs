@@ -1,16 +1,18 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityStandardAssets.Characters.FirstPerson;
 public class SwitchControl : MonoBehaviour {
 
 	public AudioController audioController;
 	//private GameObject[] lights;
+	private List<Light> lights = new List<Light>();
 	private CameraController cameraController;
 	// Use this for initialization
 	void Start () {
 		//lights = GameObject.FindGameObjectsWithTag("Lights");
 		cameraController = GetComponent<CameraController>();
+		lights.AddRange(FindObjectsOfType<Light>());
 	}
 	
 	// Update is called once per frame
@@ -26,9 +28,11 @@ public class SwitchControl : MonoBehaviour {
 						switchEngine.AnimateButtonPress();
 						audioController.spotlightSfx.PlayScheduled(AudioSettings.dspTime);
 						// switchEngine.HideMouseOverObject();
-						/*foreach(GameObject light in lights){
-							light.SetActive(false);
-						}*/
+						// foreach(Light light in lights){
+						// 	light.enabled = false;
+						// }
+						Services.DayCycleManager.player.GetComponentInChildren<InteractionManager>().enabled = false;
+						// fpc.enabled = false;
 						this.enabled = false;
 					} else {
 						Debug.Log("Some customers still need you.");
