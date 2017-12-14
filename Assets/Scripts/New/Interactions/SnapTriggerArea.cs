@@ -4,13 +4,13 @@ using UnityEngine;
 using UnityEngine.UI;
 using Yarn.Unity;
 
-public class SnapTriggerArea : DropzoneManager {
+public class SnapTriggerArea : MonoBehaviour {
 
 	private Text descriptionText;
 	private FirstPersonUI hud;
  	public GameObject interactable;
 	
-	public int evaluateDrink;
+ 	public int evaluateDrink;
 	private Vector3 snapPos;
 	private Vector3 snapRot;
 	
@@ -23,14 +23,12 @@ public class SnapTriggerArea : DropzoneManager {
 		INTERACTABLE_IS_OUT,
 		INTERACTABLE_IS_POSITIONED,
         INTERACTABLE_HASBEEN_POSITIONED
-
 	}
 
 	public SnapTriggerAreaState snapState;
 
-	public override void Start () {
-		base.Start();
-		snapPos = transform.parent.position;
+	public void Start () {
+ 		snapPos = transform.parent.position;
 		snapRot = transform.parent.eulerAngles;
 		snapState = SnapTriggerAreaState.INTERACTABLE_IS_OUT;
 		hud = GameObject.Find("FirstPersonCharacter").GetComponent<FirstPersonUI>();
@@ -198,17 +196,16 @@ public class SnapTriggerArea : DropzoneManager {
 						evaluateDrink = -1;
 					} 
 					//alcoholic
-					else if (thisCocktail.ginVolume >= 23)
+					else if (thisCocktail.ginVolume >= 13)
 					{
 						evaluateDrink = 1;
 					}
 					//non-alcoholic
-					else if (thisCocktail.ginVolume < 23 && thisCocktail.ginVolume > 0)
+					else if (thisCocktail.ginVolume < 13 && thisCocktail.ginVolume > 0)
 					{
 						evaluateDrink = 2;
 					}
            		}
-            //if it's a full bottle of whiskey
            		else if (interactable.GetComponent<Glass>() == null && (interactable.GetComponent<Base>() != null || interactable.GetComponent<Mixer>() != null))
             	{ 
 					evaluateDrink = -1;

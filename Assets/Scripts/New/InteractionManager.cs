@@ -70,7 +70,6 @@ public class InteractionManager : MonoBehaviour {
 				if(objectInLeftHand == ObjectInHand.Bottle && objectInRightHand == ObjectInHand.Bottle){
 					if(interactableCurrentlyInRangeAndLookedAt != null){
 						OneHandedPour();
-
 						// DualPour(rightActionKey, leftActionKey);
 					}
 				} else {
@@ -162,43 +161,8 @@ public class InteractionManager : MonoBehaviour {
 			//if you're not looking at anything, make this null.
 			interactableCurrentlyInRangeAndLookedAt = null;
 			//no hit
-			Debug.Log("not hitting anything");
-		}
+ 		}
 	}
-
-	// void DualPour(KeyCode rightKey, KeyCode leftKey){
-	// 	if(!leftHandIsFree && !rightHandIsFree){
-	// 		if(objectInLeftHand == ObjectInHand.Bottle && objectInRightHand == ObjectInHand.Bottle){
-	// 			if(Input.GetKeyDown(leftActionKey) || Input.GetKeyDown(rightActionKey)){
-	// 				Interactable leftHandObject = objectInLeftHandGO.GetComponent<Interactable>();
-	// 				leftHandObject.OneHandedContextualAction();
-	// 				if(objectInLeftHandGO.GetComponent<Base>() != null){
-	// 					interactableCurrentlyInRangeAndLookedAt.GetComponentInChildren<PourSimulator>().FillUpWithBase(objectInLeftHandGO.GetComponent<Base>().baseType);
-	// 				} else if (objectInLeftHandGO.GetComponent<Mixer>() != null){
-	// 					interactableCurrentlyInRangeAndLookedAt.GetComponentInChildren<PourSimulator>().FillUpWithMixer(objectInLeftHandGO.GetComponent<Mixer>().mixerType);
-	// 				}
-	// 				Interactable rightHandObject = objectInRightHandGO.GetComponent<Interactable>();
-	// 				rightHandObject.OneHandedContextualAction();
-	// 				if(objectInRightHandGO.GetComponent<Base>() != null){
-	// 					interactableCurrentlyInRangeAndLookedAt.GetComponentInChildren<PourSimulator>().FillUpWithBase(objectInRightHandGO.GetComponent<Base>().baseType);
-	// 				} else if (objectInRightHandGO.GetComponent<Mixer>() != null){
-	// 					interactableCurrentlyInRangeAndLookedAt.GetComponentInChildren<PourSimulator>().FillUpWithMixer(objectInRightHandGO.GetComponent<Mixer>().mixerType);
-	// 				}
-	// 			} else if (Input.GetKeyUp(leftActionKey) || Input.GetKeyUp(rightActionKey)) {
-	// 				interactableCurrentlyInRangeAndLookedAt.GetComponentInChildren<PourSimulator>().StopFillingUp();
-	// 				Interactable leftHandObject = objectInLeftHandGO.GetComponent<Interactable>();
-	// 				leftHandObject.KillAllTweens();
-	// 				leftHandObject.ReturnToInitHandPos(leftHandObject.myInitHandPos, leftHandObject.myInitHandRot);
-	// 				isPerformingAction = false;	
-	// 				interactableCurrentlyInRangeAndLookedAt.GetComponentInChildren<PourSimulator>().StopFillingUp();
-	// 				Interactable rightHandObject = objectInRightHandGO.GetComponent<Interactable>();
-	// 				// rightHandObject.KillAllTweens();
-	// 				rightHandObject.ReturnToInitHandPos(rightHandObject.myInitHandPos, rightHandObject.myInitHandRot);
-	// 				isPerformingAction = false;	
-	// 			} 
-	// 		}
-	// 	}
-	// }
 
 	public void DetectNearestDropZone(){
 		for (int i = 0; i < dropzoneArray.Length; i++) {
@@ -340,8 +304,7 @@ public class InteractionManager : MonoBehaviour {
 				isPerformingAction = true;
 			}
 		} else if ((Input.GetKeyUp(rightKey) || Input.GetKeyUp(leftKey)) && isPerformingAction){
-			Debug.Log("Stop performing action!");
-			Interactable leftHandObject = objectInLeftHandGO.GetComponent<Interactable>();
+ 			Interactable leftHandObject = objectInLeftHandGO.GetComponent<Interactable>();
 			Interactable rightHandObject = objectInRightHandGO.GetComponent<Interactable>();
 			leftHandObject.KillAllTweens();
 			leftHandObject.ReturnToInitHandPos(leftHandObject.myInitHandPos, leftHandObject.myInitHandRot);
@@ -422,7 +385,7 @@ public class InteractionManager : MonoBehaviour {
 	}
 
 	private void PickUpInteractableWithLeftHand(Interactable _interactable){
-		_interactable.TweenToHand(leftHandPos);
+ 		_interactable.TweenToHand(leftHandPos);
 		_interactable.tag = "LeftHand";
 		if(_interactable.gameObject.GetComponent<Base>() != null || _interactable.gameObject.GetComponent<Mixer>() != null){
 			//then it's a bottle
@@ -439,7 +402,7 @@ public class InteractionManager : MonoBehaviour {
 	}
 
 	private void PickUpInteractableWithRightHand(Interactable _interactable){
-		_interactable.TweenToHand(rightHandPos);
+ 		_interactable.TweenToHand(rightHandPos);
 		_interactable.tag = "RightHand";
 		if(_interactable.gameObject.GetComponent<Base>() != null || _interactable.gameObject.GetComponent<Mixer>() != null){
 			//then it's a bottle
@@ -448,22 +411,24 @@ public class InteractionManager : MonoBehaviour {
 			objectInRightHand = ObjectInHand.Glass;
 		} else if (_interactable.gameObject.GetComponent<Rag>() != null){
 			objectInRightHand = ObjectInHand.Rag;
-		}
+		} 
 		rightHandIsFree = false;
 		objectInRightHandGO = interactableCurrentlyInRangeAndLookedAt;
 		// objectsInHand.Push(interactableCurrentlyInRangeAndLookedAt);
 	}
 
 	private void SwapInteractableInLeftHand(Interactable _interactable){
-		_interactable.TweenToHand(leftHandPos);
-		_interactable.tag = "LeftHand";				
+ 		_interactable.TweenToHand(leftHandPos);
+		_interactable.tag = "LeftHand";		
+		Debug.Log("Tweening to right hand!");
 		// _interactable.DisableCollider();
 		if(objectInLeftHandGO != null && !objectInLeftHandGO.GetComponent<Interactable>().tweensAreActive){
 			objectInLeftHandGO.tag = "Untagged";
 			if(!lookingAtCoaster){
-					objectInLeftHandGO.GetComponent<Interactable>().TweenToTable(Services.Dropzone_Manager.nearest.transform.position);
-				} else if (lookingAtCoaster){
-					objectInLeftHandGO.GetComponent<Interactable>().TweenToTable(coasterInRangeAndLookedAt.transform.position);
+				objectInLeftHandGO.GetComponent<Interactable>().TweenToTable(Services.Dropzone_Manager.nearest.transform.position);
+			} else if (lookingAtCoaster && coasterInRangeAndLookedAt.GetComponent<SnapTriggerArea>().snapState == SnapTriggerArea.SnapTriggerAreaState.INTERACTABLE_HASBEEN_POSITIONED){
+				objectInLeftHandGO.GetComponent<Interactable>().TweenToTable(coasterInRangeAndLookedAt.transform.position);
+				Debug.Log("Tweening to table from right hand!");
 			}
 			// objectInLeftHandGO.GetComponent<Interactable>().TweenToTable(Services.Dropzone_Manager.nearest.transform.position);
 			objectInLeftHandGO.transform.SetParent(null);
@@ -481,15 +446,17 @@ public class InteractionManager : MonoBehaviour {
 	}
 
 	private void SwapInteractableInRightHand(Interactable _interactable){
+		// _interactable.DisableCollider();
 		_interactable.TweenToHand(rightHandPos);
 		_interactable.tag = "RightHand";
-		// _interactable.DisableCollider();
+		Debug.Log("Tweening to right hand!");
 		if(objectInRightHandGO != null && !objectInRightHandGO.GetComponent<Interactable>().tweensAreActive){
 			objectInRightHandGO.tag = "Untagged";
 			if(!lookingAtCoaster){
 				objectInRightHandGO.GetComponent<Interactable>().TweenToTable(Services.Dropzone_Manager.nearest.transform.position);
-			} else {
+			} else if (lookingAtCoaster && coasterInRangeAndLookedAt.GetComponent<SnapTriggerArea>().snapState == SnapTriggerArea.SnapTriggerAreaState.INTERACTABLE_HASBEEN_POSITIONED){
 				objectInRightHandGO.GetComponent<Interactable>().TweenToTable(coasterInRangeAndLookedAt.transform.position);
+				Debug.Log("Tweening to table from right hand!");
 			}
 			// objectInRightHandGO.GetComponent<Interactable>().TweenToTable(Services.Dropzone_Manager.nearest.transform.position);
 			objectInRightHandGO.transform.SetParent(null);
@@ -504,16 +471,18 @@ public class InteractionManager : MonoBehaviour {
 				objectInRightHand = ObjectInHand.Rag;
 			} 
 		}
+	
 	}
 
 	private void DropObject(KeyCode key){
 		//check which hand to drop object from
 		if(key == leftHandPickUpKey){
+ 
  			if(objectInLeftHandGO != null && !objectInLeftHandGO.GetComponent<Interactable>().tweensAreActive){
 				objectInLeftHandGO.tag = "Untagged";
 				if(!lookingAtCoaster){
 					objectInLeftHandGO.GetComponent<Interactable>().TweenToTable(Services.Dropzone_Manager.nearest.transform.position);
-				} else {
+				} else if (lookingAtCoaster && coasterInRangeAndLookedAt.GetComponent<SnapTriggerArea>().snapState == SnapTriggerArea.SnapTriggerAreaState.INTERACTABLE_IS_OUT){
 					objectInLeftHandGO.GetComponent<Interactable>().TweenToTable(coasterInRangeAndLookedAt.transform.position);
 				}
 				objectInLeftHandGO.transform.SetParent(null);
@@ -522,11 +491,12 @@ public class InteractionManager : MonoBehaviour {
 				objectInLeftHand = ObjectInHand.None;
 			}
 		} else if (key == rightHandPickUpKey){
-			if(objectInRightHandGO != null && !objectInRightHandGO.GetComponent<Interactable>().tweensAreActive){
+ 			if(objectInRightHandGO != null && !objectInRightHandGO.GetComponent<Interactable>().tweensAreActive){
+				
 				objectInRightHandGO.tag = "Untagged";
 				if(!lookingAtCoaster){
 					objectInRightHandGO.GetComponent<Interactable>().TweenToTable(Services.Dropzone_Manager.nearest.transform.position);
-				} else {
+				} else if (lookingAtCoaster && coasterInRangeAndLookedAt.GetComponent<SnapTriggerArea>().snapState == SnapTriggerArea.SnapTriggerAreaState.INTERACTABLE_IS_OUT){
 					objectInRightHandGO.GetComponent<Interactable>().TweenToTable(coasterInRangeAndLookedAt.transform.position);
 				}
 				objectInRightHandGO.transform.SetParent(null);

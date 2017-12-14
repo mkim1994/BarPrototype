@@ -30,13 +30,17 @@ public class Cocktail : MonoBehaviour{
 	public float alcoholPercentage;
 	private float drinkVolume;
 
+	PourSimulator pourSim;
+
 	void Start(){
+		pourSim = GetComponentInChildren<PourSimulator>();
 		requestedBaseType = Ingredients.BaseType.NO_BASE;
 		requestedMixerType = Ingredients.MixerType.NO_MIXER;
 		requestedAlcoholPercentage = -1f;
 	}
 	void Update(){
 		totalVolume = whiskyVolume + ginVolume + rumVolume + juiceVolume + sodaVolume + tonicVolume;
+		totalVolume = Mathf.Clamp (totalVolume, 0, 26f);
 		alcoholPercentage = ((ginVolume + rumVolume + whiskyVolume)*0.35f/totalVolume) * 100;
 		if(Input.GetKeyDown(KeyCode.E)){
 			Debug.Log(DrinkStrength());
@@ -52,13 +56,16 @@ public class Cocktail : MonoBehaviour{
 	public void AddBase(Ingredients.BaseType baseType_){
 		switch(baseType_){
 			case Ingredients.BaseType.GIN:
-			ginVolume += 1f;
+			ginVolume = ginVolume + pourSim.drinkZ;
+			ginVolume = Mathf.Clamp(ginVolume, 0, 26f);
 			break;
 			case Ingredients.BaseType.WHISKY:
-			whiskyVolume += 1f;
+			whiskyVolume = whiskyVolume + pourSim.drinkZ;
+			whiskyVolume = Mathf.Clamp(whiskyVolume, 0, 26f);
 			break;
 			case Ingredients.BaseType.RUM:
-			rumVolume += 1f;
+			rumVolume = rumVolume + pourSim.drinkZ;
+			rumVolume = Mathf.Clamp(rumVolume, 0, 26f);
 			break;
 			default:
 			break;
@@ -69,13 +76,13 @@ public class Cocktail : MonoBehaviour{
 		switch (mixerType_)
 		{
 			case Ingredients.MixerType.JUICE:
-			++juiceVolume;
+			juiceVolume = juiceVolume + pourSim.drinkZ;
 			break;
 			case Ingredients.MixerType.SODA:
-			++sodaVolume;
+			sodaVolume = sodaVolume + pourSim.drinkZ;
 			break;
 			case Ingredients.MixerType.TONIC_WATER:
-			++tonicVolume;
+			tonicVolume = tonicVolume + pourSim.drinkZ;
 			break;
 			default:
 			break;

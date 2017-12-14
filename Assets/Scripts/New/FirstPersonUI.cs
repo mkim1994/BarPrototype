@@ -50,7 +50,10 @@ public class FirstPersonUI : MonoBehaviour {
 			if(hitObj.GetComponent<Interactable>() != null){
 				Interactable thisObj = hitObj.GetComponent<Interactable>();
 				UpdateDescriptionText(thisObj.myName);
-			} 
+			} else if (hitObj.GetComponent<SwitchEngine>() != null){
+				SwitchEngine thisSwitch = hitObj.GetComponent<SwitchEngine>();
+				UpdateDescriptionText(thisSwitch.myName);
+			}
 			//only check if you're looking at a coaster if you're holding something
 		} 
 	}

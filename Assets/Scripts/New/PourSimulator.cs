@@ -15,9 +15,9 @@ public class PourSimulator : MonoBehaviour {
 	private Cocktail cocktail;
 	private Vector3 startPos;
 	private Vector3 startScale;
-	float pourRate = 1f;
+	float pourRate = 0.25f;
 	float drainRate = 1f;
-	float maxDrinkZ = 0.5f;
+	public float maxDrinkZ = 0.5f;
 	float maxDrinkY = 0.65f;
 	float maxDrinkX = 0.65f;
 	float posZ;
@@ -25,7 +25,7 @@ public class PourSimulator : MonoBehaviour {
 	float maxPosZ = 0.5f;
 
 	private float scale; 
-	private float drinkZ;
+	public float drinkZ;
 	private float drinkY;
 	private float drinkX;
 	private Color baseColor;

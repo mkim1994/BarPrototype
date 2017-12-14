@@ -8,10 +8,12 @@ public class SwitchEngine : Interactable {
 	private bool isBeingLookedAt;
 	public GameObject button;
 	private GameObject mouseOver;
+
 	// Use this for initialization
 	public override void Start () {
 		//mouseOver = transform.GetChild(1).gameObject;
 	}
+
 	
 	// Update is called once per frame
 	public override void Update () {
@@ -19,6 +21,12 @@ public class SwitchEngine : Interactable {
 			ShowMouseOverObject();
 		} else{
 			HideMouseOverObject();
+		}
+
+		if(!Services.DayCycleManager.dayHasEnded){
+			myName = "Close up (some customers still need you.)";
+		} else {
+			myName = "Close up";
 		}
 	}
 
