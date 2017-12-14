@@ -109,6 +109,6 @@ MonoBehaviour:
   overrideLanguage: 10
   variableStorage: {fileID: 114617530836908008}
   dialogueUI: {fileID: 114567530668998350}
-  startNode: Start
+  startNode: StartIvoryDay1
   startAutomatically: 0
   automaticCommands: 1

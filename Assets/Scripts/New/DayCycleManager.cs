@@ -120,6 +120,7 @@ public class DayCycleManager : MonoBehaviour {
             {
                 if (hit.transform.name.Contains("InitialCustomerTrigger"))
                 {
+                    //for snaptriggerarea: if day == 1
                     CustomerIvory.SetActive(true);
                     dialogue.StartDialogue();
                     numCurrentCustomers++;
@@ -131,7 +132,23 @@ public class DayCycleManager : MonoBehaviour {
         }
     }
     private void Day1(){
-        
+        if (numCurrentCustomers == 0)
+        {
+            Ray ray = new Ray(player.GetComponentInChildren<Camera>().transform.position, player.GetComponentInChildren<Camera>().transform.forward);
+            float rayDist = Mathf.Infinity;
+            RaycastHit hit = new RaycastHit();
+
+            if (Physics.Raycast(ray, out hit, rayDist))
+            {
+                if (hit.transform.name.Contains("SecondCustomerTrigger"))
+                {
+                    //for snaptriggerarea: if day == 2 & sahana is active
+                    CustomerSahana.SetActive(true);
+                    dialogue.StartDialogue("StartSahanaDay2");
+                    numCurrentCustomers++;
+                }
+            }
+        }
     }
 
     private void WaitTillNextDay(){
