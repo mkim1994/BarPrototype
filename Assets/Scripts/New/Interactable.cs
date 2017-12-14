@@ -146,14 +146,14 @@ public class Interactable : MonoBehaviour {
 	}
 
 	//return object to table if dropped onto the floor.
-	public virtual void OnCollisionEnter(Collision coll){
-		if(coll.transform.tag == "Floor"){
-			rb.isKinematic = true;
-			transform.position = onTablePos;
-			transform.eulerAngles = onTableRot;
-			rb.isKinematic = false;
-		}
-	}
+	// public virtual void OnCollisionEnter(Collision coll){
+	// 	if(coll.transform.tag == "Floor"){
+	// 		rb.isKinematic = true;
+	// 		transform.position = onTablePos;
+	// 		transform.eulerAngles = onTableRot;
+	// 		rb.isKinematic = false;
+	// 	}
+	// }
 	// public virtual void DisableCollider(){
 	// 	GetComponent<Collider>().enabled =  false;
 	// }
