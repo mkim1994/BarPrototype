@@ -8,6 +8,7 @@ public class AudioController : MonoBehaviour {
     public AudioSource bgm1;
     public AudioSource bgm2;
     public AudioSource signhum;
+    public AudioSource gulp;
 
 	// Use this for initialization
 	void Start () {

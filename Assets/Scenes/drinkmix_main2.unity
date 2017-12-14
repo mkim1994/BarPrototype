@@ -147,6 +147,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myAngleToPlayer: 0
   isOccupied: 0
+  isFacingPlayer: 0
+  isCloseToPlayer: 0
   interactable: {fileID: 0}
   evaluateDrink: 0
   posOffset: {x: 0, y: 0, z: 0}
@@ -14406,6 +14408,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myAngleToPlayer: 0
   isOccupied: 0
+  isFacingPlayer: 0
+  isCloseToPlayer: 0
   interactable: {fileID: 0}
   evaluateDrink: 0
   posOffset: {x: 0, y: 0, z: 0}

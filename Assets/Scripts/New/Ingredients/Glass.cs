@@ -146,6 +146,9 @@ public class Glass : Interactable {
 		yield return new WaitForSeconds(delay);
 		PourSimulator pourSimulator = GetComponentInChildren<PourSimulator>();
 		pourSimulator.Empty();
+
+        FindObjectOfType<AudioController>().gulp.Play();
+
 	}
 }
 
