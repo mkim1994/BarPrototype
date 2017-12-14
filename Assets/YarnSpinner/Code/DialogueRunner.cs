@@ -30,6 +30,7 @@ using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 using System.Text.RegularExpressions;
 using CsvHelper;
+using UnityStandardAssets.Characters.FirstPerson;
 
 namespace Yarn.Unity
 {
@@ -173,7 +174,9 @@ namespace Yarn.Unity
             p.transform.position = rpos;
             p.transform.rotation = rrot;
             bp.SetActive(false);
-            Services.DayCycleManager.DayCycleTrueReset();
+            Services.DayCycleManager.safeToEnableInteraction = true;
+            /*p.GetComponent<InteractionManager>().enabled = true;
+            p.GetComponentInChildren<FirstPersonController>().enabled = true;*/
 
         }
 

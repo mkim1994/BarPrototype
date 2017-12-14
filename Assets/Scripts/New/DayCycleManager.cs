@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Yarn.Unity;
+using UnityStandardAssets.Characters.FirstPerson;
 
 public class DayCycleManager : MonoBehaviour {
 
@@ -28,12 +29,15 @@ public class DayCycleManager : MonoBehaviour {
 
     private SnapTriggerArea[] snaps;
 
+    public bool safeToEnableInteraction;
+
 	// Use this for initialization
     public void Awake(){
 
 
     }
 	public void Start () {
+        safeToEnableInteraction = false;
         snaps = FindObjectsOfType<SnapTriggerArea>();
         // player = GameObject.Find("FPS Controller");
         player = Instantiate(Services.Prefabs.Player, new Vector3(0, 4.16f, 8.35f), Quaternion.Euler(0,180,0));
@@ -62,6 +66,7 @@ public class DayCycleManager : MonoBehaviour {
 
     public void ResetDay(){
         dayHasEnded = false;
+       //safeToEnableInteraction = false;
         switchOff = false;
         blackPanel.SetActive(true);
         //Invoke("WaitTillNextDay", 5f);
@@ -69,7 +74,11 @@ public class DayCycleManager : MonoBehaviour {
     }
 
     public void Update(){
-        if(dialogue.isDialogueRunning){
+        if(safeToEnableInteraction){
+            safeToEnableInteraction = false;
+            DayCycleTrueReset();
+        }
+        /*if(dialogue.isDialogueRunning){
             for (int i = 0; i < snaps.Length; ++i){
                 if(snaps[i].gameObject.activeSelf){
                     snaps[i].gameObject.SetActive(false);
@@ -83,7 +92,7 @@ public class DayCycleManager : MonoBehaviour {
                     snaps[i].gameObject.SetActive(true);
                 }
             }
-        }
+        }*/
         if(!dayHasEnded){
 
             Day(currentDay);
@@ -146,7 +155,9 @@ public class DayCycleManager : MonoBehaviour {
     }
 
     public void DayCycleTrueReset(){
-        
+
+        player.GetComponentInChildren<InteractionManager>().enabled = true;
+        player.GetComponent<FirstPersonController>().enabled = true;
     }
 
 
