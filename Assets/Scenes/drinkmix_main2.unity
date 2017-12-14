@@ -146,9 +146,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myAngleToPlayer: 0
   isOccupied: 0
+  interactable: {fileID: 0}
   evaluateDrink: 0
   posOffset: {x: 0, y: 0, z: 0}
   rotOffset: {x: 0, y: 0, z: 0}
+  dialogueRunner: {fileID: 0}
   snapState: 0
 --- !u!23 &28235069
 MeshRenderer:
@@ -1828,28 +1830,13 @@ Prefab:
       propertyPath: m_LocalPosition.y
       value: 220.54
       objectReference: {fileID: 0}
-    - target: {fileID: 114374005130803174, guid: 6389603eec7eb804da3c115dcf3fa695,
-        type: 2}
-      propertyPath: audioController
-      value: 
-      objectReference: {fileID: 2135511106}
     - target: {fileID: 1877018155867266, guid: 6389603eec7eb804da3c115dcf3fa695, type: 2}
       propertyPath: m_Name
       value: FPSController
       objectReference: {fileID: 0}
-    - target: {fileID: 223626975135224172, guid: 6389603eec7eb804da3c115dcf3fa695,
-        type: 2}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 1877018155867266, guid: 6389603eec7eb804da3c115dcf3fa695, type: 2}
       propertyPath: m_IsActive
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224838676811128124, guid: 6389603eec7eb804da3c115dcf3fa695,
-        type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 8.35
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6389603eec7eb804da3c115dcf3fa695, type: 2}
@@ -3042,7 +3029,8 @@ GameObject:
   - component: {fileID: 330818785}
   - component: {fileID: 330818784}
   - component: {fileID: 330818783}
-  m_Layer: 0
+  - component: {fileID: 330818786}
+  m_Layer: 17
   m_Name: coaster1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3124,6 +3112,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 330818781}
   m_Mesh: {fileID: 4300000, guid: 9acca204b847e42228de8af3e256066d, type: 3}
+--- !u!65 &330818786
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 330818781}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.25, y: 1.2442439, z: 0.25}
+  m_Center: {x: -0.000000027939672, y: 0.5852047, z: 1.8027815e-15}
 --- !u!4 &333431396 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4345316543488682, guid: 10e99daa392b8da4cbdaf8ff8b8237e3,
@@ -14269,9 +14269,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myAngleToPlayer: 0
   isOccupied: 0
+  interactable: {fileID: 0}
   evaluateDrink: 0
   posOffset: {x: 0, y: 0, z: 0}
   rotOffset: {x: 0, y: 0, z: 0}
+  dialogueRunner: {fileID: 0}
   snapState: 0
 --- !u!23 &1329554491
 MeshRenderer:
@@ -21256,7 +21258,8 @@ GameObject:
   - component: {fileID: 2000495482}
   - component: {fileID: 2000495481}
   - component: {fileID: 2000495480}
-  m_Layer: 0
+  - component: {fileID: 2000495483}
+  m_Layer: 17
   m_Name: coaster2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -21338,6 +21341,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2000495478}
   m_Mesh: {fileID: 4300000, guid: 9acca204b847e42228de8af3e256066d, type: 3}
+--- !u!65 &2000495483
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2000495478}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.25, y: 1.2950164, z: 0.25}
+  m_Center: {x: -0.000000037252896, y: 0.610591, z: 3.633673e-16}
 --- !u!1001 &2012161155
 Prefab:
   m_ObjectHideFlags: 0
@@ -22689,12 +22704,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8ec8e6afd8f0e41918f961bfb7ed430f, type: 2}
   m_IsPrefabParent: 0
---- !u!114 &2135511106 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 114476485583465556, guid: 8ec8e6afd8f0e41918f961bfb7ed430f,
-    type: 2}
-  m_PrefabInternal: {fileID: 2135511105}
-  m_Script: {fileID: 11500000, guid: d784bfff974234adb86d6506dbfd3836, type: 3}
 --- !u!1001 &2141094626
 Prefab:
   m_ObjectHideFlags: 0

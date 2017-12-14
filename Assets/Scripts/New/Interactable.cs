@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
-
+using Yarn.Unity;
 public class Interactable : MonoBehaviour {
-
+	protected DialogueRunner dialogueRunner;
 	public string myName;
 	//exposed these to the Inspector because of tween weirdness.
 	public Vector3 posRightHandedAction;
@@ -48,6 +48,7 @@ public class Interactable : MonoBehaviour {
 			rb = GetComponent<Rigidbody>();
 		}
  		// child = transform.GetChild(0);
+		dialogueRunner = FindObjectOfType<DialogueRunner>();
 		onTablePos = transform.position;
  		onTableRot = transform.eulerAngles;
 		highlightState = HighlightState.Not_highlighted;
@@ -138,13 +139,14 @@ public class Interactable : MonoBehaviour {
 		// StartCoroutine(EnableColliderAfterTweenToTable(1f));
  	}
 
-	public virtual void OnTriggerEnter(Collider coll){
-		//check if Trigger is a SnapTriggerArea
-		// if(coll.GetComponent<SnapTriggerArea>()!= null){
-		// 	coll.GetComponent<SnapTriggerArea>().posOffset = dropOffset;
-		// }
-		//check if trigger is the floor
+	public void OnTriggerStay(Collider coll){
+		if(coll.gameObject.layer == 17 && dialogueRunner.isDialogueRunning){
+			this.gameObject.layer = 2;
+		} else {
+			this.gameObject.layer = 0;
+		}
 	}
+
 
 	//return object to table if dropped onto the floor.
 	// public virtual void OnCollisionEnter(Collision coll){
@@ -189,6 +191,8 @@ public class Interactable : MonoBehaviour {
 		
 		tweensAreActive = false;
 	}
+
+
 
 }
 

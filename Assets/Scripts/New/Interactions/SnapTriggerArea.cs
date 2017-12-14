@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Yarn.Unity;
 
 public class SnapTriggerArea : DropzoneManager {
 
 	private Text descriptionText;
-	
 	private FirstPersonUI hud;
- 	private GameObject interactable;
+ 	public GameObject interactable;
 	
 	public int evaluateDrink;
 	private Vector3 snapPos;
@@ -16,6 +16,8 @@ public class SnapTriggerArea : DropzoneManager {
 	
 	public Vector3 posOffset;
 	public Vector3 rotOffset;
+
+	public DialogueRunner dialogueRunner;
 	public enum SnapTriggerAreaState{
 		INTERACTABLE_IS_IN,
 		INTERACTABLE_IS_OUT,
@@ -32,10 +34,12 @@ public class SnapTriggerArea : DropzoneManager {
 		snapRot = transform.parent.eulerAngles;
 		snapState = SnapTriggerAreaState.INTERACTABLE_IS_OUT;
 		hud = GameObject.Find("FirstPersonCharacter").GetComponent<FirstPersonUI>();
+		dialogueRunner = FindObjectOfType<DialogueRunner>();
   	}
 	
 	// Update is called once per frame
 	void Update () {
+		// DeactivateCollidersDuringDialogue();
 		switch(snapState){
 			case SnapTriggerAreaState.INTERACTABLE_IS_IN:
      			break;
@@ -51,6 +55,18 @@ public class SnapTriggerArea : DropzoneManager {
 			    break;
 		}
 		
+	}
+
+	void DeactivateCollidersDuringDialogue(){
+		if(interactable != null){
+			if(dialogueRunner.isDialogueRunning){
+				interactable.layer = 2;
+				this.gameObject.layer = 2;
+			} else {
+				interactable.layer = 0;
+				this.gameObject.layer = 17;
+			}
+		}
 	}
 
 	void OnTriggerEnter(Collider interactable_){
@@ -100,8 +116,10 @@ public class SnapTriggerArea : DropzoneManager {
 			//NOT WHISKEY, but some other drink 
 			else if (thisCocktail.whiskyVolume <= 0){
 				evaluateDrink = -1;
-
-			} 		   
+			} else if (thisCocktail.totalVolume <= 0){
+				evaluateDrink = -2;
+			}
+			// else if (thisCocktail) 		   
 		    // if (thisDrink.baseType == Ingredients.BaseType.WHISKY &&
             //     thisDrink.GetComponent<Glass>() != null){
             //     evaluateDrink = 2;

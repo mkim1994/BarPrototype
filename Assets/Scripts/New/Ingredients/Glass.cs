@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
-
+using Yarn.Unity;
 public class Glass : Interactable {
 	private float cleaningOffsetX = -0.25f;
 	private Vector3 handPos;
@@ -16,6 +16,7 @@ public class Glass : Interactable {
 	public GameObject stainHolder;
 	// Use this for initialization
 	public override void Start () {
+		dialogueRunner = FindObjectOfType<DialogueRunner>();
 		tweenToHandIsDone = false;
 		onTablePos = transform.position;
 		onTableRot = transform.localEulerAngles;		

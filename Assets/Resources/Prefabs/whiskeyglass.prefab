@@ -128,7 +128,7 @@ GameObject:
   - component: {fileID: 65309857067390570}
   - component: {fileID: 114735959425075700}
   - component: {fileID: 114092173837167460}
-  m_Layer: 11
+  m_Layer: 0
   m_Name: whiskeyglass
   m_TagString: Glass
   m_Icon: {fileID: 0}
@@ -245,7 +245,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1598642820373074}
   m_LocalRotation: {x: -0.5, y: -0.5, z: -0.5, w: 0.5}
-  m_LocalPosition: {x: 0.14081156, y: -2.365917, z: 2.024187}
+  m_LocalPosition: {x: 0.9840002, y: 0, z: -0.53200054}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children:
   - {fileID: 4993361465731728}
