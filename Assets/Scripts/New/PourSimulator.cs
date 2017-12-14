@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 public class PourSimulator : MonoBehaviour {
 	
 	public enum PourState {
@@ -38,6 +37,7 @@ public class PourSimulator : MonoBehaviour {
 	void Start () {
 		startPosZ = transform.localPosition.z;
 		posZ = startPosZ;
+		Debug.Log(startPosZ);
 		pourState = PourState.Not_pouring;
 		cocktail = GetComponentInParent<Cocktail>();
 		startPos = transform.localPosition;
@@ -143,13 +143,8 @@ public class PourSimulator : MonoBehaviour {
 	}
 
 	public void Empty(){
+		// transform
 		// Debug.Log("Emptying glass!");
-		if(GetComponent<Base>() != null){
-			Destroy(GetComponentInParent<Base>());
-		}
-		if(GetComponent<Mixer>() != null){
-			Destroy(GetComponentInParent<Mixer>());
-		}
 		// transform.localPosition = startPos;
 		// if(drinkZ >= 0){
 		// 	drinkZ -= drainRate * Time.deltaTime;
@@ -163,7 +158,8 @@ public class PourSimulator : MonoBehaviour {
 		// 	drinkX -= drainRate * Time.deltaTime;
 		// }
  		// transform.localScale = new Vector3 (drinkX, drinkY, drinkZ);
-		transform.localScale = new Vector3 (0, 0, 0);
+		posZ = startPosZ;
+		transform.localScale = startScale;
 	}
 
 

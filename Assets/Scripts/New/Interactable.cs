@@ -139,13 +139,20 @@ public class Interactable : MonoBehaviour {
 		// StartCoroutine(EnableColliderAfterTweenToTable(1f));
  	}
 
-	public void OnTriggerStay(Collider coll){
+	public virtual void OnTriggerStay(Collider coll){
 		if(coll.gameObject.layer == 17 && dialogueRunner.isDialogueRunning){
 			this.gameObject.layer = 2;
 		} else {
 			this.gameObject.layer = 0;
 		}
 	}
+	public virtual void OnTriggerEnter(Collider coll){
+		if(coll.gameObject.layer == 17){
+
+		}
+	}
+
+	
 
 
 	//return object to table if dropped onto the floor.

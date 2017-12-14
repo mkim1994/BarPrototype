@@ -43,7 +43,7 @@ public class Glass : Interactable {
 	}
 
 	public void EmptyGlass(){
-		transform.localEulerAngles = new Vector3(0, 25, 90f);
+		// transform.localEulerAngles = new Vector3(0, 25, 90f);
 		GetComponentInChildren<PourSimulator>().Empty();
 	}
 
@@ -137,7 +137,18 @@ public class Glass : Interactable {
 		myTweenToHandSeq.Append(transform.DOLocalRotate(onTableRot, 1f, RotateMode.Fast)).OnComplete(()=>SetTweenToInactive());
 		transform.DOLocalMove(_handPos, 1f, false);
  	}
+	void OnTriggerEnter(Collider coll){
+		if(coll.gameObject.layer == 17 && GameObject.Find("CustomerIvory") != null){
+			StartCoroutine(DepleteDrink(1f));		
+		}
+	}
+	IEnumerator DepleteDrink(float delay){
+		yield return new WaitForSeconds(delay);
+		PourSimulator pourSimulator = GetComponentInChildren<PourSimulator>();
+		pourSimulator.Empty();
+	}
 }
+
 
 
 //-----ORIGINAL------

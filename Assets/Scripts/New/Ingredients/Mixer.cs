@@ -9,7 +9,7 @@ public class Mixer : Interactable {
 		base.Start();
 		switch (mixerType){
 			case Ingredients.MixerType.TONIC_WATER:
-			myName = "tonic water";
+			myName = "tonic";
 			break;
 
 			case Ingredients.MixerType.SODA:

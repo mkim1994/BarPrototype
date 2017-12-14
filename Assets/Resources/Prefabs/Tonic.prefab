@@ -27,7 +27,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1972450547633704
 GameObject:
   m_ObjectHideFlags: 0
@@ -41,7 +41,6 @@ GameObject:
   - component: {fileID: 95636300641899536}
   - component: {fileID: 54686043607974026}
   - component: {fileID: 65565926794437030}
-  - component: {fileID: 114280122191555850}
   - component: {fileID: 114061078412594610}
   m_Layer: 11
   m_Name: Tonic
@@ -57,7 +56,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1972450547633704}
   m_LocalRotation: {x: -0, y: -0.897582, z: -0, w: 0.4408476}
-  m_LocalPosition: {x: 4.3459997, y: -1.1919999, z: 6.046}
+  m_LocalPosition: {x: -2.356, y: 5.0504, z: 3.914}
   m_LocalScale: {x: 0.43620002, y: 0.19122, z: 0.43620002}
   m_Children:
   - {fileID: 4803003766315144}
@@ -86,6 +85,7 @@ MeshRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -101,6 +101,7 @@ MeshRenderer:
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
   m_SelectedEditorRenderState: 3
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
@@ -118,6 +119,7 @@ MeshRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -133,6 +135,7 @@ MeshRenderer:
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
   m_SelectedEditorRenderState: 3
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
@@ -165,8 +168,8 @@ Rigidbody:
   m_Mass: 1
   m_Drag: 0
   m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
+  m_UseGravity: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
@@ -210,26 +213,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44391e5a13c5c014780ace58bfc789cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  diluteName: 
-  diluteType: 2
---- !u!114 &114280122191555850
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1972450547633704}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2d7c4cbb488d47e459070f167e8e2e25, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  myPourRotation: {x: -79, y: 0, z: 26}
-  myStopPourRotation: {x: 0, y: 0, z: 0}
-  dropOffset: {x: 0, y: 0, z: 0}
+  myName: 
+  posRightHandedAction: {x: 0, y: 0, z: 0}
+  posLeftHandedAction: {x: 0, y: 0, z: 0}
+  rotRightHandedAction: {x: 0, y: 0, z: 0}
+  rotLeftHandedAction: {x: 0, y: 0, z: 0}
+  rotLeftHandOnlyAction: {x: 0, y: 0, z: 0}
+  rotRightHandOnlyAction: {x: 0, y: 0, z: 0}
+  handOffset: {x: 0, y: 0, z: 0}
+  pourState: 0
+  highlightState: 0
+  dropOffset: {x: 0, y: -0.4, z: 0}
   rotOffset: {x: 0, y: 0, z: 0}
   isHeld: 0
-  child: {fileID: 0}
-  baseType: 1
-  isBeingLookedAtState: 0
-  startRot: {x: 0, y: 0, z: 0}
-  startPos: {x: 0, y: 0, z: 0}
+  tweensAreActive: 0
+  onTableRot: {x: 0, y: 0, z: 0}
+  onTablePos: {x: 0, y: 0, z: 0}
+  myInitHandPos: {x: 0, y: 0, z: 0}
+  myInitHandRot: {x: 0, y: 0, z: 0}
+  mixerType: 2
