@@ -1646,15 +1646,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 27
       objectReference: {fileID: 0}
-    - target: {fileID: 1913777602311646, guid: e3426b25a232343bcb8b346b14889658, type: 2}
-      propertyPath: m_Name
-      value: innerdonut
-      objectReference: {fileID: 0}
-    - target: {fileID: 23345021574023258, guid: e3426b25a232343bcb8b346b14889658,
-        type: 2}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: c3fda00d7bebd44048b27e363312700f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e3426b25a232343bcb8b346b14889658, type: 2}
   m_IsPrefabParent: 0
@@ -8931,7 +8922,7 @@ Light:
   serializedVersion: 8
   m_Type: 1
   m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
-  m_Intensity: 3.21
+  m_Intensity: 1.62
   m_Range: 10
   m_SpotAngle: 30
   m_CookieSize: 10
@@ -13088,7 +13079,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 05639acf3c7fe432cb8ae4140532d978, type: 2}
+  - {fileID: 2100000, guid: b8da0474a022845a690204e2965744c8, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
