@@ -86,6 +86,16 @@ public class Cocktail : MonoBehaviour{
 		
 	}
 
+	public void EmptyCocktail(){
+		whiskyVolume = 0;
+		rumVolume = 0;
+		ginVolume = 0;
+		tonicVolume = 0;
+		sodaVolume = 0;
+		juiceVolume = 0;
+		totalVolume = 0;
+	}
+
 	public int DrinkStrength(){
 		int drinkStrength = -1;
 		if(alcoholPercentage >= 25f){

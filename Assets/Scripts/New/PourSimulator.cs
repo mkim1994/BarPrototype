@@ -164,6 +164,9 @@ public class PourSimulator : MonoBehaviour {
 		drinkX = 0;
 		drinkY = 0;
 		drinkZ = 0.01f;
+		
+		Cocktail thisCocktail = GetComponentInParent<Cocktail>();
+		thisCocktail.EmptyCocktail();
 	}
 
 
