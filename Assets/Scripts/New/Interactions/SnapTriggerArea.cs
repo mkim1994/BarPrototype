@@ -214,6 +214,7 @@ public class SnapTriggerArea : DropzoneManager {
 					evaluateDrink = -1;
             	}
             }
+			snapState = SnapTriggerAreaState.INTERACTABLE_HASBEEN_POSITIONED;
         }
 	}
 
