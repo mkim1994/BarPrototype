@@ -149,20 +149,6 @@ public class Interactable : MonoBehaviour {
 		}
 	}
 
-	public virtual void OnTriggerEnter(Collider coll){
-		if(coll.GetComponent<SnapTriggerArea>() != null){
-			coll.GetComponent<SnapTriggerArea>().enabled = false;
-		} 
-	}
-
-	public virtual void OnTriggerExit(Collider coll){
-		if(coll.GetComponent<SnapTriggerArea>() != null){
-			coll.GetComponent<SnapTriggerArea>().enabled = true;
-		}	
-	}
-
-	
-
 
 	//return object to table if dropped onto the floor.
 	// public virtual void OnCollisionEnter(Collision coll){
