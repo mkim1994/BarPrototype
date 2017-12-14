@@ -158,6 +158,7 @@ public class PourSimulator : MonoBehaviour {
 		// 	drinkX -= drainRate * Time.deltaTime;
 		// }
  		// transform.localScale = new Vector3 (drinkX, drinkY, drinkZ);
+		 Debug.Log("emptying!");
 		posZ = startPosZ;
 		transform.localScale = startScale;
 	}
