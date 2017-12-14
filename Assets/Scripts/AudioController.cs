@@ -7,6 +7,7 @@ public class AudioController : MonoBehaviour {
     public AudioSource spotlightSfx;
     public AudioSource bgm1;
     public AudioSource bgm2;
+    public AudioSource signhum;
 
 	// Use this for initialization
 	void Start () {

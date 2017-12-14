@@ -18,7 +18,7 @@ public class DayCycleManager : MonoBehaviour {
     public GameObject CustomerIvory;
     public GameObject CustomerSahana;
 
-    private DialogueRunner dialogue;
+    public DialogueRunner dialogue;
 
     public GameObject blackPanel;
 
@@ -70,6 +70,7 @@ public class DayCycleManager : MonoBehaviour {
         dialogue.dialogueCount = 0;
         numCustomersThatLeft = 0;
         numCurrentCustomers = 0;
+        audioController.signhum.Stop();
         dayHasEnded = false;
        //safeToEnableInteraction = false;
         switchOff = false;
@@ -195,6 +196,7 @@ public class DayCycleManager : MonoBehaviour {
 
         player.GetComponentInChildren<InteractionManager>().enabled = true;
         player.GetComponent<FirstPersonController>().enabled = true;
+        audioController.signhum.Play();
 
     }
 
