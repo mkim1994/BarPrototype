@@ -331,6 +331,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tutmat: {fileID: 2100000, guid: c3fda00d7bebd44048b27e363312700f, type: 2}
+  tutmat2: {fileID: 2100000, guid: b69502e75173045a38da997fda8b3837, type: 2}
   tutrenderer: {fileID: 1402006250}
 --- !u!82 &42979405
 AudioSource:
@@ -3445,11 +3446,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 4
       objectReference: {fileID: 0}
-    - target: {fileID: 23345021574023258, guid: e3426b25a232343bcb8b346b14889658,
-        type: 2}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: b69502e75173045a38da997fda8b3837, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e3426b25a232343bcb8b346b14889658, type: 2}
   m_IsPrefabParent: 0
