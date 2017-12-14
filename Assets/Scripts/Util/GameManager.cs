@@ -27,6 +27,13 @@ public class GameManager : MonoBehaviour
 	{
 		Services.TaskManager.Update();
         Services.DayCycleManager.Update();
+        if(Input.GetKeyDown(KeyCode.Escape)){
+            Application.Quit();
+        }
+
+        if(Input.GetKeyDown(KeyCode.R)){
+            SceneManager.LoadScene("drinkmix_start");
+        }
 	}
 
 	void InitializeServices()
