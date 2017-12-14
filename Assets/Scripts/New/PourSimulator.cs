@@ -161,6 +161,9 @@ public class PourSimulator : MonoBehaviour {
 		 Debug.Log("emptying!");
 		posZ = startPosZ;
 		transform.localScale = startScale;
+		drinkX = 0;
+		drinkY = 0;
+		drinkZ = 0.01f;
 	}
 
 
