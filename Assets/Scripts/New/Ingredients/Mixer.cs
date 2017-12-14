@@ -3,23 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 public class Mixer : Interactable {
-
-	public string mixerName;
 	public Ingredients.MixerType mixerType;
 
-	protected override void Start(){
+	public override void Start(){
 		base.Start();
 		switch (mixerType){
 			case Ingredients.MixerType.TONIC_WATER:
-			mixerName = "Tonic Water";
+			myName = "tonic water";
 			break;
 
 			case Ingredients.MixerType.SODA:
-			mixerName = "Soda";
+			myName = "soda";
 			break;
 
 			case Ingredients.MixerType.JUICE:
-			mixerName = "Juice";
+			myName = "juice";
 			break;
 
 			default:

@@ -9,12 +9,12 @@ public class SwitchEngine : Interactable {
 	public GameObject button;
 	private GameObject mouseOver;
 	// Use this for initialization
-	protected override void Start () {
+	public override void Start () {
 		//mouseOver = transform.GetChild(1).gameObject;
 	}
 	
 	// Update is called once per frame
-	protected override void Update () {
+	public override void Update () {
 		if(isBeingLookedAt){
 			ShowMouseOverObject();
 		} else{

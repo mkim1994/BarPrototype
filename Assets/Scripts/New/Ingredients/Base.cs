@@ -4,21 +4,19 @@ using UnityEngine;
 using DG.Tweening;
 public class Base : Interactable {
 	public Ingredients.BaseType baseType;
-	public string baseName;
-
-	protected override void Start(){
+	public override void Start(){
 		base.Start();
 		switch (baseType){
 			case Ingredients.BaseType.GIN:
-			baseName = "gin";
+			myName = "gin";
 			break;
 
 			case Ingredients.BaseType.WHISKY:
-			baseName = "whiskey";
+			myName = "whiskey";
 			break;
 
 			case Ingredients.BaseType.RUM:
-			baseName = "rum";
+			myName = "rum";
 			break;
 
 			default:

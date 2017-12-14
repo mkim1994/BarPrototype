@@ -17,12 +17,15 @@ public class FirstPersonUI : MonoBehaviour {
 	}
 
 	void Update(){
+
 		if(interactionManager.interactableCurrentlyInRangeAndLookedAt != null || interactionManager.lookingAtCoaster){
 			reticle.rectTransform.localScale = new Vector3 (2, 2, 2); 
 			reticle.color = Color.green;
+			ObjectNameRay();
 		} else {
 			reticle.rectTransform.localScale = new Vector3 (1, 1, 1); 
 			reticle.color = Color.white;
+			HideDescriptionText();
 		}
 	}
 	
@@ -35,5 +38,20 @@ public class FirstPersonUI : MonoBehaviour {
 	public void HideDescriptionText(){
 		descriptionText.enabled = false;
 		// Debug.Log("hiding description text!");
+	}
+
+	void ObjectNameRay(){
+		Ray ray = new Ray(transform.position, transform.forward);
+		float rayDist = Mathf.Infinity;
+		RaycastHit hit = new RaycastHit();
+
+		if(Physics.Raycast(ray, out hit, rayDist)){
+			GameObject hitObj = hit.transform.gameObject;
+			if(hitObj.GetComponent<Interactable>() != null){
+				Interactable thisObj = hitObj.GetComponent<Interactable>();
+				UpdateDescriptionText(thisObj.myName);
+			} 
+			//only check if you're looking at a coaster if you're holding something
+		} 
 	}
 }

@@ -5,6 +5,7 @@ using DG.Tweening;
 
 public class Interactable : MonoBehaviour {
 
+	public string myName;
 	//exposed these to the Inspector because of tween weirdness.
 	public Vector3 posRightHandedAction;
 	public Vector3 posLeftHandedAction;
@@ -41,7 +42,7 @@ public class Interactable : MonoBehaviour {
 	public Vector3 myInitHandPos;
 	public Vector3 myInitHandRot;
 	// Use this for initialization
-	protected virtual void Start () {
+	public virtual void Start () {
 		// child = gameObject.transform.Find("MouseOverBottle");
 		if(GetComponent<Rigidbody>() != null){
 			rb = GetComponent<Rigidbody>();
@@ -53,7 +54,7 @@ public class Interactable : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	protected virtual void Update () {
+	public virtual void Update () {
 
 		//enable or disable the highlight mesh
 		switch(highlightState){

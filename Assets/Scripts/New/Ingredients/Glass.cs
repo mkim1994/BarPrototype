@@ -14,9 +14,8 @@ public class Glass : Interactable {
 	Interactable interactable;
 	public bool isDirty = false;
 	public GameObject stainHolder;
-	public string glassName = "glass";
 	// Use this for initialization
-	protected override void Start () {
+	public override void Start () {
 		tweenToHandIsDone = false;
 		onTablePos = transform.position;
 		onTableRot = transform.localEulerAngles;		
@@ -24,7 +23,7 @@ public class Glass : Interactable {
 	}
 	
 	// Update is called once per frame
-	protected override void Update () {
+	public override void Update () {
 		if(isDirty){
 			ChangeStainAlpha();
 			ShrinkLiquid();

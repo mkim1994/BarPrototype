@@ -12,7 +12,7 @@ public class Rag : Interactable {
 
 	// Use this for initialization
 
-	protected override void Start(){
+	public override void Start(){
 		// startPos = transform.position;
  		// onTableRot = myTweenToTableEndRotation;
 		highlightState = HighlightState.Not_highlighted;

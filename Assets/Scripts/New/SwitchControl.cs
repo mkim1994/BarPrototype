@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityStandardAssets.Characters.FirstPerson;
 public class SwitchControl : MonoBehaviour {
-
 	AudioController audioController;
 	//private GameObject[] lights;
 	private List<Light> lights = new List<Light>();
@@ -26,7 +25,8 @@ public class SwitchControl : MonoBehaviour {
 				// switchEngine.ShowMouseOverObject();
 				if(Input.GetKeyDown(KeyCode.Joystick1Button5) || Input.GetKeyDown(KeyCode.Joystick1Button4)){
 					if(Services.DayCycleManager.dayHasEnded){
-						switchEngine.AnimateButtonPress();
+						// switchEngine.AnimateButtonPress();
+						// switchEngine.myName = "Close up.";
 						audioController.spotlightSfx.PlayScheduled(AudioSettings.dspTime);
 						// switchEngine.HideMouseOverObject();
 						// foreach(Light light in lights){
@@ -37,6 +37,7 @@ public class SwitchControl : MonoBehaviour {
 						// fpc.enabled = false;
 						this.enabled = false;
 					} else {
+						// switchEngine.myName = "Close up.";
 						Debug.Log("Some customers still need you.");
 					}
 				}
