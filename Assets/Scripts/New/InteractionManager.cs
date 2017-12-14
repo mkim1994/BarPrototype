@@ -15,8 +15,6 @@ public class InteractionManager : MonoBehaviour {
 	public Stack<GameObject> objectsInHand = new Stack<GameObject>();
 	public ObjectInHand objectInLeftHand;
 	public ObjectInHand objectInRightHand;
-	public List<GameObject> objectsInHandList = new List<GameObject>();
-
 	public GameObject objectInLeftHandGO;
 	public GameObject objectInRightHandGO;
 	public bool leftHandIsFree;
@@ -31,6 +29,9 @@ public class InteractionManager : MonoBehaviour {
 	public GameObject[] dropzoneArray;
 	public float[] dropzoneDistance;
 
+	private List<Interactable> allInteractables = new List<Interactable>();
+	public List<Interactable> activeInteractables = new List<Interactable>();
+
 	public LayerMask layerMask;
 	// Use this for initialization
 	void Start () {
@@ -42,30 +43,36 @@ public class InteractionManager : MonoBehaviour {
 		leftHandPos = new Vector3 (-0.462f, -0.5f, 0.719f);
 		rightHandPos = new Vector3 (0.477f, -0.5f, 0.719f);
 		dropzoneDistance = new float[dropzoneArray.Length];
+		allInteractables.AddRange(FindObjectsOfType<Interactable>());
 		Services.Dropzone_Manager.maxDistToPlayer = maxInteractionDist;
 	}
+	
 	
 	// Update is called once per frame
 	void Update () {
 		// DetectNearestDropZone();
 		// FindTheClosestFreeDropZone();
-		RightHandPickUp(rightHandPickUpKey);
-		LeftHandPickUp(leftHandPickUpKey);
- 		FindInteractableRay();
-		if(!leftHandIsFree && !rightHandIsFree){
-			if(objectInLeftHand == ObjectInHand.Bottle && objectInRightHand == ObjectInHand.Bottle){
-				if(interactableCurrentlyInRangeAndLookedAt != null){
-					OneHandedPour();
 
-					// DualPour(rightActionKey, leftActionKey);
+		CheckForAnyActiveTweens();
+		if(!CheckForAnyActiveTweens()){
+			RightHandPickUp(rightHandPickUpKey);
+			LeftHandPickUp(leftHandPickUpKey);	
+	 		FindInteractableRay();
+			if(!leftHandIsFree && !rightHandIsFree){
+				if(objectInLeftHand == ObjectInHand.Bottle && objectInRightHand == ObjectInHand.Bottle){
+					if(interactableCurrentlyInRangeAndLookedAt != null){
+						OneHandedPour();
+
+						// DualPour(rightActionKey, leftActionKey);
+					}
+				} else {
+					TwoHandedInteractableAction(rightActionKey, leftActionKey);
 				}
-			} else {
-				TwoHandedInteractableAction(rightActionKey, leftActionKey);
 			}
-		}
-		
-		if (interactableCurrentlyInRangeAndLookedAt != null){
-			OneHandedPour();
+			
+			if (interactableCurrentlyInRangeAndLookedAt != null){
+				OneHandedPour();
+			}
 		}
 		// else if (leftHandIsFree && !rightHandIsFree) {
 		// 	// RightHandAction(rightActionKey);
@@ -74,6 +81,26 @@ public class InteractionManager : MonoBehaviour {
 		// 	OneHandedAction(leftActionKey);
 		// } 
  	}
+	private bool CheckForAnyActiveTweens(){
+		//if there are no tweens, i
+		foreach (Interactable interactable in allInteractables){
+			if(interactable.tweensAreActive){
+				//set private tweensAreActive bool to true
+ 				if(!activeInteractables.Contains(interactable)){
+					activeInteractables.Add(interactable);
+				}
+			} else {
+				//if interactables aren't tweening,
+ 				if(activeInteractables.Contains(interactable)){
+					activeInteractables.Remove(interactable);
+				}
+			}
+		}
+		if(activeInteractables.Count > 0){
+			return true;
+		}
+		return false;
+	}
 
 	void FindInteractableRay(){
 		Ray ray = new Ray(transform.position, transform.forward);
