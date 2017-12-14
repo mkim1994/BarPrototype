@@ -32,7 +32,8 @@ public class SwitchControl : MonoBehaviour {
 						// foreach(Light light in lights){
 						// 	light.enabled = false;
 						// }
-						Services.DayCycleManager.player.GetComponentInChildren<InteractionManager>().enabled = false;
+						GetComponentInParent<InteractionManager>().enabled = false;
+						GetComponentInParent<FirstPersonController>().enabled = false;
 						// fpc.enabled = false;
 						this.enabled = false;
 					} else {
