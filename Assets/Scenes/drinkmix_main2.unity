@@ -88,6 +88,7 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaDirect: 0.5
     m_PVRFilteringAtrousPositionSigmaIndirect: 2
     m_PVRFilteringAtrousPositionSigmaAO: 1
+    m_ShowResolutionOverlay: 1
   m_LightingDataAsset: {fileID: 0}
   m_UseShadowmask: 1
 --- !u!196 &4
@@ -1613,7 +1614,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!95 &130904286
 Animator:
@@ -1900,29 +1901,9 @@ Prefab:
       propertyPath: m_RootOrder
       value: 4
       objectReference: {fileID: 0}
-    - target: {fileID: 224298215746192356, guid: 6389603eec7eb804da3c115dcf3fa695,
-        type: 2}
-      propertyPath: m_LocalPosition.y
-      value: -30.599976
-      objectReference: {fileID: 0}
-    - target: {fileID: 224838676811128124, guid: 6389603eec7eb804da3c115dcf3fa695,
-        type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224838676811128124, guid: 6389603eec7eb804da3c115dcf3fa695,
-        type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1877018155867266, guid: 6389603eec7eb804da3c115dcf3fa695, type: 2}
       propertyPath: m_Name
       value: FPSController
-      objectReference: {fileID: 0}
-    - target: {fileID: 224298215746192356, guid: 6389603eec7eb804da3c115dcf3fa695,
-        type: 2}
-      propertyPath: m_AnchoredPosition.y
-      value: -30.599976
       objectReference: {fileID: 0}
     - target: {fileID: 1877018155867266, guid: 6389603eec7eb804da3c115dcf3fa695, type: 2}
       propertyPath: m_IsActive
@@ -3247,7 +3228,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &342230718
 Transform:
@@ -13335,7 +13316,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &1241322900
 Transform:
